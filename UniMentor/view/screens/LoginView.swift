@@ -16,8 +16,10 @@ struct LoginView: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 150) {
+            VStack() {
+                Spacer()
                 Text("Login").font(.system(size: 60))
+                Spacer()
                 VStack(spacing: 35) {
                     InputView(
                         value: $emailValue,
@@ -39,6 +41,7 @@ struct LoginView: View {
                         )
                     )
                 }.padding()
+                Spacer()
                 VStack {
                     Text("Don't have an account yet?")
                     ButtonView(
@@ -51,6 +54,7 @@ struct LoginView: View {
                         )
                     )
                 }
+                Spacer()
             }
         }
     }
