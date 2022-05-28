@@ -19,7 +19,7 @@ struct ButtonView: View {
                 .foregroundColor(
                     Color.black
                 )
-        }.background(color)
+        }.background(color.opacity(0.8))
         .cornerRadius(20)
     }
 }
@@ -32,7 +32,8 @@ struct ButtonView_Previews: PreviewProvider {
             color: Color(
                 red: 0.86,
                 green: 0.85,
-                blue: 0.80)
+                blue: 0.80
             )
+        )
     }
 }
