@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var inputValue: String = ""
+    @State var emailValue: String = ""
+    @State var passwordValue: String = ""
     var body: some View {
         ZStack {
             Image("Login")
@@ -19,12 +20,12 @@ struct LoginView: View {
                 Text("Login").font(.system(size: 60))
                 VStack(spacing: 35) {
                     InputView(
-                        value: $inputValue,
+                        value: $emailValue,
                         placeholder:"Email",
                         icon: "envelope"
                     )
                     InputView(
-                        value: $inputValue,
+                        value: $passwordValue,
                         placeholder:"Password",
                         icon: "key"
                     )
