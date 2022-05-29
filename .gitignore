@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects
 #
@@ -215,3 +216,19 @@ xcuserdata/
 ####
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
+=======
+# OS X temporary files
+.DS_Store
+.Trashes
+
+# Xcode User settings
+xcuserdata/
+
+# Swift Package Manager
+Packages/
+Package.resolved
+.swiftpm
+
+# Pods
+Pods/
+>>>>>>> 419eabc0aa7bb006b6c6ad79625458101493e13d
