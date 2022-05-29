@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */; };
+		CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCF2843007900E48A68 /* SignUpView.swift */; };
+		CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD3284300F600E48A68 /* Parallelogram.swift */; };
+		CDFD8FD72843025700E48A68 /* Charm-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */; };
+		CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD9284303E700E48A68 /* Background_2.swift */; };
+		CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */; };
+		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
+		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
+		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
 		E4326D792841B38800288A11 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4326D782841B38800288A11 /* ButtonView.swift */; };
 		E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3F8283DB73B0059CCEC /* InputView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
@@ -17,6 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
+		CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Charm-Regular.ttf"; sourceTree = "<group>"; };
+		CDFD8FD82843026700E48A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CDFD8FD9284303E700E48A68 /* Background_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background_2.swift; sourceTree = "<group>"; };
+		CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView_2.swift; sourceTree = "<group>"; };
+		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
 		E4326D782841B38800288A11 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E4DDE3F8283DB73B0059CCEC /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -38,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDFD8FD52843023E00E48A68 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		E4DDE3F6283DB6D90059CCEC /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +79,11 @@
 			children = (
 				E4DDE3F8283DB73B0059CCEC /* InputView.swift */,
 				E4326D782841B38800288A11 /* ButtonView.swift */,
+				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
+				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
+				CDFD8FD9284303E700E48A68 /* Background_2.swift */,
+				CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */,
+				CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -60,6 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */,
+				CDFD8FCF2843007900E48A68 /* SignUpView.swift */,
+				CDFD8FDD2843067A00E48A68 /* LoadingView.swift */,
+				CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -83,6 +118,8 @@
 		E4F30C262837535C006F424E /* UniMentor */ = {
 			isa = PBXGroup;
 			children = (
+				CDFD8FD82843026700E48A68 /* Info.plist */,
+				CDFD8FD52843023E00E48A68 /* Fonts */,
 				E4DDE3F6283DB6D90059CCEC /* view */,
 				E4F30C272837535C006F424E /* UniMentorApp.swift */,
 				E4F30C292837535C006F424E /* ContentView.swift */,
@@ -160,6 +197,7 @@
 			files = (
 				E4F30C2F2837535D006F424E /* Preview Assets.xcassets in Resources */,
 				E4F30C2C2837535D006F424E /* Assets.xcassets in Resources */,
+				CDFD8FD72843025700E48A68 /* Charm-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +208,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */,
+				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
+				CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */,
+				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
 				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
+				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
+				CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */,
+				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
 				E4326D792841B38800288A11 /* ButtonView.swift in Sources */,
+				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
 				E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
 			);
@@ -305,6 +351,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UniMentor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,6 +380,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UniMentor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
