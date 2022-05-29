@@ -27,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		346C61E02843361A006E6B8B /* week1-2_video-submission.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "week1-2_video-submission.mp4"; path = "../../../../Downloads/week1-2_video-submission.mp4"; sourceTree = "<group>"; };
 		CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
@@ -60,14 +59,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		346C61DF28433608006E6B8B /* video-submissions */ = {
-			isa = PBXGroup;
-			children = (
-				346C61E02843361A006E6B8B /* week1-2_video-submission.mp4 */,
-			);
-			path = "video-submissions";
-			sourceTree = "<group>";
-		};
 		CDFD8FD52843023E00E48A68 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +121,6 @@
 		E4F30C262837535C006F424E /* UniMentor */ = {
 			isa = PBXGroup;
 			children = (
-				346C61DF28433608006E6B8B /* video-submissions */,
 				CDFD8FD82843026700E48A68 /* Info.plist */,
 				CDFD8FD52843023E00E48A68 /* Fonts */,
 				E4DDE3F6283DB6D90059CCEC /* view */,
