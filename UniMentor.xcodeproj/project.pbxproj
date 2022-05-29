@@ -17,6 +17,7 @@
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
 		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
 		E4326D792841B38800288A11 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4326D782841B38800288A11 /* ButtonView.swift */; };
+		E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DAE72284322C00084D553 /* ProfilePictureView.swift */; };
 		E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3F8283DB73B0059CCEC /* InputView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
 		E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C272837535C006F424E /* UniMentorApp.swift */; };
@@ -37,6 +38,7 @@
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
 		E4326D782841B38800288A11 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		E45DAE72284322C00084D553 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
 		E4DDE3F8283DB73B0059CCEC /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				CDFD8FCF2843007900E48A68 /* SignUpView.swift */,
 				CDFD8FDD2843067A00E48A68 /* LoadingView.swift */,
 				CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */,
+				E45DAE72284322C00084D553 /* ProfilePictureView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
+				E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */,
 				E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */,
 				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
 				CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */,
