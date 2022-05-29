@@ -1,0 +1,67 @@
+//
+//  LoginView.swift
+//  UniMentor
+//
+//  Created by Son Minh Nguyen on 2022-05-24.
+//
+
+import SwiftUI
+
+struct LoginView: View {
+    @State var emailValue: String = ""
+    @State var passwordValue: String = ""
+    var body: some View {
+        ZStack {
+            Image("Login")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            VStack() {
+                Spacer()
+                Text("Login").font(.system(size: 60))
+                Spacer()
+                VStack(spacing: 35) {
+                    InputView(
+                        value: $emailValue,
+                        placeholder:"Email",
+                        icon: "envelope"
+                    )
+                    InputView(
+                        value: $passwordValue,
+                        placeholder:"Password",
+                        icon: "key"
+                    )
+                    ButtonView(
+                        action: {},
+                        label: "Login",
+                        color: Color(
+                            red: 0.86,
+                            green: 0.85,
+                            blue: 0.80
+                        )
+                    )
+                }.padding()
+                Spacer()
+                VStack {
+                    Text("Don't have an account yet?")
+                    ButtonView(
+                        action: {},
+                        label: "Sign up",
+                        color: Color (
+                            red: 0.78,
+                            green: 0.74,
+                            blue: 0.62
+                        )
+                    )
+                }
+                Spacer()
+            }
+        }
+    }
+}
+ 
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+    }
+}
