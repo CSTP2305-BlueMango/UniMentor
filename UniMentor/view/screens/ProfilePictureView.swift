@@ -39,30 +39,29 @@ struct ProfilePictureView: View {
                     .overlay(Circle()
                         .stroke(Color.brown, lineWidth: 5))
                 
-                VStack(alignment: .center, spacing: 10) {
-                    Button(action: {}) {
-                        Text("Select image")
-                            .padding(0)
-                            .frame(width: 250, height: 30)
-                            .font(Font.custom("TimesNewRomanPSMT", size: 20))
-                    }
-                    .background(Color(red: 0.8627, green: 0.8470, blue: 0.7960).cornerRadius(20).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                    .buttonStyle(.bordered)
-                    .frame(height: 150)
-                }
+                VStack(alignment: .leading) {
+                    ButtonView(action: {},
+                               label: "Select Image",
+                               color: Color(
+                                red: 0.8627,
+                                green: 0.8470,
+                                 blue: 0.7960
+                               )
+                            )}
                 
-                VStack(alignment: .center, spacing: 10) {
-                    Button(action: {}) {
-                        Text("Next")
-                            .padding(0)
-                            .frame(width: 355, height: 50)
-                            .font(Font.custom("TimesNewRomanPSMT", size: 20))
-                    }
-                    .background(Color(red: 0.8627, green: 0.8470, blue: 0.7960).cornerRadius(20).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                    .buttonStyle(.bordered)
-                    .frame(height: 150)
+                ///this pushes the button to the bottom, not fixed
+                Spacer()
+                    .frame(width: 50, height: 250)
+                
+                VStack(alignment: .leading) {
+                    ButtonView_2(action: {},
+                         label: "Next",
+                         color: Color(
+                            red: 0.8627,
+                            green: 0.8470,
+                             blue: 0.7960
+                         )
+                    )
                 }
             }
         }
