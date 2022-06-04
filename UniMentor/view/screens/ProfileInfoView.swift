@@ -27,6 +27,15 @@ struct ProfileInfoView: View {
             //:NAVIGATIONLINK
             Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                 .ignoresSafeArea()
+            
+            //NAVIGATIONLINK
+            NavigationLink(
+                destination: ProfilePictureView(),
+                isActive: $isProfilePicActive) {
+                    EmptyView()
+                }
+            //:NAVIGATIONLINK
+            
             // BODY
             VStack(alignment: .center) {
                 // HEADER
@@ -66,8 +75,7 @@ struct ProfileInfoView: View {
                 Spacer()
                 Spacer()
                 // FOOTER
-                VStack(alignment: .leading) {
-                    // BUTTON - next page
+                VStack() {
                     ButtonView_2(action: {
                         self.isProfilePicActive = true
                     },
