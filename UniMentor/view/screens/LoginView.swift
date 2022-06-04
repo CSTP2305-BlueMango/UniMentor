@@ -2,61 +2,82 @@
 //  LoginView.swift
 //  UniMentor
 //
-//  Created by Son Minh Nguyen on 2022-05-24.
-//
+//  Created by Sovereign of solitude on 2022-05-24.
 
 import SwiftUI
 
 struct LoginView: View {
     @State var emailValue: String = ""
     @State var passwordValue: String = ""
+    
+    //state for keeping track of if link to signup is active
+    @State var isSignUpActive = false
+    
     var body: some View {
-        ZStack {
-            Image("Login")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            VStack() {
-                Spacer()
-                Text("Login").font(.system(size: 60))
-                Spacer()
-                VStack(spacing: 35) {
-                    InputView(
-                        value: $emailValue,
-                        placeholder:"Email",
-                        icon: "envelope"
-                    )
-                    InputView(
-                        value: $passwordValue,
-                        placeholder:"Password",
-                        icon: "key"
-                    )
-                    ButtonView(
-                        action: {},
-                        label: "Login",
-                        color: Color(
-                            red: 0.86,
-                            green: 0.85,
-                            blue: 0.80
+        
+        //NAVIGATION
+        NavigationView {
+            ZStack { // ZSTACK
+                
+                Color(red: 0.7803, green: 0.7176, blue: 0.6196)
+                    .ignoresSafeArea()
+                
+                //NAVIGATION LINK
+                NavigationLink(
+                    destination: SignUpView(),
+                    isActive: $isSignUpActive
+                ) {EmptyView()}
+                //:NAVIGATION LINK
+                
+                //BODY
+                VStack() {
+                    Text("Login")//HEADER
+                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
+                        .padding(.top)
+                    Spacer()
+                    
+                    VStack(spacing: UIScreen.main.bounds.width * 0.035) {//LOGINFORM
+                        InputFieldView(
+                            value: $emailValue,
+                            placeholder:"Email",
+                            icon: "envelope"
                         )
-                    )
-                }.padding()
-                Spacer()
-                VStack {
-                    Text("Don't have an account yet?")
-                    ButtonView(
-                        action: {},
-                        label: "Sign up",
-                        color: Color (
-                            red: 0.78,
-                            green: 0.74,
-                            blue: 0.62
+                        InputFieldView(
+                            value: $passwordValue,
+                            placeholder:"Password",
+                            icon: "key"
                         )
-                    )
-                }
-                Spacer()
-            }
-        }
+                        ButtonView_2 (
+                            action: {},
+                            label: "Login",
+                            color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
+                            opacity: 1.0,
+                            isBorder: false
+                        ).padding()
+                    }.padding()//:LOGINFORM
+                    Spacer()
+                    VStack(alignment: .leading) {//FOOTER
+                        Text("Don't have an account yet?")
+                        ButtonView_2(
+                            action: {
+                                self.isSignUpActive = true
+                            },
+                            label: "Sign up",
+                            color: Color(
+                               red: 1,
+                                green: 1,
+                                blue: 1
+                            ),
+                            opacity: 0.0,
+                            isBorder: true
+                        )
+                    }.padding()//:FOOTER
+                    
+                }//:BODY
+                
+            }.navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)//:ZSTACK
+        }.navigationViewStyle(.stack)//:NAVIGATION
     }
 }
  

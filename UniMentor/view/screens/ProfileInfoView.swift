@@ -12,11 +12,30 @@ struct ProfileInfoView: View {
     @State var school: String = ""
     @State var startDate: String = ""
     @State var intro: String = ""
-
+    
+    //state for keeping track of if NavigationLink for profilepic view is active
+    @State var isProfilePicActive = false
+    
     var body: some View {
         ZStack {
+            //NAVIGATIONLINK
+            NavigationLink(
+                destination: ProfilePictureView(),
+                isActive: $isProfilePicActive) {
+                    EmptyView()
+                }
+            //:NAVIGATIONLINK
             Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                 .ignoresSafeArea()
+            
+            //NAVIGATIONLINK
+            NavigationLink(
+                destination: ProfilePictureView(),
+                isActive: $isProfilePicActive) {
+                    EmptyView()
+                }
+            //:NAVIGATIONLINK
+            
             // BODY
             VStack(alignment: .center) {
                 // HEADER
@@ -56,9 +75,10 @@ struct ProfileInfoView: View {
                 Spacer()
                 Spacer()
                 // FOOTER
-                VStack(alignment: .leading) {
-                    // BUTTON - next page
-                    ButtonView_2(action: {},
+                VStack() {
+                    ButtonView_2(action: {
+                        self.isProfilePicActive = true
+                    },
                          label: "Next",
                          color: Color(red:0.6235, green: 0.5450, blue: 0.4235),
                          opacity: 1.0,
@@ -67,12 +87,13 @@ struct ProfileInfoView: View {
                 } //: FOOTER
             } //: BODY
             .frame(height: UIScreen.main.bounds.height * 0.85)
-        } //: ZSTACK
+        } .navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true) //: ZSTACK
     }
 }
 
-struct ProfileInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileInfoView()
-    }
-}
+//struct ProfileInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileInfoView()
+//    }
+//}

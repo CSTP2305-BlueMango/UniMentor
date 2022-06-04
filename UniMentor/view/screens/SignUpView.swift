@@ -9,6 +9,13 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
+    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
+    @Environment(\.presentationMode) var presentation
+    
+    //state for keeping track of if link to profileinfo view is active
+    @State var isProfileInfoActive = false
+    
     @State var email: String = ""
     @State var name: String = ""
     @State var password: String = ""
@@ -18,6 +25,16 @@ struct SignUpView: View {
         ZStack {
             Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                 .ignoresSafeArea()
+            
+            //NAVIGATIONLINK
+            NavigationLink(
+                destination: ProfileInfoView(),
+                isActive: $isProfileInfoActive
+            ) {
+                EmptyView()
+            }
+            //:NAVIGATIONLINK
+            
             // BODY
             VStack(alignment: .center) {
                 // HEADER
@@ -50,13 +67,17 @@ struct SignUpView: View {
                         icon: "key"
                     )
                     Spacer()
+                    
                     // BUTTON - signup
-                    ButtonView_2(action: {},
+                    ButtonView_2(action: {
+                        self.isProfileInfoActive = true
+                    },
                          label: "Sign Up",
                          color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
                          opacity: 1.0,
                          isBorder: false
                     )
+                    
                 } //: MAIN
                 .frame(height: UIScreen.main.bounds.height * 0.47)
                 Spacer()
@@ -69,10 +90,13 @@ struct SignUpView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // BUTTON - login
-                    ButtonView_2(action: {},
+                    ButtonView_2(action: {
+                        //pop child view to go back to root view
+                        presentation.wrappedValue.dismiss()
+                    },
                          label: "Log In",
                          color: Color(
-                             red: 1,
+                            red: 1,
                              green: 1,
                              blue: 1
                          ),
@@ -82,12 +106,13 @@ struct SignUpView: View {
                 } //: FOOTER
             } //: BODY
             .frame(height: UIScreen.main.bounds.height * 0.85)
-        } //: ZSTACK
+        }.navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true) //: ZSTACK
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView()
-    }
-}
+//struct SignUpView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUpView()
+//    }
+//}

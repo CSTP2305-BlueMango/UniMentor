@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Photos
 
 struct ProfilePictureView: View {
     var body: some View {
@@ -40,13 +41,15 @@ struct ProfilePictureView: View {
                         .stroke(Color.brown, lineWidth: 5))
                 
                 VStack(alignment: .leading) {
-                    ButtonView(action: {},
+                    ButtonView_2(action: {},
                                label: "Select Image",
                                color: Color(
                                 red: 0.8627,
                                 green: 0.8470,
                                  blue: 0.7960
-                               )
+                               ),
+                                 opacity: 1.0,
+                                 isBorder: false
                             )}
                 
                 ///this pushes the button to the bottom, not fixed
@@ -66,7 +69,8 @@ struct ProfilePictureView: View {
                     )
                 }
             }
-        }
+        }.navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true)
     }
 }
 
