@@ -12,49 +12,53 @@ struct LoginView: View {
     @State var passwordValue: String = ""
     var body: some View {
         ZStack {
-            Image("Login")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Color(red: 0.6235, green: 0.5450, blue: 0.4235)
+                .ignoresSafeArea()
             VStack() {
                 Spacer()
-                Text("Login").font(.system(size: 60))
+                //Header
+                Text("Login")
+                    .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 Spacer()
-                VStack(spacing: 35) {
-                    InputView(
+                VStack(spacing: UIScreen.main.bounds.width * 0.035) {
+                    InputFieldView(
                         value: $emailValue,
                         placeholder:"Email",
                         icon: "envelope"
                     )
-                    InputView(
+                    InputFieldView(
                         value: $passwordValue,
                         placeholder:"Password",
                         icon: "key"
                     )
-                    ButtonView(
+                    ButtonView_2 (
                         action: {},
                         label: "Login",
                         color: Color(
-                            red: 0.86,
-                            green: 0.85,
-                            blue: 0.80
-                        )
-                    )
+                           red: 0.8627,
+                           green: 0.8470,
+                           blue: 0.7960
+                        ),
+                        opacity: 1.0,
+                        isBorder: false
+                    ).padding()
                 }.padding()
                 Spacer()
-                VStack {
+                Spacer()
+                VStack(alignment: .leading) {
                     Text("Don't have an account yet?")
-                    ButtonView(
+                    ButtonView_2(
                         action: {},
                         label: "Sign up",
                         color: Color (
                             red: 0.78,
                             green: 0.74,
                             blue: 0.62
-                        )
+                        ),
+                        opacity: 1.0,
+                        isBorder: false
                     )
-                }
-                Spacer()
+                }.padding()
             }
         }
     }
