@@ -20,15 +20,14 @@ struct InputFieldView: View {
                             red: 0.835,
                             green: 0.835,
                             blue: 0.844))
-                    .frame(width: 20)
+                    .frame(width: UIScreen.main.bounds.width * 0.05)
             }
             TextField(placeholder, text: $value)
-                .padding(.leading, 0)
-                .font(Font.custom("TimesNewRomanPSMT", size: 20))
+                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
         }
         .padding()
-        .frame(height: 60)
-        .background(RoundedRectangle(cornerRadius: 20).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+        .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
+        .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
     }
 }
 

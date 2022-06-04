@@ -16,17 +16,19 @@ struct SignUpView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.9490, green: 0.9411, blue: 0.9098)
+            Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                 .ignoresSafeArea()
-            Spacer()
-            Background_2()
+            // BODY
             VStack(alignment: .center) {
+                // HEADER
                 VStack(alignment: .center) {
                     Text("Sign Up")
-                        .font(Font.custom("Charm-Regular", size: 60))
-                    Spacer()
-                }
-                VStack(alignment: .leading, spacing: 15) {
+                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
+                } //: HEADER
+                Spacer()
+                // MAIN
+                VStack(spacing: UIScreen.main.bounds.width * 0.035) {
+                    // INPUT FIELDS
                     InputFieldView(
                         value: $email,
                         placeholder:"Email",
@@ -35,7 +37,7 @@ struct SignUpView: View {
                     InputFieldView(
                         value: $name,
                         placeholder:"Name",
-                        icon: "envelope"
+                        icon: "person"
                     )
                     InputFieldView(
                         value: $password,
@@ -47,39 +49,41 @@ struct SignUpView: View {
                         placeholder:"Confirtm Password",
                         icon: "key"
                     )
-                    VStack(alignment: .center) {
-                        ButtonView_2(action: {},
-                             label: "Sign Up",
-                             color: Color(
-                                red: 0.8627,
-                                green: 0.8470,
-                                 blue: 0.7960
-                             )
-                        )
-                    }.frame(height: 150)
-                }.frame(height: 400)
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                VStack(alignment: .leading) {
-                    HStack(alignment: .bottom) {
-                        Text("Already have an account?").font(Font.custom("TimesNewRomanPSMT", size: 15))
-                    }.padding(EdgeInsets(top: 30, leading: 20, bottom: 0, trailing: 0))
+                    Spacer()
+                    // BUTTON - signup
+                    ButtonView_2(action: {},
+                         label: "Sign Up",
+                         color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
+                         opacity: 1.0,
+                         isBorder: false
+                    )
+                } //: MAIN
+                .frame(height: UIScreen.main.bounds.height * 0.47)
+                Spacer()
+                Spacer()
+                // FOOTER
+                VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                    VStack(alignment: .trailing) {
+                        Text("Already have an account?")
+                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
+                    }
+                    .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
+                    // BUTTON - login
                     ButtonView_2(action: {},
                          label: "Log In",
                          color: Color(
-                             red: 0.7803,
-                             green: 0.7411,
-                             blue: 0.6196
-                         )
+                             red: 1,
+                             green: 1,
+                             blue: 1
+                         ),
+                         opacity: 0.0,
+                         isBorder: true
                     )
-                }
-            }.frame(height: 700)
-                .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
-            
-            
-        }
+                } //: FOOTER
+            } //: BODY
+            .frame(height: UIScreen.main.bounds.height * 0.85)
+        } //: ZSTACK
     }
-
 }
 
 struct SignUpView_Previews: PreviewProvider {
