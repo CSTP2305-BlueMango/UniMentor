@@ -50,11 +50,7 @@ struct LoginView: View {
                         ButtonView_2 (
                             action: {},
                             label: "Login",
-                            color: Color(
-                               red: 0.8627,
-                               green: 0.8470,
-                               blue: 0.7960
-                            ),
+                            color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
                             opacity: 1.0,
                             isBorder: false
                         ).padding()
@@ -67,13 +63,13 @@ struct LoginView: View {
                                 self.isSignUpActive = true
                             },
                             label: "Sign up",
-                            color: Color (
-                                red: 0.78,
-                                green: 0.74,
-                                blue: 0.62
+                            color: Color(
+                               red: 1,
+                                green: 1,
+                                blue: 1
                             ),
-                            opacity: 1.0,
-                            isBorder: false
+                            opacity: 0.0,
+                            isBorder: true
                         )
                     }.padding()//:FOOTER
                     
