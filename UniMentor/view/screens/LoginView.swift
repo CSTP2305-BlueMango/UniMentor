@@ -19,7 +19,7 @@ struct LoginView: View {
         NavigationView {
             ZStack { // ZSTACK
                 
-                Color(red: 0.6235, green: 0.5450, blue: 0.4235)
+                Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                     .ignoresSafeArea()
                 
                 //NAVIGATION LINK

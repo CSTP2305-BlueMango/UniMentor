@@ -105,9 +105,9 @@ struct SignUpView: View {
                     )
                 } //: FOOTER
             } //: BODY
-            .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.85)
-        }.navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true) //: ZSTACK
+            .frame(height: UIScreen.main.bounds.height * 0.85)
+        }.navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true) //: ZSTACK
     }
 }
 
