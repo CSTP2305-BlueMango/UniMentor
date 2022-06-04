@@ -85,16 +85,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		E4DDE3F6283DB6D90059CCEC /* view */ = {
+		E4DDE3F6283DB6D90059CCEC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E4DDE3FA283DC7BA0059CCEC /* screens */,
-				E4DDE3F7283DB7130059CCEC /* components */,
+				E4DDE3FA283DC7BA0059CCEC /* Screens */,
+				E4DDE3F7283DB7130059CCEC /* Components */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
-		E4DDE3F7283DB7130059CCEC /* components */ = {
+		E4DDE3F7283DB7130059CCEC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
@@ -105,10 +105,10 @@
 				CD86B7E4284B70D50011F078 /* ProfileView.swift */,
 				CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */,
 			);
-			path = components;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		E4DDE3FA283DC7BA0059CCEC /* screens */ = {
+		E4DDE3FA283DC7BA0059CCEC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */,
@@ -126,7 +126,7 @@
 				CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */,
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 			);
-			path = screens;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		E4F30C1B2837535C006F424E = {
@@ -150,7 +150,7 @@
 			children = (
 				CDFD8FD82843026700E48A68 /* Info.plist */,
 				CDFD8FD52843023E00E48A68 /* Fonts */,
-				E4DDE3F6283DB6D90059CCEC /* view */,
+				E4DDE3F6283DB6D90059CCEC /* View */,
 				E4F30C272837535C006F424E /* UniMentorApp.swift */,
 				E4F30C292837535C006F424E /* ContentView.swift */,
 				E4F30C2B2837535D006F424E /* Assets.xcassets */,
