@@ -60,7 +60,9 @@ struct ProfilePictureView: View {
                             red: 0.8627,
                             green: 0.8470,
                              blue: 0.7960
-                         )
+                         ),
+                         opacity: 1.0,
+                         isBorder: false
                     )
                 }
             }

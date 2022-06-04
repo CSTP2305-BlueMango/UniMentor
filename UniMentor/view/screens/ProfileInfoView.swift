@@ -57,8 +57,10 @@ struct ProfileInfoView: View {
                          color: Color(
                             red: 0.8627,
                             green: 0.8470,
-                             blue: 0.7960
-                         )
+                            blue: 0.7960
+                         ),
+                         opacity: 1.0,
+                         isBorder: false
                     ).padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 }
             }.frame(height: 700)

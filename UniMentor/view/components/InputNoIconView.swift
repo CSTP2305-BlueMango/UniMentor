@@ -13,12 +13,12 @@ struct InputNoIconView: View {
     var body: some View {
         HStack {
             TextField(placeholder, text: $value)
-                .padding(.leading, 10)
-                .font(Font.custom("TimesNewRomanPSMT", size: 20))
+                .padding(.leading, UIScreen.main.bounds.width * 0.03)
+                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
         }
         .padding()
-        .frame(height: 60)
-        .background(RoundedRectangle(cornerRadius: 20).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+        .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
+        .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
     }
 }
 
