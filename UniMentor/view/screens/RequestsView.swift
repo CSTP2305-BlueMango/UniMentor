@@ -9,7 +9,16 @@ import SwiftUI
 
 struct RequestsView: View {
     var body: some View {
-        Text("This is the REQUESTS VIEW")
+        NavigationView {
+            VStack {
+                Text("This is the REQUESTS VIEW")
+                VStack(alignment: .center) {
+                    NavigationLink(destination: RequestsProfileView()) {
+                        Text("To REQUESTS profile")
+                    }
+                }
+            }
+        }
     }
 }
 

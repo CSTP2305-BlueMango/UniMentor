@@ -9,7 +9,16 @@ import SwiftUI
 
 struct MatchedView: View {
     var body: some View {
-        Text("This is the MATCHED VIEW")
+        NavigationView {
+            VStack {
+                Text("This is the MATCHED VIEW")
+                VStack(alignment: .center) {
+                    NavigationLink(destination: MatchedProfileView()) {
+                        Text("To MATCHED profile")
+                    }
+                }
+            }
+        }
     }
 }
 

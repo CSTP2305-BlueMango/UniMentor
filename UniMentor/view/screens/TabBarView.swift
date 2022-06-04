@@ -9,32 +9,28 @@ import SwiftUI
 
 struct TabBarView: View {
     var body: some View {
-        NavigationView {
-            
-        ///reference: https://www.hackingwithswift.com/quick-start/swiftui/adding-tabview-and-tabitem
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-                RequestsView()
-                    .tabItem {
-                        Label("Requests", systemImage: "heart")
-                    }
-                MatchedView()
-                    .tabItem {
-                        Label("Matched", systemImage: "person.2")
-                    }
-                ChatView()
-                    .tabItem {
-                        Label("Messages", systemImage: "message")
-                    }
-                UserProfile()
-                    .tabItem {
-                        Label("Profile", systemImage: "person")
-                    }
-                
-            }
+    ///reference: https://www.hackingwithswift.com/quick-start/swiftui/adding-tabview-and-tabitem
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            RequestsView()
+                .tabItem {
+                    Label("Requests", systemImage: "heart")
+                }
+            MatchedView()
+                .tabItem {
+                    Label("Matched", systemImage: "person.2")
+                }
+            ChatView()
+                .tabItem {
+                    Label("Messages", systemImage: "message")
+                }
+            UserProfile()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
         }
     }
 }

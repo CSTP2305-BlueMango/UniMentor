@@ -9,7 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("This is the HOME VIEW")
+        NavigationView {
+            VStack {
+                Text("This is the HOME VIEW")
+                VStack(alignment: .center) {
+                    NavigationLink(destination: HomeProfileView()) {
+                        Text("To profile")
+                    }
+                }
+            }
+        }
     }
 }
 
