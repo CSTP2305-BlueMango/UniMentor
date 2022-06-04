@@ -16,7 +16,7 @@ struct SignUpView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.6235, green: 0.5450, blue: 0.4235)
+            Color(red: 0.7803, green: 0.7176, blue: 0.6196)
                 .ignoresSafeArea()
             // BODY
             VStack(alignment: .center) {
@@ -37,7 +37,7 @@ struct SignUpView: View {
                     InputFieldView(
                         value: $name,
                         placeholder:"Name",
-                        icon: "envelope"
+                        icon: "person"
                     )
                     InputFieldView(
                         value: $password,
@@ -53,11 +53,7 @@ struct SignUpView: View {
                     // BUTTON - signup
                     ButtonView_2(action: {},
                          label: "Sign Up",
-                         color: Color(
-                            red: 0.8627,
-                            green: 0.8470,
-                            blue: 0.7960
-                         ),
+                         color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
                          opacity: 1.0,
                          isBorder: false
                     )
@@ -85,7 +81,7 @@ struct SignUpView: View {
                     )
                 } //: FOOTER
             } //: BODY
-            .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.85)
+            .frame(height: UIScreen.main.bounds.height * 0.85)
         } //: ZSTACK
     }
 }

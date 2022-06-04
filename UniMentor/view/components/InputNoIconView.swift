@@ -13,7 +13,7 @@ struct InputNoIconView: View {
     var body: some View {
         HStack {
             TextField(placeholder, text: $value)
-                .padding(.leading, UIScreen.main.bounds.width * 0.03)
+                .padding(.leading, UIScreen.main.bounds.width * 0.02)
                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
         }
         .padding()
