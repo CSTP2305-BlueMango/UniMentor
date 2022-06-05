@@ -92,8 +92,8 @@ struct ProfileInfoView: View {
     }
 }
 
-//struct ProfileInfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileInfoView()
-//    }
-//}
+struct ProfileInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileInfoView()
+    }
+}
