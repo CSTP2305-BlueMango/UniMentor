@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0ED925052843F3B10005D779 /* ProfileConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED925042843F3B10005D779 /* ProfileConfirmView.swift */; };
+		CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */; };
+		CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCF2843007900E48A68 /* SignUpView.swift */; };
+		CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD3284300F600E48A68 /* Parallelogram.swift */; };
+		CDFD8FD72843025700E48A68 /* Charm-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */; };
+		CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD9284303E700E48A68 /* Background_2.swift */; };
+		CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */; };
+		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
+		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
+		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
+		E4326D792841B38800288A11 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4326D782841B38800288A11 /* ButtonView.swift */; };
+		E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DAE72284322C00084D553 /* ProfilePictureView.swift */; };
+		E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3F8283DB73B0059CCEC /* InputView.swift */; };
+		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
+		E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C272837535C006F424E /* UniMentorApp.swift */; };
+		E4F30C2A2837535C006F424E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C292837535C006F424E /* ContentView.swift */; };
+		E4F30C2C2837535D006F424E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F30C2B2837535D006F424E /* Assets.xcassets */; };
+		E4F30C2F2837535D006F424E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F30C2E2837535D006F424E /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0ED925042843F3B10005D779 /* ProfileConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfirmView.swift; sourceTree = "<group>"; };
+		CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
+		CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Charm-Regular.ttf"; sourceTree = "<group>"; };
+		CDFD8FD82843026700E48A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CDFD8FD9284303E700E48A68 /* Background_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background_2.swift; sourceTree = "<group>"; };
+		CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView_2.swift; sourceTree = "<group>"; };
+		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
+		E4326D782841B38800288A11 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		E45DAE72284322C00084D553 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
+		E4DDE3F8283DB73B0059CCEC /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4F30C272837535C006F424E /* UniMentorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniMentorApp.swift; sourceTree = "<group>"; };
+		E4F30C292837535C006F424E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E4F30C2B2837535D006F424E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E4F30C2E2837535D006F424E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4F30C212837535C006F424E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDFD8FD52843023E00E48A68 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E4DDE3F6283DB6D90059CCEC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE3FA283DC7BA0059CCEC /* screens */,
+				E4DDE3F7283DB7130059CCEC /* components */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		E4DDE3F7283DB7130059CCEC /* components */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE3F8283DB73B0059CCEC /* InputView.swift */,
+				E4326D782841B38800288A11 /* ButtonView.swift */,
+				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
+				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
+				CDFD8FD9284303E700E48A68 /* Background_2.swift */,
+				CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */,
+				CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		E4DDE3FA283DC7BA0059CCEC /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */,
+				CDFD8FCF2843007900E48A68 /* SignUpView.swift */,
+				CDFD8FDD2843067A00E48A68 /* LoadingView.swift */,
+				CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */,
+				E45DAE72284322C00084D553 /* ProfilePictureView.swift */,
+				0ED925042843F3B10005D779 /* ProfileConfirmView.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		E4F30C1B2837535C006F424E = {
+			isa = PBXGroup;
+			children = (
+				E4F30C262837535C006F424E /* UniMentor */,
+				E4F30C252837535C006F424E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E4F30C252837535C006F424E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4F30C242837535C006F424E /* UniMentor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4F30C262837535C006F424E /* UniMentor */ = {
+			isa = PBXGroup;
+			children = (
+				CDFD8FD82843026700E48A68 /* Info.plist */,
+				CDFD8FD52843023E00E48A68 /* Fonts */,
+				E4DDE3F6283DB6D90059CCEC /* view */,
+				E4F30C272837535C006F424E /* UniMentorApp.swift */,
+				E4F30C292837535C006F424E /* ContentView.swift */,
+				E4F30C2B2837535D006F424E /* Assets.xcassets */,
+				E4F30C2D2837535D006F424E /* Preview Content */,
+			);
+			path = UniMentor;
+			sourceTree = "<group>";
+		};
+		E4F30C2D2837535D006F424E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E4F30C2E2837535D006F424E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4F30C232837535C006F424E /* UniMentor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4F30C322837535D006F424E /* Build configuration list for PBXNativeTarget "UniMentor" */;
+			buildPhases = (
+				E4F30C202837535C006F424E /* Sources */,
+				E4F30C212837535C006F424E /* Frameworks */,
+				E4F30C222837535C006F424E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UniMentor;
+			productName = UniMentor;
+			productReference = E4F30C242837535C006F424E /* UniMentor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4F30C1C2837535C006F424E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					E4F30C232837535C006F424E = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = E4F30C1F2837535C006F424E /* Build configuration list for PBXProject "UniMentor" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E4F30C1B2837535C006F424E;
+			productRefGroup = E4F30C252837535C006F424E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4F30C232837535C006F424E /* UniMentor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4F30C222837535C006F424E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F30C2F2837535D006F424E /* Preview Assets.xcassets in Resources */,
+				E4F30C2C2837535D006F424E /* Assets.xcassets in Resources */,
+				CDFD8FD72843025700E48A68 /* Charm-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4F30C202837535C006F424E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
+				E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */,
+				E4DDE3F9283DB73B0059CCEC /* InputView.swift in Sources */,
+				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
+				CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */,
+				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
+				0ED925052843F3B10005D779 /* ProfileConfirmView.swift in Sources */,
+				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
+				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
+				CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */,
+				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
+				E4326D792841B38800288A11 /* ButtonView.swift in Sources */,
+				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
+				E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */,
+				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E4F30C302837535D006F424E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E4F30C312837535D006F424E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E4F30C332837535D006F424E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UniMentor/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bluemango.UniMentor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E4F30C342837535D006F424E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UniMentor/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bluemango.UniMentor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4F30C1F2837535C006F424E /* Build configuration list for PBXProject "UniMentor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F30C302837535D006F424E /* Debug */,
+				E4F30C312837535D006F424E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4F30C322837535D006F424E /* Build configuration list for PBXNativeTarget "UniMentor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F30C332837535D006F424E /* Debug */,
+				E4F30C342837535D006F424E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4F30C1C2837535C006F424E /* Project object */;
+}
