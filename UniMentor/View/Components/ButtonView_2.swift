@@ -34,7 +34,7 @@ struct ButtonView_2: View {
                         .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.065)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                 }
-                .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                .foregroundColor(Color.black)
                 .buttonStyle(.bordered)
                 .overlay(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).strokeBorder(Color.black, lineWidth: 1.2))
             }
