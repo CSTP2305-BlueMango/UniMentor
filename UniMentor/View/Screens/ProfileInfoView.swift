@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileInfoView: View {
     @State var major: String = ""
     @State var school: String = ""
-    @State var startDate: String = ""
+    @State var startDate: Date = Date.now
     @State var intro: String = ""
     
     //state for keeping track of if NavigationLink for profilepic view is active
@@ -155,11 +155,7 @@ struct ProfileInfoView: View {
                         placeholder:"School Name",
                         icon: "house.fill"
                     )
-                    InputFieldView(
-                        value: $startDate,
-                        placeholder:"Start Date",
-                        icon: "calendar"
-                    )
+                    DatePickerView(placholder: "Start Date", date: $startDate)
                     // MULTILINE INPUT FIELDS
                     ///reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
                     VStack(alignment: .leading) {
@@ -178,7 +174,7 @@ struct ProfileInfoView: View {
                 Spacer()
                 // FOOTER
                 VStack() {
-                    ButtonView_2(action: {
+                    ButtonView(action: {
                         self.isProfilePicActive = true
                     },
                          label: "Next",

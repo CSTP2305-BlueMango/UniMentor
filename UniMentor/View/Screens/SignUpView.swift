@@ -20,6 +20,37 @@ struct SignUpView: View {
     @State var name: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
+    
+    @State var emailError: String = ""
+    @State var passwordError: String = ""
+    @State var passwordConfirmError: String = ""
+    
+    func handleSignup() {
+        //reset error state after each submit
+        emailError = ""
+        passwordConfirmError = ""
+        passwordError = ""
+        
+        //validate email
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        guard emailPredicate.evaluate(with: email) else {
+            emailError = "Invalid email"
+            return
+        }
+        
+        //validate password
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        guard passwordPredicate.evaluate(with: password) else {
+            passwordError = "password need 8 letters mininum, contains 1 uppercase and number"
+            return
+        }
+        
+        guard password == confirmPassword else {
+            passwordConfirmError = "Password does not match"
+            return
+        }
+        self.isProfileInfoActive = true
+    }
 
     var body: some View {
         ZStack {
@@ -46,6 +77,11 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.035) {
                     // INPUT FIELDS
+                    if (!emailError.isEmpty) {
+                        HStack {
+                            TextAlertView(text: $emailError)
+                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                    }
                     InputFieldView(
                         value: $email,
                         placeholder:"Email",
@@ -56,21 +92,33 @@ struct SignUpView: View {
                         placeholder:"Name",
                         icon: "person"
                     )
+                    if (!passwordError.isEmpty) {
+                        HStack {
+                            TextAlertView(text: $passwordError)
+                        }.frame(alignment: .leading).padding(.leading)
+                    }
                     InputFieldView(
                         value: $password,
                         placeholder:"Password",
-                        icon: "key"
+                        icon: "key",
+                        inputType: "password"
                     )
+                    if (!passwordConfirmError.isEmpty) {
+                        HStack {
+                            TextAlertView(text: $passwordConfirmError)
+                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                    }
                     InputFieldView(
                         value: $confirmPassword,
                         placeholder:"Confirtm Password",
-                        icon: "key"
+                        icon: "key",
+                        inputType: "password"
                     )
                     Spacer()
                     
                     // BUTTON - signup
-                    ButtonView_2(action: {
-                        self.isProfileInfoActive = true
+                    ButtonView(action: {
+                        handleSignup()
                     },
                          label: "Sign Up",
                          color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
@@ -90,7 +138,7 @@ struct SignUpView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // BUTTON - login
-                    ButtonView_2(action: {
+                    ButtonView(action: {
                         //pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },

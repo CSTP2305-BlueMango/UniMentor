@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonView_2: View {
+struct ButtonView: View {
     let action: ()->Void
     let label: String
     let color: Color
@@ -42,9 +42,9 @@ struct ButtonView_2: View {
     }
 }
 
-struct ButtonView_2_Previews: PreviewProvider {
+struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView_2(
+        ButtonView(
             action: {},
             label: "test",
             color: Color(

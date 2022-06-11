@@ -11,6 +11,7 @@ struct InputFieldView: View {
     @Binding var value: String
     var placeholder: String
     var icon: String?
+    var inputType: String = "text"
     var body: some View {
         HStack {
             if let icon = icon {
@@ -22,8 +23,13 @@ struct InputFieldView: View {
                             blue: 0.844))
                     .frame(width: UIScreen.main.bounds.width * 0.05)
             }
-            TextField(placeholder, text: $value)
-                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+            if inputType == "password" {
+                PasswordView(placeholder: placeholder, text: $value)
+            }
+            else {
+                TextField(placeholder, text: $value)
+                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+            }
         }
         .padding()
         .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)

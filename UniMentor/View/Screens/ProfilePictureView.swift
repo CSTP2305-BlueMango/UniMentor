@@ -79,7 +79,7 @@ struct ProfilePictureView: View {
                             .frame(width: 50, height: 250)
                         
                         VStack(alignment: .leading) {
-                            ButtonView_2(action: {},
+                            ButtonView(action: {},
                                  label: "Next",
                                  color: Color(
                                     red: 0.8627,
