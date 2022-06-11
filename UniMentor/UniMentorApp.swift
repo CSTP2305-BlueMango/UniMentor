@@ -11,7 +11,8 @@ import SwiftUI
 struct UniMentorApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            //TabBarView()
+            ProfilePictureView()
         }
     }
 }
