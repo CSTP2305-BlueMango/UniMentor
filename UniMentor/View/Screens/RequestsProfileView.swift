@@ -27,7 +27,6 @@ struct RequestsProfileView: View {
                 .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
         }
         .frame(height: UIScreen.main.bounds.height * 1)
-
     }
 }
 

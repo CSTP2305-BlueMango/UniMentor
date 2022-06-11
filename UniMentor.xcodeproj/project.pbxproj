@@ -19,6 +19,7 @@
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
 		CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5D284C84FE0045E1E4 /* CardView.swift */; };
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
+		CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9BC2F284E5418004797E0 /* EditProfileView.swift */; };
 		CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */; };
 		CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */; };
 		CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */; };
@@ -52,6 +53,7 @@
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
 		CDD0FF5D284C84FE0045E1E4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatView.swift; sourceTree = "<group>"; };
+		CDD9BC2F284E5418004797E0 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButtonView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */,
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 				CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */,
+				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				34859B23284B0778001C42DC /* TabBarView.swift in Sources */,
 				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
 				CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */,
+				CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
 				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,

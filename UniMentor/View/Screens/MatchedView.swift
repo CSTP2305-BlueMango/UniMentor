@@ -45,39 +45,69 @@ struct MatchedView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        if !isEditClicked {
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                            // TODO: this is gonna be For loop
+                            if !isEditClicked {
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                                NavigationLink(destination: MatchedProfileView()) {
+                                    CardView()
+                                }
+                            } else {
+                                // TODO: make it to be editable cards
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
+                                ButtonCardView(
+                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+                                    buttonText: "UnMatch"
+                                )
                             }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                        } else {
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
                         }
                     }
                     Spacer()
