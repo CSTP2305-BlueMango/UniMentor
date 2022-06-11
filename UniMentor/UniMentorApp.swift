@@ -12,7 +12,7 @@ struct UniMentorApp: App {
     var body: some Scene {
         WindowGroup {
             //TabBarView()
-            ProfilePictureView()
+            ProfileInfoView()
         }
     }
 }
