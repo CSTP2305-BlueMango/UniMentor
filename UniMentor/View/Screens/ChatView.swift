@@ -19,11 +19,11 @@ struct ChatView: View {
                     Spacer()
                     VStack {
                         Spacer()
-                        Button(action: {}) {
-                            Text("Edit")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                .foregroundColor(Color.black)
-                        }
+//                        Button(action: {}) {
+//                            Text("Edit")
+//                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+//                                .foregroundColor(Color.black)
+//                        }
                     }
                 } //: HEADER
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
@@ -31,20 +31,33 @@ struct ChatView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        NavigationLink(destination: MessageChatView()) {
-                            CardView()
-                        }
-                        NavigationLink(destination: MessageChatView()) {
-                            CardView()
-                        }
-                        NavigationLink(destination: MessageChatView()) {
-                            CardView()
-                        }
-                        NavigationLink(destination: MessageChatView()) {
-                            CardView()
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                            // TODO: this is gonna be For loop
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
+                            NavigationLink(destination: MessageChatView()) {
+                                CardView()
+                            }
                         }
                     }
                     Spacer()

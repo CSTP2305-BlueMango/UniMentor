@@ -22,50 +22,71 @@ struct RequestsView: View {
                 Spacer()
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                    Text("")
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                            // TODO: this is gonna be For loop
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
+                            NavigationLink(destination: RequestsProfileView()) {
+                                ButtonCardView(
+                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                    buttonText: "Accept"
+                                )
+                            }
                         }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                    }
+                        
+                    } //: ScrollView
                     Spacer()
                 } //: MAIN
-                
-//                Text("This is the REQUESTS VIEW")
-//                VStack(alignment: .center) {
-//                    NavigationLink(destination: RequestsProfileView()) {
-//                        Text("To REQUESTS profile")
-//                    }
-//                }
+                Spacer()
             } //: BODY
             .frame(height: UIScreen.main.bounds.height * 0.95)
             Spacer()

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    init() {
+        UITabBar.appearance().barTintColor = UIColor(red: 0.6235, green: 0.5450, blue: 0.4235, alpha: 0)
+    }
+    
     var body: some View {
     ///reference: https://www.hackingwithswift.com/quick-start/swiftui/adding-tabview-and-tabitem
         TabView {
@@ -32,6 +37,7 @@ struct TabBarView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
+        // .accentColor(.white)
     }
 }
 
