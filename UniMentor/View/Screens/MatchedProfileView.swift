@@ -14,11 +14,11 @@ struct MatchedProfileView: View {
                 Spacer()
                 ProfileView()
                 VStack{
-                    SmallButtonView(action: {},
-                         label: "UnMatch",
-                         color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                         width: UIScreen.main.bounds.width * 0.3,
-                         height: UIScreen.main.bounds.height * 0.05
+                    ButtonView_2(action: {},
+                         label: "Send Message",
+                         color: Color("ButtonColor"),
+                         opacity: 1.0,
+                         isBorder: false
                     ).frame(width: UIScreen.main.bounds.width * 0.9, alignment: .trailing)
                 }
                 Spacer().frame(height: UIScreen.main.bounds.height * 0.02)
