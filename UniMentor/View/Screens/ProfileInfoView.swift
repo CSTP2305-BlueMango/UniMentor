@@ -88,18 +88,21 @@ struct ProfileInfoView: View {
                     InputFieldView(
                         value: $major,
                         placeholder: "Major",
+                        icon: "book.fill",
                         title: "Major",
                         errorMessage: ""
                     )
                     InputFieldView(
                         value: $school,
                         placeholder:"School Name",
+                        icon: "house.fill",
                         title: "School name",
                         errorMessage: ""
                     )
                     InputFieldView(
                         value: $startDate,
                         placeholder:"Start Date",
+                        icon: "calendar",
                         title: "Start Date",
                         errorMessage: ""
                     )

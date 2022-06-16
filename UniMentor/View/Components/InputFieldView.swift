@@ -52,6 +52,7 @@ struct newPreviewView: View {
         InputFieldView(
             value: $inputValue,
             placeholder:"Email",
+            icon: "house.fill",
             title: "Email",
             errorMessage: "test"
         )
