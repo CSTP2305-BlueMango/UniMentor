@@ -17,9 +17,9 @@ struct LoginView: View {
         
         //NAVIGATION
         NavigationView {
-            ZStack { // ZSTACK
-                
-                Color(red: 0.7803, green: 0.7176, blue: 0.6196)
+            // ZSTACK
+            ZStack {
+                Color("BackgroundColor")
                     .ignoresSafeArea()
                 
                 //NAVIGATION LINK
@@ -31,35 +31,50 @@ struct LoginView: View {
                 
                 //BODY
                 VStack() {
-                    Text("Login")//HEADER
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
-                        .padding(.top)
+                    // HEADER
+                    VStack(alignment: .center) {
+                        Text("Login")
+                            .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
+                    } //: HEADER
                     Spacer()
                     
-                    VStack(spacing: UIScreen.main.bounds.width * 0.035) {//LOGINFORM
+                    VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
                         InputFieldView(
                             value: $emailValue,
                             placeholder:"Email",
-                            icon: "envelope"
+                            icon: "envelope",
+                            title: "Email",
+                            errorMessage: ""
                         )
                         InputFieldView(
                             value: $passwordValue,
                             placeholder:"Password",
-                            icon: "key"
+                            icon: "key",
+                            title: "Password",
+                            errorMessage: "Test"
                         )
+                        Spacer()
                         ButtonView_2 (
                             action: {},
                             label: "Login",
-                            color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
+                            color: Color("TabBarColor"),
                             opacity: 1.0,
                             isBorder: false
                         ).padding()
-                    }.padding()//:LOGINFORM
+                    }//:LOGINFORM
+                    .frame(height: UIScreen.main.bounds.height * 0.36)
                     Spacer()
-                    VStack(alignment: .leading) {//FOOTER
-                        Text("Don't have an account yet?")
+                    Spacer()
+                    //FOOTER
+                    VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                        VStack(alignment: .trailing) {
+                            Text("Don't have an account yet?")
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
+                        }
+                        .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                         ButtonView_2(
                             action: {
+                                print("hello")
                                 self.isSignUpActive = true
                             },
                             label: "Sign up",
@@ -71,13 +86,13 @@ struct LoginView: View {
                             opacity: 0.0,
                             isBorder: true
                         )
-                    }.padding()//:FOOTER
-                    
+                    }//:FOOTER
                 }//:BODY
-                
+                .frame(height: UIScreen.main.bounds.height * 0.85)
             }.navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)//:ZSTACK
         }.navigationViewStyle(.stack)//:NAVIGATION
+            .statusBar(hidden: false)
     }
 }
  

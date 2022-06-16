@@ -14,11 +14,13 @@
 		34859B2B284B088C001C42DC /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2A284B088C001C42DC /* ChatView.swift */; };
 		34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2C284B0E52001C42DC /* UserProfileView.swift */; };
 		34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCD16A2853269C00BE60AF /* ImagePicker.swift */; };
+		CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442408285B178C00BCBD51 /* EditButtonView.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CD86B7E5284B70D50011F078 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E4284B70D50011F078 /* ProfileView.swift */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
 		CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5D284C84FE0045E1E4 /* CardView.swift */; };
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
+		CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9BC2F284E5418004797E0 /* EditProfileView.swift */; };
 		CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */; };
 		CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */; };
 		CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */; };
@@ -47,11 +49,13 @@
 		34859B2A284B088C001C42DC /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		34859B2C284B0E52001C42DC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		34DCD16A2853269C00BE60AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = UniMentor/view/Components/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
+		CD442408285B178C00BCBD51 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CD86B7E4284B70D50011F078 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
 		CDD0FF5D284C84FE0045E1E4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatView.swift; sourceTree = "<group>"; };
+		CDD9BC2F284E5418004797E0 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButtonView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */,
 				CDD0FF5D284C84FE0045E1E4 /* CardView.swift */,
 				34DCD16A2853269C00BE60AF /* ImagePicker.swift */,
+				CD442408285B178C00BCBD51 /* EditButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */,
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 				CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */,
+				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -254,12 +260,14 @@
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
+				CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */,
 				CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */,
 				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
 				CDFD8FDA284303E700E48A68 /* Background_2.swift in Sources */,
 				34859B23284B0778001C42DC /* TabBarView.swift in Sources */,
 				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
 				CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */,
+				CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
 				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,

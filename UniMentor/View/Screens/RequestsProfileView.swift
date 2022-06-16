@@ -14,9 +14,9 @@ struct RequestsProfileView: View {
                 Spacer()
                 ProfileView()
                 VStack{
-                    ButtonView_2(action: {},
+                    ButtonView_2(action: {print("test")},
                          label: "Accept Request",
-                         color: Color(red: 0.7803, green: 0.7176, blue: 0.6196),
+                         color: Color("ButtonColor"),
                          opacity: 1.0,
                          isBorder: false
                     )
@@ -27,7 +27,6 @@ struct RequestsProfileView: View {
                 .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
         }
         .frame(height: UIScreen.main.bounds.height * 1)
-
     }
 }
 

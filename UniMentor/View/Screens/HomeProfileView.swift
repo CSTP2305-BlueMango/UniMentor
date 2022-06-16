@@ -16,7 +16,7 @@ struct HomeProfileView: View {
                 VStack{
                     ButtonView_2(action: {},
                          label: "Request for match",
-                         color: Color(red: 0.7803, green: 0.7176, blue: 0.6196),
+                         color: Color("ButtonColor"),
                          opacity: 1.0,
                          isBorder: false
                     )
