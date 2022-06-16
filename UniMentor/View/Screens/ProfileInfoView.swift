@@ -16,6 +16,11 @@ struct ProfileInfoView: View {
     //state for keeping track of if NavigationLink for profilepic view is active
     @State var isProfilePicActive = false
     
+    //for selecting an image
+    @State private var image = UIImage()
+    //to view the photo library and user to choose a photo
+    @State private var showSheet = false
+    
     var body: some View {
         ZStack {
             //NAVIGATIONLINK
@@ -45,19 +50,59 @@ struct ProfileInfoView: View {
                 } //: HEADER
                 Spacer()
                 // MAIN
+                
+                ///reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
+                HStack (alignment: .center, spacing: 0) {
+                   Image(uiImage: self.image)
+                        .resizable()
+                        .cornerRadius(50)
+                        .frame(width: 130, height: 130)
+                        .background(Color.black.opacity(0.2))
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+               
+                    ///reference: https://designcode.io/swiftui-advanced-handbook-imagepicker for selecting image
+                        Button {
+                            //when "+" button is clicked, will go to photo library
+                            showSheet = true
+                        } label: {
+                            HStack {
+                                Text("+")
+                                    .font(.title3)
+                                    .foregroundColor(.black)
+                            }
+                            //customize button style here
+                            .frame(width: 50, height: 50)
+                            //CHANGE COLOR to the theme
+                            .background(Color.gray)
+                            .cornerRadius(30)
+                        }
+                        //need to modify placement of the "+" to make it fixed
+                        .padding(.top, 100)
+                            
+                            //this is for when user clicks the button, shows the photo library
+                            .sheet(isPresented: $showSheet) {
+                                    // Pick an image from the photo library:
+                                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                            }
+                        } // HSTACK: SELECT IMAGE
+                
                 VStack(spacing: UIScreen.main.bounds.width * 0.035) {
                     // INPUT FIELDS
-                    InputNoIconView(
+                    InputFieldView(
                         value: $major,
-                        placeholder:"Major"
+                        placeholder:"Major",
+                        icon: "book.fill"
                     )
-                    InputNoIconView(
+                    InputFieldView(
                         value: $school,
-                        placeholder:"School Name"
+                        placeholder:"School Name",
+                        icon: "house.fill"
                     )
-                    InputNoIconView(
+                    InputFieldView(
                         value: $startDate,
-                        placeholder:"Start Date"
+                        placeholder:"Start Date",
+                        icon: "calendar"
                     )
                     // MULTILINE INPUT FIELDS
                     VStack(alignment: .leading) {
