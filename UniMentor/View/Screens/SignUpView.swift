@@ -23,7 +23,7 @@ struct SignUpView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.7803, green: 0.7176, blue: 0.6196)
+            Color("BackgroundColor")
                 .ignoresSafeArea()
             
             //NAVIGATIONLINK
@@ -44,27 +44,35 @@ struct SignUpView: View {
                 } //: HEADER
                 Spacer()
                 // MAIN
-                VStack(spacing: UIScreen.main.bounds.width * 0.035) {
+                VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
                     InputFieldView(
                         value: $email,
                         placeholder:"Email",
-                        icon: "envelope"
+                        icon: "envelope",
+                        title: "Email",
+                        errorMessage: ""
                     )
                     InputFieldView(
                         value: $name,
                         placeholder:"Name",
-                        icon: "person"
+                        icon: "person",
+                        title: "Name",
+                        errorMessage: ""
                     )
                     InputFieldView(
                         value: $password,
                         placeholder:"Password",
-                        icon: "key"
+                        icon: "key",
+                        title: "Password",
+                        errorMessage: ""
                     )
                     InputFieldView(
                         value: $confirmPassword,
                         placeholder:"Confirtm Password",
-                        icon: "key"
+                        icon: "key",
+                        title: "Confirm Password",
+                        errorMessage: ""
                     )
                     Spacer()
                     
@@ -73,13 +81,13 @@ struct SignUpView: View {
                         self.isProfileInfoActive = true
                     },
                          label: "Sign Up",
-                         color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
+                         color: Color("TabBarColor"),
                          opacity: 1.0,
                          isBorder: false
                     )
                     
                 } //: MAIN
-                .frame(height: UIScreen.main.bounds.height * 0.47)
+                .frame(height: UIScreen.main.bounds.height * 0.55)
                 Spacer()
                 Spacer()
                 // FOOTER

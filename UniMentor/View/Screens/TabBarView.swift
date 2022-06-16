@@ -18,7 +18,9 @@ struct TabBarView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    // Label("Home", systemImage: "house")
+                    Image(systemName: "house")
+                    Text("Home").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                 }
             RequestsView()
                 .tabItem {
