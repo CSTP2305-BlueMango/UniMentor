@@ -24,7 +24,7 @@ struct ProfileView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
                     } //: Profile Image
-                    .padding(EdgeInsets(top: -UIScreen.main.bounds.height * 0.11, leading: 0, bottom: 0, trailing: 0))
+                    .padding(.top, -UIScreen.main.bounds.height * 0.11)
                     // Profile Info
                     VStack(spacing: UIScreen.main.bounds.width * 0.06) {
                         // User Name
@@ -36,14 +36,14 @@ struct ProfileView: View {
                         VStack(spacing: 0) {
                             Divider()
                                 .frame(width: UIScreen.main.bounds.width * 0.9)
-                                .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
+                                .background(Color("LightColor"))
                             VStack(alignment: .leading) {
                                 VStack(alignment: .center) {
                                     Text("Education")
                                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                                 }
                                 .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.height * 0.035)
-                                .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
+                                .background(Color("LightColor"))
                             }.frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
                         } //: Divider
                         // Education Info
@@ -60,14 +60,14 @@ struct ProfileView: View {
                         VStack(spacing: 0) {
                             Divider()
                                 .frame(width: UIScreen.main.bounds.width * 0.9)
-                                .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
+                                .background(Color("LightColor"))
                             VStack(alignment: .leading) {
                                 VStack(alignment: .center) {
                                     Text("Introduction")
                                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                                 }
                                 .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.035)
-                                .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
+                                .background(Color("LightColor"))
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
                         } //: Divider
@@ -109,7 +109,7 @@ That is if we wanted to drown ourselves in a sea of backwardly referential seman
 //            .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.8)
 //            .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
         } //: VSTACK
-        .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.6)
+        .frame(width: UIScreen.main.bounds.width * 1)
     }
 }
 

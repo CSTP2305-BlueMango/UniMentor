@@ -12,20 +12,21 @@ struct RequestsView: View {
         NavigationView {
             // BODY
             VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                Spacer().frame(height: 0).padding(0)
                 // HEADER
                 HStack {
                     Text("Requests")
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                     Spacer()
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(width: UIScreen.main.bounds.width * 0.9, height: 0)
+                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                    Text("")
+                    // Text("")
                     // Card list
                     ScrollView {
-                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             // TODO: this is gonna be For loop
                             NavigationLink(destination: RequestsProfileView()) {
                                 ButtonCardView(
@@ -82,15 +83,18 @@ struct RequestsView: View {
                                 )
                             }
                         }
-                        
+                        .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
                     Spacer()
                 } //: MAIN
+                // .frame(height: UIScreen.main.bounds.height * 0.6)
                 Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
+            .frame(height: UIScreen.main.bounds.height * 0.897)
             Spacer()
         } //: NAV_VIEW
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

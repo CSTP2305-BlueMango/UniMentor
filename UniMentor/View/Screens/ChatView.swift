@@ -63,10 +63,11 @@ struct ChatView: View {
                     Spacer()
                 } //: MAIN
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
+            .frame(height: UIScreen.main.bounds.height * 0.85)
             Spacer()
         } //: NAV_VIEW
-        // Text("This is the CHAT VIEW")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

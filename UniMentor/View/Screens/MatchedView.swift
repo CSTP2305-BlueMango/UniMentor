@@ -21,7 +21,7 @@ struct MatchedView: View {
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                     Spacer()
                     VStack {
-                        Spacer()
+                        // Spacer()
                         // TODO: button not working
                         Button(action: {
                             print("hello")
@@ -36,17 +36,17 @@ struct MatchedView: View {
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                     .foregroundColor(Color.black)
                             }
-                            
                         }
+                        // EditButtonView(title: "Edit")
                     }
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(width: UIScreen.main.bounds.width * 0.9, height: 0)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                    Text("")
                     // Card list
                     ScrollView {
-                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             // TODO: this is gonna be For loop
                             if !isEditClicked {
                                 NavigationLink(destination: MatchedProfileView()) {
@@ -109,19 +109,18 @@ struct MatchedView: View {
                                 )
                             }
                         }
-                    }
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                    } //: ScrollView
                     Spacer()
                 } //: MAIN
-//                Text("This is the MATCHED VIEW")
-//                VStack(alignment: .center) {
-//                    NavigationLink(destination: MatchedProfileView()) {
-//                        Text("To MATCHED profile")
-//                    }
-//                }
+                Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
-            // Spacer()
+            .frame(height: UIScreen.main.bounds.height * 0.897)
+            Spacer()
         } //: NAV_VIEW
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        
     }
 }
 
