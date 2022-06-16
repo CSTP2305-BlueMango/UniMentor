@@ -37,7 +37,6 @@ struct ProfileInfoView: View {
             ScrollView {
                 // BODY
                 VStack(alignment: .center) {
-<<<<<<< HEAD
                     Text("Set Profile")
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 } //: HEADER
@@ -125,7 +124,6 @@ struct ProfileInfoView: View {
                 } //: FOOTER
             } //: BODY
             .frame(height: UIScreen.main.bounds.height * 0.85)
-=======
                     // HEADER
                     VStack(alignment: .center) {
                         Text("Set Profile")
@@ -248,7 +246,6 @@ struct ProfileInfoView: View {
                 } //: BODY
                 .frame(height: UIScreen.main.bounds.height * 1.1)
             } //: ScrollView
->>>>>>> 41a19f73a4c7081119698b9201f1ad6a099c32e0
         } .navigationBarHidden(true)
          .navigationBarBackButtonHidden(true) //: ZSTACK
     }
