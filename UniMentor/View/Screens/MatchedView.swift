@@ -23,20 +23,21 @@ struct MatchedView: View {
                     VStack {
                         // Spacer()
                         // TODO: button not working
-                        Button(action: {
-                            print("hello")
-                            isEditClicked = !isEditClicked
-                        }) {
-                            if !isEditClicked {
-                                Text("Edit")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .foregroundColor(Color.black)
-                            } else {
-                                Text("Finish")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .foregroundColor(Color.black)
-                            }
-                        }
+//                        Button(action: {
+//                            print("hello")
+//                            self.isEditClicked = !self.isEditClicked
+//                        }) {
+//                            if !isEditClicked {
+//                                Text("Edit")
+//                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+//                                    .foregroundColor(Color.black)
+//                            } else {
+//                                Text("Finish")
+//                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+//                                    .foregroundColor(Color.black)
+//                            }
+//                        }
+                        
                         // EditButtonView(title: "Edit")
                     }
                 } //: HEADER
