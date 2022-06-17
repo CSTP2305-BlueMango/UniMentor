@@ -42,9 +42,17 @@ struct ButtonCardView: View {
             // RIGHT - Button
             ZStack {
                 Button(action: {}) {
-                    Text("\(buttonText)")
-                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
-                        .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.height * 0.1)
+                    VStack(spacing: UIScreen.main.bounds.width * 0.01) {
+                        Image("checkIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.06)
+                            .padding(.top, -UIScreen.main.bounds.width * 0.01)
+                        Text("\(buttonText)")
+                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                            .frame(width: UIScreen.main.bounds.width * 0.13)
+                            .padding(0)
+                    }.frame(height: UIScreen.main.bounds.height * 0.1)
                 }
                 .background(color)
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
@@ -63,7 +71,7 @@ struct ButtonCardView_Previews: PreviewProvider {
     static var previews: some View {
         ButtonCardView(
             color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-            buttonText: "Match"
+            buttonText: "Accept"
         )
     }
 }
