@@ -14,15 +14,21 @@ struct HomeView: View {
             // BODY
             VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                 // HEADER
-                HStack {
-                    Text("UniMentor")
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                VStack {
                     Spacer()
+                    HStack {
+                        Image("SmallLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.25)
+                            .padding(EdgeInsets(top: -UIScreen.main.bounds.width * 0.03, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: 0)
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.02)
+                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
-                VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                     // Search Bar
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -37,67 +43,21 @@ struct HomeView: View {
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                            // TODO: this is gonna be For loop
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
-                            }
-                            NavigationLink(destination: HomeProfileView()) {
-                                ButtonCardView(
-                                    color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                    buttonText: "Match"
-                                )
+                            ForEach(0..<10, id: \.self) { num in
+                                NavigationLink(destination: HomeProfileView()) {
+//                                    ButtonCardView(
+//                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+//                                        buttonText: "Match"
+//                                    )
+                                    HomeCardView()
+                                }
                             }
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
                     Spacer()
                 } //: MAIN
-                // Spacer()
+                Spacer()
             } //: BODY
             .frame(height: UIScreen.main.bounds.height * 0.88)
             Spacer()

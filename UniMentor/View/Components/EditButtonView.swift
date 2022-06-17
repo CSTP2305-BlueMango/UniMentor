@@ -16,7 +16,7 @@ struct EditButtonView: View {
             Button(action: action) {
                 Text("\(title)")
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                    .foregroundColor(Color.black)
+                    // .foregroundColor(Color.black)
             }
         }
     }
