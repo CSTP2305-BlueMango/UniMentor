@@ -30,36 +30,42 @@ struct ChatView: View {
                 Spacer()
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                    // Card list
                     ScrollView {
-                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                            // TODO: this is gonna be For loop
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
+                        ForEach(0..<10, id: \.self) { num in
+                            VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+                                HStack(spacing: 16) {
+                                    //user image
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 32))
+                                        .padding()
+                                        .overlay(RoundedRectangle(cornerRadius: 44)
+                                            .stroke(Color.black, lineWidth: 1))
+                                    
+                                    //username, text
+                                    VStack(alignment: .leading) {
+                                        Text("Username")
+                                            .font(.system(size: 25, weight: .bold))
+                                        Text("Message sent to user")
+                                            .font(.system(size: 16))
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    Spacer()
+                                    
+                                    //time stamp
+                                    Text("22d")
+                                        .font(.system(size: 14, weight: .semibold))
+                                    
+                                } // end of HStack
+                            } // end of VStack
+                            
+                            Divider()
+                                //this will add padding to each of the card
+                                .padding(.vertical, 8)
                         }
-                    }
+                        //this will compress everything into center, adding padding horizontally
+                        .padding(.horizontal)
+                    }// end of Scrollview
+                    
                     Spacer()
                 } //: MAIN
             } //: BODY
