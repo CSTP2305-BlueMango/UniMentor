@@ -9,8 +9,12 @@ import SwiftUI
 
 struct MessageChatView: View {
     var body: some View {
-        Text("Message Chat View")
-        Text("To be worked on later")
+        NavigationView {
+            ScrollView {
+                
+            }
+            .navigationTitle("")
+        }
     }
 }
 
