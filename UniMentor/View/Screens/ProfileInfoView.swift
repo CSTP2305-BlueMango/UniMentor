@@ -91,21 +91,21 @@ struct ProfileInfoView: View {
                         // INPUT FIELDS
                         InputFieldView(
                             value: $major,
-                            placeholder:"Major",
+                            placeholder:"Computer Systems Technology",
                             icon: "book.fill",
                             title: "Major",
                             errorMessage: ""
                         )
                         InputFieldView(
                             value: $school,
-                            placeholder:"School Name",
+                            placeholder:"Vancouver Community College",
                             icon: "house.fill",
                             title: "School Name",
                             errorMessage: ""
                         )
                         InputFieldView(
                             value: $startDate,
-                            placeholder:"Start Date",
+                            placeholder:"September 2020",
                             icon: "calendar",
                             title: "Start Date",
                             errorMessage: ""

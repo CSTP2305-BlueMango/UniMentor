@@ -48,29 +48,29 @@ struct SignUpView: View {
                     // INPUT FIELDS
                     InputFieldView(
                         value: $email,
-                        placeholder:"Email",
-                        icon: "envelope",
+                        placeholder:"sample@gmail.com",
+                        icon: "envelope.fill",
                         title: "Email",
                         errorMessage: ""
                     )
                     InputFieldView(
                         value: $name,
-                        placeholder:"Name",
-                        icon: "person",
+                        placeholder:"John Doe",
+                        icon: "person.fill",
                         title: "Name",
                         errorMessage: ""
                     )
                     InputFieldView(
                         value: $password,
-                        placeholder:"Password",
-                        icon: "key",
+                        placeholder:"PrancingPonies123",
+                        icon: "key.fill",
                         title: "Password",
                         errorMessage: ""
                     )
                     InputFieldView(
                         value: $confirmPassword,
-                        placeholder:"Confirtm Password",
-                        icon: "key",
+                        placeholder:"PrancingPonies123",
+                        icon: "key.fill",
                         title: "Confirm Password",
                         errorMessage: ""
                     )

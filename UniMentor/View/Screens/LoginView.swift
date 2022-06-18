@@ -41,15 +41,15 @@ struct LoginView: View {
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
                         InputFieldView(
                             value: $emailValue,
-                            placeholder:"Email",
-                            icon: "envelope",
+                            placeholder:"sample@gmail.com",
+                            icon: "envelope.fill",
                             title: "Email",
                             errorMessage: ""
                         )
                         InputFieldView(
                             value: $passwordValue,
-                            placeholder:"Password",
-                            icon: "key",
+                            placeholder:"PrancingPonies123",
+                            icon: "key.fill",
                             title: "Password",
                             errorMessage: "Test"
                         )
