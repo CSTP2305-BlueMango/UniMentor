@@ -48,7 +48,7 @@ struct HomeCardView: View {
                         }
                         isButtonClicked = !isButtonClicked
                     }) {
-                        Image(systemName: "chevron.compact.down")
+                        Image(systemName: "chevron.down")
                             .font(.system(size: UIScreen.main.bounds.width * 0.05))
                     }
                 }.frame(width: UIScreen.main.bounds.width * 0.13)

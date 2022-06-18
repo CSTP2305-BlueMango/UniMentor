@@ -11,7 +11,7 @@ struct RequestsView: View {
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                 // HEADER
                 VStack {
                     Spacer()
@@ -22,7 +22,7 @@ struct RequestsView: View {
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
                 .frame(height: UIScreen.main.bounds.height * 0.02)
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
@@ -35,19 +35,17 @@ struct RequestsView: View {
                                         buttonText: "Accept"
                                     )
                                 }
-                            }                        }
+                            }
+                            // TODO: info when there is no card to display
+                        }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
-                    Spacer()
                 } //: MAIN
-                // .frame(height: UIScreen.main.bounds.height * 0.6)
-                Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.897)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

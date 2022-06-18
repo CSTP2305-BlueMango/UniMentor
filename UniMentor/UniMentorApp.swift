@@ -15,6 +15,7 @@ struct UniMentorApp: App {
             // ProfileInfoView()
             // LoginView()
             // EditButtonView(title: "test")
+            // TestTabBarView()
         }
     }
 }

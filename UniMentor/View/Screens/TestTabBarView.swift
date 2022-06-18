@@ -1,13 +1,13 @@
 //
-//  NavigationBar.swift
+//  TestTabBarView.swift
 //  UniMentor
 //
-//  Created by Mary Nicolette Tan on 2022-06-03.
+//  Created by Yoonseo Jeong on 2022-06-17.
 //
 
 import SwiftUI
 
-struct TabBarView: View {
+struct TestTabBarView: View {
     
     @State var isHomeView: Bool = true
     @State var isRequestView: Bool = false
@@ -127,8 +127,8 @@ struct TabBarView: View {
     }
 }
 
-struct NavigationBar_Previews: PreviewProvider {
+struct TestTabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TestTabBarView()
     }
 }

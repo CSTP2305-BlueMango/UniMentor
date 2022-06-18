@@ -17,6 +17,8 @@
 		CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */; };
 		CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */; };
 		CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */; };
+		CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */; };
+		CD26D8F4285D5A7300CA1AA6 /* TestTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */; };
 		CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442408285B178C00BCBD51 /* EditButtonView.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
@@ -53,6 +55,8 @@
 		CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
 		CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
+		CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarView.swift; sourceTree = "<group>"; };
 		CD442408285B178C00BCBD51 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */,
 				CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */,
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
+				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 				CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */,
 				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
+				CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -273,6 +279,7 @@
 				CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
 				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
+				CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
 				CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */,
 				CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */,
@@ -280,6 +287,7 @@
 				34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */,
 				CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */,
 				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
+				CD26D8F4285D5A7300CA1AA6 /* TestTabBarView.swift in Sources */,
 				CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */,
 				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
 				34859B25284B086A001C42DC /* HomeView.swift in Sources */,

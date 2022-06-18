@@ -20,6 +20,8 @@ struct ProfileInfoView: View {
     //to view the photo library and user to choose a photo
     @State private var showSheet = false
     
+    // ========== plus.square.dashed, photo
+    
     var body: some View {
         ZStack {
             //NAVIGATIONLINK
