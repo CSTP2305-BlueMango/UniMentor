@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ChatView: View {
+    @State var isEditClicked: Bool = false
+    
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02)  {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
                 // HEADER
                 VStack {
                     Spacer()
@@ -19,51 +21,34 @@ struct ChatView: View {
                         Text("Messages")
                             .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                         Spacer()
-                        VStack {
-                            Spacer()
-                            // TODO: button not working
-    //                        Button(action: {
-    //                            print("hello")
-    //                            self.isEditClicked = !self.isEditClicked
-    //                        }) {
-    //                            if !isEditClicked {
-    //                                Text("Edit")
-    //                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-    //                                    .foregroundColor(Color.black)
-    //                            } else {
-    //                                Text("Finish")
-    //                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-    //                                    .foregroundColor(Color.black)
-    //                            }
-    //                        }
-                            
-                            EditButtonView(title: "Edit")
-                        }
+                        EditButtonView(title: "Edit", action: {
+                            isEditClicked = !isEditClicked
+                        })
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
                 .frame(height: UIScreen.main.bounds.height * 0.02)
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             ForEach(0..<10, id: \.self) { num in
-                                CardView()
+                                NavigationLink(destination: MessageChatView()) {
+                                    MessageCardView()
+                                }
                             }
+                            // TODO: info when there is no card to display
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                         //this will compress everything into center, adding padding horizontally
                         .padding(.horizontal)
                     } //: Scrollview
-                    Spacer()
                 } //: MAIN
-                Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.897)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

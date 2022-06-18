@@ -12,7 +12,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+            VStack(spacing: UIScreen.main.bounds.height * 0.06) {
                 // HEADER
                 VStack {
                     Spacer()
@@ -21,12 +21,12 @@ struct HomeView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.25)
-                            .padding(EdgeInsets(top: -UIScreen.main.bounds.width * 0.03, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
+                            .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
                         Spacer()
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
                 .frame(height: UIScreen.main.bounds.height * 0.02)
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.007)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                     // Search Bar
@@ -55,15 +55,12 @@ struct HomeView: View {
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
-                    Spacer()
                 } //: MAIN
-                Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.88)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.07)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
         
     }
 }

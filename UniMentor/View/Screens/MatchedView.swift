@@ -15,7 +15,7 @@ struct MatchedView: View {
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02)  {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
                 // HEADER
                 VStack {
                     Spacer()
@@ -24,47 +24,39 @@ struct MatchedView: View {
                             .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                         
                         Spacer()
-                        VStack {
-                            Spacer()
-                            // TODO: button not working
-    //                        Button(action: {
-    //                            print("hello")
-    //                            self.isEditClicked = !self.isEditClicked
-    //                        }) {
-    //                            if !isEditClicked {
-    //                                Text("Edit")
-    //                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-    //                                    .foregroundColor(Color.black)
-    //                            } else {
-    //                                Text("Finish")
-    //                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-    //                                    .foregroundColor(Color.black)
-    //                            }
-    //                        }
-                            
-                            EditButtonView(title: "Edit")
-                        }
+                        EditButtonView(title: "Edit", action: {
+                            isEditClicked = !isEditClicked
+                        })
+                        
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
                 .frame(height: UIScreen.main.bounds.height * 0.02)
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
+                
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            
+                            // var isClicked: Bool = false
                             ForEach(0..<10, id: \.self) { num in
-//                                NavigationLink(destination: MatchedProfileView()) {
-//                                    CardView()
-//                                }
-                                NavigationLink(destination: MatchedProfileView()) {
-                                    HStack {
-                                        // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
-                                        Toggle("", isOn: $isOn1)
-                                          .toggleStyle(CheckboxToggleStyle(style: .circle))
-                                          .foregroundColor(.blue)
+                                if !isEditClicked {
+                                    NavigationLink(destination: MatchedProfileView()) {
                                         CardView()
-                                    }.frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
+                                    }
+                                } else {
+                                    Button(action: {
+                                        
+                                        isOn1 = !isOn1
+                                    }) {
+                                        HStack {
+                                            // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
+                                            Toggle("", isOn: $isOn1)
+                                              .toggleStyle(CheckboxToggleStyle(style: .circle))
+                                              .foregroundColor(.blue)
+                                            CardView()
+                                        }.frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
+                                    }
                                 }
                             }
 //                            if !isEditClicked {
@@ -78,18 +70,17 @@ struct MatchedView: View {
 //                                    buttonText: "UnMatch"
 //                                )
 //                            }
+                            // TODO: info when there is no card to display
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
-                    Spacer()
                 } //: MAIN
-                Spacer()
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.897)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        // .navigationBarHidden(true)
         
     }
 }
