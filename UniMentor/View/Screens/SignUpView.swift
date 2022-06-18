@@ -21,6 +21,37 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
 
+    @State var emailError: String? = ""
+    @State var passwordError: String? = ""
+    @State var passwordConfirmError: String? = ""
+    
+    func handleSignup() {
+        //reset error state after each submit
+        emailError = ""
+        passwordConfirmError = ""
+        passwordError = ""
+        
+        //validate email
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        guard emailPredicate.evaluate(with: email) else {
+            emailError = "Invalid email"
+            return
+        }
+        
+        //validate password
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        guard passwordPredicate.evaluate(with: password) else {
+            passwordError = "password need 8 letters mininum, contains 1 uppercase and number"
+            return
+        }
+        
+        guard password == confirmPassword else {
+            passwordConfirmError = "Password does not match"
+            return
+        }
+        self.isProfileInfoActive = true
+    }
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -51,34 +82,36 @@ struct SignUpView: View {
                         placeholder:"sample@gmail.com",
                         icon: "envelope.fill",
                         title: "Email",
-                        errorMessage: ""
+                        errorMessage: $emailError
                     )
                     InputFieldView(
                         value: $name,
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: ""
+                        errorMessage: Binding.constant(nil)
                     )
                     InputFieldView(
                         value: $password,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Password",
-                        errorMessage: ""
+                        inputType: "password",
+                        errorMessage: $passwordError
                     )
                     InputFieldView(
                         value: $confirmPassword,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Confirm Password",
-                        errorMessage: ""
+                        inputType: "password",
+                        errorMessage: $passwordConfirmError
                     )
                     Spacer()
                     
                     // BUTTON - signup
                     ButtonView_2(action: {
-                        self.isProfileInfoActive = true
+                        handleSignup()
                     },
                          label: "Sign Up",
                          color: Color("TabBarColor"),

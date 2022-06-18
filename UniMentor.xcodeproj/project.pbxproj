@@ -37,6 +37,9 @@
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
 		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
 		E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DAE72284322C00084D553 /* ProfilePictureView.swift */; };
+		E4A474B6285D856E006959D9 /* TextAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474B5285D856E006959D9 /* TextAlertView.swift */; };
+		E4A474B8285D8574006959D9 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474B7285D8574006959D9 /* PasswordView.swift */; };
+		E4A474BA285D8579006959D9 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474B9285D8578006959D9 /* DatePickerView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
 		E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C272837535C006F424E /* UniMentorApp.swift */; };
 		E4F30C2A2837535C006F424E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C292837535C006F424E /* ContentView.swift */; };
@@ -76,6 +79,9 @@
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
 		E45DAE72284322C00084D553 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
+		E4A474B5285D856E006959D9 /* TextAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextAlertView.swift; path = ../../../../../../Desktop/TextAlertView.swift; sourceTree = "<group>"; };
+		E4A474B7285D8574006959D9 /* PasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordView.swift; path = ../../../../../../Desktop/PasswordView.swift; sourceTree = "<group>"; };
+		E4A474B9285D8578006959D9 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerView.swift; path = ../../../../../../Desktop/DatePickerView.swift; sourceTree = "<group>"; };
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F30C272837535C006F424E /* UniMentorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniMentorApp.swift; sourceTree = "<group>"; };
@@ -115,6 +121,9 @@
 		E4DDE3F7283DB7130059CCEC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E4A474B9285D8578006959D9 /* DatePickerView.swift */,
+				E4A474B7285D8574006959D9 /* PasswordView.swift */,
+				E4A474B5285D856E006959D9 /* TextAlertView.swift */,
 				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
 				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
 				CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */,
@@ -266,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34859B2B284B088C001C42DC /* ChatView.swift in Sources */,
+				E4A474B8285D8574006959D9 /* PasswordView.swift in Sources */,
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
@@ -275,6 +285,7 @@
 				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
 				34859B23284B0778001C42DC /* TabBarView.swift in Sources */,
 				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
+				E4A474BA285D8579006959D9 /* DatePickerView.swift in Sources */,
 				CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */,
 				CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
@@ -284,6 +295,7 @@
 				CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */,
 				CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */,
 				CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */,
+				E4A474B6285D856E006959D9 /* TextAlertView.swift in Sources */,
 				34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */,
 				CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */,
 				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
