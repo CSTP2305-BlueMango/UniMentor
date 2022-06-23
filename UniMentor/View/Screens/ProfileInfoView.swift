@@ -18,12 +18,23 @@ struct ProfileInfoView: View {
     //to view the photo library and user to choose a photo
     @State private var showSheet = false
     
+    @State var isProfileConfirmActive = false
+    
     // ========== plus.square.dashed, photo
     
     var body: some View {
         ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
+            
+            //NAVIGATIONLINK
+            NavigationLink(
+                destination: ProfileConfirmView(name: "Test name", major: major, school: school, startDate: "September 2020", info: info),
+                isActive: $isProfileConfirmActive
+            ) {
+                EmptyView()
+            }
+            //:NAVIGATIONLINK
             
             // ScrollView
             ScrollView {
@@ -134,7 +145,7 @@ struct ProfileInfoView: View {
                     // FOOTER
                     VStack() {
                         ButtonView_2(action: {
-                            
+                            isProfileConfirmActive = true
                         },
                              label: "Next",
                              color: Color("TabBarColor"),
