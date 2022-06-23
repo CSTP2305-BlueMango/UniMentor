@@ -11,11 +11,17 @@ import SwiftUI
 struct UniMentorApp: App {
     var body: some Scene {
         WindowGroup {
+<<<<<<< HEAD
             TabBarView()
             // ProfileInfoView()
             // LoginView()
             // EditButtonView(title: "test")
             // TestTabBarView()
+=======
+            // TabBarView()
+            LoadingView()
+            // test
+>>>>>>> c0ae9280e7f693eed50c9ad7931f63f334c33376
         }
     }
 }
