@@ -18,7 +18,7 @@ struct PasswordView: View {
     
     func getVisibleicon()->String {
         if isTextVisible {
-            return "eye/slash"
+            return "eye.slash"
         }
         return "eye"
     }
