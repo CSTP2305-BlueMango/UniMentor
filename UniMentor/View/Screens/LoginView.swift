@@ -15,6 +15,8 @@ struct LoginView: View {
     //state for keeping track of if link to signup is active
     @State var isSignUpActive = false
     
+    @Binding var isLoginActive: Bool
+    
     func handleLogin() {
         //reset error message state before each submit
         loginEmailError = ""
@@ -36,6 +38,7 @@ struct LoginView: View {
             return
         }
         
+        self.isLoginActive = true
     }
     
     var body: some View {
@@ -66,19 +69,19 @@ struct LoginView: View {
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
                         InputFieldView(
                             value: $loginEmail,
-                            placeholder:"Email",
-                            icon: "envelope",
+                            placeholder:"sample@gmail.com",
+                            icon: "envelope.fill",
                             title: "Email",
                             errorMessage: $loginEmailError
-                        )
+                        ).autocapitalization(.none)
                         InputFieldView(
                             value: $loginPassword,
-                            placeholder:"Password",
-                            icon: "key",
+                            placeholder:"PrancingPonies123",
+                            icon: "key.fill",
                             title: "Password",
                             inputType: "password",
                             errorMessage: $loginPasswordError
-                        )
+                        ).autocapitalization(.none)
                         Spacer()
                         ButtonView_2 (
                             action: {
@@ -115,17 +118,29 @@ struct LoginView: View {
                             isBorder: true
                         )
                     }//:FOOTER
-                }//:BODY
+                }
                 .frame(height: UIScreen.main.bounds.height * 0.85)
-            }.navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)//:ZSTACK
-        }.navigationViewStyle(.stack)//:NAVIGATION
-            .statusBar(hidden: false)
+                //:BODY
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            //:ZSTACK
+        }
+        .navigationViewStyle(.stack)
+        .statusBar(hidden: false)
+        //:NAVIGATION
+    }
+}
+
+struct LoginViewPreview_Previews: View {
+    @State var isLoginActive: Bool = false
+    var body: some View {
+        LoginView(isLoginActive: $isLoginActive)
     }
 }
  
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginViewPreview_Previews()
     }
 }

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeProfileView: View {
+    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
+    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -20,7 +24,12 @@ struct HomeProfileView: View {
                     VStack {
                     ProfileView()
                         VStack{
-                            ButtonView_2(action: {},
+                            ButtonView_2(action: {
+                                // TODO: send match request
+                                
+                                //pop child view to go back to root view
+                                presentation.wrappedValue.dismiss()
+                            },
                                  label: "Request for match",
                                  color: Color("ButtonColor"),
                                  opacity: 1.0,

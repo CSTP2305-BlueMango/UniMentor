@@ -1,5 +1,5 @@
 //
-//  MatchedView.swift
+//  ChatView.swift
 //  UniMentor
 //
 //  Created by Mary Nicolette Tan on 2022-06-03.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MatchedView: View {
+struct MessageView: View {
     @State private var showPopUp: Bool = false
     @State var isEditClicked: Bool = false
     @State var editButtonTitle: String = "Edit"
@@ -17,14 +17,13 @@ struct MatchedView: View {
             NavigationView {
                 // BODY
                 VStack(spacing: 0) {
-                    VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
+                    VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                         // HEADER
                         VStack {
                             Spacer()
                             HStack {
-                                Text("Matched")
+                                Text("Messages")
                                     .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
-                                
                                 Spacer()
                                 EditButtonView(title: editButtonTitle, action: {
                                     if editButtonTitle == "Edit" {
@@ -34,27 +33,25 @@ struct MatchedView: View {
                                     }
                                     isEditClicked = !isEditClicked
                                 })
-                                
                             }.frame(width: UIScreen.main.bounds.width * 0.9)
                         } //: HEADER
                         .frame(height: UIScreen.main.bounds.height * 0.02)
-                        
+                        // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                         // MAIN
                         VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                            // Card list
                             ScrollView {
                                 VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                    
-                                    // var isClicked: Bool = false
                                     ForEach(0..<10, id: \.self) { num in
-                                        NavigationLink(destination: MatchedProfileView()) {
-                                            CardView(isEditClicked: isEditClicked)
+                                        NavigationLink(destination: MessageChatView()) {
+                                            MessageCardView(isEditClicked: isEditClicked)
                                         }
                                     }
                                     // TODO: info when there is no card to display
                                 }
                                 .padding(UIScreen.main.bounds.width * 0.02)
-                            } //: ScrollView
+                                //this will compress everything into center, adding padding horizontally
+                                .padding(.horizontal)
+                            } //: Scrollview
                         } //: MAIN
                     }
                     if isEditClicked {
@@ -64,11 +61,11 @@ struct MatchedView: View {
                             }) {
                                 Text("Unmatch")
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .frame(width: UIScreen.main.bounds.width * 1)
-                                    .padding(UIScreen.main.bounds.width * 0.04)
-                                    .foregroundColor(.black)
-                                    .background(Color("ButtonColor"))
                             }
+                            .frame(width: UIScreen.main.bounds.width * 1)
+                            .padding(UIScreen.main.bounds.width * 0.04)
+                            .foregroundColor(.black)
+                            .background(Color("ButtonColor"))
                         }.padding(0)
                     }
                 } //: BODY
@@ -76,17 +73,15 @@ struct MatchedView: View {
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
             } //: NAV_VIEW
-            PopUpView(show: $showPopUp, information: "Unmatch with selected people?",
-                      warmMessage: "* Unmatching will delete messages", buttonAction: {
-                      // TODO: unmatch with selected users
-                      },
-                      buttonText: "Unmatch")
+            PopUpView(show: $showPopUp, information: "Delete messages with selected             people?", warmMessage: "* Delete messages will unmatch",                  buttonAction: {
+                // TODO: delete messages and unmatch
+            },  buttonText: "Delete")
         }
     }
 }
 
-struct MatchedView_Previews: PreviewProvider {
+struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchedView()
+        MessageView()
     }
 }
