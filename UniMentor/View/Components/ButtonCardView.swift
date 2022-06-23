@@ -50,14 +50,15 @@ struct ButtonCardView: View {
                             .padding(.top, -UIScreen.main.bounds.width * 0.01)
                         Text("\(buttonText)")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
-                            .frame(width: UIScreen.main.bounds.width * 0.13)
+                            .frame(width: UIScreen.main.bounds.width * 0.18)
                             .padding(0)
                     }.frame(height: UIScreen.main.bounds.height * 0.1)
                 }
+                .buttonStyle(.plain)
                 .background(color)
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                .frame(width: UIScreen.main.bounds.width * 0.18)
             }
-            
         } //: MAIN
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
         .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
