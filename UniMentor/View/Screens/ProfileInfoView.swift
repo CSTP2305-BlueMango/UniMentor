@@ -12,8 +12,6 @@ struct ProfileInfoView: View {
     @State var startDate: Date = Date.now
     @State var info: String = ""
     
-    //state for keeping track of if NavigationLink for profilepic view is active
-    @State var isProfilePicActive = false
     
     //for selecting an image
     @State private var image = UIImage()
@@ -24,13 +22,6 @@ struct ProfileInfoView: View {
     
     var body: some View {
         ZStack {
-            //NAVIGATIONLINK
-            NavigationLink(
-                destination: ProfilePictureView(),
-                isActive: $isProfilePicActive) {
-                    EmptyView()
-                }
-            //:NAVIGATIONLINK
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -143,7 +134,7 @@ struct ProfileInfoView: View {
                     // FOOTER
                     VStack() {
                         ButtonView_2(action: {
-                            self.isProfilePicActive = true
+                            
                         },
                              label: "Next",
                              color: Color("TabBarColor"),

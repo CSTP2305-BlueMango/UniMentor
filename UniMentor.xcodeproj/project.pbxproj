@@ -39,7 +39,6 @@
 		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
 		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
-		E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DAE72284322C00084D553 /* ProfilePictureView.swift */; };
 		E4A474BC285D914E006959D9 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BB285D914E006959D9 /* DatePickerView.swift */; };
 		E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BD285D9177006959D9 /* PasswordView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
@@ -83,7 +82,6 @@
 		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
-		E45DAE72284322C00084D553 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
 		E4A474BB285D914E006959D9 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		E4A474BD285D9177006959D9 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				CDFD8FCF2843007900E48A68 /* SignUpView.swift */,
 				CDFD8FDD2843067A00E48A68 /* LoadingView.swift */,
 				CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */,
-				E45DAE72284322C00084D553 /* ProfilePictureView.swift */,
 				34859B22284B0778001C42DC /* TabBarView.swift */,
 				34859B24284B086A001C42DC /* HomeView.swift */,
 				34859B26284B0877001C42DC /* RequestsView.swift */,
@@ -282,7 +279,6 @@
 			files = (
 				34859B2B284B088C001C42DC /* MessageView.swift in Sources */,
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
-				E45DAE73284322C00084D553 /* ProfilePictureView.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
 				CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */,
 				CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */,
