@@ -14,6 +14,7 @@
 		34859B2B284B088C001C42DC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2A284B088C001C42DC /* MessageView.swift */; };
 		34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2C284B0E52001C42DC /* UserProfileView.swift */; };
 		34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCD16A2853269C00BE60AF /* ImagePicker.swift */; };
+		CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */; };
 		CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */; };
 		CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */; };
 		CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */; };
@@ -56,6 +57,7 @@
 		34859B2A284B088C001C42DC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		34859B2C284B0E52001C42DC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		34DCD16A2853269C00BE60AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = UniMentor/view/Components/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
+		CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfirmView.swift; sourceTree = "<group>"; };
 		CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
 		CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
 				CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */,
 				CD3740792863B6B2005BC18D /* UserProfileEditView.swift */,
+				CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */,
 				CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
+				CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */,
 				CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */,
 				CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */,
 				34859B27284B0877001C42DC /* RequestsView.swift in Sources */,

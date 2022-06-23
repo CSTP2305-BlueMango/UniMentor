@@ -24,7 +24,16 @@ struct RequestsProfileView: View {
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
-                        ProfileView()
+                        ProfileView(
+                            name: "First Lastname",
+                            major: "Computer Systems Technology",
+                            school: "Vancouver Community College",
+                            startDate: "September 2020",
+                            introduction: """
+                I guess we could discuss the implications of the phrase meant to be.
+
+                That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+                """)
                             VStack{
                                 ButtonView_2(action: {
                                     // TODO: accept request
