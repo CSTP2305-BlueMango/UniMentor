@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// reference: https://johncodeos.com/how-to-create-a-popup-window-with-swiftui/
 struct InfoPopupView: View {
     @Binding var show: Bool
     @State var infoList: [String] = [
