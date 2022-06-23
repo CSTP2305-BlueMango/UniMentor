@@ -7,11 +7,36 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var emailValue: String = ""
-    @State var passwordValue: String = ""
+    @State var loginEmail: String = ""
+    @State var loginPassword: String = ""
+    @State var loginEmailError: String? = ""
+    @State var loginPasswordError: String? = ""
     
     //state for keeping track of if link to signup is active
     @State var isSignUpActive = false
+    
+    func handleLogin() {
+        //reset error message state before each submit
+        loginEmailError = ""
+        loginPasswordError = ""
+        
+        //validate email
+        //email regex ref: https://www.hackingwithswift.com/forums/swiftui/what-is-a-good-practice-to-handle-textfield-validations/5868
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        guard emailPredicate.evaluate(with: loginEmail) else {
+            loginEmailError = "Invalid email"
+            return
+        }
+        
+        //validate password
+        //password regex ref: https://medium.com/swlh/password-validation-in-swift-5-3de161569910va
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        guard passwordPredicate.evaluate(with: loginPassword) else {
+            loginPasswordError = "Invalid password"
+            return
+        }
+        
+    }
     
     var body: some View {
         
@@ -40,22 +65,25 @@ struct LoginView: View {
                     
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
                         InputFieldView(
-                            value: $emailValue,
+                            value: $loginEmail,
                             placeholder:"Email",
                             icon: "envelope",
                             title: "Email",
-                            errorMessage: ""
+                            errorMessage: $loginEmailError
                         )
                         InputFieldView(
-                            value: $passwordValue,
+                            value: $loginPassword,
                             placeholder:"Password",
                             icon: "key",
                             title: "Password",
-                            errorMessage: "Test"
+                            inputType: "password",
+                            errorMessage: $loginPasswordError
                         )
                         Spacer()
                         ButtonView_2 (
-                            action: {},
+                            action: {
+                                handleLogin()
+                            },
                             label: "Login",
                             color: Color("TabBarColor"),
                             opacity: 1.0,
