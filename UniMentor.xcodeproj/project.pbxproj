@@ -11,7 +11,7 @@
 		34859B25284B086A001C42DC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B24284B086A001C42DC /* HomeView.swift */; };
 		34859B27284B0877001C42DC /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B26284B0877001C42DC /* RequestsView.swift */; };
 		34859B29284B0881001C42DC /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B28284B0881001C42DC /* MatchedView.swift */; };
-		34859B2B284B088C001C42DC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2A284B088C001C42DC /* MessageView.swift */; };
+		34859B2B284B088C001C42DC /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2A284B088C001C42DC /* ChatView.swift */; };
 		34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2C284B0E52001C42DC /* UserProfileView.swift */; };
 		34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCD16A2853269C00BE60AF /* ImagePicker.swift */; };
 		CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */; };
@@ -19,9 +19,6 @@
 		CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */; };
 		CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */; };
 		CD26D8F4285D5A7300CA1AA6 /* TestTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */; };
-		CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740792863B6B2005BC18D /* UserProfileEditView.swift */; };
-		CD3740802863DAF7005BC18D /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37407F2863DAF7005BC18D /* InfoPopupView.swift */; };
-		CD3740822863E344005BC18D /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740812863E344005BC18D /* PopUpView.swift */; };
 		CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442408285B178C00BCBD51 /* EditButtonView.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
@@ -64,7 +61,7 @@
 		34859B24284B086A001C42DC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		34859B26284B0877001C42DC /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
 		34859B28284B0881001C42DC /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
-		34859B2A284B088C001C42DC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		34859B2A284B088C001C42DC /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		34859B2C284B0E52001C42DC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		34DCD16A2853269C00BE60AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = UniMentor/view/Components/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
 		CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -72,9 +69,6 @@
 		CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
 		CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarView.swift; sourceTree = "<group>"; };
-		CD3740792863B6B2005BC18D /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
-		CD37407F2863DAF7005BC18D /* InfoPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
-		CD3740812863E344005BC18D /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		CD442408285B178C00BCBD51 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
@@ -159,8 +153,6 @@
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
 				E4A474BB285D914E006959D9 /* DatePickerView.swift */,
 				E4A474BD285D9177006959D9 /* PasswordView.swift */,
-				CD37407F2863DAF7005BC18D /* InfoPopupView.swift */,
-				CD3740812863E344005BC18D /* PopUpView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -177,14 +169,13 @@
 				34859B26284B0877001C42DC /* RequestsView.swift */,
 				34859B28284B0881001C42DC /* MatchedView.swift */,
 				34859B2C284B0E52001C42DC /* UserProfileView.swift */,
-				34859B2A284B088C001C42DC /* MessageView.swift */,
+				34859B2A284B088C001C42DC /* ChatView.swift */,
 				CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */,
 				CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */,
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 				CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */,
 				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
 				CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */,
-				CD3740792863B6B2005BC18D /* UserProfileEditView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -298,7 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34859B2B284B088C001C42DC /* MessageView.swift in Sources */,
+				34859B2B284B088C001C42DC /* ChatView.swift in Sources */,
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
 				CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */,
@@ -326,12 +317,9 @@
 				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
 				34859B25284B086A001C42DC /* HomeView.swift in Sources */,
 				E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */,
-				CD3740822863E344005BC18D /* PopUpView.swift in Sources */,
-				CD3740802863DAF7005BC18D /* InfoPopupView.swift in Sources */,
 				CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */,
 				CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
-				CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */,
 				CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */,
 				34859B27284B0877001C42DC /* RequestsView.swift in Sources */,
 			);

@@ -8,18 +8,8 @@
 import SwiftUI
 
 struct MatchedProfileView: View {
-    @State private var showPopUp: Bool = false
-    @State var isSendMessageActive: Bool = false
-    
     var body: some View {
-        ZStack {
-            //NAVIGATION LINK
-            NavigationLink(
-                destination: MessageChatView(),
-                isActive: $isSendMessageActive
-            ) {EmptyView()}
-            //:NAVIGATION LINK
-            
+        VStack {
             ScrollView {
                 ZStack(alignment: .top) {
                     // Background
@@ -30,9 +20,7 @@ struct MatchedProfileView: View {
                     VStack {
                         ProfileView()
                         VStack{
-                            ButtonView_2(action: {
-                                isSendMessageActive = true
-                            },
+                            ButtonView_2(action: {},
                                  label: "Send Message",
                                  color: Color("ButtonColor"),
                                  opacity: 1.0,
@@ -43,7 +31,7 @@ struct MatchedProfileView: View {
                     }
                     ZStack {
                         Button(action: {
-                            showPopUp = true
+                            // print("this is test")
                         }) {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(
@@ -53,11 +41,6 @@ struct MatchedProfileView: View {
                     }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: UIScreen.main.bounds.width * 0.88, bottom: 0, trailing: 0))
                 }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
             }
-            PopUpView(show: $showPopUp, information: "Unmatch with First Lastname?",
-                      warmMessage: "* Unmatching will delete messages", buttonAction: {
-                // TODO: unmatch
-            },
-                      buttonText: "Unmatch")
         }
         .frame(height: UIScreen.main.bounds.height * 0.9)
     }

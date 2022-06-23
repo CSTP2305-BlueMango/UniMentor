@@ -48,24 +48,13 @@ struct HomeCardView: View {
                         }
                         isButtonClicked = !isButtonClicked
                     }) {
-                        HStack {
-                            if !isButtonClicked {
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
-                                    .background(Color.white)
-                            } else {
-                                Image(systemName: "chevron.up")
-                                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
-                                    .background(Color.white)
-                            }
-                        }
+                        Image(systemName: "chevron.down")
+                            .font(.system(size: UIScreen.main.bounds.width * 0.05))
                     }
-                    .buttonStyle(.plain)
-                    .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.13)
                 }.frame(width: UIScreen.main.bounds.width * 0.13)
-            }.padding(0)
+            }
             if isButtonClicked {
-                Divider().padding(0)
+                Divider()
                     .frame(width: UIScreen.main.bounds.width * 0.9)
                     .background(Color("LightColor"))
                 VStack() {
@@ -79,7 +68,7 @@ struct HomeCardView: View {
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     .multilineTextAlignment(.leading)
                 }.padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.04, bottom: 0, trailing: UIScreen.main.bounds.width * 0.04))
-                        .frame(height: UIScreen.main.bounds.height * 0.08)
+                        .frame(height: UIScreen.main.bounds.height * 0.07)
             }
         } //: MAIN
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * cardHeight)

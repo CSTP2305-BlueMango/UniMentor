@@ -15,12 +15,6 @@ struct TabBarView: View {
     @State var isMessageView: Bool = false
     @State var isProfileView: Bool = false
     
-    @State var homeButtonColor: Color = .white
-    @State var requestsButtonColor: Color = Color("DarkColor")
-    @State var matchedButtonColor: Color = Color("DarkColor")
-    @State var messagesButtonColor: Color = Color("DarkColor")
-    @State var profileButtonColor: Color = Color("DarkColor")
-    
     var body: some View {
         VStack(spacing: 0) {
             VStack {
@@ -34,7 +28,7 @@ struct TabBarView: View {
                     MatchedView()
                 }
                 if isMessageView {
-                    MessageView()
+                    ChatView()
                 }
                 if isProfileView {
                     UserProfile()
@@ -48,19 +42,13 @@ struct TabBarView: View {
                         isMatchView = false
                         isMessageView = false
                         isProfileView = false
-                        
-                        homeButtonColor = .white
-                        requestsButtonColor = Color("DarkColor")
-                        matchedButtonColor = Color("DarkColor")
-                        messagesButtonColor = Color("DarkColor")
-                        profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
                             Image(systemName: "house")
+                                .foregroundColor(Color.white)
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
-                                .foregroundColor(homeButtonColor)
                             Text("Home")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(homeButtonColor)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(Color.white)
                         }.padding(0)
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
@@ -71,19 +59,13 @@ struct TabBarView: View {
                         isMatchView = false
                         isMessageView = false
                         isProfileView = false
-                        
-                        homeButtonColor = Color("DarkColor")
-                        requestsButtonColor = .white
-                        matchedButtonColor = Color("DarkColor")
-                        messagesButtonColor = Color("DarkColor")
-                        profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
                             Image(systemName: "heart")
-                                .foregroundColor(requestsButtonColor)
+                                .foregroundColor(Color("DarkColor"))
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
                             Text("Requests")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(requestsButtonColor)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(Color("DarkColor"))
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
@@ -94,19 +76,13 @@ struct TabBarView: View {
                         isMatchView = true
                         isMessageView = false
                         isProfileView = false
-                        
-                        homeButtonColor = Color("DarkColor")
-                        requestsButtonColor = Color("DarkColor")
-                        matchedButtonColor = .white
-                        messagesButtonColor = Color("DarkColor")
-                        profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
                             Image(systemName: "person.2")
-                                .foregroundColor(matchedButtonColor)
+                                .foregroundColor(Color("DarkColor"))
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
                             Text("Matched")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(matchedButtonColor)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(Color("DarkColor"))
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
@@ -117,19 +93,13 @@ struct TabBarView: View {
                         isMatchView = false
                         isMessageView = true
                         isProfileView = false
-                        
-                        homeButtonColor = Color("DarkColor")
-                        requestsButtonColor = Color("DarkColor")
-                        matchedButtonColor = Color("DarkColor")
-                        messagesButtonColor = .white
-                        profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
                             Image(systemName: "bubble.left")
-                                .foregroundColor(messagesButtonColor)
+                                .foregroundColor(Color("DarkColor"))
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
                             Text("Messages")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(messagesButtonColor)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(Color("DarkColor"))
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
@@ -140,19 +110,13 @@ struct TabBarView: View {
                         isMatchView = false
                         isMessageView = false
                         isProfileView = true
-                        
-                        homeButtonColor = Color("DarkColor")
-                        requestsButtonColor = Color("DarkColor")
-                        matchedButtonColor = Color("DarkColor")
-                        messagesButtonColor = Color("DarkColor")
-                        profileButtonColor = .white
                     }) {
                         VStack {
                             Image(systemName: "person")
-                                .foregroundColor(profileButtonColor)
+                                .foregroundColor(Color("DarkColor"))
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
                             Text("Profile")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(profileButtonColor)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(Color("DarkColor"))
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)

@@ -61,7 +61,7 @@ struct newPreviewView: View {
     var body: some View {
         InputFieldView(
             value: $inputValue,
-            placeholder:"test",
+            placeholder:"Email",
             icon: "house.fill",
             title: "Email",
             errorMessage: $error

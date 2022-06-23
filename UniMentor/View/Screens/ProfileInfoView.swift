@@ -10,7 +10,7 @@ struct ProfileInfoView: View {
     @State var major: String = ""
     @State var school: String = ""
     @State var startDate: Date = Date.now
-    @State var info: String = ""
+    @State var intro: String = ""
     
     //state for keeping track of if NavigationLink for profilepic view is active
     @State var isProfilePicActive = false
@@ -106,7 +106,7 @@ struct ProfileInfoView: View {
                         DatePickerView(placholder: "Start Date", date: $startDate)
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
-                        VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.02)  {
+                        VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01)  {
                             HStack {
                                 // input title
                                 VStack(alignment: .leading) {
@@ -123,7 +123,7 @@ struct ProfileInfoView: View {
                             }
                             VStack(alignment: .leading) {
                                 HStack(alignment: .center) {
-                                TextEditor(text: $info)
+                                TextEditor(text: $intro)
                                     .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.03, leading: UIScreen.main.bounds.width * 0.05, bottom: UIScreen.main.bounds.width * 0.03, trailing: UIScreen.main.bounds.width * 0.05))
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                                 // reference:  https://stackoverflow.com/questions/60374653/swiftui-textfield-height-didnt-change

@@ -28,7 +28,7 @@ struct TestTabBarView: View {
                     MatchedView()
                 }
                 if isMessageView {
-                    MessageView()
+                    ChatView()
                 }
                 if isProfileView {
                     UserProfile()

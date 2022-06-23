@@ -83,7 +83,7 @@ struct SignUpView: View {
                         icon: "envelope.fill",
                         title: "Email",
                         errorMessage: $emailError
-                    ).autocapitalization(.none)
+                    )
                     InputFieldView(
                         value: $name,
                         placeholder:"John Doe",
@@ -98,7 +98,7 @@ struct SignUpView: View {
                         title: "Password",
                         inputType: "password",
                         errorMessage: $passwordError
-                    ).autocapitalization(.none)
+                    )
                     InputFieldView(
                         value: $confirmPassword,
                         placeholder:"PrancingPonies123",
@@ -106,7 +106,7 @@ struct SignUpView: View {
                         title: "Confirm Password",
                         inputType: "password",
                         errorMessage: $passwordConfirmError
-                    ).autocapitalization(.none)
+                    )
                     Spacer()
                     
                     // BUTTON - signup

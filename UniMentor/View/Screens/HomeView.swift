@@ -43,7 +43,7 @@ struct HomeView: View {
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                            ForEach(0..<2, id: \.self) { num in
+                            ForEach(0..<10, id: \.self) { num in
                                 NavigationLink(destination: HomeProfileView()) {
 //                                    ButtonCardView(
 //                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
