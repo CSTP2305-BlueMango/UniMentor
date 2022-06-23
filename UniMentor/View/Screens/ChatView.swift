@@ -8,66 +8,47 @@
 import SwiftUI
 
 struct ChatView: View {
+    @State var isEditClicked: Bool = false
+    
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02)  {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
                 // HEADER
-                HStack {
-                    Text("Messages")
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                VStack {
                     Spacer()
-                    VStack {
+                    HStack {
+                        Text("Messages")
+                            .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                         Spacer()
-//                        Button(action: {}) {
-//                            Text("Edit")
-//                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-//                                .foregroundColor(Color.black)
-//                        }
-                    }
+                        EditButtonView(title: "Edit", action: {
+                            isEditClicked = !isEditClicked
+                        })
+                    }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.02)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                    // Card list
                     ScrollView {
-                        VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                            // TODO: this is gonna be For loop
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            ForEach(0..<10, id: \.self) { num in
+                                NavigationLink(destination: MessageChatView()) {
+                                    MessageCardView()
+                                }
                             }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MessageChatView()) {
-                                CardView()
-                            }
+                            // TODO: info when there is no card to display
                         }
-                    }
-                    Spacer()
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                        //this will compress everything into center, adding padding horizontally
+                        .padding(.horizontal)
+                    } //: Scrollview
                 } //: MAIN
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.85)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

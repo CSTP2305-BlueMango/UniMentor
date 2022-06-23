@@ -13,7 +13,7 @@ struct MessageChatView: View {
             ScrollView {
                 
             }
-            .navigationTitle("Messages")
+            .navigationTitle("")
         }
     }
 }

@@ -12,7 +12,9 @@ struct InputFieldView: View {
     var placeholder: String
     var icon: String?
     var title: String
-    var errorMessage: String
+    var inputType: String = "text"
+    @Binding var errorMessage: String?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
             HStack(alignment: .center) {
@@ -26,7 +28,9 @@ struct InputFieldView: View {
                 Spacer()
                 // error message
                 VStack(alignment: .trailing) {
-                    Text("\(errorMessage)").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
+                    if let errorMessage = errorMessage {
+                        Text("\(errorMessage)").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
+                    }
                 }.frame(height: UIScreen.main.bounds.height * 0.015).padding(.trailing, UIScreen.main.bounds.width * 0.02)
             }
             HStack {
@@ -36,8 +40,13 @@ struct InputFieldView: View {
                             Color(red: 0.835, green: 0.835, blue: 0.844))
                         .font(.system(size: UIScreen.main.bounds.width * 0.04))
                 }
-                TextField(placeholder, text: $value)
-                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                if inputType == "password" {
+                    PasswordView(placeholder: placeholder, text: $value)
+                }
+                else {
+                    TextField(placeholder, text: $value)
+                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                }
             }
             .padding()
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
@@ -48,13 +57,14 @@ struct InputFieldView: View {
 
 struct newPreviewView: View {
     @State var inputValue: String = ""
+    @State var error: String? = ""
     var body: some View {
         InputFieldView(
             value: $inputValue,
             placeholder:"Email",
             icon: "house.fill",
             title: "Email",
-            errorMessage: "test"
+            errorMessage: $error
         )
     }
     

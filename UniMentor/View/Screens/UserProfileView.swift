@@ -11,27 +11,37 @@ struct UserProfile: View {
     var body: some View {
         NavigationView {
             // BODY
-            ScrollView {
-                VStack(alignment: .trailing, spacing: UIScreen.main.bounds.height * 0.02) {
-                    // MAIN
-                    VStack {
-                        Spacer()
-                        ZStack {
-    //                        NavigationLink(destination: RequestsProfileView()) {
-    //                            // Text("test")
-    //                            Image(systemName: "gearshape")
-    //                                .resizable()
-    //                                .scaledToFit()
-    //                                .foregroundColor(Color.black)
-    //                        }
-                        }.frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.05)
-                            .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.8, bottom: UIScreen.main.bounds.height * 0.08, trailing: 0))
-                        ProfileView()
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.height * 0.08, trailing: 0))
-                        Spacer()
-                    } //: MAIN
-                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.65)
+            VStack {
+                ScrollView {
+                    ZStack(alignment: .top) {
+                        // Background
+                        ZStack {}
+                        .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                        .padding(.top, UIScreen.main.bounds.height * 0.11)
+                        VStack {
+                            ProfileView()
+                                .padding(.bottom, UIScreen.main.bounds.height * 0.05)
+                        }
+                        ZStack {
+                            Button(action: {
+                                // print("this is test")
+                            }) {
+                                Image(systemName: "square.and.pencil")
+                                    .font(.system(size: UIScreen.main.bounds.width * 0.07))
+                                    .foregroundColor(Color.black)
+                            }
+                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: UIScreen.main.bounds.width * 0.88, bottom: 0, trailing: 0))
+                        ZStack {
+                            Button(action: {
+                                // print("this is test")
+                            }) {
+                                Image(systemName: "exclamationmark.square")
+                                    .font(.system(size: UIScreen.main.bounds.width * 0.07))
+                                    .foregroundColor(Color.black)
+                            }
+                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: -UIScreen.main.bounds.width * 0.48, bottom: 0, trailing: 0))
+                    }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                     // FOOTER
                     VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                         Text("Matched students")
@@ -41,11 +51,12 @@ struct UserProfile: View {
                     } //: FOOTER
                     .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                } //: BODY
-            } //: ScrollView
+                }
+            } //: BODY
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

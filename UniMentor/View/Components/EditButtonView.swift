@@ -9,14 +9,14 @@ import SwiftUI
 
 struct EditButtonView: View {
     let title: String
-    let action: ()->Void = {print("hello test")}
+    let action: ()->Void
     
     var body: some View {
         VStack {
             Button(action: action) {
                 Text("\(title)")
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                    .foregroundColor(Color.black)
+                    // .foregroundColor(Color.black)
             }
         }
     }
@@ -25,7 +25,8 @@ struct EditButtonView: View {
 struct EditButtonView_Previews: PreviewProvider {
     static var previews: some View {
         EditButtonView(
-            title: "Test"
+            title: "Test",
+            action: {}
         )
     }
 }

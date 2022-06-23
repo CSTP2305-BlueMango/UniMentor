@@ -20,7 +20,7 @@ struct LoadingView: View {
             Image("Logo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 300)
+                .frame(width: UIScreen.main.bounds.width * 0.65)
         }
     }
 }

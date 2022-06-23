@@ -9,7 +9,7 @@ import SwiftUI
 struct ProfileInfoView: View {
     @State var major: String = ""
     @State var school: String = ""
-    @State var startDate: String = ""
+    @State var startDate: Date = Date.now
     @State var intro: String = ""
     
     //state for keeping track of if NavigationLink for profilepic view is active
@@ -19,6 +19,8 @@ struct ProfileInfoView: View {
     @State private var image = UIImage()
     //to view the photo library and user to choose a photo
     @State private var showSheet = false
+    
+    // ========== plus.square.dashed, photo
     
     var body: some View {
         ZStack {
@@ -89,25 +91,19 @@ struct ProfileInfoView: View {
                         // INPUT FIELDS
                         InputFieldView(
                             value: $major,
-                            placeholder:"Major",
+                            placeholder:"Computer Systems Technology",
                             icon: "book.fill",
                             title: "Major",
-                            errorMessage: ""
+                            errorMessage: Binding.constant(nil)
                         )
                         InputFieldView(
                             value: $school,
-                            placeholder:"School Name",
+                            placeholder:"Vancouver Community College",
                             icon: "house.fill",
                             title: "School Name",
-                            errorMessage: ""
+                            errorMessage: Binding.constant(nil)
                         )
-                        InputFieldView(
-                            value: $startDate,
-                            placeholder:"Start Date",
-                            icon: "calendar",
-                            title: "Start Date",
-                            errorMessage: ""
-                        )
+                        DatePickerView(placholder: "Start Date", date: $startDate)
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
                         VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01)  {
