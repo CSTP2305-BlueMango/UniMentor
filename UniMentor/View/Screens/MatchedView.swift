@@ -10,88 +10,78 @@ import SwiftUI
 struct MatchedView: View {
     
     @State var isEditClicked: Bool = false
+    @State var isOn1: Bool = true
     
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02)  {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
                 // HEADER
-                HStack {
-                    Text("Matched")
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                VStack {
                     Spacer()
-                    VStack {
+                    HStack {
+                        Text("Matched")
+                            .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                        
                         Spacer()
-                        // TODO: button not working
-                        Button(action: {
-                            print("hello")
+                        EditButtonView(title: "Edit", action: {
                             isEditClicked = !isEditClicked
-                        }) {
-                            if !isEditClicked {
-                                Text("Edit")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .foregroundColor(Color.black)
-                            } else {
-                                Text("Finish")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .foregroundColor(Color.black)
-                            }
-                            
-                        }
-                    }
+                        })
+                        
+                    }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.02)
+                
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        if !isEditClicked {
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            
+                            // var isClicked: Bool = false
+                            ForEach(0..<10, id: \.self) { num in
+                                if !isEditClicked {
+                                    NavigationLink(destination: MatchedProfileView()) {
+                                        CardView()
+                                    }
+                                } else {
+                                    Button(action: {
+                                        
+                                        isOn1 = !isOn1
+                                    }) {
+                                        HStack {
+                                            // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
+                                            Toggle("", isOn: $isOn1)
+                                              .toggleStyle(CheckboxToggleStyle(style: .circle))
+                                              .foregroundColor(.blue)
+                                            CardView()
+                                        }.frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
+                                    }
+                                }
                             }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                            NavigationLink(destination: MatchedProfileView()) {
-                                CardView()
-                            }
-                        } else {
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
-                            ButtonCardView(
-                                color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                                buttonText: "UnMatch"
-                            )
+//                            if !isEditClicked {
+//                                NavigationLink(destination: MatchedProfileView()) {
+//                                    CardView()
+//                                }
+//                            } else {
+//                                // TODO: make it to be editable cards
+//                                ButtonCardView(
+//                                    color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
+//                                    buttonText: "UnMatch"
+//                                )
+//                            }
+                            // TODO: info when there is no card to display
                         }
-                    }
-                    Spacer()
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                    } //: ScrollView
                 } //: MAIN
-//                Text("This is the MATCHED VIEW")
-//                VStack(alignment: .center) {
-//                    NavigationLink(destination: MatchedProfileView()) {
-//                        Text("To MATCHED profile")
-//                    }
-//                }
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
-            // Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
+        // .navigationBarHidden(true)
+        
     }
 }
 

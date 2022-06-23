@@ -21,9 +21,40 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
 
+    @State var emailError: String? = ""
+    @State var passwordError: String? = ""
+    @State var passwordConfirmError: String? = ""
+    
+    func handleSignup() {
+        //reset error state after each submit
+        emailError = ""
+        passwordConfirmError = ""
+        passwordError = ""
+        
+        //validate email
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        guard emailPredicate.evaluate(with: email) else {
+            emailError = "Invalid email"
+            return
+        }
+        
+        //validate password
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        guard passwordPredicate.evaluate(with: password) else {
+            passwordError = "password need 8 letters mininum, contains 1 uppercase and number"
+            return
+        }
+        
+        guard password == confirmPassword else {
+            passwordConfirmError = "Password does not match"
+            return
+        }
+        self.isProfileInfoActive = true
+    }
+    
     var body: some View {
         ZStack {
-            Color(red: 0.7803, green: 0.7176, blue: 0.6196)
+            Color("BackgroundColor")
                 .ignoresSafeArea()
             
             //NAVIGATIONLINK
@@ -44,42 +75,52 @@ struct SignUpView: View {
                 } //: HEADER
                 Spacer()
                 // MAIN
-                VStack(spacing: UIScreen.main.bounds.width * 0.035) {
+                VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
                     InputFieldView(
                         value: $email,
-                        placeholder:"Email",
-                        icon: "envelope"
+                        placeholder:"sample@gmail.com",
+                        icon: "envelope.fill",
+                        title: "Email",
+                        errorMessage: $emailError
                     )
                     InputFieldView(
                         value: $name,
-                        placeholder:"Name",
-                        icon: "person"
+                        placeholder:"John Doe",
+                        icon: "person.fill",
+                        title: "Name",
+                        errorMessage: Binding.constant(nil)
                     )
                     InputFieldView(
                         value: $password,
-                        placeholder:"Password",
-                        icon: "key"
+                        placeholder:"PrancingPonies123",
+                        icon: "key.fill",
+                        title: "Password",
+                        inputType: "password",
+                        errorMessage: $passwordError
                     )
                     InputFieldView(
                         value: $confirmPassword,
-                        placeholder:"Confirtm Password",
-                        icon: "key"
+                        placeholder:"PrancingPonies123",
+                        icon: "key.fill",
+                        title: "Confirm Password",
+                        inputType: "password",
+                        errorMessage: $passwordConfirmError
                     )
                     Spacer()
                     
                     // BUTTON - signup
                     ButtonView_2(action: {
-                        self.isProfileInfoActive = true
+                        handleSignup()
                     },
                          label: "Sign Up",
-                         color: Color(red: 0.6235, green: 0.5450, blue: 0.4235),
+                         color: Color("TabBarColor"),
                          opacity: 1.0,
                          isBorder: false
                     )
                     
                 } //: MAIN
-                .frame(height: UIScreen.main.bounds.height * 0.47)
+                .frame(height: UIScreen.main.bounds.height * 0.55)
                 Spacer()
                 Spacer()
                 // FOOTER

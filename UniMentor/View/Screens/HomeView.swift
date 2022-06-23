@@ -12,17 +12,23 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+            VStack(spacing: UIScreen.main.bounds.height * 0.06) {
                 // HEADER
-                HStack {
-                    Text("UniMentor")
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                VStack {
                     Spacer()
+                    HStack {
+                        Image("SmallLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.25)
+                            .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.02)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.007)
                 // MAIN
-                VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                     // Search Bar
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -35,53 +41,27 @@ struct HomeView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.05)
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.05).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        NavigationLink(destination: HomeProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Match"
-                            )
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            ForEach(0..<10, id: \.self) { num in
+                                NavigationLink(destination: HomeProfileView()) {
+//                                    ButtonCardView(
+//                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+//                                        buttonText: "Match"
+//                                    )
+                                    HomeCardView()
+                                }
+                            }
                         }
-                        NavigationLink(destination: HomeProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Match"
-                            )
-                        }
-                        NavigationLink(destination: HomeProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Match"
-                            )
-                        }
-                        NavigationLink(destination: HomeProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Match"
-                            )
-                        }
-                        NavigationLink(destination: HomeProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Match"
-                            )
-                        }
-                    }
-                    Spacer()
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                    } //: ScrollView
                 } //: MAIN
-                    
-//                Text("This is the HOME VIEW")
-//                VStack(alignment: .center) {
-//                    NavigationLink(destination: HomeProfileView()) {
-//                        Text("To profile")
-//                    }
-//                }
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.07)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
+        
     }
 }
 

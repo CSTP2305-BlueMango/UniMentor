@@ -9,24 +9,40 @@ import SwiftUI
 
 struct MatchedProfileView: View {
     var body: some View {
-        VStack(alignment: .trailing) {
-            VStack {
-                Spacer()
-                ProfileView()
-                VStack{
-                    SmallButtonView(action: {},
-                         label: "UnMatch",
-                         color: Color(red: 0.8078, green: 0.4901, blue: 0.4901),
-                         width: UIScreen.main.bounds.width * 0.3,
-                         height: UIScreen.main.bounds.height * 0.05
-                    ).frame(width: UIScreen.main.bounds.width * 0.9, alignment: .trailing)
-                }
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.02)
+        VStack {
+            ScrollView {
+                ZStack(alignment: .top) {
+                    // Background
+                    ZStack {}
+                    .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
+                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                    .padding(.top, UIScreen.main.bounds.height * 0.11)
+                    VStack {
+                        ProfileView()
+                        VStack{
+                            ButtonView_2(action: {},
+                                 label: "Send Message",
+                                 color: Color("ButtonColor"),
+                                 opacity: 1.0,
+                                 isBorder: false
+                            )
+                        }
+                        .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.05, leading: 0, bottom: UIScreen.main.bounds.height * 0.05, trailing: 0))
+                    }
+                    ZStack {
+                        Button(action: {
+                            // print("this is test")
+                        }) {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(
+                                    Color("UnmatchColor"))
+                                .font(.system(size: UIScreen.main.bounds.width * 0.07))
+                        }
+                    }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: UIScreen.main.bounds.width * 0.88, bottom: 0, trailing: 0))
+                }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
             }
-            .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.72)
-                .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
         }
-        .frame(height: UIScreen.main.bounds.height * 1)
+        .frame(height: UIScreen.main.bounds.height * 0.9)
     }
 }
 

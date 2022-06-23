@@ -11,64 +11,40 @@ struct RequestsView: View {
     var body: some View {
         NavigationView {
             // BODY
-            VStack(spacing: UIScreen.main.bounds.height * 0.02) {
+            VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                 // HEADER
-                HStack {
-                    Text("Requests")
-                        .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                VStack {
                     Spacer()
+                    HStack {
+                        Text("Requests")
+                            .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
-                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.02)
+                // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
-                    // TODO: make it scrollable
-                    VStack(spacing: UIScreen.main.bounds.height * 0.02) {
-                        // TODO: this is gonna be For loop
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
+                    ScrollView {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            ForEach(0..<10, id: \.self) { num in
+                                NavigationLink(destination: RequestsProfileView()) {
+                                    ButtonCardView(
+                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
+                                        buttonText: "Accept"
+                                    )
+                                }
+                            }
+                            // TODO: info when there is no card to display
                         }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                        NavigationLink(destination: RequestsProfileView()) {
-                            ButtonCardView(
-                                color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                buttonText: "Accept"
-                            )
-                        }
-                    }
-                    Spacer()
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                    } //: ScrollView
                 } //: MAIN
-                
-//                Text("This is the REQUESTS VIEW")
-//                VStack(alignment: .center) {
-//                    NavigationLink(destination: RequestsProfileView()) {
-//                        Text("To REQUESTS profile")
-//                    }
-//                }
             } //: BODY
-            .frame(height: UIScreen.main.bounds.height * 0.95)
-            Spacer()
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAV_VIEW
     }
 }

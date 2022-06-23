@@ -11,7 +11,7 @@ struct LoadingView: View {
     var body: some View {
         ZStack {
             ZStack {
-                Color(red: 0.7803, green: 0.7176, blue: 0.6196)
+                Color("BackgroundColor")
                     .ignoresSafeArea()
             }
             .frame(height: 650, alignment: .center)
@@ -20,7 +20,7 @@ struct LoadingView: View {
             Image("Logo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 300)
+                .frame(width: UIScreen.main.bounds.width * 0.65)
         }
     }
 }
