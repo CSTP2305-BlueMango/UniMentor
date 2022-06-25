@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RequestsView: View {
     var body: some View {
-        NavigationView {
+        //NavigationView {
             // BODY
             VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                 // HEADER
@@ -45,7 +45,7 @@ struct RequestsView: View {
             .padding(.top, UIScreen.main.bounds.width * 0.02)
             .navigationBarTitle("")
             .navigationBarHidden(true)
-        } //: NAV_VIEW
+        //} //: NAV_VIEW
     }
 }
 

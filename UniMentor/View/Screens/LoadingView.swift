@@ -35,6 +35,8 @@ struct LoadingView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.65)
             }
         }
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         
         .onAppear {
             viewModel.loggedIn = viewModel.isLoggedIn

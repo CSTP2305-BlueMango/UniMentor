@@ -12,7 +12,7 @@ struct UserProfile: View {
     
     var body: some View {
         ZStack {
-            NavigationView {
+            //NavigationView {
                 // BODY
                 VStack {
                     ScrollView {
@@ -70,7 +70,7 @@ struct UserProfile: View {
                 } //: BODY
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
-            } //: NAV_VIEW
+            //} //: NAV_VIEW
             InfoPopupView(show: $showPopUp)
         }
     }
