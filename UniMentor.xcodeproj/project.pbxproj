@@ -40,6 +40,10 @@
 		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
 		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
+		E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C352867849200DE16A4 /* FirebaseAuth */; };
+		E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C372867849200DE16A4 /* FirebaseFirestore */; };
+		E4365C3A2867874F00DE16A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4365C392867874F00DE16A4 /* GoogleService-Info.plist */; };
+		E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4365C3C2867897100DE16A4 /* AppViewModel.swift */; };
 		E4A474BC285D914E006959D9 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BB285D914E006959D9 /* DatePickerView.swift */; };
 		E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BD285D9177006959D9 /* PasswordView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
@@ -84,6 +88,8 @@
 		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
+		E4365C392867874F00DE16A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4365C3C2867897100DE16A4 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		E4A474BB285D914E006959D9 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		E4A474BD285D9177006959D9 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */,
+				E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +119,14 @@
 				CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E4365C3B2867894B00DE16A4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E4365C3C2867897100DE16A4 /* AppViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E4DDE3F6283DB6D90059CCEC /* View */ = {
@@ -190,6 +206,8 @@
 		E4F30C262837535C006F424E /* UniMentor */ = {
 			isa = PBXGroup;
 			children = (
+				E4365C3B2867894B00DE16A4 /* ViewModel */,
+				E4365C392867874F00DE16A4 /* GoogleService-Info.plist */,
 				CDFD8FD82843026700E48A68 /* Info.plist */,
 				CDFD8FD52843023E00E48A68 /* Fonts */,
 				E4DDE3F6283DB6D90059CCEC /* View */,
@@ -225,6 +243,10 @@
 			dependencies = (
 			);
 			name = UniMentor;
+			packageProductDependencies = (
+				E4365C352867849200DE16A4 /* FirebaseAuth */,
+				E4365C372867849200DE16A4 /* FirebaseFirestore */,
+			);
 			productName = UniMentor;
 			productReference = E4F30C242837535C006F424E /* UniMentor.app */;
 			productType = "com.apple.product-type.application";
@@ -253,6 +275,9 @@
 				Base,
 			);
 			mainGroup = E4F30C1B2837535C006F424E;
+			packageReferences = (
+				E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E4F30C252837535C006F424E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4F30C2F2837535D006F424E /* Preview Assets.xcassets in Resources */,
+				E4365C3A2867874F00DE16A4 /* GoogleService-Info.plist in Resources */,
 				E4F30C2C2837535D006F424E /* Assets.xcassets in Resources */,
 				CDFD8FD72843025700E48A68 /* Charm-Regular.ttf in Resources */,
 			);
@@ -282,6 +308,7 @@
 			files = (
 				34859B2B284B088C001C42DC /* MessageView.swift in Sources */,
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
+				E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
 				CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */,
 				CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */,
@@ -517,6 +544,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4365C352867849200DE16A4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E4365C372867849200DE16A4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4F30C1C2837535C006F424E /* Project object */;
 }

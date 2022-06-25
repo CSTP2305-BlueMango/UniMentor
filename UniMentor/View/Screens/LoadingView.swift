@@ -11,13 +11,13 @@ struct LoadingView: View {
     
     // reference: https://mobiraft.com/ios/swiftui/how-to-add-splash-screen-in-swiftui/
     @State var isActive:Bool = false
-    @State var isLoginActive: Bool = false
+    @EnvironmentObject var viewModel: AppViewModel
     
     var body: some View {
         ZStack {
             if self.isActive {
-                if !isLoginActive {
-                    LoginView(isLoginActive: $isLoginActive)
+                if !viewModel.loggedIn {
+                    LoginView()
                 } else {
                     TabBarView()
                 }
@@ -37,6 +37,7 @@ struct LoadingView: View {
         }
         
         .onAppear {
+            viewModel.loggedIn = viewModel.isLoggedIn
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
                     self.isActive = true

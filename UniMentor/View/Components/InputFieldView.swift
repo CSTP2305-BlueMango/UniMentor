@@ -45,6 +45,8 @@ struct InputFieldView: View {
                 }
                 else {
                     TextField(placeholder, text: $value)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                 }
             }
