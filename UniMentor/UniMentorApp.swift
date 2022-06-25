@@ -13,7 +13,6 @@ struct UniMentorApp: App {
         WindowGroup {
             // TabBarView()
             LoadingView()
-            // test
         }
     }
 }

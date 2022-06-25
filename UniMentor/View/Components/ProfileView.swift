@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State var name: String
+    @State var major: String
+    @State var school: String
+    @State var startDate: String
+    @State var introduction: String
+    
     var body: some View {
         // MAIN
         VStack(spacing: UIScreen.main.bounds.height * 0.02) {
@@ -25,7 +31,7 @@ struct ProfileView: View {
             VStack(spacing: UIScreen.main.bounds.width * 0.06) {
                 // User Name
                 VStack(alignment: .center) {
-                    Text("First LastName")
+                    Text("\(name)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.09))
                 }
                 // Divider
@@ -44,11 +50,11 @@ struct ProfileView: View {
                 } //: Divider
                 // Education Info
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.04) {
-                    Text("Computer Systems Technology")
+                    Text("\(major)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
-                    Text("Vancouver Community College")
+                    Text("\(school)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                    Text("Start Date: September 2020")
+                    Text("Start Date: \(startDate)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                 } //: Education Info
                 .frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
@@ -71,9 +77,7 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text(
 """
-I guess we could discuss the implications of the phrase meant to be.
-
-That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+\(introduction)
 """)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                 } //: Introduction
@@ -88,6 +92,16 @@ That is if we wanted to drown ourselves in a sea of backwardly referential seman
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(
+            name: "First Lastname",
+            major: "Computer Systems Technology",
+            school: "Vancouver Community College",
+            startDate: "September 2020",
+            introduction: """
+I guess we could discuss the implications of the phrase meant to be.
+
+That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+"""
+        )
     }
 }
