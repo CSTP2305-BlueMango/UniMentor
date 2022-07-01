@@ -7,26 +7,36 @@
 
 import SwiftUI
 
+/// signup view
 struct SignUpView: View {
     
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
     //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
     
-    //state for keeping track of if link to profileinfo view is active
+    /// state for keeping track of if link to profileinfo view is active
     @State var isProfileInfoActive = false
     
+    /// signup email
     @State var email: String = ""
+    /// signup name
     @State var name: String = ""
+    /// signup password
     @State var password: String = ""
+    /// signup confirm password
     @State var confirmPassword: String = ""
-
+    
+    /// signup email error message
     @State var emailError: String? = ""
+    /// signup name error message
+    @State var nameError: String? = ""
+    /// signup password error message
     @State var passwordError: String? = ""
+    /// signup confirm password error message
     @State var passwordConfirmError: String? = ""
     
     func handleSignup() {
-        //reset error state after each submit
+        // reset error state after each submit
         emailError = ""
         passwordConfirmError = ""
         passwordError = ""
@@ -53,11 +63,13 @@ struct SignUpView: View {
     }
     
     var body: some View {
+        // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATIONLINK
+            // NAVIGATIONLINK
             NavigationLink(
                 destination: ProfileInfoView(),
                 isActive: $isProfileInfoActive
@@ -77,6 +89,7 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
+                    // email input
                     InputFieldView(
                         value: $email,
                         placeholder:"sample@gmail.com",
@@ -84,13 +97,15 @@ struct SignUpView: View {
                         title: "Email",
                         errorMessage: $emailError
                     ).autocapitalization(.none)
+                    // name input
                     InputFieldView(
                         value: $name,
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: Binding.constant(nil)
+                        errorMessage: $nameError
                     )
+                    // password input
                     InputFieldView(
                         value: $password,
                         placeholder:"PrancingPonies123",
@@ -99,6 +114,7 @@ struct SignUpView: View {
                         inputType: "password",
                         errorMessage: $passwordError
                     ).autocapitalization(.none)
+                    // confirm password input
                     InputFieldView(
                         value: $confirmPassword,
                         placeholder:"PrancingPonies123",
@@ -118,13 +134,13 @@ struct SignUpView: View {
                          opacity: 1.0,
                          isBorder: false
                     )
-                    
                 } //: MAIN
                 .frame(height: UIScreen.main.bounds.height * 0.55)
                 Spacer()
                 Spacer()
                 // FOOTER
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                    // go to login text
                     VStack(alignment: .trailing) {
                         Text("Already have an account?")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
@@ -132,7 +148,7 @@ struct SignUpView: View {
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // BUTTON - login
                     ButtonView_2(action: {
-                        //pop child view to go back to root view
+                        // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",
@@ -145,10 +161,12 @@ struct SignUpView: View {
                          isBorder: true
                     )
                 } //: FOOTER
-            } //: BODY
+            }
             .frame(height: UIScreen.main.bounds.height * 0.85)
+            //: BODY
         }.navigationBarHidden(true)
-         .navigationBarBackButtonHidden(true) //: ZSTACK
+         .navigationBarBackButtonHidden(true)
+        //: ZSTACK
     }
 }
 

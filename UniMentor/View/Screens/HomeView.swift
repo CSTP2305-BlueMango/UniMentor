@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+/// home view
 struct HomeView: View {
+    /// search input
     @State var searchInput: String = ""
     var body: some View {
         // BODY
@@ -15,6 +17,7 @@ struct HomeView: View {
             // HEADER
             VStack {
                 Spacer()
+                // Logo
                 HStack {
                     Image("SmallLogo")
                         .resizable()
@@ -25,7 +28,6 @@ struct HomeView: View {
                 }.frame(width: UIScreen.main.bounds.width * 0.9)
             } //: HEADER
             .frame(height: UIScreen.main.bounds.height * 0.02)
-            // Spacer().frame(height: UIScreen.main.bounds.height * 0.007)
             // MAIN
             VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                 // Search Bar
@@ -44,10 +46,6 @@ struct HomeView: View {
                     VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                         ForEach(0..<2, id: \.self) { num in
                             NavigationLink(destination: HomeProfileView()) {
-//                                    ButtonCardView(
-//                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-//                                        buttonText: "Match"
-//                                    )
                                 HomeCardView()
                             }
                         }
@@ -55,10 +53,11 @@ struct HomeView: View {
                     .padding(UIScreen.main.bounds.width * 0.02)
                 } //: ScrollView
             } //: MAIN
-        } //: BODY
+        }
         .padding(.top, UIScreen.main.bounds.width * 0.07)
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        //: BODY
     }
 }
 
