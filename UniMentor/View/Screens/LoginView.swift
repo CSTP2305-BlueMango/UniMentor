@@ -6,9 +6,10 @@
 
 import SwiftUI
 
+/// login view
 struct LoginView: View {
     
-    //state for keeping track of if link to signup is active
+    /// state for keeping track of if link to signup is active
     @State var isSignUpActive = false
     
     @EnvironmentObject var viewModel: AppViewModel
@@ -23,6 +24,7 @@ struct LoginView: View {
     var body: some View {
         // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -41,8 +43,8 @@ struct LoginView: View {
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 } //: HEADER
                 Spacer()
-                
-                VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
+                //LOGINFORM
+                VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     InputFieldView(
                         value: $loginVM.email,
                         placeholder:"sample@gmail.com",
@@ -68,8 +70,9 @@ struct LoginView: View {
                         opacity: 1.0,
                         isBorder: false
                     ).padding()
-                }//:LOGINFORM
+                }
                 .frame(height: UIScreen.main.bounds.height * 0.36)
+                //:LOGINFORM
                 Spacer()
                 Spacer()
                 //FOOTER

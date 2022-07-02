@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+/// loading view
 struct LoadingView: View {
     
     // reference: https://mobiraft.com/ios/swiftui/how-to-add-splash-screen-in-swiftui/
+    /// is loading view finished
     @State var isActive:Bool = false
     @EnvironmentObject var viewModel: AppViewModel
     

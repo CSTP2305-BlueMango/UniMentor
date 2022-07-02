@@ -6,24 +6,38 @@
 //
 import SwiftUI
 
+/// profile into view
 struct ProfileInfoView: View {
+    /// prorile major
     @State var major: String = ""
+    /// profile school
     @State var school: String = ""
+    /// profile start date
     @State var startDate: Date = Date.now
+    /// profile information
     @State var info: String = ""
     
+    /// profile major error message
+    @State var majorError: String? = ""
+    /// profile school error message
+    @State var schoolError: String? = ""
+    /// profile start date error message
+    @State var startDateError: String? = ""
+    /// profile information error message
+    @State var infoError: String? = ""
     
-    //for selecting an image
+    
+    /// for selecting an image
     @State private var image = UIImage()
-    //to view the photo library and user to choose a photo
+    /// to view the photo library and user to choose a photo
     @State private var showSheet = false
-    
+    /// if profile information is finished
     @State var isProfileConfirmActive = false
     
-    // ========== plus.square.dashed, photo
-    
     var body: some View {
+        // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -91,6 +105,7 @@ struct ProfileInfoView: View {
                     // MAIN
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                         // INPUT FIELDS
+                        // major input
                         InputFieldView(
                             value: $major,
                             placeholder:"Computer Systems Technology",
@@ -98,6 +113,7 @@ struct ProfileInfoView: View {
                             title: "Major",
                             errorMessage: Binding.constant(nil)
                         )
+                        // school input
                         InputFieldView(
                             value: $school,
                             placeholder:"Vancouver Community College",
@@ -105,7 +121,9 @@ struct ProfileInfoView: View {
                             title: "School Name",
                             errorMessage: Binding.constant(nil)
                         )
+                        // start date input
                         DatePickerView(placholder: "Start Date", date: $startDate)
+                        // information input
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
                         VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.02)  {
@@ -137,13 +155,13 @@ struct ProfileInfoView: View {
                             }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.9)
-                        
                     } //: MAIN
                     .frame(height: UIScreen.main.bounds.height * 0.6)
                     Spacer()
                     Spacer()
                     // FOOTER
                     VStack() {
+                        // Next button
                         ButtonView_2(action: {
                             isProfileConfirmActive = true
                         },
@@ -153,8 +171,9 @@ struct ProfileInfoView: View {
                              isBorder: false
                         )
                     } //: FOOTER
-                } //: BODY
+                }
                 .frame(height: UIScreen.main.bounds.height * 1.1)
+                //: BODY
             } //: ScrollView
         }
         .hideNavigationBar() //: ZSTACK

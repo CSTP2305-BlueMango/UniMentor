@@ -7,40 +7,59 @@
 
 import SwiftUI
 
+/// tab bar view
 struct TabBarView: View {
     
+    /// if home view button clicked
     @State var isHomeView: Bool = true
+    /// if request view button clicked
     @State var isRequestView: Bool = false
+    /// if match view button clicked
     @State var isMatchView: Bool = false
+    /// if message view button clicked
     @State var isMessageView: Bool = false
+    /// if profile view button clicked
     @State var isProfileView: Bool = false
     
+    /// home view button color
     @State var homeButtonColor: Color = .white
+    /// request view button color
     @State var requestsButtonColor: Color = Color("DarkColor")
+    /// match view button color
     @State var matchedButtonColor: Color = Color("DarkColor")
+    /// message view button color
     @State var messagesButtonColor: Color = Color("DarkColor")
+    /// profile view button color
     @State var profileButtonColor: Color = Color("DarkColor")
     
     var body: some View {
+        // BODY
         VStack(spacing: 0) {
             VStack {
+                // display home view
                 if isHomeView {
                     HomeView()
                 }
+                // display request view
                 if isRequestView {
                     RequestsView()
                 }
+                // display matched view
                 if isMatchView {
                     MatchedView()
                 }
+                // display message view
                 if isMessageView {
                     MessageView()
                 }
+                // display profile view
                 if isProfileView {
                     UserProfile()
                 }
             }
+            // TABBAR
             HStack(spacing: UIScreen.main.bounds.width * 0.08) {
+                // Home view button
                 VStack {
                     Button(action: {
                         isHomeView = true
@@ -64,6 +83,7 @@ struct TabBarView: View {
                         }.padding(0)
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
+                // Request view button
                 VStack {
                     Button(action: {
                         isHomeView = false
@@ -87,6 +107,7 @@ struct TabBarView: View {
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
+                // Matched view button
                 VStack {
                     Button(action: {
                         isHomeView = false
@@ -110,6 +131,7 @@ struct TabBarView: View {
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
+                // Message view button
                 VStack {
                     Button(action: {
                         isHomeView = false
@@ -133,6 +155,7 @@ struct TabBarView: View {
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
+                // Profile view button
                 VStack {
                     Button(action: {
                         isHomeView = false
@@ -156,10 +179,10 @@ struct TabBarView: View {
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
-            } //: HSTACK
+            } //: TABBAR
             .frame(width: UIScreen.main.bounds.width * 1)
             .background(Color("TabBarColor"))
-        }
+        } //: BODY
     }
 }
 

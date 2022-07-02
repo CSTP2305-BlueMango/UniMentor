@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+/// message view
 struct MessageView: View {
+    /// if popup showing
     @State private var showPopUp: Bool = false
+    /// if edit button clicked
     @State var isEditClicked: Bool = false
+    /// edit button text
     @State var editButtonTitle: String = "Edit"
     
     var body: some View {
@@ -21,9 +25,11 @@ struct MessageView: View {
                     VStack {
                         Spacer()
                         HStack {
+                            // TITLE
                             Text("Messages")
                                 .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                             Spacer()
+                            // Edit button
                             EditButtonView(title: editButtonTitle, action: {
                                 if editButtonTitle == "Edit" {
                                     editButtonTitle = "Finish"
@@ -35,7 +41,6 @@ struct MessageView: View {
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
                     } //: HEADER
                     .frame(height: UIScreen.main.bounds.height * 0.02)
-                    // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                     // MAIN
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                         ScrollView {
@@ -48,13 +53,13 @@ struct MessageView: View {
                                 // TODO: info when there is no card to display
                             }
                             .padding(UIScreen.main.bounds.width * 0.02)
-                            //this will compress everything into center, adding padding horizontally
                             .padding(.horizontal)
                         } //: Scrollview
                     } //: MAIN
                 }
                 if isEditClicked {
                     VStack {
+                        // Unmatch button
                         Button(action: {
                             showPopUp = true
                         }) {
@@ -67,13 +72,15 @@ struct MessageView: View {
                         .background(Color("ButtonColor"))
                     }.padding(0)
                 }
-            } //: BODY
+            }
             .padding(.top, UIScreen.main.bounds.width * 0.02)
-            .navigationBar(backButton: true, barHidden: false, title: "message")
-     
+            .navigationBar(backButton: true, barHidden: true)
+            //: BODY
+            // POPUP
             PopUpView(show: $showPopUp, information: "Delete messages with selected             people?", warmMessage: "* Delete messages will unmatch",                  buttonAction: {
                 // TODO: delete messages and unmatch
             },  buttonText: "Delete")
+            //: POPUP
         }
     }
 }

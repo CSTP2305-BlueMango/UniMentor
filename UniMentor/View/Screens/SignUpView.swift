@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// signup view
 struct SignUpView: View {
     
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
@@ -25,11 +26,13 @@ struct SignUpView: View {
     }
     
     var body: some View {
+        // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATIONLINK
+            // NAVIGATIONLINK
             NavigationLink(
                 destination: ProfileInfoView(),
                 isActive: $isProfileInfoActive
@@ -49,6 +52,7 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
+                    // email input
                     InputFieldView(
                         value: $signupVM.email,
                         placeholder:"sample@gmail.com",
@@ -56,13 +60,15 @@ struct SignUpView: View {
                         title: "Email",
                         errorMessage: $signupVM.emailError
                     ).autocapitalization(.none)
+                    // name input
                     InputFieldView(
                         value: $signupVM.name,
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: Binding.constant(nil)
+                        errorMessage: $nameError
                     )
+                    // password input
                     InputFieldView(
                         value: $signupVM.password,
                         placeholder:"PrancingPonies123",
@@ -71,6 +77,7 @@ struct SignUpView: View {
                         inputType: "password",
                         errorMessage: $signupVM.passwordError
                     ).autocapitalization(.none)
+                    // confirm password input
                     InputFieldView(
                         value: $signupVM.confirmPassword,
                         placeholder:"PrancingPonies123",
@@ -90,13 +97,13 @@ struct SignUpView: View {
                          opacity: 1.0,
                          isBorder: false
                     )
-                    
                 } //: MAIN
                 .frame(height: UIScreen.main.bounds.height * 0.55)
                 Spacer()
                 Spacer()
                 // FOOTER
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                    // go to login text
                     VStack(alignment: .trailing) {
                         Text("Already have an account?")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
@@ -104,7 +111,7 @@ struct SignUpView: View {
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // BUTTON - login
                     ButtonView_2(action: {
-                        //pop child view to go back to root view
+                        // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",
@@ -117,7 +124,7 @@ struct SignUpView: View {
                          isBorder: true
                     )
                 } //: FOOTER
-            } //: BODY
+            }
             .frame(height: UIScreen.main.bounds.height * 0.85)
         }//: ZSTACK
         .hideNavigationBar()
