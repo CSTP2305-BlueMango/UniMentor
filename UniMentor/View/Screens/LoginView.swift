@@ -8,42 +8,17 @@ import SwiftUI
 
 /// login view
 struct LoginView: View {
-    /// login email
-    @State var loginEmail: String = ""
-    /// login password
-    @State var loginPassword: String = ""
-    /// login email error message
-    @State var loginEmailError: String? = ""
-    /// login password error message
-    @State var loginPasswordError: String? = ""
     
     /// state for keeping track of if link to signup is active
     @State var isSignUpActive = false
     
     @EnvironmentObject var viewModel: AppViewModel
+    @ObservedObject private var loginVM = LoginViewModel()
     
     func handleLogin() {
-        //reset error message state before each submit
-        loginEmailError = ""
-        loginPasswordError = ""
-        
-        //validate email
-        //email regex ref: https://www.hackingwithswift.com/forums/swiftui/what-is-a-good-practice-to-handle-textfield-validations/5868
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-        guard emailPredicate.evaluate(with: loginEmail) else {
-            loginEmailError = "Invalid email"
-            return
+        loginVM.signIn {
+            viewModel.loggedIn = loginVM.isLoginSuccess
         }
-        
-        //validate password
-        //password regex ref: https://medium.com/swlh/password-validation-in-swift-5-3de161569910va
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
-        guard passwordPredicate.evaluate(with: loginPassword) else {
-            loginPasswordError = "Invalid password"
-            return
-        }
-        
-        viewModel.signIn(email: loginEmail, password: loginPassword)
     }
     
     var body: some View {
@@ -71,19 +46,19 @@ struct LoginView: View {
                 //LOGINFORM
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     InputFieldView(
-                        value: $loginEmail,
+                        value: $loginVM.email,
                         placeholder:"sample@gmail.com",
                         icon: "envelope.fill",
                         title: "Email",
-                        errorMessage: $loginEmailError
+                        errorMessage: $loginVM.emailError
                     ).autocapitalization(.none)
                     InputFieldView(
-                        value: $loginPassword,
+                        value: $loginVM.password,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Password",
                         inputType: "password",
-                        errorMessage: $loginPasswordError
+                        errorMessage: $loginVM.passwordError
                     ).autocapitalization(.none)
                     Spacer()
                     ButtonView_2 (
@@ -126,8 +101,7 @@ struct LoginView: View {
             .frame(height: UIScreen.main.bounds.height * 0.85)
             //:BODY
         }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .hideNavigationBar()
         //:ZSTACK
         
     }

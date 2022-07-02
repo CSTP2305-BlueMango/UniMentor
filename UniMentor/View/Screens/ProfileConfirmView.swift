@@ -61,8 +61,7 @@ struct ProfileConfirmView: View {
                 //: BODY
             }//: ScrollView
         }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .hideNavigationBar()
         //: ZSTACK
     }
 }

@@ -74,8 +74,7 @@ struct MessageView: View {
                 }
             }
             .padding(.top, UIScreen.main.bounds.width * 0.02)
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .navigationBar(backButton: true, barHidden: true)
             //: BODY
             // POPUP
             PopUpView(show: $showPopUp, information: "Delete messages with selected             people?", warmMessage: "* Delete messages will unmatch",                  buttonAction: {

@@ -16,19 +16,15 @@ struct LoadingView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
     var body: some View {
-        // ZSTACK
-        ZStack {
-            // after loading view
-            if self.isActive {
-                if !viewModel.loggedIn {
-                    // login & signup page
-                    LoginView()
+        NavigationView {
+            ZStack {
+                if self.isActive {
+                    if !viewModel.loggedIn {
+                        LoginView()
+                    } else {
+                        TabBarView()
+                    }
                 } else {
-                    // main page
-                    TabBarView()
-                }
-            } else {
-                // Loading view
                 ZStack {
                     Color("BackgroundColor")
                         .ignoresSafeArea()
@@ -40,21 +36,21 @@ struct LoadingView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.65)
-            }
-        }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        //: ZSTACK
-        
-        // Splash feature
-        .onAppear {
-            viewModel.loggedIn = viewModel.isLoggedIn
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    self.isActive = true
                 }
             }
+            .hideNavigationBar()
+            .onAppear {
+               viewModel.loggedIn = viewModel.isLoggedIn
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {
+                        self.isActive = true
+                    }
+                }
         }
+    }
+    .navigationViewStyle(.stack)
+    .statusBar(hidden: false)
+    //:NAVIGATION
     }
 }
 

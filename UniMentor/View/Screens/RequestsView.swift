@@ -43,8 +43,7 @@ struct RequestsView: View {
             } //: MAIN
         }
         .padding(.top, UIScreen.main.bounds.width * 0.02)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBar(backButton: true, barHidden: true)
         //: BODY
     }
 }

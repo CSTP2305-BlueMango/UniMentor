@@ -14,34 +14,15 @@ class AppViewModel: ObservableObject {
     @Published var loggedIn = false
     
     var isLoggedIn: Bool {
-        return auth.currentUser != nil
-    }
-    
-    func signIn(email: String, password: String) {
-        auth.signIn(withEmail: email,
-                    password: password) {
-            [weak self] result, error in
-            guard result != nil, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {
-                self?.loggedIn = true
+        if let user = auth.currentUser {
+            if user.isEmailVerified {
+                return true
             }
         }
+        return false
+        // return auth.currentUser != nil
     }
-    
-    func signUp(email: String, password: String) {
-        auth.createUser(withEmail: email, password: password) {
-            [weak self] result, error in
-            guard result !== nil, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {
-                self?.loggedIn = true
-            }
-        }
-    }
-    
+
     func signOut() {
         try? auth.signOut()
         

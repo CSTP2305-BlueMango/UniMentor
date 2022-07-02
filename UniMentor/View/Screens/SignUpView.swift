@@ -11,55 +11,18 @@ import SwiftUI
 struct SignUpView: View {
     
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
-    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
     
-    /// state for keeping track of if link to profileinfo view is active
+    @EnvironmentObject var viewModel: AppViewModel
+    
+    @ObservedObject private var signupVM = SignupViewModel()
+    
+    //state for keeping track of if link to profileinfo view is active
     @State var isProfileInfoActive = false
     
-    /// signup email
-    @State var email: String = ""
-    /// signup name
-    @State var name: String = ""
-    /// signup password
-    @State var password: String = ""
-    /// signup confirm password
-    @State var confirmPassword: String = ""
-    
-    /// signup email error message
-    @State var emailError: String? = ""
-    /// signup name error message
-    @State var nameError: String? = ""
-    /// signup password error message
-    @State var passwordError: String? = ""
-    /// signup confirm password error message
-    @State var passwordConfirmError: String? = ""
-    
     func handleSignup() {
-        // reset error state after each submit
-        emailError = ""
-        passwordConfirmError = ""
-        passwordError = ""
-        
-        //validate email
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-        guard emailPredicate.evaluate(with: email) else {
-            emailError = "Invalid email"
-            return
-        }
-        
-        //validate password
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
-        guard passwordPredicate.evaluate(with: password) else {
-            passwordError = "password need 8 letters mininum, contains 1 uppercase and number"
-            return
-        }
-        
-        guard password == confirmPassword else {
-            passwordConfirmError = "Password does not match"
-            return
-        }
-        self.isProfileInfoActive = true
+        //reset error state after each submit
+        signupVM.signUp()
     }
     
     var body: some View {
@@ -91,37 +54,37 @@ struct SignUpView: View {
                     // INPUT FIELDS
                     // email input
                     InputFieldView(
-                        value: $email,
+                        value: $signupVM.email,
                         placeholder:"sample@gmail.com",
                         icon: "envelope.fill",
                         title: "Email",
-                        errorMessage: $emailError
+                        errorMessage: $signupVM.emailError
                     ).autocapitalization(.none)
                     // name input
                     InputFieldView(
-                        value: $name,
+                        value: $signupVM.name,
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: $nameError
+                        errorMessage: Binding.constant(nil)
                     )
                     // password input
                     InputFieldView(
-                        value: $password,
+                        value: $signupVM.password,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Password",
                         inputType: "password",
-                        errorMessage: $passwordError
+                        errorMessage: $signupVM.passwordError
                     ).autocapitalization(.none)
                     // confirm password input
                     InputFieldView(
-                        value: $confirmPassword,
+                        value: $signupVM.confirmPassword,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Confirm Password",
                         inputType: "password",
-                        errorMessage: $passwordConfirmError
+                        errorMessage: $signupVM.confirmError
                     ).autocapitalization(.none)
                     Spacer()
                     
@@ -163,10 +126,8 @@ struct SignUpView: View {
                 } //: FOOTER
             }
             .frame(height: UIScreen.main.bounds.height * 0.85)
-            //: BODY
-        }.navigationBarHidden(true)
-         .navigationBarBackButtonHidden(true)
-        //: ZSTACK
+        }//: ZSTACK
+        .hideNavigationBar()
     }
 }
 

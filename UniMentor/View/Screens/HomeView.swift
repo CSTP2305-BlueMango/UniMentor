@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     /// search input
     @State var searchInput: String = ""
+    @EnvironmentObject var viewModel: AppViewModel
     var body: some View {
         // BODY
         VStack(spacing: UIScreen.main.bounds.height * 0.06) {
@@ -51,13 +52,24 @@ struct HomeView: View {
                         }
                     }
                     .padding(UIScreen.main.bounds.width * 0.02)
+                    ButtonView_2(
+                        action: {
+                            viewModel.signOut()
+                        },
+                        label: "Sign out",
+                        color: Color(
+                           red: 1,
+                            green: 1,
+                            blue: 1
+                        ),
+                        opacity: 0.0,
+                        isBorder: true
+                    )
                 } //: ScrollView
             } //: MAIN
         }
         .padding(.top, UIScreen.main.bounds.width * 0.07)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
-        //: BODY
+        .navigationBar(backButton: true, barHidden: true)
     }
 }
 

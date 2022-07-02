@@ -47,6 +47,7 @@ struct UserProfile: View {
                     """)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
+                        // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed
                         // Setting Button
                         ZStack {
                             Menu {
@@ -92,8 +93,7 @@ struct UserProfile: View {
                     //: FOOTER
                 }//: ScrollView
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .navigationBar(backButton: true, barHidden: true)
             //: BODY
             // POPUP
             InfoPopupView(show: $showPopUp)

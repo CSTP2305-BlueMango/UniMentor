@@ -175,9 +175,8 @@ struct ProfileInfoView: View {
                 .frame(height: UIScreen.main.bounds.height * 1.1)
                 //: BODY
             } //: ScrollView
-        } .navigationBarHidden(true)
-         .navigationBarBackButtonHidden(true)
-        //: ZSTACK
+        }
+        .hideNavigationBar() //: ZSTACK
     }
 }
 
