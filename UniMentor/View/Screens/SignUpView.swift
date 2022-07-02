@@ -66,7 +66,7 @@ struct SignUpView: View {
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: $nameError
+                        errorMessage: Binding.constant(nil)
                     )
                     // password input
                     InputFieldView(

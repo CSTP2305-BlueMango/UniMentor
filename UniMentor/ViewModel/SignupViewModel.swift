@@ -49,7 +49,7 @@ class SignupViewModel: ObservableObject {
     
     func sendEmailVerification() {
         Auth.auth().currentUser?.sendEmailVerification { error in
-            print(error!.localizedDescription)
+            print(error?.localizedDescription ?? "")
         }
     }
 }

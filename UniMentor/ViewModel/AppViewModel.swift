@@ -14,7 +14,13 @@ class AppViewModel: ObservableObject {
     @Published var loggedIn = false
     
     var isLoggedIn: Bool {
-        return auth.currentUser != nil
+        if let user = auth.currentUser {
+            if user.isEmailVerified {
+                return true
+            }
+        }
+        return false
+        // return auth.currentUser != nil
     }
 
     func signOut() {
