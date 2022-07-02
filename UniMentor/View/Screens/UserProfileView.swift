@@ -68,8 +68,7 @@ struct UserProfile: View {
                         .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.01, leading: 0, bottom: UIScreen.main.bounds.height * 0.02, trailing: 0))
                     }
                 } //: BODY
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBar(backButton: true, barHidden: true)
             //} //: NAV_VIEW
             InfoPopupView(show: $showPopUp)
         }

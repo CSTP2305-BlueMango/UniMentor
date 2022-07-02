@@ -14,7 +14,6 @@ struct MatchedView: View {
     
     var body: some View {
         ZStack {
-            //NavigationView {
                 // BODY
                 VStack(spacing: 0) {
                     VStack(spacing: UIScreen.main.bounds.height * 0.04)  {
@@ -73,9 +72,7 @@ struct MatchedView: View {
                     }
                 } //: BODY
                 .padding(.top, UIScreen.main.bounds.width * 0.02)
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-            //} //: NAV_VIEW
+                .navigationBar(backButton: true, barHidden: true)
             PopUpView(show: $showPopUp, information: "Unmatch with selected people?",
                       warmMessage: "* Unmatching will delete messages", buttonAction: {
                       // TODO: unmatch with selected users
