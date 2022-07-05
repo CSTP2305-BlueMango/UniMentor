@@ -48,6 +48,7 @@ struct HomeView: View {
                     VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                         ForEach(0..<2, id: \.self) { num in
                             NavigationLink(destination: HomeProfileView()) {
+                                // TODO: actual info
                                 HomeCardView(
                                     userID: "1",
                                     image: "user_image",

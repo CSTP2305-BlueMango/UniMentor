@@ -30,6 +30,7 @@ struct RequestsProfileView: View {
                         // MAIN
                         VStack {
                             // Profile
+                            // TODO: actual info
                             ProfileView(
                                 image: "user_image",
                                 name: "First Lastname",

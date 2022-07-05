@@ -63,7 +63,6 @@ struct MatchedView: View {
                                             school: "Vancouver Community college")
                                     }
                                 }
-                                // TODO: info when there is no card to display
                             }
                             .padding(UIScreen.main.bounds.width * 0.02)
                         } //: ScrollView
