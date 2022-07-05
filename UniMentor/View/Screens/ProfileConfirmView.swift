@@ -37,6 +37,7 @@ struct ProfileConfirmView: View {
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
+                            // TODO: actual info
                             ProfileView(
                                 image: "user_image",
                                 name: name,
@@ -51,7 +52,8 @@ struct ProfileConfirmView: View {
                     VStack() {
                         // finish button
                         ButtonView_2(action: {
-                            // TODO: finish sign up
+                            // TODO: finish sign up and go to main page
+                            
                             isFinished = true
                         },
                              label: "Get Started",

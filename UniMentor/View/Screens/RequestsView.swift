@@ -34,6 +34,7 @@ struct RequestsView: View {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             ForEach(0..<10, id: \.self) { num in
                                 NavigationLink(destination: RequestsProfileView()) {
+                                    // TODO: actual info
                                     ButtonCardView(
                                         action: {
                                             // TODO: accept request
@@ -47,7 +48,6 @@ struct RequestsView: View {
                                     )
                                 }
                             }
-                            // TODO: info when there is no card to display
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView

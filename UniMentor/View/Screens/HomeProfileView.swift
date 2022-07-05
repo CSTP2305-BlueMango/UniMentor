@@ -25,6 +25,7 @@ struct HomeProfileView: View {
                     .padding(.top, UIScreen.main.bounds.height * 0.11)
                     VStack {
                         // profile
+                        // TODO: actual info
                         ProfileView(
                             image: "user_image",
                             name: "First Lastname",
