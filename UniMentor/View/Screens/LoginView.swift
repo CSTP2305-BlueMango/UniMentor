@@ -103,7 +103,6 @@ struct LoginView: View {
         }
         .hideNavigationBar()
         //:ZSTACK
-        
     }
 }
 

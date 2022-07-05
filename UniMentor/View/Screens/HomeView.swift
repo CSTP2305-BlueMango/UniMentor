@@ -24,7 +24,7 @@ struct HomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.25)
-                        .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
+                        .padding(.leading, -UIScreen.main.bounds.width * 0.07)
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width * 0.9)
             } //: HEADER
