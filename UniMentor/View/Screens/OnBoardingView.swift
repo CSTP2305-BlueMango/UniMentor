@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+/// onboarding
 struct OnBoardingView: View {
-
+    /// if onboarding is active
     @AppStorage("onboarding") var isOnBoradingViewActive: Bool = true
+    /// onboarding page index
     @State var currentStep = 0
     
     var body: some View {

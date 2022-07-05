@@ -38,7 +38,6 @@ struct LoadingView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width * 1.5, height: 650, alignment: .center)
                     .mask(Parallelogram(depth: 130))
-                    .blur(radius: 2)
                     
                     Image("Logo")
                         .resizable()

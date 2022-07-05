@@ -7,31 +7,41 @@
 
 import SwiftUI
 
+/// user profile component
 struct ProfileView: View {
+    
+    /// user image
+    @State var image: String
+    /// user name
     @State var name: String
+    /// user major
     @State var major: String
+    /// user school
     @State var school: String
+    /// user start date
     @State var startDate: String
-    @State var introduction: String
+    /// user information
+    @State var information: String
     
     var body: some View {
         // MAIN
         VStack(spacing: UIScreen.main.bounds.height * 0.02) {
             // Profile Image
             VStack {
-                Image("user")
+                Image(image)
                     .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
-                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                    .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-            } //: Profile Image
+                    .cornerRadius(50)
+                    .aspectRatio(contentMode: .fill)
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+            .clipShape(Circle())
+            .shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+            //: Profile Image
             // Profile Info
             VStack(spacing: UIScreen.main.bounds.width * 0.06) {
                 // User Name
                 VStack(alignment: .center) {
-                    Text("\(name)")
+                    Text(name)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.09))
                 }
                 // Divider
@@ -50,9 +60,9 @@ struct ProfileView: View {
                 } //: Divider
                 // Education Info
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.04) {
-                    Text("\(major)")
+                    Text(major)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
-                    Text("\(school)")
+                    Text(school)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                     Text("Start Date: \(startDate)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
@@ -77,7 +87,7 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text(
 """
-\(introduction)
+\(information)
 """)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                 } //: Introduction
@@ -93,11 +103,12 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(
+            image: "user_image",
             name: "First Lastname",
             major: "Computer Systems Technology",
             school: "Vancouver Community College",
             startDate: "September 2020",
-            introduction: """
+            information: """
 I guess we could discuss the implications of the phrase meant to be.
 
 That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.

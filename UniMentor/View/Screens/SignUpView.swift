@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// signup view
+/// user signup
 struct SignUpView: View {
     
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
@@ -52,7 +52,7 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
-                    // email input
+                    // EMAIL INPUT
                     InputFieldView(
                         value: $signupVM.email,
                         placeholder:"sample@gmail.com",
@@ -60,7 +60,7 @@ struct SignUpView: View {
                         title: "Email",
                         errorMessage: $signupVM.emailError
                     ).autocapitalization(.none)
-                    // name input
+                    // NAME INPUT
                     InputFieldView(
                         value: $signupVM.name,
                         placeholder:"John Doe",
@@ -68,7 +68,7 @@ struct SignUpView: View {
                         title: "Name",
                         errorMessage: Binding.constant(nil)
                     )
-                    // password input
+                    // PASSWORD INPUT
                     InputFieldView(
                         value: $signupVM.password,
                         placeholder:"PrancingPonies123",
@@ -77,7 +77,7 @@ struct SignUpView: View {
                         inputType: "password",
                         errorMessage: $signupVM.passwordError
                     ).autocapitalization(.none)
-                    // confirm password input
+                    // CONFIRM PASSWORD INPUT
                     InputFieldView(
                         value: $signupVM.confirmPassword,
                         placeholder:"PrancingPonies123",
@@ -88,7 +88,7 @@ struct SignUpView: View {
                     ).autocapitalization(.none)
                     Spacer()
                     
-                    // BUTTON - signup
+                    // BUTTON - SIGNUP
                     ButtonView_2(action: {
                         handleSignup()
                     },
@@ -103,13 +103,13 @@ struct SignUpView: View {
                 Spacer()
                 // FOOTER
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                    // go to login text
+                    // BUTTON MESSAGE
                     VStack(alignment: .trailing) {
                         Text("Already have an account?")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
-                    // BUTTON - login
+                    // BUTTON - LOGIN
                     ButtonView_2(action: {
                         // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()

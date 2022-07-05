@@ -7,16 +7,18 @@
 
 import SwiftUI
 
+/// confirm profile information of user edited from profileInfo view
 struct ProfileConfirmView: View {
-    @State var name: String = "First Lastname"
-    @State var major: String = "Computer Systems Technology"
-    @State var school: String = "Vancouver Community College"
-    @State var startDate: String = "September 2020"
-    @State var info: String = """
-                I guess we could discuss the implications of the phrase meant to be.
-
-                That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                """
+    /// confirm name
+    @State var name: String
+    /// confirm major
+    @State var major: String
+    /// confirm school
+    @State var school: String
+    /// confirm start date
+    @State var startDate: String
+    /// confirm information
+    @State var info: String
     
     @State var isFinished = false
     
@@ -36,18 +38,19 @@ struct ProfileConfirmView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
                             ProfileView(
+                                image: "user_image",
                                 name: name,
                                 major: major,
                                 school: school,
                                 startDate: startDate,
-                                introduction: info)
+                                information: info)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                     // FOOTER
                     VStack() {
+                        // finish button
                         ButtonView_2(action: {
-                            
                             // TODO: finish sign up
                             isFinished = true
                         },
@@ -68,6 +71,16 @@ struct ProfileConfirmView: View {
 
 struct ProfileConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileConfirmView()
+        ProfileConfirmView(
+            name: "First Lastname",
+            major: "Computer Systems Technology",
+            school: "Vancouver Community College",
+            startDate: "September 2020",
+            info: """
+                I guess we could discuss the implications of the phrase meant to be.
+
+                That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+                """
+        )
     }
 }

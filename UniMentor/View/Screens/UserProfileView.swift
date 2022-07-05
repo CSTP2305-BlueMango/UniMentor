@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// user profile view
+/// display user profile
 struct UserProfile: View {
     /// if popup showing
     @State private var showPopUp: Bool = false
@@ -36,11 +36,12 @@ struct UserProfile: View {
                         VStack {
                             // profile
                             ProfileView(
+                                image: "user_image",
                                 name: "First Lastname",
                                 major: "Computer Systems Technology",
                                 school: "Vancouver Community College",
                                 startDate: "September 2020",
-                                introduction: """
+                                information: """
                     I guess we could discuss the implications of the phrase meant to be.
 
                     That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.

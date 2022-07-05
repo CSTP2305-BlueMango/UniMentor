@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// message view
+/// display list of users who current user got message from
 struct MessageView: View {
     /// if popup showing
     @State private var showPopUp: Bool = false
@@ -47,7 +47,14 @@ struct MessageView: View {
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                 ForEach(0..<10, id: \.self) { num in
                                     NavigationLink(destination: MessageChatView()) {
-                                        MessageCardView(isEditClicked: isEditClicked)
+                                        // TODO: actual info
+                                        MessageCardView(
+                                            isEditClicked: isEditClicked,
+                                            userID: "1",
+                                            image: "user_image",
+                                            name: "First Lastname",
+                                            latestMsg: "Hello, how are you?"
+                                        )
                                     }
                                 }
                                 // TODO: info when there is no card to display
@@ -77,9 +84,15 @@ struct MessageView: View {
             .navigationBar(backButton: true, barHidden: true)
             //: BODY
             // POPUP
-            PopUpView(show: $showPopUp, information: "Delete messages with selected             people?", warmMessage: "* Delete messages will unmatch",                  buttonAction: {
-                // TODO: delete messages and unmatch
-            },  buttonText: "Delete")
+            PopUpView(
+                show: $showPopUp,
+                information: "Delete messages with selected people?",
+                warnMessage: "* Delete messages will unmatch",
+                buttonAction: {
+                    // TODO: delete messages and unmatch
+                },
+                buttonText: "Delete"
+            )
             //: POPUP
         }
     }

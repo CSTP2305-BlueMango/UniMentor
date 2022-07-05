@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-/// login view
+/// user login
 struct LoginView: View {
     
     /// state for keeping track of if link to signup is active
@@ -15,6 +15,7 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject private var loginVM = LoginViewModel()
     
+    /// login function
     func handleLogin() {
         loginVM.signIn {
             viewModel.loggedIn = loginVM.isLoginSuccess
@@ -82,9 +83,9 @@ struct LoginView: View {
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
+                    // SIGNUP BUTTON
                     ButtonView_2(
                         action: {
-                            print("hello")
                             self.isSignUpActive = true
                         },
                         label: "Sign up",
