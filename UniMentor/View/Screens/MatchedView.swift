@@ -38,7 +38,7 @@ struct MatchedView: View {
                                     editButtonTitle = "Edit"
                                 }
                                 isEditClicked = !isEditClicked
-                            })
+                            }).foregroundColor(.black)
                             
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
                     } //: HEADER
