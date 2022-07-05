@@ -15,27 +15,35 @@ struct LoadingView: View {
     @State var isActive:Bool = false
     @EnvironmentObject var viewModel: AppViewModel
     
+    // reference: https://www.udemy.com/course/swiftui-masterclass-course-ios-development-with-swift/learn/lecture/29012982#overview
+    @AppStorage("onboarding") var isOnBoradingViewActive: Bool = true
+    
     var body: some View {
         NavigationView {
             ZStack {
                 if self.isActive {
-                    if !viewModel.loggedIn {
-                        LoginView()
+                    if isOnBoradingViewActive {
+                        OnBoardingView()
                     } else {
-                        TabBarView()
+                        if !viewModel.loggedIn {
+                            LoginView()
+                        } else {
+                            TabBarView()
+                        }
                     }
                 } else {
-                ZStack {
-                    Color("BackgroundColor")
-                        .ignoresSafeArea()
-                }
-                .frame(height: 650, alignment: .center)
-                .mask(Parallelogram(depth: 130))
-                
-                Image("Logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.65)
+                    ZStack {
+                        Color("BackgroundColor")
+                            .ignoresSafeArea()
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 1.5, height: 650, alignment: .center)
+                    .mask(Parallelogram(depth: 130))
+                    .blur(radius: 2)
+                    
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width * 0.65)
                 }
             }
             .hideNavigationBar()
@@ -46,11 +54,11 @@ struct LoadingView: View {
                         self.isActive = true
                     }
                 }
+            }
         }
-    }
-    .navigationViewStyle(.stack)
-    .statusBar(hidden: false)
-    //:NAVIGATION
+        .navigationViewStyle(.stack)
+        .statusBar(hidden: false)
+        //:NAVIGATION
     }
 }
 
