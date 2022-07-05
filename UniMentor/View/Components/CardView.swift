@@ -7,17 +7,31 @@
 
 import SwiftUI
 
+/// user card view component
 struct CardView: View {
     // TODO: get student object or student info
+    /// edit active state
     var isEditClicked: Bool = false
+    /// card selected state
     @State var isOn1: Bool = false
+    
+    /// user id
+    @State var userID: String
+    /// user image
+    @State var image: String
+    /// user name
+    @State var name: String
+    /// user major
+    @State var major: String
+    /// user school
+    @State var school: String
     
     var body: some View {
         // MAIN
         HStack {
+            // edit active
             if isEditClicked {
                 Button(action: {
-                    
                     isOn1 = !isOn1
                 }) {
                     HStack {
@@ -30,69 +44,79 @@ struct CardView: View {
                             // LEFT - Image
                             Spacer().frame(width: 0)
                             VStack {
-                                Image("user")
+                                Image(image)
                                     .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .shadow(radius: 3)
-                                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                                    .cornerRadius(50)
+                                    .aspectRatio(contentMode: .fill)
                             }
+                            .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                            .clipShape(Circle())
+                            .shadow(radius: 3)
                             // CENTER - Information
                             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                                Text("First Lastname")
+                                // user name
+                                Text(name)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                     .lineLimit(1)
                                     .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                                Text("Computer Systems Technology")
+                                // user major
+                                Text(major)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                                     .lineLimit(1)
-                                Text("Vancouver Community College")
+                                // user school
+                                Text(school)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                                     .lineLimit(1)
                             }.frame(width: UIScreen.main.bounds.width * 0.65)
                             Spacer()
-                        } //: CARD
+                        }
                         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
                         .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
                         .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                         .buttonStyle(.bordered)
                         .clipShape(RoundedRectangle(cornerRadius: 16)).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+                        //: CARD
                     }
                     .frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
-                }
-            } else {
+                    //: HSTACK
+                }//: Button
+            }
+            // edit not active
+            else {
                 // CARD
                 HStack(spacing: UIScreen.main.bounds.width * 0.03) {
                     // LEFT - Image
                     Spacer().frame(width: 0)
                     VStack {
-                        Image("user")
+                        Image(image)
                             .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
-                            .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                            .cornerRadius(50)
+                            .aspectRatio(contentMode: .fill)
                     }
+                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
                     // CENTER - Information
                     VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                        Text("First Lastname")
+                        Text(name)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                             .lineLimit(1)
                             .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                        Text("Computer Systems Technology")
+                        Text(major)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                             .lineLimit(1)
-                        Text("Vancouver Community College")
+                        Text(school)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                             .lineLimit(1)
                     }.frame(width: UIScreen.main.bounds.width * 0.65)
                     Spacer()
-                } //: CARD
+                }
                 .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
                 .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                 .buttonStyle(.bordered)
                 .clipShape(RoundedRectangle(cornerRadius: 16)).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+                //: CARD
             }
         } //: MAIN
     }
@@ -101,7 +125,12 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(
-            isEditClicked: false
+            isEditClicked: false,
+            userID: "1",
+            image: "user_image",
+            name: "First Lastname",
+            major: "Computer Systems Technology",
+            school: "Vancouver Community College"
         )
     }
 }

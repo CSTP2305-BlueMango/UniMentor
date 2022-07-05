@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// home profile view
+/// profile of the user clicked from home view
 struct HomeProfileView: View {
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
     //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
@@ -26,11 +26,12 @@ struct HomeProfileView: View {
                     VStack {
                         // profile
                         ProfileView(
+                            image: "user_image",
                             name: "First Lastname",
                             major: "Computer Systems Technology",
                             school: "Vancouver Community College",
                             startDate: "September 2020",
-                            introduction: """
+                            information: """
                 I guess we could discuss the implications of the phrase meant to be.
 
                 That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.

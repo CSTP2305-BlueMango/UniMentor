@@ -7,11 +7,23 @@
 
 import SwiftUI
 
+/// user card with button component
 struct ButtonCardView: View {
     // TODO: get student object or student info
     
-    @State var color: Color
-    @State var buttonText: String
+    /// button action
+    @State var action: ()->Void
+    
+    /// user id
+    @State var userID: String
+    /// user image
+    @State var image: String
+    /// user name
+    @State var name: String
+    /// user major
+    @State var major: String
+    /// user school
+    @State var school: String
     
     var body: some View {
         // MAIN
@@ -19,60 +31,70 @@ struct ButtonCardView: View {
             // LEFT - Image
             Spacer().frame(width: 0)
             VStack {
-                Image("user")
+                Image(image)
                     .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
-                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                    .cornerRadius(50)
+                    .aspectRatio(contentMode: .fill)
             }
+            .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+            .clipShape(Circle())
+            .shadow(radius: 3)
+            
             // CENTER - Information
             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                Text("First Lastname")
+                // user name
+                Text(name)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                     .lineLimit(1)
                     .frame(width: UIScreen.main.bounds.width * 0.5, alignment: .leading)
-                Text("Computer Systems Technology")
+                // user major
+                Text(major)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     .lineLimit(1)
-                Text("Vancouver Community College")
+                // user school
+                Text(school)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                     .lineLimit(1)
             }.frame(width: UIScreen.main.bounds.width * 0.5)
             // RIGHT - Button
             ZStack {
-                Button(action: {}) {
+                Button(action: action) {
                     VStack(spacing: UIScreen.main.bounds.width * 0.01) {
                         Image("checkIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.06)
                             .padding(.top, -UIScreen.main.bounds.width * 0.01)
-                        Text("\(buttonText)")
+                        Text("Accept")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                             .frame(width: UIScreen.main.bounds.width * 0.18)
                             .padding(0)
                     }.frame(height: UIScreen.main.bounds.height * 0.1)
                 }
                 .buttonStyle(.plain)
-                .background(color)
+                .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                 .frame(width: UIScreen.main.bounds.width * 0.18)
             }
-        } //: MAIN
+        }
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
         .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
         .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
         .buttonStyle(.bordered)
         .clipShape(RoundedRectangle(cornerRadius: 16)).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+        //: MAIN
     }
 }
 
 struct ButtonCardView_Previews: PreviewProvider {
     static var previews: some View {
         ButtonCardView(
-            color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-            buttonText: "Accept"
+            action: {},
+            userID: "1",
+            image: "user_image",
+            name: "First Lastname",
+            major: "Computer Systems Technology",
+            school: "Vancouver Community College"
         )
     }
 }

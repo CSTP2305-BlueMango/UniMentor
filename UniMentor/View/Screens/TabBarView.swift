@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// tab bar view
+/// tab bar
 struct TabBarView: View {
     
     /// if home view button clicked

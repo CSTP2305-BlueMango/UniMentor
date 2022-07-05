@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// matched view
+/// display list of users who are matched with current user
 struct MatchedView: View {
     /// if pop up showing
     @State private var showPopUp: Bool = false
@@ -53,7 +53,14 @@ struct MatchedView: View {
                                 // var isClicked: Bool = false
                                 ForEach(0..<10, id: \.self) { num in
                                     NavigationLink(destination: MatchedProfileView()) {
-                                        CardView(isEditClicked: isEditClicked)
+                                        // TODO: actual user info
+                                        CardView(
+                                            isEditClicked: isEditClicked,
+                                            userID: "1",
+                                            image: "user_image",
+                                            name: "First Lastname",
+                                            major: "Computer Systems Technology",
+                                            school: "Vancouver Community college")
                                     }
                                 }
                                 // TODO: info when there is no card to display
@@ -82,11 +89,15 @@ struct MatchedView: View {
             .navigationBar(backButton: true, barHidden: true)
             //: BODY
             // POPUP
-            PopUpView(show: $showPopUp, information: "Unmatch with selected people?",
-                      warmMessage: "* Unmatching will delete messages", buttonAction: {
+            PopUpView(
+                show: $showPopUp,
+                information: "Unmatch with selected people?",
+                warnMessage: "* Unmatching will delete messages",
+                buttonAction: {
                       // TODO: unmatch with selected users
                       },
-                      buttonText: "Unmatch")
+                buttonText: "Unmatch"
+            )
             //: POPUP
         }
     }

@@ -7,20 +7,24 @@
 
 import SwiftUI
 
+/// edit user profile information
 struct UserProfileEditView: View {
+    /// user major
     @State var major: String = ""
+    /// user school
     @State var school: String = ""
+    /// user start date
     @State var startDate: Date = Date.now
+    /// user information
     @State var info: String = ""
     
-    //for selecting an image
+    /// for selecting an image
     @State private var image = UIImage()
-    //to view the photo library and user to choose a photo
+    /// to view the photo library and user to choose a photo
     @State private var showSheet = false
     
     var body: some View {
         ZStack {
-            
             // ScrollView
             ScrollView {
                 // BODY
@@ -77,6 +81,7 @@ struct UserProfileEditView: View {
                             }
                         } // SELECT IMAGE
                         // INPUT FIELDS
+                        // major input
                         InputFieldView(
                             value: $major,
                             placeholder:"Computer Systems Technology",
@@ -84,6 +89,7 @@ struct UserProfileEditView: View {
                             title: "Major",
                             errorMessage: Binding.constant(nil)
                         )
+                        // school input
                         InputFieldView(
                             value: $school,
                             placeholder:"Vancouver Community College",
@@ -91,7 +97,9 @@ struct UserProfileEditView: View {
                             title: "School Name",
                             errorMessage: Binding.constant(nil)
                         )
+                        // date input
                         DatePickerView(placholder: "Start Date", date: $startDate)
+                        // information input
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
                         VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.02)  {
@@ -109,6 +117,7 @@ struct UserProfileEditView: View {
                                     Text("").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
                                 }.frame(height: UIScreen.main.bounds.height * 0.015).padding(.trailing, UIScreen.main.bounds.width * 0.02)
                             }
+                            // input field
                             VStack(alignment: .leading) {
                                 HStack(alignment: .center) {
                                 TextEditor(text: $info)
@@ -126,9 +135,9 @@ struct UserProfileEditView: View {
                         
                     } //: MAIN
                     .frame(height: UIScreen.main.bounds.height * 0.78)
-                    // Spacer()
                     // FOOTER
                     VStack() {
+                        // Save button
                         ButtonView_2(action: {
                         },
                              label: "Save Changes",

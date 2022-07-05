@@ -8,8 +8,11 @@
 import SwiftUI
 
 // reference: https://johncodeos.com/how-to-create-a-popup-window-with-swiftui/
+/// information pup up component
 struct InfoPopupView: View {
+    /// show popup state
     @Binding var show: Bool
+    /// information list
     @State var infoList: [String] = [
         "This is test one",
         "Test line two with longer paragraph for giving information to the users",
@@ -20,12 +23,15 @@ struct InfoPopupView: View {
     var body: some View {
         ZStack {
             if show {
+                // background
                 Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
-                
+                // Popup
                 ZStack(alignment: .top) {
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                        // title
                         Text("Information")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.07))
+                        // list of information
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             ForEach(infoList, id: \.self) { info in
                                 HStack(alignment: .top) {
@@ -34,7 +40,7 @@ struct InfoPopupView: View {
                                             .font(.system(size: UIScreen.main.bounds.width * 0.015))
                                     }.padding(.top, UIScreen.main.bounds.width * 0.017)
                                     VStack {
-                                        Text("\(info)").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                                        Text(info).font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                                     }
                                     Spacer()
                                 }
@@ -53,9 +59,9 @@ struct InfoPopupView: View {
                                 .foregroundColor(.black)
                         }
                     }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.01, leading: UIScreen.main.bounds.width * 0.73, bottom: 0, trailing: 0))
-                }
-            }
-        }
+                }//: Popup
+            }//: IF SHOW
+        }//: ZSTACK
     }
 }
 

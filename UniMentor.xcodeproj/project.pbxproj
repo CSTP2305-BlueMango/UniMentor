@@ -19,20 +19,18 @@
 		CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */; };
 		CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */; };
 		CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */; };
-		CD26D8F4285D5A7300CA1AA6 /* TestTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */; };
 		CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740792863B6B2005BC18D /* UserProfileEditView.swift */; };
 		CD3740802863DAF7005BC18D /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37407F2863DAF7005BC18D /* InfoPopupView.swift */; };
 		CD3740822863E344005BC18D /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740812863E344005BC18D /* PopUpView.swift */; };
-		CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442408285B178C00BCBD51 /* EditButtonView.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CD8C0A5F2873A6EC00DA5BC8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */; };
+		CD8C0A612873B85E00DA5BC8 /* MatchedPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */; };
+		CD8C0A632874174F00DA5BC8 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
 		CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5D284C84FE0045E1E4 /* CardView.swift */; };
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
-		CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9BC2F284E5418004797E0 /* EditProfileView.swift */; };
 		CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */; };
 		CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */; };
-		CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */; };
 		CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */; };
 		CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCF2843007900E48A68 /* SignUpView.swift */; };
 		CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD3284300F600E48A68 /* Parallelogram.swift */; };
@@ -40,7 +38,6 @@
 		CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */; };
 		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
-		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
 		E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E402B842286F7C4300EBBABA /* ProfileViewModel.swift */; };
 		E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C352867849200DE16A4 /* FirebaseAuth */; };
 		E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C372867849200DE16A4 /* FirebaseFirestore */; };
@@ -75,20 +72,18 @@
 		CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
 		CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
-		CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarView.swift; sourceTree = "<group>"; };
 		CD3740792863B6B2005BC18D /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
 		CD37407F2863DAF7005BC18D /* InfoPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
 		CD3740812863E344005BC18D /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
-		CD442408285B178C00BCBD51 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedPopupView.swift; sourceTree = "<group>"; };
+		CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
 		CDD0FF5D284C84FE0045E1E4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatView.swift; sourceTree = "<group>"; };
-		CDD9BC2F284E5418004797E0 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedProfileView.swift; sourceTree = "<group>"; };
-		CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButtonView.swift; sourceTree = "<group>"; };
 		CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
@@ -97,7 +92,6 @@
 		CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView_2.swift; sourceTree = "<group>"; };
 		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
-		CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNoIconView.swift; sourceTree = "<group>"; };
 		E402B842286F7C4300EBBABA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E4365C392867874F00DE16A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E4365C3C2867897100DE16A4 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -205,12 +199,9 @@
 				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
 				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
 				CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */,
-				CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */,
-				CDE10DE6284BEA0F00A71B37 /* SmallButtonView.swift */,
 				CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */,
 				CDD0FF5D284C84FE0045E1E4 /* CardView.swift */,
 				34DCD16A2853269C00BE60AF /* ImagePicker.swift */,
-				CD442408285B178C00BCBD51 /* EditButtonView.swift */,
 				CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */,
 				CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */,
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
@@ -219,6 +210,8 @@
 				E4A474BD285D9177006959D9 /* PasswordView.swift */,
 				CD37407F2863DAF7005BC18D /* InfoPopupView.swift */,
 				CD3740812863E344005BC18D /* PopUpView.swift */,
+				CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */,
+				CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -240,8 +233,6 @@
 				CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */,
 				CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */,
 				CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */,
-				CDD9BC2F284E5418004797E0 /* EditProfileView.swift */,
-				CD26D8F3285D5A7300CA1AA6 /* TestTabBarView.swift */,
 				CD3740792863B6B2005BC18D /* UserProfileEditView.swift */,
 				CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */,
 				CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */,
@@ -377,7 +368,6 @@
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
-				CD442409285B178C00BCBD51 /* EditButtonView.swift in Sources */,
 				CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */,
 				CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */,
 				CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */,
@@ -385,21 +375,19 @@
 				CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */,
 				E4A474BC285D914E006959D9 /* DatePickerView.swift in Sources */,
 				CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */,
-				CDD9BC30284E5418004797E0 /* EditProfileView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
 				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
 				E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */,
 				CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
-				CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */,
 				CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */,
 				E46781B6286EA1CB00BDAFCA /* LoginViewModel.swift in Sources */,
 				CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */,
 				34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */,
+				CD8C0A612873B85E00DA5BC8 /* MatchedPopupView.swift in Sources */,
 				CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */,
 				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
 				CD8C0A5F2873A6EC00DA5BC8 /* OnBoardingView.swift in Sources */,
-				CD26D8F4285D5A7300CA1AA6 /* TestTabBarView.swift in Sources */,
 				CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */,
 				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
 				34859B25284B086A001C42DC /* HomeView.swift in Sources */,
@@ -409,9 +397,9 @@
 				E46781B1286E901C00BDAFCA /* SignupValidation.swift in Sources */,
 				CD3740802863DAF7005BC18D /* InfoPopupView.swift in Sources */,
 				CD26D8EE285D37F800CA1AA6 /* ToggleStyle.swift in Sources */,
-				CDE10DE7284BEA0F00A71B37 /* SmallButtonView.swift in Sources */,
 				E46781B4286E922600BDAFCA /* CustomError.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
+				CD8C0A632874174F00DA5BC8 /* EditButtonView.swift in Sources */,
 				E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */,
 				E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */,
 				CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */,
