@@ -654,10 +654,10 @@
 			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		E4CEC814286F85EF00F75CCA /* FirebaseStorage */ = {
+		3492AED2286FAED0001910B6 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
+			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
