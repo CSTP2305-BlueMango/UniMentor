@@ -7,14 +7,25 @@
 
 import SwiftUI
 
+/// user card view with latest message component
 struct MessageCardView: View {
     // TODO: get student object or student info
     var isEditClicked: Bool = false
     @State var isOn1: Bool = false
     
+    /// user id
+    @State var userID: String
+    /// user image
+    @State var image: String
+    /// user name
+    @State var name: String
+    /// latest message
+    @State var latestMsg: String
+    
     var body: some View {
         // MAIN
         HStack {
+            // edit active
             if isEditClicked {
                 Button(action: {
                     
@@ -30,23 +41,25 @@ struct MessageCardView: View {
                             // LEFT - Image
                             Spacer().frame(width: 0)
                             VStack {
-                                Image("user")
+                                Image(image)
                                     .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .shadow(radius: 3)
-                                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                                    .cornerRadius(50)
+                                    .aspectRatio(contentMode: .fill)
                             }
+                            .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                            .clipShape(Circle())
+                            .shadow(radius: 3)
                             // CENTER - Information
                             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                                Text("First Lastname")
+                                Text(name)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                     .lineLimit(1)
                                     .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                                Text("Hello, This is from latest text that user recieved from First Lastname user. It is nice to talk to you.")
+                                Text(latestMsg)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                                     .foregroundColor(Color.gray)
                                     .lineLimit(2)
+                                    .frame(height: UIScreen.main.bounds.height * 0.035, alignment: .top)
                             }.frame(width: UIScreen.main.bounds.width * 0.65)
                             Spacer()
                         } //: CARD
@@ -58,29 +71,33 @@ struct MessageCardView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
                 }
-            } else {
+            }
+            // edit not active
+            else {
                 // CARD
                 HStack(spacing: UIScreen.main.bounds.width * 0.03) {
                     // LEFT - Image
                     Spacer().frame(width: 0)
                     VStack {
-                        Image("user")
+                        Image(image)
                             .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
-                            .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                            .cornerRadius(50)
+                            .aspectRatio(contentMode: .fill)
                     }
+                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
                     // CENTER - Information
                     VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                        Text("First Lastname")
+                        Text(name)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                             .lineLimit(1)
                             .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                        Text("Hello, This is from latest text that user recieved from First Lastname user. It is nice to talk to you.")
+                        Text(latestMsg)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                             .foregroundColor(Color.gray)
                             .lineLimit(2)
+                            .frame(height: UIScreen.main.bounds.height * 0.035, alignment: .top)
                     }.frame(width: UIScreen.main.bounds.width * 0.65)
                     Spacer()
                 } //: CARD
@@ -97,7 +114,11 @@ struct MessageCardView: View {
 struct MessageCardView_Previews: PreviewProvider {
     static var previews: some View {
         MessageCardView(
-            isEditClicked: false
+            isEditClicked: false,
+            userID: "1",
+            image: "user_image",
+            name: "First Lastname",
+            latestMsg: "Hello, how are you? this is to test how its gonna work, i want to check how it looks"
         )
     }
 }

@@ -7,14 +7,19 @@
 
 import SwiftUI
 
+/// display list of users sent requests to current user
 struct RequestsView: View {
+    /// if pop up showing
+    @State private var showPopUp: Bool = false
+    
     var body: some View {
-        //NavigationView {
+        ZStack {
             // BODY
             VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                 // HEADER
                 VStack {
                     Spacer()
+                    // Title
                     HStack {
                         Text("Requests")
                             .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
@@ -22,7 +27,6 @@ struct RequestsView: View {
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
                 } //: HEADER
                 .frame(height: UIScreen.main.bounds.height * 0.02)
-                // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // Card list
@@ -30,22 +34,40 @@ struct RequestsView: View {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             ForEach(0..<10, id: \.self) { num in
                                 NavigationLink(destination: RequestsProfileView()) {
+                                    // TODO: actual info
                                     ButtonCardView(
-                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-                                        buttonText: "Accept"
+                                        action: {
+                                            // TODO: accept request
+                                            showPopUp = true
+                                        },
+                                        userID: "1",
+                                        image: "user_image",
+                                        name: "First Lastname",
+                                        major: "Computer Systems Technology",
+                                        school: "Vancouver Community college"
                                     )
                                 }
                             }
-                            // TODO: info when there is no card to display
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
                 } //: MAIN
-            } //: BODY
+            }
             .padding(.top, UIScreen.main.bounds.width * 0.02)
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-        //} //: NAV_VIEW
+            .navigationBar(backButton: true, barHidden: true)
+            //: BODY
+            // POPUP
+            MatchedPopupView(
+                show: $showPopUp,
+                matchedUserName: "First Lastname",
+                matchedUserImage: "user_image2",
+                userImage: "user_image",
+                action: {
+                    showPopUp = false
+                }
+            )
+            //: POPUP
+        }//: ZSTACK
     }
 }
 

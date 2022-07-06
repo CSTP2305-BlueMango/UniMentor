@@ -6,44 +6,26 @@
 
 import SwiftUI
 
+/// user login
 struct LoginView: View {
-    @State var loginEmail: String = ""
-    @State var loginPassword: String = ""
-    @State var loginEmailError: String? = ""
-    @State var loginPasswordError: String? = ""
     
-    //state for keeping track of if link to signup is active
+    /// state for keeping track of if link to signup is active
     @State var isSignUpActive = false
     
     @EnvironmentObject var viewModel: AppViewModel
+    @ObservedObject private var loginVM = LoginViewModel()
     
+    /// login function
     func handleLogin() {
-        //reset error message state before each submit
-        loginEmailError = ""
-        loginPasswordError = ""
-        
-        //validate email
-        //email regex ref: https://www.hackingwithswift.com/forums/swiftui/what-is-a-good-practice-to-handle-textfield-validations/5868
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-        guard emailPredicate.evaluate(with: loginEmail) else {
-            loginEmailError = "Invalid email"
-            return
+        loginVM.signIn {
+            viewModel.loggedIn = loginVM.isLoginSuccess
         }
-        
-        //validate password
-        //password regex ref: https://medium.com/swlh/password-validation-in-swift-5-3de161569910va
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
-        guard passwordPredicate.evaluate(with: loginPassword) else {
-            loginPasswordError = "Invalid password"
-            return
-        }
-        
-        viewModel.signIn(email: loginEmail, password: loginPassword)
     }
     
     var body: some View {
         // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -62,22 +44,22 @@ struct LoginView: View {
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 } //: HEADER
                 Spacer()
-                
-                VStack(spacing: UIScreen.main.bounds.width * 0.015) {//LOGINFORM
+                //LOGINFORM
+                VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     InputFieldView(
-                        value: $loginEmail,
+                        value: $loginVM.email,
                         placeholder:"sample@gmail.com",
                         icon: "envelope.fill",
                         title: "Email",
-                        errorMessage: $loginEmailError
+                        errorMessage: $loginVM.emailError
                     ).autocapitalization(.none)
                     InputFieldView(
-                        value: $loginPassword,
+                        value: $loginVM.password,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Password",
                         inputType: "password",
-                        errorMessage: $loginPasswordError
+                        errorMessage: $loginVM.passwordError
                     ).autocapitalization(.none)
                     Spacer()
                     ButtonView_2 (
@@ -89,8 +71,9 @@ struct LoginView: View {
                         opacity: 1.0,
                         isBorder: false
                     ).padding()
-                }//:LOGINFORM
+                }
                 .frame(height: UIScreen.main.bounds.height * 0.36)
+                //:LOGINFORM
                 Spacer()
                 Spacer()
                 //FOOTER
@@ -100,9 +83,9 @@ struct LoginView: View {
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
+                    // SIGNUP BUTTON
                     ButtonView_2(
                         action: {
-                            print("hello")
                             self.isSignUpActive = true
                         },
                         label: "Sign up",
@@ -119,10 +102,8 @@ struct LoginView: View {
             .frame(height: UIScreen.main.bounds.height * 0.85)
             //:BODY
         }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .hideNavigationBar()
         //:ZSTACK
-        
     }
 }
 

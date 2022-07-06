@@ -7,16 +7,19 @@
 
 import SwiftUI
 
+/// edit button component
 struct EditButtonView: View {
+    /// button title
     let title: String
+    /// button action
     let action: ()->Void
     
     var body: some View {
         VStack {
             Button(action: action) {
-                Text("\(title)")
+                Text(title)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                    // .foregroundColor(Color.black)
+                    .foregroundColor(Color.black)
             }
         }
     }

@@ -20,16 +20,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct UniMentorApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var viewModel = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            let viewModel = AppViewModel()
-            NavigationView {
                 // TabBarView()
-                LoadingView().environmentObject(viewModel)
-            }
-            .navigationViewStyle(.stack)
-            .statusBar(hidden: false)
-            //:NAVIGATION
+            LoadingView()
+                .environmentObject(viewModel)
         }
     }
 }

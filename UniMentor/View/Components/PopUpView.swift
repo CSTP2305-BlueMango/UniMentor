@@ -7,29 +7,40 @@
 
 import SwiftUI
 
+/// guard popup view component
 struct PopUpView: View {
+    /// popup show state
     @Binding var show: Bool
+    /// popup message
     var information: String
-    var warmMessage: String?
+    /// warning message (optional)
+    var warnMessage: String?
+    /// button action
     var buttonAction: ()->Void
+    /// button lable
     var buttonText: String
     
     var body: some View {
         ZStack {
             if show {
+                // background
                 Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
+                // Popup
                 VStack(spacing: UIScreen.main.bounds.height * 0.03) {
                     VStack(spacing: UIScreen.main.bounds.height * 0.01) {
-                        Text("\(information)")
+                        // popup message
+                        Text(information)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                             .multilineTextAlignment(.center)
-                        if let warmMessage = warmMessage {
-                            Text("\(warmMessage)")
+                        // warning message
+                        if let warnMessage = warnMessage {
+                            Text(warnMessage)
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                                 .foregroundColor(.red)
                         }
                     }
                     HStack(spacing: UIScreen.main.bounds.width * 0.07) {
+                        // cancel popup button
                         Button(action: {
                             show = false
                         }) {
@@ -40,8 +51,9 @@ struct PopUpView: View {
                                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                         }
                         .buttonStyle(.plain)
+                        // button
                         Button(action: buttonAction) {
-                            Text("\(buttonText)")
+                            Text(buttonText)
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                 .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
                                 .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
@@ -49,11 +61,13 @@ struct PopUpView: View {
                         }
                         .buttonStyle(.plain)
                     }
-                }.frame(width: UIScreen.main.bounds.width * 0.7)
-                    .padding(UIScreen.main.bounds.width * 0.07)
-                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
-            }
-        }
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.7)
+                .padding(UIScreen.main.bounds.width * 0.07)
+                .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
+                //: Popup
+            }//: IF SHOW
+        }//: ZSTACK
 
     }
 }
@@ -64,7 +78,7 @@ struct popupPreviewView: View {
         PopUpView(
             show: $show,
             information: "Unmatch with First Lastname?",
-            warmMessage: "* Unmatching will delete messages",
+            warnMessage: "* Unmatching will delete messages",
             buttonAction: {},
             buttonText: "Unmatch"
         )

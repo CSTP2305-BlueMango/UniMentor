@@ -7,25 +7,29 @@
 
 import SwiftUI
 
+/// display list of other users available to match with search function
 struct HomeView: View {
+    /// search input
     @State var searchInput: String = ""
+    @EnvironmentObject var viewModel: AppViewModel
+    
     var body: some View {
         // BODY
         VStack(spacing: UIScreen.main.bounds.height * 0.06) {
             // HEADER
             VStack {
                 Spacer()
+                // Logo
                 HStack {
                     Image("SmallLogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.25)
-                        .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.07, bottom: 0, trailing: 0))
+                        .padding(.leading, -UIScreen.main.bounds.width * 0.07)
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width * 0.9)
             } //: HEADER
             .frame(height: UIScreen.main.bounds.height * 0.02)
-            // Spacer().frame(height: UIScreen.main.bounds.height * 0.007)
             // MAIN
             VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                 // Search Bar
@@ -44,21 +48,41 @@ struct HomeView: View {
                     VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                         ForEach(0..<2, id: \.self) { num in
                             NavigationLink(destination: HomeProfileView()) {
-//                                    ButtonCardView(
-//                                        color: Color(red: 0.8627, green: 0.8313, blue: 0.7960),
-//                                        buttonText: "Match"
-//                                    )
-                                HomeCardView()
+                                // TODO: actual info
+                                HomeCardView(
+                                    userID: "1",
+                                    image: "user_image",
+                                    name: "First Lastname",
+                                    major: "Computer Systems Technology",
+                                    school: "Vancouver Community college",
+                                    information: """
+I guess we could discuss the implications of the phrase meant to be.
+
+That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+"""
+                                )
                             }
                         }
                     }
                     .padding(UIScreen.main.bounds.width * 0.02)
+                    ButtonView_2(
+                        action: {
+                            viewModel.signOut()
+                        },
+                        label: "Sign out",
+                        color: Color(
+                           red: 1,
+                            green: 1,
+                            blue: 1
+                        ),
+                        opacity: 0.0,
+                        isBorder: true
+                    )
                 } //: ScrollView
             } //: MAIN
-        } //: BODY
+        }
         .padding(.top, UIScreen.main.bounds.width * 0.07)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBar(backButton: true, barHidden: true)
     }
 }
 

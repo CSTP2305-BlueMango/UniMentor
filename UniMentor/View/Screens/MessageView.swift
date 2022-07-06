@@ -7,75 +7,92 @@
 
 import SwiftUI
 
+/// display list of users who current user got message from
 struct MessageView: View {
+    /// if popup showing
     @State private var showPopUp: Bool = false
+    /// if edit button clicked
     @State var isEditClicked: Bool = false
+    /// edit button text
     @State var editButtonTitle: String = "Edit"
     
     var body: some View {
         ZStack {
-            NavigationView {
-                // BODY
-                VStack(spacing: 0) {
-                    VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                        // HEADER
-                        VStack {
+            // BODY
+            VStack(spacing: 0) {
+                VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                    // HEADER
+                    VStack {
+                        Spacer()
+                        HStack {
+                            // TITLE
+                            Text("Messages")
+                                .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                             Spacer()
-                            HStack {
-                                Text("Messages")
-                                    .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
-                                Spacer()
-                                EditButtonView(title: editButtonTitle, action: {
-                                    if editButtonTitle == "Edit" {
-                                        editButtonTitle = "Finish"
-                                    } else {
-                                        editButtonTitle = "Edit"
-                                    }
-                                    isEditClicked = !isEditClicked
-                                })
-                            }.frame(width: UIScreen.main.bounds.width * 0.9)
-                        } //: HEADER
-                        .frame(height: UIScreen.main.bounds.height * 0.02)
-                        // Spacer().frame(height: UIScreen.main.bounds.height * 0.016)
-                        // MAIN
-                        VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                            ScrollView {
-                                VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                    ForEach(0..<10, id: \.self) { num in
-                                        NavigationLink(destination: MessageChatView()) {
-                                            MessageCardView(isEditClicked: isEditClicked)
-                                        }
-                                    }
-                                    // TODO: info when there is no card to display
+                            // Edit button
+                            EditButtonView(title: editButtonTitle, action: {
+                                if editButtonTitle == "Edit" {
+                                    editButtonTitle = "Finish"
+                                } else {
+                                    editButtonTitle = "Edit"
                                 }
-                                .padding(UIScreen.main.bounds.width * 0.02)
-                                //this will compress everything into center, adding padding horizontally
-                                .padding(.horizontal)
-                            } //: Scrollview
-                        } //: MAIN
-                    }
-                    if isEditClicked {
-                        VStack {
-                            Button(action: {
-                                showPopUp = true
-                            }) {
-                                Text("Unmatch")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                                isEditClicked = !isEditClicked
+                            }).foregroundColor(.black)
+                        }.frame(width: UIScreen.main.bounds.width * 0.9)
+                    } //: HEADER
+                    .frame(height: UIScreen.main.bounds.height * 0.02)
+                    // MAIN
+                    VStack(spacing: UIScreen.main.bounds.height * 0.04) {
+                        ScrollView {
+                            VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                                ForEach(0..<10, id: \.self) { num in
+                                    NavigationLink(destination: MessageChatView()) {
+                                        // TODO: actual info
+                                        MessageCardView(
+                                            isEditClicked: isEditClicked,
+                                            userID: "1",
+                                            image: "user_image",
+                                            name: "First Lastname",
+                                            latestMsg: "Hello, how are you?"
+                                        )
+                                    }
+                                }
                             }
-                            .frame(width: UIScreen.main.bounds.width * 1)
-                            .padding(UIScreen.main.bounds.width * 0.04)
-                            .foregroundColor(.black)
-                            .background(Color("ButtonColor"))
-                        }.padding(0)
-                    }
-                } //: BODY
-                .padding(.top, UIScreen.main.bounds.width * 0.02)
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-            } //: NAV_VIEW
-            PopUpView(show: $showPopUp, information: "Delete messages with selected             people?", warmMessage: "* Delete messages will unmatch",                  buttonAction: {
-                // TODO: delete messages and unmatch
-            },  buttonText: "Delete")
+                            .padding(UIScreen.main.bounds.width * 0.02)
+                            .padding(.horizontal)
+                        } //: Scrollview
+                    } //: MAIN
+                }
+                if isEditClicked {
+                    VStack {
+                        // Unmatch button
+                        Button(action: {
+                            showPopUp = true
+                        }) {
+                            Text("Unmatch")
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 1)
+                        .padding(UIScreen.main.bounds.width * 0.04)
+                        .foregroundColor(.black)
+                        .background(Color("ButtonColor"))
+                    }.padding(0)
+                }
+            }
+            .padding(.top, UIScreen.main.bounds.width * 0.02)
+            .navigationBar(backButton: true, barHidden: true)
+            //: BODY
+            // POPUP
+            PopUpView(
+                show: $showPopUp,
+                information: "Delete messages with selected people?",
+                warnMessage: "* Delete messages will unmatch",
+                buttonAction: {
+                    // TODO: delete messages and unmatch
+                },
+                buttonText: "Delete"
+            )
+            //: POPUP
         }
     }
 }

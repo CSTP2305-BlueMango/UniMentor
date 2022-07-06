@@ -7,57 +7,32 @@
 
 import SwiftUI
 
+/// user signup
 struct SignUpView: View {
     
     //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
-    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
+    
+    @EnvironmentObject var viewModel: AppViewModel
+    
+    @ObservedObject private var signupVM = SignupViewModel()
     
     //state for keeping track of if link to profileinfo view is active
     @State var isProfileInfoActive = false
     
-    @State var email: String = ""
-    @State var name: String = ""
-    @State var password: String = ""
-    @State var confirmPassword: String = ""
-
-    @State var emailError: String? = ""
-    @State var passwordError: String? = ""
-    @State var passwordConfirmError: String? = ""
-    
     func handleSignup() {
         //reset error state after each submit
-        emailError = ""
-        passwordConfirmError = ""
-        passwordError = ""
-        
-        //validate email
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-        guard emailPredicate.evaluate(with: email) else {
-            emailError = "Invalid email"
-            return
-        }
-        
-        //validate password
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@","^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
-        guard passwordPredicate.evaluate(with: password) else {
-            passwordError = "password need 8 letters mininum, contains 1 uppercase and number"
-            return
-        }
-        
-        guard password == confirmPassword else {
-            passwordConfirmError = "Password does not match"
-            return
-        }
-        self.isProfileInfoActive = true
+        signupVM.signUp()
     }
     
     var body: some View {
+        // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATIONLINK
+            // NAVIGATIONLINK
             NavigationLink(
                 destination: ProfileInfoView(),
                 isActive: $isProfileInfoActive
@@ -77,39 +52,43 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
+                    // EMAIL INPUT
                     InputFieldView(
-                        value: $email,
+                        value: $signupVM.email,
                         placeholder:"sample@gmail.com",
                         icon: "envelope.fill",
                         title: "Email",
-                        errorMessage: $emailError
+                        errorMessage: $signupVM.emailError
                     ).autocapitalization(.none)
+                    // NAME INPUT
                     InputFieldView(
-                        value: $name,
+                        value: $signupVM.name,
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
                         errorMessage: Binding.constant(nil)
                     )
+                    // PASSWORD INPUT
                     InputFieldView(
-                        value: $password,
+                        value: $signupVM.password,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Password",
                         inputType: "password",
-                        errorMessage: $passwordError
+                        errorMessage: $signupVM.passwordError
                     ).autocapitalization(.none)
+                    // CONFIRM PASSWORD INPUT
                     InputFieldView(
-                        value: $confirmPassword,
+                        value: $signupVM.confirmPassword,
                         placeholder:"PrancingPonies123",
                         icon: "key.fill",
                         title: "Confirm Password",
                         inputType: "password",
-                        errorMessage: $passwordConfirmError
+                        errorMessage: $signupVM.confirmError
                     ).autocapitalization(.none)
                     Spacer()
                     
-                    // BUTTON - signup
+                    // BUTTON - SIGNUP
                     ButtonView_2(action: {
                         handleSignup()
                     },
@@ -118,21 +97,21 @@ struct SignUpView: View {
                          opacity: 1.0,
                          isBorder: false
                     )
-                    
                 } //: MAIN
                 .frame(height: UIScreen.main.bounds.height * 0.55)
                 Spacer()
                 Spacer()
                 // FOOTER
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                    // BUTTON MESSAGE
                     VStack(alignment: .trailing) {
                         Text("Already have an account?")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
-                    // BUTTON - login
+                    // BUTTON - LOGIN
                     ButtonView_2(action: {
-                        //pop child view to go back to root view
+                        // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",
@@ -145,10 +124,10 @@ struct SignUpView: View {
                          isBorder: true
                     )
                 } //: FOOTER
-            } //: BODY
+            }
             .frame(height: UIScreen.main.bounds.height * 0.85)
-        }.navigationBarHidden(true)
-         .navigationBarBackButtonHidden(true) //: ZSTACK
+        }//: ZSTACK
+        .hideNavigationBar()
     }
 }
 

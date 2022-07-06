@@ -8,6 +8,7 @@
 import SwiftUI
 
 // reference: https://levelup.gitconnected.com/parallelogram-shape-and-mask-tutorial-7473a4135483
+/// background shape
 struct Parallelogram: Shape {
     var depth: CGFloat
     var flipped: Bool = false

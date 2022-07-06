@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// display messages between users
 struct MessageChatView: View {
     var body: some View {
         NavigationView {

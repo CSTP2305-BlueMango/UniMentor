@@ -7,14 +7,22 @@
 
 import SwiftUI
 
+/// button component
+/// param: action, button label, color, opacity, isBorder needed
 struct ButtonView_2: View {
+    /// button action
     let action: ()->Void
+    /// button label
     let label: String
+    /// button color
     let color: Color
+    /// button opacity
     let opacity: Double
+    /// button border status
     let isBorder: Bool
     
     var body: some View {
+        // button without border
         if !isBorder {
             Button(action: action) {
                 Text(label)
@@ -26,7 +34,9 @@ struct ButtonView_2: View {
             .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
             .buttonStyle(.bordered)
             
-        } else {
+        }
+        // button with border
+        else {
             Button(action: action) {
                 HStack {
                     Text(label)

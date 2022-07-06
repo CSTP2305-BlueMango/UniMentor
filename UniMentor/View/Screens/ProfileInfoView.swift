@@ -6,24 +6,38 @@
 //
 import SwiftUI
 
+/// set user profile information
 struct ProfileInfoView: View {
+    /// prorile major
     @State var major: String = ""
+    /// profile school
     @State var school: String = ""
+    /// profile start date
     @State var startDate: Date = Date.now
+    /// profile information
     @State var info: String = ""
     
+    /// profile major error message
+    @State var majorError: String? = ""
+    /// profile school error message
+    @State var schoolError: String? = ""
+    /// profile start date error message
+    @State var startDateError: String? = ""
+    /// profile information error message
+    @State var infoError: String? = ""
     
-    //for selecting an image
+    
+    /// for selecting an image
     @State private var image = UIImage()
-    //to view the photo library and user to choose a photo
+    /// to view the photo library and user to choose a photo
     @State private var showSheet = false
-    
+    /// if profile information is finished
     @State var isProfileConfirmActive = false
     
-    // ========== plus.square.dashed, photo
-    
     var body: some View {
+        // ZSTACK
         ZStack {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -31,12 +45,10 @@ struct ProfileInfoView: View {
             NavigationLink(
                 destination: ProfileConfirmView(name: "Test name", major: major, school: school, startDate: "September 2020", info: info),
                 isActive: $isProfileConfirmActive
-            ) {
-                EmptyView()
-            }
+            ) {EmptyView()}
             //:NAVIGATIONLINK
             
-            // ScrollView
+            // SCROLLVIEW
             ScrollView {
                 // BODY
                 VStack(alignment: .center) {
@@ -44,8 +56,9 @@ struct ProfileInfoView: View {
                     VStack(alignment: .center) {
                         Text("Set Profile")
                             .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
-                    } //: HEADER
+                    }
                     .padding(.top, UIScreen.main.bounds.width * 0.06)
+                    //: HEADER
                     Spacer()
                     // SELECT IMAGE
                     VStack {
@@ -87,10 +100,11 @@ struct ProfileInfoView: View {
                                     //  If you wish to take a photo from camera instead:
                                 //ImagePicker(sourceType: .camera, selectedImage: self.$image)
                         }
-                    } // SELECT IMAGE
+                    } //: SELECT IMAGE
                     // MAIN
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                         // INPUT FIELDS
+                        // MAJOR INPUT
                         InputFieldView(
                             value: $major,
                             placeholder:"Computer Systems Technology",
@@ -98,6 +112,7 @@ struct ProfileInfoView: View {
                             title: "Major",
                             errorMessage: Binding.constant(nil)
                         )
+                        // SCHOOL INPUT
                         InputFieldView(
                             value: $school,
                             placeholder:"Vancouver Community College",
@@ -105,12 +120,14 @@ struct ProfileInfoView: View {
                             title: "School Name",
                             errorMessage: Binding.constant(nil)
                         )
+                        // START DATE INPUT
                         DatePickerView(placholder: "Start Date", date: $startDate)
+                        // INFORMATION INPUT
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
                         VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.02)  {
                             HStack {
-                                // input title
+                                // INPUT TITLE
                                 VStack(alignment: .leading) {
                                     Text("Information")
                                         .font(Font.custom( "TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
@@ -118,11 +135,12 @@ struct ProfileInfoView: View {
                                         .foregroundColor(Color("DarkColor"))
                                 }.frame(width: UIScreen.main.bounds.width * 0.34, height: UIScreen.main.bounds.height * 0.02, alignment: .leading)
                                 Spacer()
-                                // error message
+                                // ERROR MESSAGE
                                 VStack(alignment: .trailing) {
                                     Text("").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
                                 }.frame(height: UIScreen.main.bounds.height * 0.015).padding(.trailing, UIScreen.main.bounds.width * 0.02)
                             }
+                            // INPUT FIELD
                             VStack(alignment: .leading) {
                                 HStack(alignment: .center) {
                                 TextEditor(text: $info)
@@ -137,13 +155,15 @@ struct ProfileInfoView: View {
                             }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.9)
-                        
-                    } //: MAIN
+                        //: INFORMATION INPUT
+                    }
                     .frame(height: UIScreen.main.bounds.height * 0.6)
+                    //: MAIN
                     Spacer()
                     Spacer()
                     // FOOTER
                     VStack() {
+                        // Next button
                         ButtonView_2(action: {
                             isProfileConfirmActive = true
                         },
@@ -153,11 +173,13 @@ struct ProfileInfoView: View {
                              isBorder: false
                         )
                     } //: FOOTER
-                } //: BODY
+                }
                 .frame(height: UIScreen.main.bounds.height * 1.1)
+                //: BODY
             } //: ScrollView
-        } .navigationBarHidden(true)
-         .navigationBarBackButtonHidden(true) //: ZSTACK
+        }
+        .hideNavigationBar()
+        //: ZSTACK
     }
 }
 
