@@ -654,6 +654,9 @@
 			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		3492AED4286FAED0001910B6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
