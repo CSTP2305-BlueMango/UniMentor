@@ -43,10 +43,7 @@
 		CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */; };
 		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
-		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
 		E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E402B842286F7C4300EBBABA /* ProfileViewModel.swift */; };
-		E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C352867849200DE16A4 /* FirebaseAuth */; };
-		E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C372867849200DE16A4 /* FirebaseFirestore */; };
 		E4365C3A2867874F00DE16A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4365C392867874F00DE16A4 /* GoogleService-Info.plist */; };
 		E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4365C3C2867897100DE16A4 /* AppViewModel.swift */; };
 		E46781AB286E8CD500BDAFCA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46781AA286E8CD500BDAFCA /* ViewExtension.swift */; };
@@ -57,7 +54,6 @@
 		E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46781B7286EA1DA00BDAFCA /* SignupViewModel.swift */; };
 		E4A474BC285D914E006959D9 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BB285D914E006959D9 /* DatePickerView.swift */; };
 		E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BD285D9177006959D9 /* PasswordView.swift */; };
-		E4CEC815286F85EF00F75CCA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4CEC814286F85EF00F75CCA /* FirebaseStorage */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
 		E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C272837535C006F424E /* UniMentorApp.swift */; };
 		E4F30C2A2837535C006F424E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C292837535C006F424E /* ContentView.swift */; };
@@ -95,7 +91,7 @@
 		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
 		CDFD8FD62843025700E48A68 /* Charm-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Charm-Regular.ttf"; sourceTree = "<group>"; };
-		CDFD8FD82843026700E48A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDFD8FD82843026700E48A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = UniMentor/Utilities/Info.plist; sourceTree = SOURCE_ROOT; };
 		CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView_2.swift; sourceTree = "<group>"; };
 		CDFD8FDD2843067A00E48A68 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
@@ -556,7 +552,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UniMentor/Info.plist;
+				INFOPLIST_FILE = UniMentor/Utilities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -585,7 +581,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniMentor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UniMentor/Info.plist;
+				INFOPLIST_FILE = UniMentor/Utilities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
