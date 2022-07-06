@@ -43,13 +43,10 @@
 		CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */; };
 		CDFD8FDE2843067A00E48A68 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDD2843067A00E48A68 /* LoadingView.swift */; };
 		CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FDF284306EE00E48A68 /* ProfileInfoView.swift */; };
-<<<<<<< HEAD
 		CDFD8FE2284308AC00E48A68 /* InputNoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FE1284308AC00E48A68 /* InputNoIconView.swift */; };
-=======
 		E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E402B842286F7C4300EBBABA /* ProfileViewModel.swift */; };
 		E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C352867849200DE16A4 /* FirebaseAuth */; };
 		E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4365C372867849200DE16A4 /* FirebaseFirestore */; };
->>>>>>> 2ac9751ed80cd5b26ed40ada181ab908adced5e9
 		E4365C3A2867874F00DE16A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4365C392867874F00DE16A4 /* GoogleService-Info.plist */; };
 		E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4365C3C2867897100DE16A4 /* AppViewModel.swift */; };
 		E46781AB286E8CD500BDAFCA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46781AA286E8CD500BDAFCA /* ViewExtension.swift */; };
@@ -126,16 +123,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				3492AED1286FAED0001910B6 /* FirebaseDatabase in Frameworks */,
 				3492AED5286FAED0001910B6 /* FirebaseStorage in Frameworks */,
 				3492AECF286FAED0001910B6 /* FirebaseAuth in Frameworks */,
 				3492AED3286FAED0001910B6 /* FirebaseFirestore in Frameworks */,
-=======
-				E4365C362867849200DE16A4 /* FirebaseAuth in Frameworks */,
-				E4365C382867849200DE16A4 /* FirebaseFirestore in Frameworks */,
-				E4CEC815286F85EF00F75CCA /* FirebaseStorage in Frameworks */,
->>>>>>> 2ac9751ed80cd5b26ed40ada181ab908adced5e9
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,13 +278,10 @@
 		E4F30C262837535C006F424E /* UniMentor */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				3492AECA286FADA3001910B6 /* Utilities */,
-=======
 				E46781B2286E920E00BDAFCA /* Model */,
 				E46781AC286E8F9C00BDAFCA /* Ultility */,
 				E46781A9286E8C9E00BDAFCA /* Extension */,
->>>>>>> 2ac9751ed80cd5b26ed40ada181ab908adced5e9
 				E4365C3B2867894B00DE16A4 /* ViewModel */,
 				CDFD8FD52843023E00E48A68 /* Fonts */,
 				E4DDE3F6283DB6D90059CCEC /* View */,
@@ -330,16 +318,10 @@
 			);
 			name = UniMentor;
 			packageProductDependencies = (
-<<<<<<< HEAD
 				3492AECE286FAED0001910B6 /* FirebaseAuth */,
 				3492AED0286FAED0001910B6 /* FirebaseDatabase */,
 				3492AED2286FAED0001910B6 /* FirebaseFirestore */,
 				3492AED4286FAED0001910B6 /* FirebaseStorage */,
-=======
-				E4365C352867849200DE16A4 /* FirebaseAuth */,
-				E4365C372867849200DE16A4 /* FirebaseFirestore */,
-				E4CEC814286F85EF00F75CCA /* FirebaseStorage */,
->>>>>>> 2ac9751ed80cd5b26ed40ada181ab908adced5e9
 			);
 			productName = UniMentor;
 			productReference = E4F30C242837535C006F424E /* UniMentor.app */;
@@ -672,15 +654,9 @@
 			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-<<<<<<< HEAD
-		3492AED4286FAED0001910B6 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3492AECD286FAECF001910B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-=======
 		E4CEC814286F85EF00F75CCA /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E4365C342867849200DE16A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
->>>>>>> 2ac9751ed80cd5b26ed40ada181ab908adced5e9
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
