@@ -95,5 +95,6 @@ struct MessageChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MessageChatView()
+        }
     }
 }

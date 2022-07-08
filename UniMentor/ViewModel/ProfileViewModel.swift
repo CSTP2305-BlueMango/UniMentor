@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import FirebaseAuth
-import FirebaseStorage
+//import FirebaseAuth
+//import FirebaseStorage
 
 class ProfileViewModel: ObservableObject {
     @Published var name = ""
@@ -17,6 +17,6 @@ class ProfileViewModel: ObservableObject {
     @Published var info: String = ""
     @Published var image = Data()
     
-    let storage = Storage.storage()
+    //let storage = Storage.storage()
     
 }
