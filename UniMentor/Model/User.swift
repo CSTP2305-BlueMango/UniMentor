@@ -14,6 +14,8 @@ struct ChatUser: Identifiable {
     
     let uid, email, profileImageUrl: String
     
+    
+    ///THIS NEEDS TO BE MODIFIED TO BE THE SAME AS SIGN UP PAGE VARIABLE
     //dictionary from ChatMessaging proj (MessagesListView)
     init(data: [String: Any]) {
         self.uid = data["uid"] as? String ?? ""

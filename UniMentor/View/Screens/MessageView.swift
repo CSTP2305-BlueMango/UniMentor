@@ -50,6 +50,8 @@ struct MessageView: View {
                             Text(vm.errorMessage)
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                                
+                                //there is only one card that appears on the screen bc there's only one user in the database
                                 ForEach(vm.users) { user in
                                     NavigationLink(destination: MessageChatView()) {
                                         // TODO: actual info
