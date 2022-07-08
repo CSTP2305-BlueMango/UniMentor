@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		345307642877A33D00218DAD /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345307632877A33D00218DAD /* MessagesList.swift */; };
 		34859B23284B0778001C42DC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B22284B0778001C42DC /* TabBarView.swift */; };
 		34859B25284B086A001C42DC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B24284B086A001C42DC /* HomeView.swift */; };
 		34859B27284B0877001C42DC /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B26284B0877001C42DC /* RequestsView.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		345307632877A33D00218DAD /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
 		34859B22284B0778001C42DC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		34859B24284B086A001C42DC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		34859B26284B0877001C42DC /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				E46781B3286E922600BDAFCA /* CustomError.swift */,
+				345307632877A33D00218DAD /* MessagesList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				CD8C0A5F2873A6EC00DA5BC8 /* OnBoardingView.swift in Sources */,
 				CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */,
 				CDFD8FDC2843046600E48A68 /* ButtonView_2.swift in Sources */,
+				345307642877A33D00218DAD /* MessagesList.swift in Sources */,
 				34859B25284B086A001C42DC /* HomeView.swift in Sources */,
 				E46781AF286E901000BDAFCA /* LoginValidation.swift in Sources */,
 				E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */,

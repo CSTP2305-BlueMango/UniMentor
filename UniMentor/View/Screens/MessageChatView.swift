@@ -15,19 +15,19 @@ struct MessageChatView: View {
     @State var chatText = ""
 
     var body: some View {
-        ZStack {
-            messagesView
-            VStack(spacing: 0) {
-                Spacer()
-                chatBottomBar
-                    .background(Color.white.ignoresSafeArea())
+            ZStack {
+                messagesView
+                VStack(spacing: 0) {
+                    Spacer()
+                    chatBottomBar
+                        .background(Color.white.ignoresSafeArea())
+                }
             }
-        }
-        .navigationTitle("Username")
-        //.navigationTitle(chatUser?.email ?? "")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Username")
+            //.navigationTitle(chatUser?.email ?? "")
+                .navigationBarTitleDisplayMode(.inline)
     }
-
+    
     private var messagesView: some View {
         ScrollView {
             ForEach(0..<20) { num in
@@ -54,9 +54,6 @@ struct MessageChatView: View {
 
     private var chatBottomBar: some View {
         HStack(spacing: 16) {
-            Image(systemName: "photo.on.rectangle")
-                .font(.system(size: 24))
-                .foregroundColor(Color(.darkGray))
             ZStack {
                 DescriptionPlaceholder()
                 TextEditor(text: $chatText)
@@ -96,6 +93,7 @@ private struct DescriptionPlaceholder: View {
 
 struct MessageChatView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageChatView()
+        NavigationView {
+            MessageChatView()
     }
 }
