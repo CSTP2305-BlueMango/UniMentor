@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 
 ///reference: https://www.letsbuildthatapp.com/course_video?id=7135
 ///this tutorial shows how to install FirebaseAuth for login
