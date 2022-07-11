@@ -9,6 +9,9 @@ import SwiftUI
 
 /// profile of the user clicked from matched view
 struct MatchedProfileView: View {
+    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
+    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
+    @Environment(\.presentationMode) var presentation
     /// if pop up showing
     @State private var showPopUp: Bool = false
     /// state to navigate to message view
@@ -31,6 +34,19 @@ struct MatchedProfileView: View {
                     .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                     .padding(.top, UIScreen.main.bounds.height * 0.11)
+                    // Back Button
+                    HStack {
+                        Button(action: {
+                            presentation.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.black)
+                                .font(.system(size: UIScreen.main.bounds.width * 0.06))
+                        }
+                        Spacer()
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                    .padding(.top, UIScreen.main.bounds.height * 0.01)
                     VStack {
                         // Profile
                         // TODO: actual info
@@ -84,7 +100,8 @@ struct MatchedProfileView: View {
                 buttonText: "Unmatch"
             )
         }
-        .frame(height: UIScreen.main.bounds.height * 0.9)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         //: ZSTACK
     }
 }

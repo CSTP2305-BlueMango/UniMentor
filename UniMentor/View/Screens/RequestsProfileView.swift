@@ -18,7 +18,7 @@ struct RequestsProfileView: View {
     @State private var showMatchPopup: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack {
                 ScrollView {
                     ZStack(alignment: .top) {
@@ -27,6 +27,19 @@ struct RequestsProfileView: View {
                         .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
+                        // Back Button
+                        HStack {
+                            Button(action: {
+                                presentation.wrappedValue.dismiss()
+                            }) {
+                                Image(systemName: "chevron.backward")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: UIScreen.main.bounds.width * 0.06))
+                            }
+                            Spacer()
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9)
+                        .padding(.top, UIScreen.main.bounds.height * 0.01)
                         // MAIN
                         VStack {
                             // Profile
@@ -74,7 +87,6 @@ struct RequestsProfileView: View {
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                 }
             }
-            .frame(height: UIScreen.main.bounds.height * 0.9)
             //: VSTACK
             // POPUP
             // matched popup
@@ -97,8 +109,9 @@ struct RequestsProfileView: View {
                 buttonText: "Decline"
             )
             //: POPUP
-            
         }//: ZSTACK
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
