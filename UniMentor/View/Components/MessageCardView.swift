@@ -21,6 +21,8 @@ struct MessageCardView: View {
     @State var name: String
     /// latest message
     @State var latestMsg: String
+    /// latest message date
+    @State var latestDate: String = "2020-12-24"
     
     var body: some View {
         // MAIN
@@ -28,7 +30,6 @@ struct MessageCardView: View {
             // edit active
             if isEditClicked {
                 Button(action: {
-                    
                     isOn1 = !isOn1
                 }) {
                     HStack {
@@ -51,10 +52,15 @@ struct MessageCardView: View {
                             .shadow(radius: 3)
                             // CENTER - Information
                             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                                Text(name)
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .lineLimit(1)
-                                    .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
+                                HStack {
+                                    Text(name)
+                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                                        .lineLimit(1)
+                                        .frame(width: UIScreen.main.bounds.width * 0.45, alignment: .leading)
+                                    Spacer()
+                                    Text(latestDate)
+                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
+                                }.frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
                                 Text(latestMsg)
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                                     .foregroundColor(Color.gray)
@@ -89,10 +95,15 @@ struct MessageCardView: View {
                     .shadow(radius: 3)
                     // CENTER - Information
                     VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                        Text(name)
-                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                            .lineLimit(1)
-                            .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
+                        HStack {
+                            Text(name)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                                .lineLimit(1)
+                                .frame(width: UIScreen.main.bounds.width * 0.45, alignment: .leading)
+                            Spacer()
+                            Text(latestDate)
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
+                        }.frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
                         Text(latestMsg)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                             .foregroundColor(Color.gray)

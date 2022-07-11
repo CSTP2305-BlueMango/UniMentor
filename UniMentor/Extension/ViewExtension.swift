@@ -10,8 +10,8 @@ import SwiftUI
 extension View {
     func hideNavigationBar() -> some View {
         self
-            .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
     
     func navigationBar(backButton: Bool, barHidden: Bool, title: String = " ") -> some View {

@@ -115,7 +115,8 @@ struct CardView: View {
                 .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                 .buttonStyle(.bordered)
-                .clipShape(RoundedRectangle(cornerRadius: 16)).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
                 //: CARD
             }
         } //: MAIN
