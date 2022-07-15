@@ -20,6 +20,7 @@ class SignupViewModel: ObservableObject {
     func signUp() {
         
         self.resetError()
+        self.storeUserInfo()
         
         do {
             try signupValidation(self.email, self.password, self.confirmPassword)
@@ -52,4 +53,24 @@ class SignupViewModel: ObservableObject {
             print(error?.localizedDescription ?? "")
         }
     }
+    
+    //STILL NEED TO STORE IMAGE
+    //for storing information into Firestore database
+    func storeUserInfo() {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            return }
+
+        //create the dictionary, this is what will be stored in the database
+        let userInfo = [FirebaseConstants.uid: uid, FirebaseConstants.email: self.email, FirebaseConstants.name: self.name, FirebaseConstants.password: self.password]
+
+        //this makes the collection of users into the firestore database
+        FirebaseManager.shared.firestore.collection("signUpUsers")
+            .document(uid).setData(userInfo) { error in
+                if let error = error {
+                    print(error)
+                    //self.loginStatusMessage = "\(err)"
+                    return
+                }
+            }
+        }
 }

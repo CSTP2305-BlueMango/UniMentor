@@ -28,6 +28,7 @@ struct MessageChatView: View {
                 .navigationBarTitleDisplayMode(.inline)
     }
     
+    //this the bubbles between users
     private var messagesView: some View {
         ScrollView {
             ForEach(0..<20) { num in

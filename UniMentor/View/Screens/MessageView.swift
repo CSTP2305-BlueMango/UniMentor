@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//this is the list of users with messages
 /// display list of users who current user got message from
 struct MessageView: View {
     /// if popup showing
@@ -16,7 +17,7 @@ struct MessageView: View {
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
-    @ObservedObject var vm = MessageViewModel()
+    @ObservedObject private  var vm = MessageViewModel()
     
     var body: some View {
         ZStack {
@@ -41,6 +42,11 @@ struct MessageView: View {
                                 isEditClicked = !isEditClicked
                             }).foregroundColor(.black)
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
+                        
+                        VStack {
+                            Text("current user id: \(vm.errorMessage)")
+                        }
+                        
                     } //: HEADER
                     .frame(height: UIScreen.main.bounds.height * 0.02)
                     // MAIN
@@ -61,7 +67,7 @@ struct MessageView: View {
                                             isEditClicked: isEditClicked,
                                             userID: "1",
                                             image: "user_image",
-                                            name: "First Lastname",
+                                            name: "name",
                                             latestMsg: "Hello, how are you?"
                                         )
                                     }
