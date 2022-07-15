@@ -19,7 +19,7 @@ class MessageChatViewModel {
     
     //this is to fetch the user currently logged in
     private func fetchCurrentUser() {
-        self.errorMessage = "fetching data"
+        //self.errorMessage = "fetching data"
         
         //pull the current uid from the database
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
@@ -28,7 +28,8 @@ class MessageChatViewModel {
         
         //fetch the current user logged in
         //self.errorMessage = "\(uid)"
-        FirebaseManager.shared.firestore.collection("signUpUsers")
+        FirebaseManager.shared.firestore
+            .collection("signUpUsers")
             .document(uid)
             .getDocument { snapshot, error in
             if let error = error {

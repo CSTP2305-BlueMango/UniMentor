@@ -18,7 +18,8 @@ class MessageViewModel: ObservableObject {
     
     //this fetch all users from the collection called signUpUsers
     func fetchAllUsers() {
-        FirebaseManager.shared.firestore.collection("signUpUsers")
+        FirebaseManager.shared.firestore
+            .collection("signUpUsers")
             .getDocuments{ documentsSnapshot, error in
                 if let error = error {
                     print("failed to fetch users: \(error)")

@@ -58,13 +58,11 @@ struct MessageView: View {
                                 ForEach(vm.signUpUsers) { signUpUser in
                                     NavigationLink(destination: MessageChatView()) {
                                         // TODO: actual info
-                                        
-                                        
                                         MessageCardView(
                                             isEditClicked: isEditClicked,
                                             userID: "1",
                                             image: "user_image",
-                                            name: "name",
+                                            name: signUpUser.name,
                                             latestMsg: "Hello, how are you?"
                                         )
                                     }
