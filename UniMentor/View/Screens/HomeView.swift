@@ -16,8 +16,11 @@ struct HomeView: View {
     @ObservedObject var allUsersVM = AllUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
-    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-    
+//    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+//
+//    init() {
+//        testUser = userVM.user ?? User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+//    }
     
     var body: some View {
         NavigationView {
@@ -50,14 +53,14 @@ struct HomeView: View {
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.05)
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.05).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                    Text("\(testUser.name)")
+                    Text("\(userVM.user?.recievedRequests.count ?? 33)")
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                             ForEach(allUsersVM.users) { user in
-                                if !testUser.matchedUsers.contains(user.id) &&
-                                    !testUser.sentRequests.contains(user.id) &&
-                                    !testUser.recievedRequests.contains(user.id){
+                                if !userVM.matchedUsers.contains(user.id) &&
+                                    !userVM.sentRequests.contains(user.id) &&
+                                    !userVM.recievedRequests.contains(user.id){
                                     NavigationLink(destination: HomeProfileView(user: user)) {
                                         // TODO: actual info
                                         HomeCardView(
@@ -96,6 +99,9 @@ struct HomeView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+//        .task {
+//            testUser = userVM.user ?? User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+//        }
     }
 }
 

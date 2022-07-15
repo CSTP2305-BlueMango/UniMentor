@@ -17,7 +17,8 @@ struct UserProfile: View {
     
     @ObservedObject var userVM = UserViewModel()
     
-    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    
     
     var body: some View {
         NavigationView {
@@ -47,9 +48,11 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
+                                Text("\(userVM.user?.name ?? "no")")
                                 ProfileView(user: testUser)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
+                            
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed
                             // Setting Button
                             ZStack {
@@ -105,6 +108,9 @@ struct UserProfile: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+//        .task {
+//            testUser = userVM.user ?? User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+//        }
     }
 }
 

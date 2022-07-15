@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestore
+import SwiftUI
 
 class UserViewModel: ObservableObject {
     @Published var errorMessage = ""
@@ -26,14 +28,14 @@ class UserViewModel: ObservableObject {
     
     private func fetchCurrentUser() {
         
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+        guard let uid = Auth.auth().currentUser?.uid else {
             self.errorMessage = "Could not find firebase uid"
-            print("Could not find firebase uid")
             return
         }
         
-        FirebaseManager.shared.firestore.collection("users")
-            .document(uid).addSnapshotListener { snapshot, error in
+        
+        Firestore.firestore().collection("users")
+            .document(uid).getDocument { snapshot, error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
                     print("Fail to fetch current user: ", error)
@@ -45,8 +47,9 @@ class UserViewModel: ObservableObject {
                     return
                 }
                 
-                
                 self.user = newUser
+                
+                print("\(self.user?.recievedRequests.count)")
                 
                 self.matchedUsers = self.user?.matchedUsers ?? []
                 self.sentRequests = self.user?.sentRequests ?? []
@@ -54,7 +57,7 @@ class UserViewModel: ObservableObject {
                 self.messageUsers = self.user?.messageUsers ?? []
                 
                 for id in self.matchedUsers {
-                    FirebaseManager.shared.firestore
+                    Firestore.firestore()
                         .collection("users")
                         .document(id)
                         .getDocument { snapshot, error in
@@ -74,7 +77,7 @@ class UserViewModel: ObservableObject {
                 }
                 
                 for id in self.sentRequests {
-                    FirebaseManager.shared.firestore
+                    Firestore.firestore()
                         .collection("users")
                         .document(id)
                         .getDocument { snapshot, error in
@@ -94,7 +97,7 @@ class UserViewModel: ObservableObject {
                 }
                 
                 for id in self.recievedRequests {
-                    FirebaseManager.shared.firestore
+                    Firestore.firestore()
                         .collection("users")
                         .document(id)
                         .getDocument { snapshot, error in
@@ -113,7 +116,7 @@ class UserViewModel: ObservableObject {
                 }
                 
                 for id in self.messageUsers {
-                    FirebaseManager.shared.firestore
+                    Firestore.firestore()
                         .collection("users")
                         .document(id)
                         .getDocument { snapshot, error in
@@ -134,7 +137,7 @@ class UserViewModel: ObservableObject {
     }
     
     func saveUser(createdUser: User) {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+        guard let uid = Auth.auth().currentUser?.uid else {
             print("fail")
             return
         }
@@ -154,7 +157,7 @@ class UserViewModel: ObservableObject {
             "messageUsers" : []
         ] as [String : Any]
         
-        FirebaseManager.shared.firestore.collection("users")
+        Firestore.firestore().collection("users")
             .document(uid).setData(newUser) { err in
                 if let err = err {
                     print(err)
@@ -165,13 +168,14 @@ class UserViewModel: ObservableObject {
     }
     
     func updateUser(updateUserData: User) {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+        guard let uid = Auth.auth().currentUser?.uid else {
             print("fail")
             return
         }
         
-        FirebaseManager.shared.firestore.collection("users")
+        Firestore.firestore().collection("users")
             .document(uid).updateData([
+                "name": updateUserData.name,
                 "image": updateUserData.image,
                 "major": updateUserData.major,
                 "school": updateUserData.school,
@@ -181,21 +185,21 @@ class UserViewModel: ObservableObject {
     }
 
     func deleteUser() {
-        guard let user = FirebaseManager.shared.auth.currentUser else {
+        guard let user = Auth.auth().currentUser else {
             print("fail")
             return
         }
         
 
         
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+        guard let uid = Auth.auth().currentUser?.uid else {
             // TODO: error
             print("fail")
             return
         }
         
         
-        FirebaseManager.shared.firestore.collection("users")
+        Firestore.firestore().collection("users")
             .document(uid).delete() { error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
@@ -207,21 +211,21 @@ class UserViewModel: ObservableObject {
         // print("\()")
         for u in matchedUsers {
             print("\(u)")
-            let userStore = FirebaseManager.shared.firestore.collection("users").document(u)
+            let userStore = Firestore.firestore().collection("users").document(u)
             userStore.updateData([
                 "matchedUsers": FieldValue.arrayRemove([uid])
             ])
         }
 
         for u in sentRequests {
-            let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(u)
+            let receiveUserStore = Firestore.firestore().collection("users").document(u)
             receiveUserStore.updateData([
                 "recievedRequests": FieldValue.arrayRemove([uid])
             ])
         }
         
         for u in messageUsers {
-            let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(u)
+            let receiveUserStore = Firestore.firestore().collection("users").document(u)
             receiveUserStore.updateData([
                 "messageUsers": FieldValue.arrayRemove([uid])
             ])

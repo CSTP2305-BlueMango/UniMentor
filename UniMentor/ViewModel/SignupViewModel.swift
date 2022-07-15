@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import FirebaseAuth
+import FirebaseAuth
 
 class SignupViewModel: ObservableObject {
     @Published var email: String = ""
@@ -25,7 +25,7 @@ class SignupViewModel: ObservableObject {
         
         do {
             try signupValidation(self.email, self.password, self.confirmPassword)
-            FirebaseManager.shared.auth.createUser(withEmail: self.email, password: self.password) {
+            Auth.auth().createUser(withEmail: self.email, password: self.password) {
                 result, error in
                 guard result !== nil, error == nil else {
                     print(error?.localizedDescription ?? "")
@@ -50,7 +50,7 @@ class SignupViewModel: ObservableObject {
     }
     
     func sendEmailVerification() {
-        FirebaseManager.shared.auth.currentUser?.sendEmailVerification { error in
+        Auth.auth().currentUser?.sendEmailVerification { error in
             print(error?.localizedDescription ?? "")
         }
     }

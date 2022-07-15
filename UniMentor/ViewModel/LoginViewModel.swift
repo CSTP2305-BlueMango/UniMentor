@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import FirebaseAuth
+import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
     @Published var email: String = ""
@@ -24,7 +24,7 @@ class LoginViewModel: ObservableObject {
         do {
             try loginValidation(email, password)
             
-            FirebaseManager.shared.auth.signIn(withEmail: self.email,
+            Auth.auth().signIn(withEmail: self.email,
                                password: self.password) {
                 [weak self] result, error in
                 guard result != nil, error == nil else {
@@ -40,7 +40,7 @@ class LoginViewModel: ObservableObject {
                     return
                 }
                 
-                guard FirebaseManager.shared.auth.currentUser!.isEmailVerified else {
+                guard Auth.auth().currentUser!.isEmailVerified else {
                     self?.emailError = "email is not verify"
                     return
                 }

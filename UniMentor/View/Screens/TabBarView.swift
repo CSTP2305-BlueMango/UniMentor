@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 /// tab bar
 struct TabBarView: View {
@@ -42,23 +43,23 @@ struct TabBarView: View {
             VStack {
                 // display home view
                 if isHomeView {
-                    HomeView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                    HomeView()
                 }
                 // display request view
                 if isRequestView {
-                    RequestsView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                    RequestsView()
                 }
                 // display matched view
                 if isMatchView {
-                    MatchedView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                    MatchedView()
                 }
                 // display message view
                 if isMessageView {
-                    MessageView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                    MessageView()
                 }
                 // display profile view
                 if isProfileView {
-                    UserProfile(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                    UserProfile()
                 }
             }
             // TABBAR
@@ -187,9 +188,6 @@ struct TabBarView: View {
             .frame(width: UIScreen.main.bounds.width * 1)
             .background(Color("TabBarColor"))
         } //: BODY
-        .onAppear {
-            testUser = userVM.user ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-        }
     }
 }
 
