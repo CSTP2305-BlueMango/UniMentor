@@ -57,8 +57,10 @@ struct DatePickerView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.05)
 //             DatePicker("", selection: $date, displayedComponents: .date)
 //                 .labelsHidden()
-                Text(month).frame(width: UIScreen.main.bounds.width * 0.1)
-                Text(year)
+                HStack {
+                    Text(month).frame(width: UIScreen.main.bounds.width * 0.1)
+                    Text(year).frame(width: UIScreen.main.bounds.width * 0.1)
+                }.frame(width: UIScreen.main.bounds.width * 0.2)
                 Spacer()
                 Menu {
                     ForEach(months.indices) { monthIndex in
@@ -68,11 +70,13 @@ struct DatePickerView: View {
                             Text("\(self.monthString(at: monthIndex))")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                         }
-                            
                     }
                 } label: {
                     Text("Month")
                         .foregroundColor(.black)
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                        .cornerRadius(UIScreen.main.bounds.width * 0.02)
                 }
                 
                 Menu {
@@ -83,14 +87,15 @@ struct DatePickerView: View {
                             Text("\(self.yearString(at: yearIndex))")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
                         }
-                            
                     }
                 } label: {
                     Text("Year")
                         .foregroundColor(.black)
+                        .padding(UIScreen.main.bounds.width * 0.02)
+                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                        .cornerRadius(UIScreen.main.bounds.width * 0.02)
                 }
                 .padding(.trailing, UIScreen.main.bounds.width * 0.01)
-
             }
             .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .leading)
             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))

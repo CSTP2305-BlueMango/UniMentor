@@ -16,7 +16,6 @@ struct ProfileConfirmView: View {
     /// confirm school
     @State var school: String
     /// confirm start date
-    // TODO: need to be fixed
     @State var startDate: String
     /// confirm information
     @State var info: String

@@ -15,7 +15,6 @@ struct ProfileInfoView: View {
     /// profile school
     @State var school: String = ""
     /// profile start date
-    @State var startDate: String = ""
     @State var month: String = ""
     @State var year: String = ""
     /// profile information
@@ -51,7 +50,6 @@ struct ProfileInfoView: View {
                     name: name,
                     major: major,
                     school: school,
-                    // TODO: Should be fixed
                     startDate: "\(month) \(year)",
                     info: info),
                 isActive: $isProfileConfirmActive
@@ -176,6 +174,9 @@ struct ProfileInfoView: View {
                     VStack() {
                         // Next button
                         ButtonView_2(action: {
+                            // TODO: validation
+                            
+                            
                             isProfileConfirmActive = true
                         },
                              label: "Next",
