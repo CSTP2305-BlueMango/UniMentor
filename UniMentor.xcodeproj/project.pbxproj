@@ -35,6 +35,7 @@
 		CD91B0942880D4840005D1CA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CD91B0932880D4840005D1CA /* FirebaseFirestoreSwift */; };
 		CD91B0962880D4840005D1CA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CD91B0952880D4840005D1CA /* FirebaseStorage */; };
 		CD91B0982880D6190005D1CA /* LinkUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */; };
+		CD91B09B288115060005D1CA /* MonthYearWheelPicker in Frameworks */ = {isa = PBXBuildFile; productRef = CD91B09A288115060005D1CA /* MonthYearWheelPicker */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
 		CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5D284C84FE0045E1E4 /* CardView.swift */; };
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
@@ -130,6 +131,7 @@
 				CD91B0902880D4840005D1CA /* FirebaseAuth in Frameworks */,
 				CD91B0962880D4840005D1CA /* FirebaseStorage in Frameworks */,
 				CD91B0922880D4840005D1CA /* FirebaseFirestore in Frameworks */,
+				CD91B09B288115060005D1CA /* MonthYearWheelPicker in Frameworks */,
 				CD91B0942880D4840005D1CA /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,9 +231,9 @@
 				CDD0FF5D284C84FE0045E1E4 /* CardView.swift */,
 				34DCD16A2853269C00BE60AF /* ImagePicker.swift */,
 				CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */,
-				CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */,
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
+				CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */,
 				E4A474BB285D914E006959D9 /* DatePickerView.swift */,
 				E4A474BD285D9177006959D9 /* PasswordView.swift */,
 				CD37407F2863DAF7005BC18D /* InfoPopupView.swift */,
@@ -330,6 +332,7 @@
 				CD91B0912880D4840005D1CA /* FirebaseFirestore */,
 				CD91B0932880D4840005D1CA /* FirebaseFirestoreSwift */,
 				CD91B0952880D4840005D1CA /* FirebaseStorage */,
+				CD91B09A288115060005D1CA /* MonthYearWheelPicker */,
 			);
 			productName = UniMentor;
 			productReference = E4F30C242837535C006F424E /* UniMentor.app */;
@@ -361,6 +364,7 @@
 			mainGroup = E4F30C1B2837535C006F424E;
 			packageReferences = (
 				CD91B08E2880D4840005D1CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CD91B099288115060005D1CA /* XCRemoteSwiftPackageReference "MonthYearWheelPicker" */,
 			);
 			productRefGroup = E4F30C252837535C006F424E /* Products */;
 			projectDirPath = "";
@@ -648,6 +652,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CD91B099288115060005D1CA /* XCRemoteSwiftPackageReference "MonthYearWheelPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bendodson/MonthYearWheelPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -670,6 +682,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CD91B08E2880D4840005D1CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		CD91B09A288115060005D1CA /* MonthYearWheelPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD91B099288115060005D1CA /* XCRemoteSwiftPackageReference "MonthYearWheelPicker" */;
+			productName = MonthYearWheelPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,7 +15,9 @@ struct ProfileInfoView: View {
     /// profile school
     @State var school: String = ""
     /// profile start date
-    @State var startDate: Date = Date.now
+    @State var startDate: String = ""
+    @State var month: String = ""
+    @State var year: String = ""
     /// profile information
     @State var info: String = ""
     
@@ -50,7 +52,7 @@ struct ProfileInfoView: View {
                     major: major,
                     school: school,
                     // TODO: Should be fixed
-                    startDate: "startDate",
+                    startDate: "\(month) \(year)",
                     info: info),
                 isActive: $isProfileConfirmActive
             ) {EmptyView()}
@@ -118,7 +120,7 @@ struct ProfileInfoView: View {
                             placeholder:"Computer Systems Technology",
                             icon: "book.fill",
                             title: "Major",
-                            errorMessage: Binding.constant(nil)
+                            errorMessage: $majorError
                         )
                         // SCHOOL INPUT
                         InputFieldView(
@@ -126,10 +128,10 @@ struct ProfileInfoView: View {
                             placeholder:"Vancouver Community College",
                             icon: "house.fill",
                             title: "School Name",
-                            errorMessage: Binding.constant(nil)
+                            errorMessage: $schoolError
                         )
                         // START DATE INPUT
-                        DatePickerView(placholder: "Start Date", date: $startDate)
+                        DatePickerView(placholder: "Start Date", month: $month, year: $year)
                         // INFORMATION INPUT
                         // MULTILINE INPUT FIELDS
                         // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
@@ -163,6 +165,7 @@ struct ProfileInfoView: View {
                             }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.9)
+                        .padding(.top, UIScreen.main.bounds.height * 0.005)
                         //: INFORMATION INPUT
                     }
                     .frame(height: UIScreen.main.bounds.height * 0.6)

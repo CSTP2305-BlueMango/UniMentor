@@ -15,8 +15,19 @@ struct UserProfileEditView: View {
     @State var school: String = ""
     /// user start date
     @State var startDate: Date = Date.now
+    @State var month: String = ""
+    @State var year: String = ""
     /// user information
     @State var info: String = ""
+    
+    /// profile major error message
+    @State var majorError: String? = ""
+    /// profile school error message
+    @State var schoolError: String? = ""
+    /// profile start date error message
+    @State var startDateError: String? = ""
+    /// profile information error message
+    @State var infoError: String? = ""
     
     /// for selecting an image
     @State private var image = UIImage()
@@ -116,7 +127,7 @@ struct UserProfileEditView: View {
                                 errorMessage: Binding.constant(nil)
                             )
                             // date input
-                            DatePickerView(placholder: "Start Date", date: $startDate)
+                            DatePickerView(placholder: "Start Date", month: $month, year: $year)
                             // information input
                             // MULTILINE INPUT FIELDS
                             // reference: https://stackoverflow.com/questions/62741851/how-to-add-placeholder-text-to-texteditor-in-swiftui
@@ -150,6 +161,7 @@ struct UserProfileEditView: View {
                                 }
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.9)
+                            .padding(.top, UIScreen.main.bounds.height * 0.005)
                             
                         } //: MAIN
                         .frame(height: UIScreen.main.bounds.height * 0.78)
