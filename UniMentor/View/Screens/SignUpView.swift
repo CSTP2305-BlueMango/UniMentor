@@ -34,7 +34,7 @@ struct SignUpView: View {
             
             // NAVIGATIONLINK
             NavigationLink(
-                destination: ProfileInfoView(),
+                destination: ProfileInfoView(name: signupVM.name),
                 isActive: $isProfileInfoActive
             ) {
                 EmptyView()

@@ -17,6 +17,10 @@ struct MatchedProfileView: View {
     /// state to navigate to message view
     @State var isSendMessageActive: Bool = false
     
+    @State var user: User
+    
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
     var body: some View {
         ZStack {
             //NAVIGATION LINK
@@ -49,18 +53,7 @@ struct MatchedProfileView: View {
                     .padding(.top, UIScreen.main.bounds.height * 0.01)
                     VStack {
                         // Profile
-                        // TODO: actual info
-                        ProfileView(
-                            image: "user_image",
-                            name: "First Lastname",
-                            major: "Computer Systems Technology",
-                            school: "Vancouver Community College",
-                            startDate: "September 2020",
-                            information: """
-                I guess we could discuss the implications of the phrase meant to be.
-
-                That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                """)
+                        ProfileView(user: user)
                         // Send message Button
                         VStack{
                             ButtonView_2(action: {
@@ -95,7 +88,8 @@ struct MatchedProfileView: View {
                 information: "Unmatch with First Lastname?",
                 warnMessage: "* Unmatching will delete messages",
                 buttonAction: {
-                    // TODO: unmatch
+                    // unmatch
+                    LinkUsersVM.unmatchUser(user: user)
                 },
                 buttonText: "Unmatch"
             )
@@ -108,6 +102,8 @@ struct MatchedProfileView: View {
 
 struct MatchedProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchedProfileView()
+        MatchedProfileView(
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+        )
     }
 }

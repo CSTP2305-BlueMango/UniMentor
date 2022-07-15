@@ -15,12 +15,20 @@ struct UserProfile: View {
     /// state for keeping track of if link to edit profile is active
     @State var isEditActive = false
     
+    @ObservedObject var userVM = UserViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
                 //NAVIGATION LINK
                 NavigationLink(
-                    destination: UserProfileEditView(major: "Computer"),
+                    destination: UserProfileEditView(
+                        major: userVM.user?.major ?? "",
+                        school: userVM.user?.school ?? "",
+                        // TODO: should be fixed
+                        startDate: Date.now,
+                        info: userVM.user?.intro ?? ""
+                    ),
                     isActive: $isEditActive
                 ) {EmptyView()}
                 //:NAVIGATION LINK
@@ -36,18 +44,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                // TODO: actual info
-                                ProfileView(
-                                    image: "user_image",
-                                    name: "First Lastname",
-                                    major: "Computer Systems Technology",
-                                    school: "Vancouver Community College",
-                                    startDate: "September 2020",
-                                    information: """
-                        I guess we could discuss the implications of the phrase meant to be.
-
-                        That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                        """)
+                                ProfileView(user: userVM.user ?? User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed

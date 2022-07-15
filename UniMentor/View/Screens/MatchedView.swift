@@ -16,6 +16,8 @@ struct MatchedView: View {
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
+    @ObservedObject var userVM = UserViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -52,16 +54,15 @@ struct MatchedView: View {
                                 VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                     
                                     // var isClicked: Bool = false
-                                    ForEach(0..<10, id: \.self) { num in
-                                        NavigationLink(destination: MatchedProfileView()) {
-                                            // TODO: actual user info
+                                    ForEach(userVM.matchedUsersModel) { user in
+                                        NavigationLink(destination: MatchedProfileView(user: user)) {
                                             CardView(
                                                 isEditClicked: isEditClicked,
-                                                userID: "1",
-                                                image: "user_image",
-                                                name: "First Lastname",
-                                                major: "Computer Systems Technology",
-                                                school: "Vancouver Community college")
+                                                userID: user.id,
+                                                image: user.image,
+                                                name: user.name,
+                                                major: user.major,
+                                                school: user.school)
                                         }
                                     }
                                 }

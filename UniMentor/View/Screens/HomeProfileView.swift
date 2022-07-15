@@ -13,6 +13,10 @@ struct HomeProfileView: View {
     //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
     
+    @State var user: User
+    
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
     var body: some View {
         ZStack(alignment: .top) {
             // BODY
@@ -39,23 +43,12 @@ struct HomeProfileView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.01)
                         VStack {
                             // profile
-                            // TODO: actual info
-                            ProfileView(
-                                image: "user_image",
-                                name: "First Lastname",
-                                major: "Computer Systems Technology",
-                                school: "Vancouver Community College",
-                                startDate: "September 2020",
-                                information: """
-                    I guess we could discuss the implications of the phrase meant to be.
-
-                    That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                    """)
+                            ProfileView(user: user)
                             // request button
                             VStack{
                                 ButtonView_2(action: {
-                                    // TODO: send match request
-                                    
+                                    // send match request
+                                    LinkUsersVM.requestUser(user: user)
                                     //pop child view to go back to root view
                                     presentation.wrappedValue.dismiss()
                                 },
@@ -79,6 +72,8 @@ struct HomeProfileView: View {
 
 struct HomeProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeProfileView()
+        HomeProfileView(
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+        )
     }
 }

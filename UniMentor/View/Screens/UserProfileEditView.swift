@@ -25,6 +25,8 @@ struct UserProfileEditView: View {
     //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
     
+    @ObservedObject var userVM = UserViewModel()
+    
     var body: some View {
         ZStack {
             // ScrollView
@@ -155,6 +157,20 @@ struct UserProfileEditView: View {
                         VStack() {
                             // Save button
                             ButtonView_2(action: {
+                                userVM.updateUser(updateUserData: User(
+                                    id: "",
+                                    name: "",
+                                    // TODO: should be fixed
+                                    image: "",
+                                    major: major,
+                                    school: school,
+                                    // TODO: should be fixed
+                                    startDate: "",
+                                    intro: info,
+                                    matchedUsers: [],
+                                    sentRequests: [],
+                                    recievedRequests: [],
+                                    messageUsers: []))
                             },
                                  label: "Save Changes",
                                  color: Color("ButtonColor"),

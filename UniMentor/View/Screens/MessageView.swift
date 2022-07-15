@@ -16,7 +16,8 @@ struct MessageView: View {
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
-    @ObservedObject var vm = MessageViewModel()
+    @ObservedObject var vm = AllUsersViewModel()
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         ZStack {
@@ -50,16 +51,13 @@ struct MessageView: View {
                             Text(vm.errorMessage)
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                ForEach(vm.users) { user in
+                                ForEach(userVM.messageUsersModel) { user in
                                     NavigationLink(destination: MessageChatView()) {
-                                        // TODO: actual info
-                                        
-                                        
                                         MessageCardView(
                                             isEditClicked: isEditClicked,
-                                            userID: "1",
-                                            image: "user_image",
-                                            name: "First Lastname",
+                                            userID: user.id,
+                                            image: user.image,
+                                            name: user.name,
                                             latestMsg: "Hello, how are you?"
                                         )
                                     }

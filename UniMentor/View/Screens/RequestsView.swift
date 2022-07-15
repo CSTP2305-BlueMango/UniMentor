@@ -12,6 +12,9 @@ struct RequestsView: View {
     /// if pop up showing
     @State private var showPopUp: Bool = false
     
+    @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,19 +36,19 @@ struct RequestsView: View {
                         // Card list
                         ScrollView {
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                ForEach(0..<10, id: \.self) { num in
-                                    NavigationLink(destination: RequestsProfileView()) {
-                                        // TODO: actual info
+                                ForEach(userVM.recievedRequestsModel) { user in
+                                    NavigationLink(destination: RequestsProfileView(user: user)) {
                                         ButtonCardView(
                                             action: {
                                                 // TODO: accept request
+                                                LinkUsersVM.matchUser(user: user)
                                                 showPopUp = true
                                             },
-                                            userID: "1",
-                                            image: "user_image",
-                                            name: "First Lastname",
-                                            major: "Computer Systems Technology",
-                                            school: "Vancouver Community college"
+                                            userID: user.id,
+                                            image: user.image,
+                                            name: user.name,
+                                            major: user.major,
+                                            school: user.school
                                         )
                                     }
                                 }

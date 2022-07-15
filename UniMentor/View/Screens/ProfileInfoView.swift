@@ -8,6 +8,8 @@ import SwiftUI
 
 /// set user profile information
 struct ProfileInfoView: View {
+    /// profile name
+    @State var name: String
     /// prorile major
     @State var major: String = ""
     /// profile school
@@ -43,7 +45,13 @@ struct ProfileInfoView: View {
             
             //NAVIGATIONLINK
             NavigationLink(
-                destination: ProfileConfirmView(name: "Test name", major: major, school: school, startDate: "September 2020", info: info),
+                destination: ProfileConfirmView(
+                    name: name,
+                    major: major,
+                    school: school,
+                    // TODO: Should be fixed
+                    startDate: "startDate",
+                    info: info),
                 isActive: $isProfileConfirmActive
             ) {EmptyView()}
             //:NAVIGATIONLINK
@@ -185,6 +193,8 @@ struct ProfileInfoView: View {
 
 struct ProfileInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileInfoView()
+        ProfileInfoView(
+            name: "test"
+        )
     }
 }

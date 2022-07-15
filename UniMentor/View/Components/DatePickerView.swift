@@ -18,7 +18,7 @@ struct DatePickerView: View {
                  .padding(.leading, UIScreen.main.bounds.width * 0.03)
                  .foregroundColor(Color("DarkColor"))
          }.frame(width: UIScreen.main.bounds.width * 0.34, height: UIScreen.main.bounds.height * 0.02, alignment: .leading)
-         HStack {
+            HStack(spacing: UIScreen.main.bounds.width * 0.05) {
              Image(systemName: "calendar")
                  .foregroundColor(
                      Color(
@@ -26,11 +26,13 @@ struct DatePickerView: View {
                          green: 0.835,
                          blue: 0.844))
                  .frame(width: UIScreen.main.bounds.width * 0.05)
-             Text(placholder)
-             Spacer()
+             // Text(placholder)
+             // Spacer()
              DatePicker("", selection: $date, displayedComponents: .date)
                  .labelsHidden()
-         }.font(
+         }
+         .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .leading)
+         .font(
              Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045)
          )
          .foregroundColor(

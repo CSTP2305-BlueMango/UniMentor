@@ -6,19 +6,36 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct ChatUser: Identifiable {
+// reference: https://peterfriese.dev/posts/swiftui-firebase-codable/
+struct User: Identifiable, Codable {
+    let id: String
+    let name: String
+    let image: String
+    let major: String
+    let school: String
+    let startDate: String
+    let intro: String
+
+    let matchedUsers: [String]
+    let sentRequests: [String]
+    let recievedRequests: [String]
+    let messageUsers: [String]
     
-    //when using Identifiable, something to identify the variable has to be used, eg UID
-    var id: String { uid }
-    
-    let uid, email, profileImageUrl: String
-    
-    //dictionary from ChatMessaging proj (MessagesListView)
-    init(data: [String: Any]) {
-        self.uid = data["uid"] as? String ?? ""
-        self.email = data["email"] as? String ?? ""
-        self.profileImageUrl = data["profileImageUrl"] as? String ?? ""
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case image
+        case major
+        case school
+        case startDate
+        case intro
+        case matchedUsers
+        case sentRequests
+        case recievedRequests
+        case messageUsers
     }
 }
+
 

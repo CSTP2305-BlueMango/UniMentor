@@ -13,6 +13,10 @@ struct HomeView: View {
     @State var searchInput: String = ""
     @EnvironmentObject var viewModel: AppViewModel
     
+    @ObservedObject var allUsersVM = AllUsersViewModel()
+    @ObservedObject var userVM = UserViewModel()
+    
+    
     var body: some View {
         NavigationView {
             // BODY
@@ -47,21 +51,21 @@ struct HomeView: View {
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                            ForEach(0..<2, id: \.self) { num in
-                                NavigationLink(destination: HomeProfileView()) {
-                                    // TODO: actual info
-                                    HomeCardView(
-                                        userID: "1",
-                                        image: "user_image",
-                                        name: "First Lastname",
-                                        major: "Computer Systems Technology",
-                                        school: "Vancouver Community college",
-                                        information: """
-    I guess we could discuss the implications of the phrase meant to be.
-
-    That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-    """
-                                    )
+                            ForEach(allUsersVM.users) { user in
+                                if !userVM.matchedUsers.contains(user.id) &&
+                                    !userVM.sentRequests.contains(user.id) &&
+                                    !userVM.recievedRequests.contains(user.id){
+                                    NavigationLink(destination: HomeProfileView(user: user)) {
+                                        // TODO: actual info
+                                        HomeCardView(
+                                            userID: user.id,
+                                            image: user.image,
+                                            name: user.name,
+                                            major: user.major,
+                                            school: user.school,
+                                            information: user.intro
+                                        )
+                                    }
                                 }
                             }
                         }

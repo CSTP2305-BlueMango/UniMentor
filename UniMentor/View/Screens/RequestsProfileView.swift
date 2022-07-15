@@ -17,6 +17,10 @@ struct RequestsProfileView: View {
     /// if matched pop up showing
     @State private var showMatchPopup: Bool = false
     
+    @State var user: User
+    
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -43,23 +47,12 @@ struct RequestsProfileView: View {
                         // MAIN
                         VStack {
                             // Profile
-                            // TODO: actual info
-                            ProfileView(
-                                image: "user_image",
-                                name: "First Lastname",
-                                major: "Computer Systems Technology",
-                                school: "Vancouver Community College",
-                                startDate: "September 2020",
-                                information: """
-                    I guess we could discuss the implications of the phrase meant to be.
-
-                    That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                    """)
+                            ProfileView(user: user)
                             // Accept Button
                             VStack {
                                 ButtonView_2(action: {
-                                    // TODO: accept request
-                                    
+                                    // accept request
+                                    LinkUsersVM.matchUser(user: user)
                                     
                                     showMatchPopup = true
                                 },
@@ -92,8 +85,8 @@ struct RequestsProfileView: View {
             // matched popup
             MatchedPopupView(
                 show: $showMatchPopup,
-                matchedUserName: "First Lastname",
-                matchedUserImage: "user_image",
+                matchedUserName: user.name,
+                matchedUserImage: user.image,
                 action: {
                     showMatchPopup = false
                     presentation.wrappedValue.dismiss()
@@ -104,7 +97,8 @@ struct RequestsProfileView: View {
                 show: $showDeclinePopUp,
                 information: "Decline request from First Lastname?",
                 buttonAction: {
-                    // TODO: decline request
+                    // decline request
+                    LinkUsersVM.declineUser(user: user)
                 },
                 buttonText: "Decline"
             )
@@ -117,6 +111,8 @@ struct RequestsProfileView: View {
 
 struct RequestsProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestsProfileView()
+        RequestsProfileView(
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+        )
     }
 }

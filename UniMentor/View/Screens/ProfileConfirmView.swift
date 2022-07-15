@@ -16,11 +16,14 @@ struct ProfileConfirmView: View {
     /// confirm school
     @State var school: String
     /// confirm start date
+    // TODO: need to be fixed
     @State var startDate: String
     /// confirm information
     @State var info: String
     
     @State var isFinished = false
+    
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         ZStack {
@@ -37,14 +40,8 @@ struct ProfileConfirmView: View {
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
-                            // TODO: actual info
-                            ProfileView(
-                                image: "user_image",
-                                name: name,
-                                major: major,
-                                school: school,
-                                startDate: startDate,
-                                information: info)
+                            // TODO: actual info Image
+                            ProfileView(user: User(id: "", name: self.name, image: "user_image", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
@@ -52,8 +49,22 @@ struct ProfileConfirmView: View {
                     VStack() {
                         // finish button
                         ButtonView_2(action: {
-                            // TODO: finish sign up and go to main page
+                            // save user infomation to database
+                            userVM.saveUser(createdUser: User(
+                                id: "",
+                                name: name,
+                                image: "user_image",
+                                major: major,
+                                school: school,
+                                startDate: startDate,
+                                intro: info,
+                                matchedUsers: [],
+                                sentRequests: [],
+                                recievedRequests: [],
+                                messageUsers: [])
+                            )
                             
+                            // TODO: finish sign up and go to main page
                             isFinished = true
                         },
                              label: "Get Started",
