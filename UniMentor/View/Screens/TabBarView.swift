@@ -59,7 +59,7 @@ struct TabBarView: View {
                 }
                 // display profile view
                 if isProfileView {
-                    UserProfile()
+                    UserProfile(testUser: userVM.user ?? User(id: "", name: "from TabBar", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
             }
             // TABBAR

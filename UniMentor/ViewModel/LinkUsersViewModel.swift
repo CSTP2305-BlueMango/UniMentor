@@ -77,11 +77,13 @@ class LinkUsersViewModel: ObservableObject {
         
         let userStore = Firestore.firestore().collection("users").document(uid)
         userStore.updateData([
-            "matchedUsers": FieldValue.arrayRemove([user.id])
+            "matchedUsers": FieldValue.arrayRemove([user.id]),
+            "messageUsers": FieldValue.arrayRemove([user.id])
         ])
         let receiveUserStore = Firestore.firestore().collection("users").document(user.id)
         receiveUserStore.updateData([
-            "matchedUsers": FieldValue.arrayRemove([uid])
+            "matchedUsers": FieldValue.arrayRemove([uid]),
+            "messageUsers": FieldValue.arrayRemove([uid])
         ])
     }
     

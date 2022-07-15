@@ -69,19 +69,6 @@ struct HomeView: View {
                             }
                         }
                         .padding(UIScreen.main.bounds.width * 0.02)
-                        ButtonView_2(
-                            action: {
-                                viewModel.signOut()
-                            },
-                            label: "Sign out",
-                            color: Color(
-                               red: 1,
-                                green: 1,
-                                blue: 1
-                            ),
-                            opacity: 0.0,
-                            isBorder: true
-                        )
                     } //: ScrollView
                 } //: MAIN
             }

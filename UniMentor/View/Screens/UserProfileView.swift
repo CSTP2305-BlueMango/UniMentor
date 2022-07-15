@@ -11,10 +11,15 @@ import SwiftUI
 struct UserProfile: View {
     /// if popup showing
     @State private var showPopUp: Bool = false
+    @State private var show: Bool = false
     
     /// state for keeping track of if link to edit profile is active
     @State var isEditActive = false
     
+    @State var shouldShowLogOutOptions: Bool = false
+    @State var wantToDeleteAccount: Bool = false
+    
+    @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject var userVM = UserViewModel()
     
     @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
@@ -48,7 +53,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                Text("\(userVM.user?.name ?? "no")")
+                                // Text("\(userVM.user?.school ?? "no")")
                                 ProfileView(user: testUser)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
@@ -65,9 +70,16 @@ struct UserProfile: View {
                                     }
                                     // log out button
                                     Button {
-                                        // TODO: log out feature
+                                        shouldShowLogOutOptions.toggle()
                                     } label: {
                                         Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
+                                    }
+                                    Button {
+                                        // TODO: delete account feature
+                                        wantToDeleteAccount = true
+                                        // userVM.deleteUser()
+                                    } label: {
+                                        Label("Delete account", systemImage: "person.crop.circle.badge.xmark")
                                     }
                                 } label: {
                                     Image(systemName: "gearshape")
@@ -104,6 +116,56 @@ struct UserProfile: View {
                 //: BODY
                 // POPUP
                 InfoPopupView(show: $showPopUp)
+                PopUpView(
+                    show: $wantToDeleteAccount,
+                    information: "Do you want to delete account?",
+                    warnMessage: "* all the information of the account will be remove completely",
+                    buttonAction: {
+                        userVM.deleteUser()
+                        wantToDeleteAccount = false
+                        show = true
+                    },
+                    buttonText: "Delete"
+                )
+                // Log out after delete account
+                if show {
+                    // background
+                    Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
+                    // Popup
+                    VStack(spacing: UIScreen.main.bounds.height * 0.03) {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.01) {
+                            // popup message
+                            Text("Log out")
+                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
+                                .multilineTextAlignment(.center)
+                        }
+                        HStack(spacing: UIScreen.main.bounds.width * 0.07) {
+                            // button
+                            Button(action: {
+                                viewModel.signOut()
+                            }) {
+                                Text("Finished Deleting account. Please Log out")
+                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                                    .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
+                                    .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.7)
+                    .padding(UIScreen.main.bounds.width * 0.07)
+                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
+                    //: Popup
+                }//: IF SHOW
+            }
+            .actionSheet(isPresented: $shouldShowLogOutOptions) {
+                .init(title: Text("Settings"), message: Text("Do you want to log out?"), buttons: [
+                    .destructive(Text("Log Out"), action: {
+                        viewModel.signOut()
+                    }),
+                        .cancel()
+                ])
             }
         }
         .navigationBarHidden(true)

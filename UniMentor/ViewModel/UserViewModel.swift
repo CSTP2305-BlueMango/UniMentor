@@ -49,7 +49,7 @@ class UserViewModel: ObservableObject {
                 
                 self.user = newUser
                 
-                print("\(self.user?.recievedRequests.count)")
+                // print("\(self.user?.recievedRequests.count)")
                 
                 self.matchedUsers = self.user?.matchedUsers ?? []
                 self.sentRequests = self.user?.sentRequests ?? []
@@ -175,7 +175,6 @@ class UserViewModel: ObservableObject {
         
         Firestore.firestore().collection("users")
             .document(uid).updateData([
-                "name": updateUserData.name,
                 "image": updateUserData.image,
                 "major": updateUserData.major,
                 "school": updateUserData.school,
@@ -189,8 +188,6 @@ class UserViewModel: ObservableObject {
             print("fail")
             return
         }
-        
-
         
         guard let uid = Auth.auth().currentUser?.uid else {
             // TODO: error
@@ -208,7 +205,6 @@ class UserViewModel: ObservableObject {
                 }
         }
         
-        // print("\()")
         for u in matchedUsers {
             print("\(u)")
             let userStore = Firestore.firestore().collection("users").document(u)
