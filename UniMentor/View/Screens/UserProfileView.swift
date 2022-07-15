@@ -17,18 +17,20 @@ struct UserProfile: View {
     
     @ObservedObject var userVM = UserViewModel()
     
+    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    
     var body: some View {
         NavigationView {
             ZStack {
                 //NAVIGATION LINK
                 NavigationLink(
                     destination: UserProfileEditView(
-                        major: userVM.user?.major ?? "",
-                        school: userVM.user?.school ?? "",
+                        major: testUser.major,
+                        school: testUser.school,
                         // TODO: should be fixed
-                        month: "\(separateDate(startDate: userVM.user?.startDate ?? "")[0])",
-                        year: "\(separateDate(startDate: userVM.user?.startDate ?? "")[1])",
-                        info: userVM.user?.intro ?? ""
+                        month: "\(separateDate(startDate: testUser.startDate)[0])",
+                        year: "\(separateDate(startDate: testUser.startDate)[1])",
+                        info: testUser.intro
                     ),
                     isActive: $isEditActive
                 ) {EmptyView()}
@@ -45,7 +47,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: userVM.user ?? User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                                ProfileView(user: testUser)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed
@@ -85,7 +87,7 @@ struct UserProfile: View {
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             Text("Matched students")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                            Text("\(userVM.matchedUsers.count)")
+                            Text("\(testUser.matchedUsers.count)")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         }
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
@@ -113,5 +115,7 @@ struct UserProfile_Previews: PreviewProvider {
 }
 
 func separateDate(startDate: String) -> [String] {
-    return startDate.components(separatedBy: " ")
+    let result = startDate.components(separatedBy: " ")
+    print("\(result)")
+    return result
 }

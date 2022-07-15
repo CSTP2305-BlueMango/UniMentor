@@ -31,6 +31,13 @@ struct ProfileConfirmView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
+            //NAVIGATION LINK
+            NavigationLink(
+                destination: LoginView(),
+                isActive: $isFinished
+            ) {EmptyView()}
+            //:NAVIGATION LINK
+            
             ScrollView {
                 // BODY
                 VStack(spacing: UIScreen.main.bounds.height * 0.05) {

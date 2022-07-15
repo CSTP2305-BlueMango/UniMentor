@@ -149,6 +149,7 @@ struct UserProfileEditView: View {
                                     sentRequests: [],
                                     recievedRequests: [],
                                     messageUsers: []))
+                                presentation.wrappedValue.dismiss()
                             },
                                  label: "Save Changes",
                                  color: Color("ButtonColor"),

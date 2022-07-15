@@ -16,6 +16,8 @@ class SignupViewModel: ObservableObject {
     @Published var emailError: String? = ""
     @Published var passwordError: String? = ""
     @Published var confirmError: String? = ""
+    
+    @Published var signUpFinished = false
 
     func signUp() {
         

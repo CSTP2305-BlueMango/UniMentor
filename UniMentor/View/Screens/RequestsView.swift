@@ -15,6 +15,8 @@ struct RequestsView: View {
     @ObservedObject var userVM = UserViewModel()
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    
     var body: some View {
         NavigationView {
             ZStack {

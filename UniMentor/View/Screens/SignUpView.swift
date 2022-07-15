@@ -117,11 +117,7 @@ struct SignUpView: View {
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",
-                         color: Color(
-                            red: 1,
-                             green: 1,
-                             blue: 1
-                         ),
+                         color: Color(red: 1, green: 1, blue: 1),
                          opacity: 0.0,
                          isBorder: true
                     )

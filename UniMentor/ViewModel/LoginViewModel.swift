@@ -45,6 +45,8 @@ class LoginViewModel: ObservableObject {
                     return
                 }
                 
+                print("Succressfully logged in as user: \(result?.user.uid ?? "")")
+                
                 DispatchQueue.main.async {
                     self?.isLoginSuccess = true
                     completion()

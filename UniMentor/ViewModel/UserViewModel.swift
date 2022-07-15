@@ -28,12 +28,12 @@ class UserViewModel: ObservableObject {
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             self.errorMessage = "Could not find firebase uid"
+            print("Could not find firebase uid")
             return
         }
         
-        
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).getDocument { snapshot, error in
+            .document(uid).addSnapshotListener { snapshot, error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
                     print("Fail to fetch current user: ", error)
@@ -44,6 +44,7 @@ class UserViewModel: ObservableObject {
                     self.errorMessage = "No data found"
                     return
                 }
+                
                 
                 self.user = newUser
                 

@@ -32,29 +32,33 @@ struct TabBarView: View {
     /// profile view button color
     @State var profileButtonColor: Color = Color("DarkColor")
     
+    @ObservedObject var userVM = UserViewModel()
+    
+    @State var testUser: User?
+    
     var body: some View {
         // BODY
         VStack(spacing: 0) {
             VStack {
                 // display home view
                 if isHomeView {
-                    HomeView()
+                    HomeView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
                 // display request view
                 if isRequestView {
-                    RequestsView()
+                    RequestsView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
                 // display matched view
                 if isMatchView {
-                    MatchedView()
+                    MatchedView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
                 // display message view
                 if isMessageView {
-                    MessageView()
+                    MessageView(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
                 // display profile view
                 if isProfileView {
-                    UserProfile()
+                    UserProfile(testUser: testUser ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                 }
             }
             // TABBAR
@@ -183,6 +187,9 @@ struct TabBarView: View {
             .frame(width: UIScreen.main.bounds.width * 1)
             .background(Color("TabBarColor"))
         } //: BODY
+        .onAppear {
+            testUser = userVM.user ?? User(id: "", name: "Hello User", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+        }
     }
 }
 
