@@ -26,7 +26,7 @@ struct MatchedProfileView: View {
         ZStack {
             //NAVIGATION LINK
             NavigationLink(
-                destination: MessageChatView(),
+                destination: MessageChatView(user: user),
                 isActive: $isSendMessageActive
             ) {EmptyView()}
             //:NAVIGATION LINK

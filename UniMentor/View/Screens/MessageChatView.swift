@@ -10,7 +10,7 @@ import SwiftUI
 /// display messages between users
 struct MessageChatView: View {
 
-    //let chatUser: ChatUser?
+    @State var user: User?
 
     @State var chatText = ""
 
@@ -23,7 +23,7 @@ struct MessageChatView: View {
                         .background(Color.white.ignoresSafeArea())
                 }
             }
-            .navigationTitle("Username")
+            .navigationTitle("Username: \(user?.name ?? "not")")
             //.navigationTitle(chatUser?.email ?? "")
                 .navigationBarTitleDisplayMode(.inline)
     }

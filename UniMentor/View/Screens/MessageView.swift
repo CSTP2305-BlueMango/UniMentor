@@ -54,7 +54,7 @@ struct MessageView: View {
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                 ForEach(userVM.messageUsersModel) { user in
-                                    NavigationLink(destination: MessageChatView()) {
+                                    NavigationLink(destination: MessageChatView(user: user)) {
                                         MessageCardView(
                                             isEditClicked: isEditClicked,
                                             userID: user.id,
