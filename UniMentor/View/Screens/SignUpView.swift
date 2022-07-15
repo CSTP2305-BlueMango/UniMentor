@@ -91,6 +91,8 @@ struct SignUpView: View {
                     // BUTTON - SIGNUP
                     ButtonView_2(action: {
                         handleSignup()
+                        
+                        isProfileInfoActive = true
                     },
                          label: "Sign Up",
                          color: Color("TabBarColor"),

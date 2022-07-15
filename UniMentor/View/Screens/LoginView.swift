@@ -97,7 +97,8 @@ struct LoginView: View {
                         opacity: 0.0,
                         isBorder: true
                     )
-                }//:FOOTER
+                }
+                //:FOOTER
             }
             .frame(height: UIScreen.main.bounds.height * 0.85)
             //:BODY

@@ -73,7 +73,7 @@ struct HomeProfileView: View {
 struct HomeProfileView_Previews: PreviewProvider {
     static var previews: some View {
         HomeProfileView(
-            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
         )
     }
 }

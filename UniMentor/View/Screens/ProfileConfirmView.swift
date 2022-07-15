@@ -11,6 +11,8 @@ import SwiftUI
 struct ProfileConfirmView: View {
     /// confirm name
     @State var name: String
+    /// confirm image
+    @State var image: String
     /// confirm major
     @State var major: String
     /// confirm school
@@ -40,7 +42,7 @@ struct ProfileConfirmView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
                             // TODO: actual info Image
-                            ProfileView(user: User(id: "", name: self.name, image: "user_image", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                            ProfileView(user: User(id: "", name: self.name, image: self.image, major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
@@ -52,7 +54,7 @@ struct ProfileConfirmView: View {
                             userVM.saveUser(createdUser: User(
                                 id: "",
                                 name: name,
-                                image: "user_image",
+                                image: image,
                                 major: major,
                                 school: school,
                                 startDate: startDate,
@@ -85,6 +87,7 @@ struct ProfileConfirmView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileConfirmView(
             name: "First Lastname",
+            image: "user_image",
             major: "Computer Systems Technology",
             school: "Vancouver Community College",
             startDate: "September 2020",

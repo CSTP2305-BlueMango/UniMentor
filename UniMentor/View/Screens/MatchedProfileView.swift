@@ -20,6 +20,7 @@ struct MatchedProfileView: View {
     @State var user: User
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         ZStack {
@@ -57,6 +58,8 @@ struct MatchedProfileView: View {
                         // Send message Button
                         VStack{
                             ButtonView_2(action: {
+                                LinkUsersVM.messageUser(user: user, matchedUserList: userVM.matchedUsers)
+                                // TODO: go to message
                                 isSendMessageActive = true
                             },
                                  label: "Send Message",
@@ -90,6 +93,8 @@ struct MatchedProfileView: View {
                 buttonAction: {
                     // unmatch
                     LinkUsersVM.unmatchUser(user: user)
+                    showPopUp = false
+                    presentation.wrappedValue.dismiss()
                 },
                 buttonText: "Unmatch"
             )
@@ -103,7 +108,7 @@ struct MatchedProfileView: View {
 struct MatchedProfileView_Previews: PreviewProvider {
     static var previews: some View {
         MatchedProfileView(
-            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
         )
     }
 }

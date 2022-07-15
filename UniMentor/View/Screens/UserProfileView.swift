@@ -26,7 +26,8 @@ struct UserProfile: View {
                         major: userVM.user?.major ?? "",
                         school: userVM.user?.school ?? "",
                         // TODO: should be fixed
-                        startDate: Date.now,
+                        month: "\(separateDate(startDate: userVM.user?.startDate ?? "")[0])",
+                        year: "\(separateDate(startDate: userVM.user?.startDate ?? "")[1])",
                         info: userVM.user?.intro ?? ""
                     ),
                     isActive: $isEditActive
@@ -44,7 +45,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: userVM.user ?? User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                                ProfileView(user: userVM.user ?? User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed
@@ -84,7 +85,7 @@ struct UserProfile: View {
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             Text("Matched students")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                            Text("\(10)")
+                            Text("\(userVM.matchedUsers.count)")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         }
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
@@ -109,4 +110,8 @@ struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
         UserProfile()
     }
+}
+
+func separateDate(startDate: String) -> [String] {
+    return startDate.components(separatedBy: " ")
 }

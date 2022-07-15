@@ -36,6 +36,7 @@
 		CD91B0962880D4840005D1CA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CD91B0952880D4840005D1CA /* FirebaseStorage */; };
 		CD91B0982880D6190005D1CA /* LinkUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */; };
 		CD91B09B288115060005D1CA /* MonthYearWheelPicker in Frameworks */ = {isa = PBXBuildFile; productRef = CD91B09A288115060005D1CA /* MonthYearWheelPicker */; };
+		CD91B09F28814D9C0005D1CA /* MultiLineInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91B09E28814D9C0005D1CA /* MultiLineInputView.swift */; };
 		CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */; };
 		CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5D284C84FE0045E1E4 /* CardView.swift */; };
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
@@ -91,6 +92,7 @@
 		CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		CD91B08C2880D2350005D1CA /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkUsersViewModel.swift; sourceTree = "<group>"; };
+		CD91B09E28814D9C0005D1CA /* MultiLineInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInputView.swift; sourceTree = "<group>"; };
 		CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCardView.swift; sourceTree = "<group>"; };
 		CDD0FF5D284C84FE0045E1E4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				CD3740812863E344005BC18D /* PopUpView.swift */,
 				CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */,
 				CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */,
+				CD91B09E28814D9C0005D1CA /* MultiLineInputView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */,
 				CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
+				CD91B09F28814D9C0005D1CA /* MultiLineInputView.swift in Sources */,
 				CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */,
 				E46781B6286EA1CB00BDAFCA /* LoginViewModel.swift in Sources */,
 				CD91B08D2880D2350005D1CA /* UserViewModel.swift in Sources */,
