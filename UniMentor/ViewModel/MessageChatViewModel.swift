@@ -29,7 +29,7 @@ class MessageChatViewModel {
         //fetch the current user logged in
         //self.errorMessage = "\(uid)"
         FirebaseManager.shared.firestore
-            .collection("signUpUsers")
+            .collection("chatUsers")
             .document(uid)
             .getDocument { snapshot, error in
             if let error = error {

@@ -61,7 +61,7 @@ class SignupViewModel: ObservableObject {
             return }
 
         //create the dictionary, this is what will be stored in the database
-        let userInfo = [FirebaseConstants.uid: uid, FirebaseConstants.email: self.email, FirebaseConstants.name: self.name, FirebaseConstants.password: self.password]
+        let userInfo = ["uid": self.uid, "email": self.email, "name": self.name, "password": self.password]
 
         //this makes the collection of users into the firestore database
         FirebaseManager.shared.firestore.collection("signUpUsers")
