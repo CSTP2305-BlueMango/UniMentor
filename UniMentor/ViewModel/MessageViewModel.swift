@@ -9,7 +9,7 @@ import Foundation
 
 class MessageViewModel: ObservableObject {
     
-    @Published var users = [ChatUser]()
+    @Published var signUpUsers = [ChatUser]()
     @Published var errorMessage = ""
     
     init() {
@@ -30,10 +30,10 @@ class MessageViewModel: ObservableObject {
                     let data = snapshot.data()
                 
                     //this ensures that the logged in user is not in the list to message
-                    let user = ChatUser(data: data)
-                    if user.uid != FirebaseManager.shared.auth.currentUser?.uid {
-                        //adds new users from the database
-                        self.users.append(.init(data: data))
+                    let signUpUser = ChatUser(data: data)
+                    if signUpUser.uid != FirebaseManager.shared.auth.currentUser?.uid {
+                        //adds new users to the view from the database
+                        self.signUpUsers.append(.init(data: data))
                     }
                 })
             }
