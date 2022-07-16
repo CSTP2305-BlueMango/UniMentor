@@ -42,11 +42,6 @@ struct MessageView: View {
                                 isEditClicked = !isEditClicked
                             }).foregroundColor(.black)
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
-                        
-                        VStack {
-                            Text("current user id: \(vm.errorMessage)")
-                        }
-                        
                     } //: HEADER
                     .frame(height: UIScreen.main.bounds.height * 0.02)
                     // MAIN
@@ -55,14 +50,14 @@ struct MessageView: View {
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                 
                                 //there is only one card that appears on the screen bc there's only one user in the database
-                                ForEach(vm.signUpUsers) { signUpUser in
+                                ForEach(vm.chatUsers) { chatUser in
                                     NavigationLink(destination: MessageChatView()) {
                                         // TODO: actual info
                                         MessageCardView(
                                             isEditClicked: isEditClicked,
                                             userID: "1",
                                             image: "user_image",
-                                            name: signUpUser.name,
+                                            name: chatUser.name,
                                             latestMsg: "Hello, how are you?"
                                         )
                                     }

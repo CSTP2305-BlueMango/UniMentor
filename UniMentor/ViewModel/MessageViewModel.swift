@@ -16,7 +16,7 @@ class MessageViewModel: ObservableObject {
         fetchAllUsers()
     }
     
-    //this fetch all users from the collection called signUpUsers
+    //this fetch all users from the collection called chatUsers
     func fetchAllUsers() {
         FirebaseManager.shared.firestore
             .collection("chatUsers")
@@ -32,6 +32,7 @@ class MessageViewModel: ObservableObject {
                 
                     //this ensures that the logged in user is not in the list to message
                     let chatUser = ChatUser(data: data)
+                    
                     if chatUser.uid != FirebaseManager.shared.auth.currentUser?.uid {
                         //adds new users to the view from the database
                         self.chatUsers.append(.init(data: data))

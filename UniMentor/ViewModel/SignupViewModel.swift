@@ -9,6 +9,7 @@ import Foundation
 //import FirebaseAuth
 
 class SignupViewModel: ObservableObject {
+    @Published var uid: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
@@ -57,14 +58,16 @@ class SignupViewModel: ObservableObject {
     //STILL NEED TO STORE IMAGE
     //for storing information into Firestore database
     func storeUserInfo() {
+        //creates a path to the data, it will use the currentuser's uid
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             return }
 
         //create the dictionary, this is what will be stored in the database
-        let userInfo = ["uid": self.uid, "email": self.email, "name": self.name, "password": self.password]
+        let userInfo = ["uid": uid, "email": self.email, "name": self.name, "password": self.password] as [String : Any]
 
         //this makes the collection of users into the firestore database
-        FirebaseManager.shared.firestore.collection("signUpUsers")
+        FirebaseManager.shared.firestore
+            .collection("chatUsers")
             .document(uid).setData(userInfo) { error in
                 if let error = error {
                     print(error)
