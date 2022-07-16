@@ -144,6 +144,7 @@
 		3492AECA286FADA3001910B6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E46781AD286E8FDD00BDAFCA /* Validation */,
 				E4365C392867874F00DE16A4 /* GoogleService-Info.plist */,
 				CDFD8FD82843026700E48A68 /* Info.plist */,
 				3492AECB286FADC3001910B6 /* FirebaseManager.swift */,
@@ -179,14 +180,6 @@
 				E46781AA286E8CD500BDAFCA /* ViewExtension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		E46781AC286E8F9C00BDAFCA /* Ultility */ = {
-			isa = PBXGroup;
-			children = (
-				E46781AD286E8FDD00BDAFCA /* Validation */,
-			);
-			path = Ultility;
 			sourceTree = "<group>";
 		};
 		E46781AD286E8FDD00BDAFCA /* Validation */ = {
@@ -293,7 +286,6 @@
 			children = (
 				3492AECA286FADA3001910B6 /* Utilities */,
 				E46781B2286E920E00BDAFCA /* Model */,
-				E46781AC286E8F9C00BDAFCA /* Ultility */,
 				E46781A9286E8C9E00BDAFCA /* Extension */,
 				E4365C3B2867894B00DE16A4 /* ViewModel */,
 				CDFD8FD52843023E00E48A68 /* Fonts */,
