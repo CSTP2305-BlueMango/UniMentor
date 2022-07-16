@@ -115,7 +115,7 @@ struct UserProfileEditView: View {
                                 placeholder:"Computer Systems Technology",
                                 icon: "book.fill",
                                 title: "Major",
-                                errorMessage: Binding.constant(nil)
+                                errorMessage: $majorError
                             )
                             // school input
                             InputFieldView(
@@ -123,7 +123,7 @@ struct UserProfileEditView: View {
                                 placeholder:"Vancouver Community College",
                                 icon: "house.fill",
                                 title: "School Name",
-                                errorMessage: Binding.constant(nil)
+                                errorMessage: $schoolError
                             )
                             // date input
                             DatePickerView(placholder: "Start Date", month: $month, year: $year)

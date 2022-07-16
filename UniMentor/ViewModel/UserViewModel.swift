@@ -33,7 +33,6 @@ class UserViewModel: ObservableObject {
             return
         }
         
-        
         Firestore.firestore().collection("users")
             .document(uid).getDocument { snapshot, error in
                 if let error = error {

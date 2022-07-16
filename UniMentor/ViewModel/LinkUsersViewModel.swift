@@ -10,6 +10,8 @@ import FirebaseFirestore
 import Firebase
 
 class LinkUsersViewModel: ObservableObject {
+    static var selectedUsers = [User]()
+    
     func requestUser(user: User?) {
         guard let uid = Auth.auth().currentUser?.uid else {
             // TODO: error

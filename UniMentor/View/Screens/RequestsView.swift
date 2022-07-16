@@ -17,6 +17,9 @@ struct RequestsView: View {
     
     @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
     
+    @State var selectedUserImage = ""
+    @State var selectedUserName = ""
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -42,8 +45,11 @@ struct RequestsView: View {
                                     NavigationLink(destination: RequestsProfileView(user: user)) {
                                         ButtonCardView(
                                             action: {
-                                                // TODO: accept request
+                                                // accept request
                                                 LinkUsersVM.matchUser(user: user)
+                                                selectedUserImage = user.image
+                                                selectedUserName = user.name
+                                                print("== \(selectedUserImage)")
                                                 showPopUp = true
                                             },
                                             userID: user.id,
@@ -66,10 +72,11 @@ struct RequestsView: View {
                 // POPUP
                 MatchedPopupView(
                     show: $showPopUp,
-                    matchedUserName: "First Lastname",
-                    matchedUserImage: "user_image2",
-                    userImage: "user_image",
+                    matchedUserName: selectedUserName,
+                    matchedUserImage: selectedUserImage,
+                    userImage: userVM.user?.image ?? "user_image2",
                     action: {
+                        print("\(selectedUserImage)")
                         showPopUp = false
                     }
                 )

@@ -21,6 +21,8 @@ struct MessageView: View {
     
     @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
     
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
     var body: some View {
         ZStack {
             // BODY
@@ -54,13 +56,15 @@ struct MessageView: View {
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                 ForEach(userVM.messageUsersModel) { user in
-                                    NavigationLink(destination: MessageChatView(user: user)) {
-                                        MessageCardView(
-                                            isEditClicked: isEditClicked,
-                                            userID: user.id,
-                                            image: user.image,
-                                            name: user.name,
-                                            latestMsg: "Hello, how are you?"
+                                    if !isEditClicked {
+                                        NavigationLink(destination: MessageChatView(user: user)) {
+                                            MessageCardView(
+                                                user: user
+                                            )
+                                        }
+                                    } else {
+                                        EditMessageCardView(
+                                            user: user
                                         )
                                     }
                                 }
@@ -76,7 +80,7 @@ struct MessageView: View {
                         Button(action: {
                             showPopUp = true
                         }) {
-                            Text("Unmatch")
+                            Text("Delete")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         }
                         .frame(width: UIScreen.main.bounds.width * 1)
@@ -96,6 +100,13 @@ struct MessageView: View {
                 warnMessage: "* Delete messages will unmatch",
                 buttonAction: {
                     // TODO: delete messages and unmatch
+                    for u in LinkUsersViewModel.selectedUsers {
+                        LinkUsersVM.unmatchUser(user: u)
+                    }
+                    LinkUsersViewModel.selectedUsers = []
+                    showPopUp = false
+                    editButtonTitle = "Edit"
+                    isEditClicked = false
                 },
                 buttonText: "Delete"
             )

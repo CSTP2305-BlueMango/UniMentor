@@ -88,7 +88,7 @@ struct MatchedProfileView: View {
             // POPUP
             PopUpView(
                 show: $showPopUp,
-                information: "Unmatch with First Lastname?",
+                information: "Unmatch with \(user.name)?",
                 warnMessage: "* Unmatching will delete messages",
                 buttonAction: {
                     // unmatch
