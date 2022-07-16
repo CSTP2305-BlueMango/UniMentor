@@ -20,6 +20,9 @@ struct MatchedView: View {
     
     @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
     
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -40,6 +43,7 @@ struct MatchedView: View {
                                     if editButtonTitle == "Edit" {
                                         editButtonTitle = "Finish"
                                     } else {
+                                        LinkUsersViewModel.selectedUsers = []
                                         editButtonTitle = "Edit"
                                     }
                                     isEditClicked = !isEditClicked
@@ -54,17 +58,18 @@ struct MatchedView: View {
                             // Card list
                             ScrollView {
                                 VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                    
                                     // var isClicked: Bool = false
                                     ForEach(userVM.matchedUsersModel) { user in
-                                        NavigationLink(destination: MatchedProfileView(user: user)) {
-                                            CardView(
-                                                isEditClicked: isEditClicked,
-                                                userID: user.id,
-                                                image: user.image,
-                                                name: user.name,
-                                                major: user.major,
-                                                school: user.school)
+                                        if !isEditClicked {
+                                            NavigationLink(destination: MatchedProfileView(user: user)) {
+                                                CardView(
+                                                    user: user
+                                                )
+                                            }
+                                        } else {
+                                            EditCardView(
+                                                user: user
+                                            )
                                         }
                                     }
                                 }
@@ -96,8 +101,14 @@ struct MatchedView: View {
                     information: "Unmatch with selected people?",
                     warnMessage: "* Unmatching will delete messages",
                     buttonAction: {
-                          // TODO: unmatch with selected users
-                          },
+                        for u in LinkUsersViewModel.selectedUsers {
+                            LinkUsersVM.unmatchUser(user: u)
+                        }
+                        LinkUsersViewModel.selectedUsers = []
+                        showPopUp = false
+                        editButtonTitle = "Edit"
+                        isEditClicked = false
+                    },
                     buttonText: "Unmatch"
                 )
                 //: POPUP

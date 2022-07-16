@@ -91,15 +91,16 @@ struct HomeCardView: View {
                 Divider().padding(0)
                     .frame(width: UIScreen.main.bounds.width * 0.9)
                     .background(Color("LightColor"))
-                VStack() {
-                    Text("""
-    \(information)
-    """
-                    )
-                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                    .multilineTextAlignment(.leading)
-                }.padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.04, bottom: 0, trailing: UIScreen.main.bounds.width * 0.04))
-                        .frame(height: UIScreen.main.bounds.height * 0.08)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text("""
+\(information)
+""")
+                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
+                            .multilineTextAlignment(.leading)
+                    }
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.87, alignment: .leading)
+                }.frame(width: UIScreen.main.bounds.width * 0.87, height: UIScreen.main.bounds.height * 0.08, alignment: .top)
             }
         }
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * cardHeight)
@@ -120,9 +121,9 @@ struct HomeCardView_Previews: PreviewProvider {
             major: "Computer Systems Technology",
             school: "Vancouver Community College",
             information: """
-I guess we could discuss the implications of the phrase meant to be.
+testtest weifj wefjowi efoiwjeofijo wefoijoiejfowijefo wjoeifjoiwjefo woeij
 
-That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+oiwjeofijwoeifj wiejfow jeof woeifjo wiejfo weofij owiej fo
 """
         )
     }

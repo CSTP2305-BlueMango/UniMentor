@@ -42,6 +42,8 @@
 		CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */; };
 		CDE10DE3284BE66C00A71B37 /* RequestsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */; };
 		CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */; };
+		CDF5CFB728829A6B00C65232 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5CFB628829A6B00C65232 /* EditCardView.swift */; };
+		CDF5CFB92882ADC300C65232 /* EditMessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */; };
 		CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */; };
 		CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FCF2843007900E48A68 /* SignUpView.swift */; };
 		CDFD8FD4284300F600E48A68 /* Parallelogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD8FD3284300F600E48A68 /* Parallelogram.swift */; };
@@ -98,6 +100,8 @@
 		CDD0FF5F284C89500045E1E4 /* MessageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatView.swift; sourceTree = "<group>"; };
 		CDE10DE2284BE66C00A71B37 /* RequestsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProfileView.swift; sourceTree = "<group>"; };
 		CDE10DE4284BE9AB00A71B37 /* MatchedProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedProfileView.swift; sourceTree = "<group>"; };
+		CDF5CFB628829A6B00C65232 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMessageCardView.swift; sourceTree = "<group>"; };
 		CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		CDFD8FCF2843007900E48A68 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		CDFD8FD3284300F600E48A68 /* Parallelogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallelogram.swift; sourceTree = "<group>"; };
@@ -231,10 +235,12 @@
 				CDFD8FDB2843046600E48A68 /* ButtonView_2.swift */,
 				CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */,
 				CDD0FF5D284C84FE0045E1E4 /* CardView.swift */,
+				CDF5CFB628829A6B00C65232 /* EditCardView.swift */,
 				34DCD16A2853269C00BE60AF /* ImagePicker.swift */,
 				CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */,
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
+				CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */,
 				CD26D8ED285D37F800CA1AA6 /* ToggleStyle.swift */,
 				E4A474BB285D914E006959D9 /* DatePickerView.swift */,
 				E4A474BD285D9177006959D9 /* PasswordView.swift */,
@@ -439,9 +445,11 @@
 				E46781B4286E922600BDAFCA /* CustomError.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
 				CD8C0A632874174F00DA5BC8 /* EditButtonView.swift in Sources */,
+				CDF5CFB728829A6B00C65232 /* EditCardView.swift in Sources */,
 				E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */,
 				E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */,
 				CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */,
+				CDF5CFB92882ADC300C65232 /* EditMessageCardView.swift in Sources */,
 				E46781AB286E8CD500BDAFCA /* ViewExtension.swift in Sources */,
 				CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */,
 				CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */,

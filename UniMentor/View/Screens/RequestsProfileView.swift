@@ -20,6 +20,7 @@ struct RequestsProfileView: View {
     @State var user: User
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -87,6 +88,7 @@ struct RequestsProfileView: View {
                 show: $showMatchPopup,
                 matchedUserName: user.name,
                 matchedUserImage: user.image,
+                userImage: userVM.user?.image ?? "user_image2",
                 action: {
                     showMatchPopup = false
                     presentation.wrappedValue.dismiss()
@@ -95,7 +97,7 @@ struct RequestsProfileView: View {
             // decline popup
             PopUpView(
                 show: $showDeclinePopUp,
-                information: "Decline request from First Lastname?",
+                information: "Decline request from \(user.name)?",
                 buttonAction: {
                     // decline request
                     LinkUsersVM.declineUser(user: user)
