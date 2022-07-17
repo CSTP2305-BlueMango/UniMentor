@@ -25,7 +25,7 @@ class SignupViewModel: ObservableObject {
         
         do {
             try signupValidation(self.email, self.password, self.confirmPassword)
-            Auth.auth().createUser(withEmail: self.email, password: self.password) {
+            FirebaseManager.shared.auth.createUser(withEmail: self.email, password: self.password) {
                 result, error in
                 guard result !== nil, error == nil else {
                     print(error?.localizedDescription ?? "")
@@ -50,7 +50,7 @@ class SignupViewModel: ObservableObject {
     }
     
     func sendEmailVerification() {
-        Auth.auth().currentUser?.sendEmailVerification { error in
+        FirebaseManager.shared.auth.currentUser?.sendEmailVerification { error in
             print(error?.localizedDescription ?? "")
         }
     }

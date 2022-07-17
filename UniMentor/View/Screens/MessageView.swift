@@ -19,7 +19,6 @@ struct MessageView: View {
     @ObservedObject var vm = AllUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
-    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     

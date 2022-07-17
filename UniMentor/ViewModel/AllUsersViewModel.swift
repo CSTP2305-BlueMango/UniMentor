@@ -19,7 +19,7 @@ class AllUsersViewModel: ObservableObject {
     }
     
     private func fetchAllUsers() {
-        Firestore.firestore().collection("users")
+        FirebaseManager.shared.firestore.collection("users")
             .getDocuments { [self] documentsSnapshot, error in
                 if let error = error {
                     self.errorMessage = "Failed to fetch users: \(error)"
@@ -36,7 +36,7 @@ class AllUsersViewModel: ObservableObject {
                     
                     let newUser = user
                     
-                    if newUser.id != Auth.auth().currentUser?.uid {
+                    if newUser.id != FirebaseManager.shared.auth.currentUser?.uid {
                         self.users.append(newUser)
                     }
                     users.shuffle()

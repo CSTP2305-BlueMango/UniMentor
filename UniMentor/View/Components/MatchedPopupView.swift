@@ -12,13 +12,14 @@ struct MatchedPopupView: View {
     /// popup show state
     @Binding var show: Bool
     /// matched user name
-    @State var matchedUserName: String
+    @Binding var matchedUserName: String
     /// matched user image
-    @State var matchedUserImage: String
+    @Binding var matchedUserImage: String
     /// current user image
-    @State var userImage: String = "user_image2"
+    @Binding var userImage: String//  = "user_image2"
     /// button action
     @State var action: ()->Void
+    
     
     var body: some View {
         ZStack {
@@ -89,12 +90,16 @@ struct MatchedPopupView: View {
 }
 
 struct MatchedPopupViewPreviewView: View {
+    @State var selectedUserImage = ""
+    @State var selectedUserName = ""
+    @State var userImage = ""
     @State var show: Bool = true
     var body: some View {
         MatchedPopupView(
             show: $show,
-            matchedUserName: "First Lastname",
-            matchedUserImage: "user_image",
+            matchedUserName: $selectedUserImage,
+            matchedUserImage: $selectedUserImage,
+            userImage: $userImage,
             action: {}
         )
     }

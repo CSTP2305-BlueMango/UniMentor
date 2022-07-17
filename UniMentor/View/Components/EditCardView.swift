@@ -33,47 +33,11 @@ struct EditCardView: View {
                 HStack {
                     Image(systemName: isOn1 ? "checkmark.circle.fill" : "circle")
                       .imageScale(.large)
-                    // configuration.label
                       .foregroundColor(.blue)
                 }
                 
-                // CARD
-                HStack(spacing: UIScreen.main.bounds.width * 0.03) {
-                    // LEFT - Image
-                    Spacer().frame(width: 0)
-                    VStack {
-                        Image(user.image)
-                            .resizable()
-                            .cornerRadius(50)
-                            .aspectRatio(contentMode: .fill)
-                    }
-                    .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
-                    // CENTER - Information
-                    VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
-                        // user name
-                        Text(user.name)
-                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                            .lineLimit(1)
-                            .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                        // user major
-                        Text(user.major)
-                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                            .lineLimit(1)
-                        // user school
-                        Text(user.school)
-                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
-                            .lineLimit(1)
-                    }.frame(width: UIScreen.main.bounds.width * 0.65)
-                    Spacer()
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
-                .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))
-                .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                .buttonStyle(.bordered)
-                .clipShape(RoundedRectangle(cornerRadius: 16)).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
-                //: CARD
+                CardView(user: user)
+                
             }//: HSTACK
 
         }
