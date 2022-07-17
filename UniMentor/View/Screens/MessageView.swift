@@ -21,10 +21,19 @@ struct MessageView: View {
     
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    @State var matchedUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var isMatchedUserMessage = false
     
     var body: some View {
         ZStack {
             // BODY
+            //NAVIGATION LINK
+            NavigationLink(
+                destination: MessageChatView(user: matchedUser),
+                isActive: $isMatchedUserMessage
+            ) {EmptyView()}
+            //:NAVIGATION LINK
+            
             VStack(spacing: 0) {
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // HEADER

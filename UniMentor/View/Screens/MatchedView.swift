@@ -21,6 +21,17 @@ struct MatchedView: View {
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    /// if match view button clicked
+    @Binding var isMatchView: Bool
+    /// if message view button clicked
+    @Binding var isMessageView: Bool
+    /// match view button color
+    @Binding var matchedButtonColor: Color
+    /// message view button color
+    @Binding var messagesButtonColor: Color
+    @Binding var matchedUser: User
+    @Binding var isMatchedUserMessage: Bool
+    
     
     var body: some View {
         NavigationView {
@@ -60,7 +71,15 @@ struct MatchedView: View {
                                     // var isClicked: Bool = false
                                     ForEach(userVM.matchedUsersModel) { user in
                                         if !isEditClicked {
-                                            NavigationLink(destination: MatchedProfileView(user: user)) {
+                                            NavigationLink(destination:
+                                                MatchedProfileView(user: user,
+                                                    isMatchView: $isMatchView,
+                                                    isMessageView: $isMessageView,
+                                                    matchedButtonColor: $matchedButtonColor,
+                                                    messagesButtonColor: $messagesButtonColor,
+                                                    matchedUser: $matchedUser,
+                                                    isMatchedUserMessage: $isMatchedUserMessage))
+                                            {
                                                 CardView(
                                                     user: user
                                                 )
@@ -120,8 +139,32 @@ struct MatchedView: View {
     }
 }
 
+struct MatchedViewPreviewView: View {
+    /// if match view button clicked
+    @State var isMatchView: Bool = false
+    /// if message view button clicked
+    @State var isMessageView: Bool = false
+    /// match view button color
+    @State var matchedButtonColor: Color = Color("DarkColor")
+    /// message view button color
+    @State var messagesButtonColor: Color = Color("DarkColor")
+    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var isMatchedUserMessage: Bool = false
+    var body: some View {
+        MatchedView(
+            isMatchView: $isMatchView,
+            isMessageView: $isMessageView,
+            matchedButtonColor: $matchedButtonColor,
+            messagesButtonColor: $messagesButtonColor,
+            matchedUser: $matchedUser,
+            isMatchedUserMessage: $isMatchedUserMessage
+        )
+    }
+    
+}
+
 struct MatchedView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchedView()
+        MatchedViewPreviewView()
     }
 }

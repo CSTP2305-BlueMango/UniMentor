@@ -22,11 +22,22 @@ struct MatchedProfileView: View {
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
+    /// if match view button clicked
+    @Binding var isMatchView: Bool
+    /// if message view button clicked
+    @Binding var isMessageView: Bool
+    /// match view button color
+    @Binding var matchedButtonColor: Color
+    /// message view button color
+    @Binding var messagesButtonColor: Color
+    @Binding var matchedUser: User
+    @Binding var isMatchedUserMessage: Bool
+    
     var body: some View {
         ZStack {
             //NAVIGATION LINK
             NavigationLink(
-                destination: MessageChatView(user: user),
+                destination: MessageView(matchedUser: user, isMatchedUserMessage: true),
                 isActive: $isSendMessageActive
             ) {EmptyView()}
             //:NAVIGATION LINK
@@ -60,7 +71,13 @@ struct MatchedProfileView: View {
                             ButtonView_2(action: {
                                 LinkUsersVM.messageUser(user: user, matchedUserList: userVM.matchedUsers)
                                 // TODO: go to message
-                                isSendMessageActive = true
+                                // isSendMessageActive = true
+                                isMatchView = false
+                                isMessageView = true
+                                matchedButtonColor = Color("DarkColor")
+                                messagesButtonColor = .white
+                                matchedUser = user
+                                isMatchedUserMessage = true
                             },
                                  label: "Send Message",
                                  color: Color("ButtonColor"),
@@ -105,10 +122,33 @@ struct MatchedProfileView: View {
     }
 }
 
+struct MatchedProfileViewPreviewView: View {
+    /// if match view button clicked
+    @State var isMatchView: Bool = false
+    /// if message view button clicked
+    @State var isMessageView: Bool = false
+    /// match view button color
+    @State var matchedButtonColor: Color = Color("DarkColor")
+    /// message view button color
+    @State var messagesButtonColor: Color = Color("DarkColor")
+    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var isMatchedUserMessage: Bool = false
+    var body: some View {
+        MatchedProfileView(
+            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []),
+            isMatchView: $isMatchView,
+            isMessageView: $isMessageView,
+            matchedButtonColor: $matchedButtonColor,
+            messagesButtonColor: $messagesButtonColor,
+            matchedUser: $matchedUser,
+            isMatchedUserMessage: $isMatchedUserMessage
+        )
+    }
+    
+}
+
 struct MatchedProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchedProfileView(
-            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-        )
+        MatchedProfileViewPreviewView()
     }
 }

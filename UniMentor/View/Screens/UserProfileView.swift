@@ -184,6 +184,6 @@ struct UserProfile_Previews: PreviewProvider {
 
 func separateDate(startDate: String) -> [String] {
     let result = startDate.components(separatedBy: " ")
-    print("\(result)")
+    // print("\(result)")
     return result
 }
