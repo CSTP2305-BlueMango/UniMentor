@@ -14,7 +14,7 @@ class AppViewModel: ObservableObject {
     @Published var loggedIn = false
     
     var isLoggedIn: Bool {
-        if let user = Auth.auth().currentUser {
+        if let user = FirebaseManager.shared.auth.currentUser {
             if user.isEmailVerified {
                 return true
             }

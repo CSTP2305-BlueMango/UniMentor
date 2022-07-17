@@ -15,10 +15,9 @@ struct RequestsView: View {
     @ObservedObject var userVM = UserViewModel()
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
-    @State var testUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-    
     @State var selectedUserImage = ""
     @State var selectedUserName = ""
+    @State var currentUserImage = ""
     
     var body: some View {
         NavigationView {
@@ -49,6 +48,7 @@ struct RequestsView: View {
                                                 LinkUsersVM.matchUser(user: user)
                                                 selectedUserImage = user.image
                                                 selectedUserName = user.name
+                                                currentUserImage = userVM.user?.image ?? "user_image2"
                                                 print("== \(selectedUserImage)")
                                                 showPopUp = true
                                             },
@@ -72,9 +72,9 @@ struct RequestsView: View {
                 // POPUP
                 MatchedPopupView(
                     show: $showPopUp,
-                    matchedUserName: selectedUserName,
-                    matchedUserImage: selectedUserImage,
-                    userImage: userVM.user?.image ?? "user_image2",
+                    matchedUserName: $selectedUserName,
+                    matchedUserImage: $selectedUserImage,
+                    userImage: $currentUserImage,
                     action: {
                         print("\(selectedUserImage)")
                         showPopUp = false

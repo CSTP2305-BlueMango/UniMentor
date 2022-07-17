@@ -22,6 +22,10 @@ struct RequestsProfileView: View {
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
+    @State var selectedUserImage = ""
+    @State var selectedUserName = ""
+    @State var currentUserImage = ""
+    
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -54,7 +58,9 @@ struct RequestsProfileView: View {
                                 ButtonView_2(action: {
                                     // accept request
                                     LinkUsersVM.matchUser(user: user)
-                                    
+                                    selectedUserImage = user.image
+                                    selectedUserName = user.name
+                                    currentUserImage = userVM.user?.image ?? "user_image2"
                                     showMatchPopup = true
                                 },
                                      label: "Accept Request",
@@ -86,9 +92,9 @@ struct RequestsProfileView: View {
             // matched popup
             MatchedPopupView(
                 show: $showMatchPopup,
-                matchedUserName: user.name,
-                matchedUserImage: user.image,
-                userImage: userVM.user?.image ?? "user_image2",
+                matchedUserName: $selectedUserName,
+                matchedUserImage: $selectedUserImage,
+                userImage: $currentUserImage,
                 action: {
                     showMatchPopup = false
                     presentation.wrappedValue.dismiss()
