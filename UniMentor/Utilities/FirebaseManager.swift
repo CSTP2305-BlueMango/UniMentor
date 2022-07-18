@@ -20,22 +20,25 @@ import FirebaseAuth
 ///this is a singleton object
 class FirebaseManager: NSObject {
 
-    ///ensure to setup this up bc it will crash
+    ///object ser-up
     let auth: Auth
     let storage: Storage
     let firestore: Firestore
 
     ///reference error: https://stackoverflow.com/questions/38536257/ios-extension-fatal-exception-com-firebase-core-default-app-has-already-been
     //this will configure createAnAccount
-    //this is a singleton object
+    ///singleton object for consistency
     static let shared = FirebaseManager()
 
-    //initialize here
+    ///initialize here
     override init() {
         FirebaseApp.configure()
 
+        ///configures authentication initializer
         self.auth = Auth.auth()
+        ///configures srtorage initializer
         self.storage = Storage.storage()
+        ///configures firestore initializer
         self.firestore = Firestore.firestore()
 
         super.init()
