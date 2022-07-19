@@ -37,7 +37,7 @@ struct MatchedProfileView: View {
         ZStack {
             //NAVIGATION LINK
             NavigationLink(
-                destination: MessageView(matchedUser: user, isMatchedUserMessage: true),
+                destination: MessageView(matchedUser: user, isMatchedUserMessage: $isMatchedUserMessage),
                 isActive: $isSendMessageActive
             ) {EmptyView()}
             //:NAVIGATION LINK

@@ -25,6 +25,8 @@
 		CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740792863B6B2005BC18D /* UserProfileEditView.swift */; };
 		CD3740802863DAF7005BC18D /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37407F2863DAF7005BC18D /* InfoPopupView.swift */; };
 		CD3740822863E344005BC18D /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3740812863E344005BC18D /* PopUpView.swift */; };
+		CD44908E2886AF9400FA453C /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44908D2886AF9400FA453C /* ChatViewModel.swift */; };
+		CD4490902886BC0400FA453C /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44908F2886BC0400FA453C /* ChatMessage.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CD8C0A5F2873A6EC00DA5BC8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */; };
 		CD8C0A612873B85E00DA5BC8 /* MatchedPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */; };
@@ -88,6 +90,8 @@
 		CD3740792863B6B2005BC18D /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
 		CD37407F2863DAF7005BC18D /* InfoPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
 		CD3740812863E344005BC18D /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		CD44908D2886AF9400FA453C /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		CD44908F2886BC0400FA453C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		CD8C0A602873B85E00DA5BC8 /* MatchedPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedPopupView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				CD91B08C2880D2350005D1CA /* UserViewModel.swift */,
 				345307652877D01F00218DAD /* AllUsersViewModel.swift */,
 				CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */,
+				CD44908D2886AF9400FA453C /* ChatViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			children = (
 				E46781B3286E922600BDAFCA /* CustomError.swift */,
 				345307672877D30500218DAD /* User.swift */,
+				CD44908F2886BC0400FA453C /* ChatMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				CD8C0A612873B85E00DA5BC8 /* MatchedPopupView.swift in Sources */,
 				345307682877D30500218DAD /* User.swift in Sources */,
 				345307662877D02000218DAD /* AllUsersViewModel.swift in Sources */,
+				CD44908E2886AF9400FA453C /* ChatViewModel.swift in Sources */,
 				CDD0FF5E284C84FE0045E1E4 /* CardView.swift in Sources */,
 				CD91B0982880D6190005D1CA /* LinkUsersViewModel.swift in Sources */,
 				CDFD8FD02843007900E48A68 /* SignUpView.swift in Sources */,
@@ -437,6 +444,7 @@
 				E46781B4286E922600BDAFCA /* CustomError.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
 				CD8C0A632874174F00DA5BC8 /* EditButtonView.swift in Sources */,
+				CD4490902886BC0400FA453C /* ChatMessage.swift in Sources */,
 				CDF5CFB728829A6B00C65232 /* EditCardView.swift in Sources */,
 				E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */,
 				E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */,

@@ -65,7 +65,7 @@ struct TabBarView: View {
                 }
                 // display message view
                 if isMessageView {
-                    MessageView(matchedUser: matchedUser, isMatchedUserMessage: isMatchedUserMessage)
+                    MessageView(matchedUser: matchedUser, isMatchedUserMessage: $isMatchedUserMessage)
                 }
                 // display profile view
                 if isProfileView {

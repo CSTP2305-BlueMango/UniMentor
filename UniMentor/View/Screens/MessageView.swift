@@ -22,14 +22,14 @@ struct MessageView: View {
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     @State var matchedUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-    @State var isMatchedUserMessage = false
+    @Binding var isMatchedUserMessage: Bool
     
     var body: some View {
         ZStack {
             // BODY
             //NAVIGATION LINK
             NavigationLink(
-                destination: MessageChatView(user: matchedUser),
+                destination: MessageChatView(user: matchedUser, isMatchedUserMessage: $isMatchedUserMessage),
                 isActive: $isMatchedUserMessage
             ) {EmptyView()}
             //:NAVIGATION LINK
@@ -65,7 +65,7 @@ struct MessageView: View {
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
                                 ForEach(userVM.messageUsersModel) { user in
                                     if !isEditClicked {
-                                        NavigationLink(destination: MessageChatView(user: user)) {
+                                        NavigationLink(destination: MessageChatView(user: user, isMatchedUserMessage: $isMatchedUserMessage)) {
                                             MessageCardView(
                                                 user: user
                                             )
@@ -123,8 +123,18 @@ struct MessageView: View {
     }
 }
 
+struct MessageViewPreviewView: View {
+    @State var isMatchedUserMessage: Bool = false
+    var body: some View {
+        MessageView(
+            isMatchedUserMessage: $isMatchedUserMessage
+        )
+    }
+    
+}
+
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView()
+        MessageViewPreviewView()
     }
 }

@@ -34,7 +34,7 @@ class UserViewModel: ObservableObject {
         }
         
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).getDocument { snapshot, error in
+            .document(uid).addSnapshotListener { snapshot, error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
                     print("Fail to fetch current user: ", error)
@@ -59,7 +59,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -79,7 +79,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -99,7 +99,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -118,7 +118,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
