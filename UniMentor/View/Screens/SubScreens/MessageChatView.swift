@@ -38,10 +38,11 @@ struct MessageChatView: View {
                 HStack(spacing: UIScreen.main.bounds.width * 0.05) {
                     // LEFT - Image
                     VStack {
-                        Image(user?.userImage ?? "user_image2")
+                        AsyncImage(url: URL(string: "\(user?.userImage ?? "user_image2")")) {image in image
                             .resizable()
                             .cornerRadius(50)
                             .aspectRatio(contentMode: .fill)
+                        }placeholder: {ProgressView()}
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.08, height: UIScreen.main.bounds.width * 0.1)
                     .clipShape(Circle())
