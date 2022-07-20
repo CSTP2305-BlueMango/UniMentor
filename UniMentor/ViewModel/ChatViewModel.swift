@@ -149,6 +149,7 @@ class ChatViewModel: ObservableObject {
         }
     }
     
+        
     
     // reference: https://mammothinteractive.com/get-current-time-with-swiftui-hacking-swift-5-5-xcode-13-and-ios-15/
     func getTime() -> String {

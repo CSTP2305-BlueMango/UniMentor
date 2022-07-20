@@ -90,6 +90,7 @@ struct MessageView: View {
                     }.padding(0)
                 }
             }
+            
             .padding(.top, UIScreen.main.bounds.width * 0.02)
             .navigationBar(backButton: true, barHidden: true)
             //: BODY
@@ -97,11 +98,10 @@ struct MessageView: View {
             PopUpView(
                 show: $showPopUp,
                 information: "Delete messages with selected people?",
-                warnMessage: "* Delete messages will unmatch",
                 buttonAction: {
-                    // TODO: delete messages
-                    for u in LinkUsersViewModel.selectedUsers {
-                        LinkUsersVM.unmatchUser(user: u)
+                    // delete messages
+                    for u in LinkUsersViewModel.selectedMessageUsers {
+                        LinkUsersVM.deleteMessages(user: u)
                     }
                     LinkUsersViewModel.selectedUsers = []
                     showPopUp = false

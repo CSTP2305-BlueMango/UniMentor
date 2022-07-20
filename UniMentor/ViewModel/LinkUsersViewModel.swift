@@ -11,6 +11,7 @@ import Firebase
 
 class LinkUsersViewModel: ObservableObject {
     static var selectedUsers = [User]()
+    static var selectedMessageUsers = [MessageUser]()
     
     func requestUser(user: User?) {
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
@@ -85,6 +86,62 @@ class LinkUsersViewModel: ObservableObject {
         receiveUserStore.updateData([
             "matchedUsers": FieldValue.arrayRemove([uid])
         ])
+        
+        let userMessage = FirebaseManager.shared.firestore.collection("messages").document(uid).collection(user.id)
+        userMessage.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("messages")
+                    .document(uid).collection(user.id).document(s.documentID).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let receiverMessage = FirebaseManager.shared.firestore.collection("messages").document(user.id).collection(uid)
+        receiverMessage.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("messages")
+                    .document(user.id).collection(uid).document(s.documentID).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let userMessageUser = FirebaseManager.shared.firestore.collection("resent_messages").document(uid).collection("messages")
+        userMessageUser.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("resent_messages")
+                    .document(uid).collection("messages").document(user.id).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let receiverUserMessageUser = FirebaseManager.shared.firestore.collection("resent_messages").document(user.id).collection("messages")
+        receiverUserMessageUser.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("resent_messages")
+                    .document(user.id).collection("messages").document(uid).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
     }
     
     func declineUser(user: User?) {
@@ -109,4 +166,74 @@ class LinkUsersViewModel: ObservableObject {
             "sentRequests": FieldValue.arrayRemove([uid])
         ])
     }
+    
+    func deleteMessages(user: MessageUser?) {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            // TODO: error
+            print("fail")
+            return
+        }
+        
+        guard let user = user else {
+            // TODO: error
+            return
+        }
+        
+        let userMessage = FirebaseManager.shared.firestore.collection("messages").document(uid).collection(user.id)
+        userMessage.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("messages")
+                    .document(uid).collection(user.id).document(s.documentID).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let receiverMessage = FirebaseManager.shared.firestore.collection("messages").document(user.id).collection(uid)
+        receiverMessage.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("messages")
+                    .document(user.id).collection(uid).document(s.documentID).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let userMessageUser = FirebaseManager.shared.firestore.collection("resent_messages").document(uid).collection("messages")
+        userMessageUser.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("resent_messages")
+                    .document(uid).collection("messages").document(user.id).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+        
+        let receiverUserMessageUser = FirebaseManager.shared.firestore.collection("resent_messages").document(user.id).collection("messages")
+        receiverUserMessageUser.getDocuments { snapshopt, error in
+            snapshopt?.documents.forEach({ s in
+                FirebaseManager.shared.firestore.collection("resent_messages")
+                    .document(user.id).collection("messages").document(uid).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+            })
+        }
+    }
+
 }
