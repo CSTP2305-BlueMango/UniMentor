@@ -135,7 +135,7 @@ struct UserProfile: View {
                     VStack(spacing: UIScreen.main.bounds.height * 0.03) {
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             // popup message
-                            Text("Log out")
+                            Text("Finished Deleting account. Please Log out")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                                 .multilineTextAlignment(.center)
                         }
@@ -144,7 +144,7 @@ struct UserProfile: View {
                             Button(action: {
                                 viewModel.signOut()
                             }) {
-                                Text("Finished Deleting account. Please Log out")
+                                Text("Log out")
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                     .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
                                     .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
