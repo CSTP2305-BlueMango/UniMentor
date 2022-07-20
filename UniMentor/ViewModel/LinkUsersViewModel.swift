@@ -79,13 +79,11 @@ class LinkUsersViewModel: ObservableObject {
         
         let userStore = FirebaseManager.shared.firestore.collection("users").document(uid)
         userStore.updateData([
-            "matchedUsers": FieldValue.arrayRemove([user.id]),
-            "messageUsers": FieldValue.arrayRemove([user.id])
+            "matchedUsers": FieldValue.arrayRemove([user.id])
         ])
         let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(user.id)
         receiveUserStore.updateData([
-            "matchedUsers": FieldValue.arrayRemove([uid]),
-            "messageUsers": FieldValue.arrayRemove([uid])
+            "matchedUsers": FieldValue.arrayRemove([uid])
         ])
     }
     
@@ -109,32 +107,6 @@ class LinkUsersViewModel: ObservableObject {
         let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(user.id)
          receiveUserStore.updateData([
             "sentRequests": FieldValue.arrayRemove([uid])
-        ])
-    }
-    
-    func messageUser(user: User?, matchedUserList: [String]) {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            // TODO: error
-            print("fail")
-            return
-        }
-        guard let user = user else {
-            // TODO: error
-            return
-        }
-        
-        guard matchedUserList.contains(user.id) else {
-            // TODO: error
-            return
-        }
-        
-        let userStore = FirebaseManager.shared.firestore.collection("users").document(uid)
-        userStore.updateData([
-            "messageUsers": FieldValue.arrayUnion([user.id])
-        ])
-        let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(user.id)
-        receiveUserStore.updateData([
-            "messageUsers": FieldValue.arrayUnion([uid])
         ])
     }
 }

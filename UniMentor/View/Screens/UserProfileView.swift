@@ -22,7 +22,7 @@ struct UserProfile: View {
     @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject var userVM = UserViewModel()
     
-    @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
     
     var body: some View {

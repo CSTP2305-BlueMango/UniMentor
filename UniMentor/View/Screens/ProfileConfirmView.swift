@@ -49,7 +49,7 @@ struct ProfileConfirmView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
                             // TODO: actual info Image
-                            ProfileView(user: User(id: "", name: self.name, image: self.image, major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []))
+                            ProfileView(user: User(id: "", name: self.name, image: self.image, major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []))
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
@@ -68,8 +68,7 @@ struct ProfileConfirmView: View {
                                 intro: info,
                                 matchedUsers: [],
                                 sentRequests: [],
-                                recievedRequests: [],
-                                messageUsers: [])
+                                recievedRequests: [])
                             )
                             
                             // TODO: finish sign up and go to main page

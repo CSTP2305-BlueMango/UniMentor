@@ -21,7 +21,6 @@ struct User: Identifiable, Codable {
     let matchedUsers: [String]
     let sentRequests: [String]
     let recievedRequests: [String]
-    let messageUsers: [String]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -34,7 +33,6 @@ struct User: Identifiable, Codable {
         case matchedUsers
         case sentRequests
         case recievedRequests
-        case messageUsers
     }
 }
 

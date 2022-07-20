@@ -16,11 +16,9 @@ class UserViewModel: ObservableObject {
     @Published var matchedUsersModel: [User] = []
     @Published var sentRequestsModel: [User] = []
     @Published var recievedRequestsModel: [User] = []
-    @Published var messageUsersModel: [User] = []
     @Published var matchedUsers: [String] = []
     @Published var sentRequests: [String] = []
     @Published var recievedRequests: [String] = []
-    @Published var messageUsers: [String] = []
     
     init() {
         fetchCurrentUser()
@@ -53,7 +51,6 @@ class UserViewModel: ObservableObject {
                 self.matchedUsers = self.user?.matchedUsers ?? []
                 self.sentRequests = self.user?.sentRequests ?? []
                 self.recievedRequests = self.user?.recievedRequests ?? []
-                self.messageUsers = self.user?.messageUsers ?? []
                 
                 for id in self.matchedUsers {
                     FirebaseManager.shared.firestore
@@ -113,25 +110,6 @@ class UserViewModel: ObservableObject {
                             self.recievedRequestsModel.append(newUser)
                         }
                 }
-                
-                for id in self.messageUsers {
-                    FirebaseManager.shared.firestore
-                        .collection("users")
-                        .document(id)
-                        .addSnapshotListener { snapshot, error in
-                            if let error = error {
-                                self.errorMessage = "Fail to fetch current user: \(error)"
-                                print("Fail to fetch current user: ", error)
-                                return
-                            }
-                            
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "No data found"
-                                return
-                            }
-                            self.messageUsersModel.append(newUser)
-                        }
-                }
             }
     }
     
@@ -152,8 +130,7 @@ class UserViewModel: ObservableObject {
         
             "matchedUsers": [],
             "sentRequests": [],
-            "recievedRequests": [],
-            "messageUsers" : []
+            "recievedRequests": []
         ] as [String : Any]
         
         FirebaseManager.shared.firestore.collection("users")
@@ -219,13 +196,6 @@ class UserViewModel: ObservableObject {
             ])
         }
         
-        for u in messageUsers {
-            let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(u)
-            receiveUserStore.updateData([
-                "messageUsers": FieldValue.arrayRemove([uid])
-            ])
-        }
-        
         user.delete() { error in
             if let error = error {
                 self.errorMessage = "Fail to fetch current user: \(error)"
@@ -254,9 +224,10 @@ class UserViewModel: ObservableObject {
             "fromId": uid,
             "id": toId.id,
             "text": "",
-            "timestamp": Date(),
+            "timestamp": getTime(),
             "userImage": messageuser?.image ?? "",
-            "userName": messageuser?.name ?? ""
+            "userName": messageuser?.name ?? "",
+            "time": Date()
         ] as [String : Any]
         
         document.setData(data) { err in
@@ -273,9 +244,10 @@ class UserViewModel: ObservableObject {
             "fromId": toId.id,
             "id": uid,
             "text": "",
-            "timestamp": Date(),
+            "timestamp": getTime(),
             "userImage": self.user?.image ?? "",
-            "userName": self.user?.name ?? ""
+            "userName": self.user?.name ?? "",
+            "time": Date()
         ] as [String : Any]
         
         recievedDocument.setData(recieveddata) { err in
@@ -284,5 +256,14 @@ class UserViewModel: ObservableObject {
                 return
             }
         }
+    }
+    
+    // reference: https://mammothinteractive.com/get-current-time-with-swiftui-hacking-swift-5-5-xcode-13-and-ios-15/
+    func getTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        let dateString = dateFormatter.string(from: Date())
+        return dateString
     }
 }
