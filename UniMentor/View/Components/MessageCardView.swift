@@ -10,7 +10,7 @@ import SwiftUI
 /// user card view with latest message component
 struct MessageCardView: View {
     
-    @State var user: User
+    @State var user: MessageUser
     // TODO: shoule be setup
     /// latest message
     @State var latestMsg: String = "test"
@@ -24,7 +24,7 @@ struct MessageCardView: View {
             // LEFT - Image
             Spacer().frame(width: 0)
             VStack {
-                Image(user.image)
+                Image(user.userImage)
                     .resizable()
                     .cornerRadius(50)
                     .aspectRatio(contentMode: .fill)
@@ -35,7 +35,7 @@ struct MessageCardView: View {
             // CENTER - Information
             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
                 HStack {
-                    Text(user.name)
+                    Text(user.userName)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         .lineLimit(1)
                         .frame(width: UIScreen.main.bounds.width * 0.45, alignment: .leading)
@@ -43,7 +43,7 @@ struct MessageCardView: View {
                     Text(latestDate)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                 }.frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                Text(latestMsg)
+                Text(user.text)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     .foregroundColor(Color.gray)
                     .lineLimit(2)
@@ -62,7 +62,7 @@ struct MessageCardView: View {
 struct MessageCardView_Previews: PreviewProvider {
     static var previews: some View {
         MessageCardView(
-            user: User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+            user: MessageUser(data: ["id": "", "userName": "", "userImage": "", "fromId": "", "text": "", "timestamp": ""])
         )
     }
 }

@@ -12,7 +12,7 @@ struct EditMessageCardView: View {
     /// card selected state
     @State var isOn1: Bool = false
     
-    @State var user: User
+    @State var user: MessageUser
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
@@ -25,14 +25,15 @@ struct EditMessageCardView: View {
     var body: some View {
         Button(action: {
             isOn1 = !isOn1
-            if isOn1 {
-                if !LinkUsersViewModel.selectedUsers.contains(where: { $0.id == user.id }) {
-                    LinkUsersViewModel.selectedUsers.append(user)
-                }
-            } else {
-                LinkUsersViewModel.selectedUsers.removeAll(where: { $0.id == user.id } )
-            }
-            print("\(LinkUsersViewModel.selectedUsers)")
+            // TODO: remove from MessageUser list
+//            if isOn1 {
+//                if !LinkUsersViewModel.selectedUsers.contains(where: { $0.id == user.id }) {
+//                    LinkUsersViewModel.selectedUsers.append(user)
+//                }
+//            } else {
+//                LinkUsersViewModel.selectedUsers.removeAll(where: { $0.id == user.id } )
+//            }
+//            print("\(LinkUsersViewModel.selectedUsers)")
         }) {
             HStack(spacing: UIScreen.main.bounds.width * 0.04) {
                 // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
@@ -56,7 +57,7 @@ struct EditMessageCardView: View {
 struct EditMessageCardView_Previews: PreviewProvider {
     static var previews: some View {
         EditMessageCardView(
-            user: User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+            user: MessageUser(data: ["id": "", "userName": "", "userImage": "", "fromId": "", "text": "", "timestamp": ""])
         )
     }
 }

@@ -13,11 +13,17 @@ class ChatViewModel: ObservableObject {
     @Published var chatText = ""
     @Published var chatMessages = [ChatMessage]()
     
-    @Published var toUser: User?
+    
+    @Published var toUser: MessageUser?
+    
+    @Published var newMessageUser: User?
+    
+    @Published var isReady = false
+    
+    @Published var count = 0
     
     init() {
-        // self.toUser = toUser
-        fetchMessages()
+        // fetchMessages()
     }
     
     func fetchMessages() {
@@ -31,9 +37,7 @@ class ChatViewModel: ObservableObject {
             print("Could not find firebase uid")
             return
         }
-        
-        print("passed test")
-        
+        print("working")
         FirebaseManager.shared.firestore.collection("messages")
             .document(fromId).collection(toId)
             .addSnapshotListener { querySnapshot, error in
@@ -43,22 +47,23 @@ class ChatViewModel: ObservableObject {
                     return
                 }
                 
-                // print(("\(querySnapshot)"))
-                
-                querySnapshot?.documents.forEach({queryDocumentSnapshot in
-                    guard let message = try? queryDocumentSnapshot.data(as: ChatMessage.self) else {
-                        print("No data found")
-                        return
+                querySnapshot?.documentChanges.forEach({ change in
+                    if change.type == .added {
+                        let data = change.document.data()
+                        print(data["timestamp"])
+                        self.chatMessages.append(.init(id: change.document.documentID, data: data))
                     }
-                    
-                    // print(message)
-                    
-                    self.chatMessages.append(message)
-                    // print(self.chatMessages)
                 })
+                print("success")
+                DispatchQueue.main.async {
+                    self.count += 1
+                }
+                
+                self.isReady = true
+                print("success finish")
             }
     }
-    
+        
     func sendChat() {
         
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else {
@@ -72,10 +77,10 @@ class ChatViewModel: ObservableObject {
         }
         
         let messageData = [
-            "id": fromId,
+            "fromId": fromId,
             "toId": toId,
             "text": self.chatText,
-            "timestamp": getTime()
+            "timestamp": Date()
         ] as [String : Any]
         
         let document = FirebaseManager.shared.firestore.collection("messages")
@@ -87,7 +92,9 @@ class ChatViewModel: ObservableObject {
                 return
             }
             print("Success to send message")
+            self.resentMessages()
             self.chatText = ""
+            self.count += 1
         }
         
         let recipientMessageDocument = FirebaseManager.shared.firestore.collection("messages")
@@ -100,6 +107,68 @@ class ChatViewModel: ObservableObject {
             }
 
             print("Recipient saved message as well")
+        }
+    }
+    
+    private func resentMessages() {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        guard let toId = toUser?.id else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        let document = FirebaseManager.shared.firestore.collection("resent_messages")
+            .document(uid).collection("messages").document(toId)
+        
+        let data = [
+            "fromId": uid,
+            "id": toId,
+            "text": self.chatText,
+            "timestamp": Date(),
+            "userImage": toUser?.userImage ?? "",
+            "userName": toUser?.userName ?? ""
+        ] as [String : Any]
+        
+        document.setData(data) { err in
+            if let err = err {
+                print(err)
+                return
+            }
+        }
+    }
+    
+    func saveMessageUser() {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        guard let toId = toUser?.id else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        let document = FirebaseManager.shared.firestore.collection("resent_messages")
+            .document(uid).collection("messages").document(toId)
+        
+        let data = [
+            "fromId": uid,
+            "id": toId,
+            "text": self.chatText,
+            "timestamp": Date(),
+            "userImage": newMessageUser?.image ?? "",
+            "userName": newMessageUser?.name ?? ""
+        ] as [String : Any]
+        
+        document.setData(data) { err in
+            if let err = err {
+                print(err)
+                return
+            }
         }
     }
     

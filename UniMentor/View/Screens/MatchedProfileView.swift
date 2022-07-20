@@ -30,17 +30,15 @@ struct MatchedProfileView: View {
     @Binding var matchedButtonColor: Color
     /// message view button color
     @Binding var messagesButtonColor: Color
-    @Binding var matchedUser: User
-    @Binding var isMatchedUserMessage: Bool
     
     var body: some View {
         ZStack {
-            //NAVIGATION LINK
-            NavigationLink(
-                destination: MessageView(matchedUser: user, isMatchedUserMessage: $isMatchedUserMessage),
-                isActive: $isSendMessageActive
-            ) {EmptyView()}
-            //:NAVIGATION LINK
+//            //NAVIGATION LINK
+//            NavigationLink(
+//                destination: MessageView(matchedUser: user, isMatchedUserMessage: $isMatchedUserMessage),
+//                isActive: $isSendMessageActive
+//            ) {EmptyView()}
+//            //:NAVIGATION LINK
             
             ScrollView {
                 // MAIN
@@ -76,8 +74,8 @@ struct MatchedProfileView: View {
                                 isMessageView = true
                                 matchedButtonColor = Color("DarkColor")
                                 messagesButtonColor = .white
-                                matchedUser = user
-                                isMatchedUserMessage = true
+                                
+                                // TODO: add user to messageUser
                             },
                                  label: "Send Message",
                                  color: Color("ButtonColor"),
@@ -139,9 +137,7 @@ struct MatchedProfileViewPreviewView: View {
             isMatchView: $isMatchView,
             isMessageView: $isMessageView,
             matchedButtonColor: $matchedButtonColor,
-            messagesButtonColor: $messagesButtonColor,
-            matchedUser: $matchedUser,
-            isMatchedUserMessage: $isMatchedUserMessage
+            messagesButtonColor: $messagesButtonColor
         )
     }
     

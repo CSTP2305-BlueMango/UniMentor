@@ -29,8 +29,6 @@ struct MatchedView: View {
     @Binding var matchedButtonColor: Color
     /// message view button color
     @Binding var messagesButtonColor: Color
-    @Binding var matchedUser: User
-    @Binding var isMatchedUserMessage: Bool
     
     
     var body: some View {
@@ -76,9 +74,7 @@ struct MatchedView: View {
                                                     isMatchView: $isMatchView,
                                                     isMessageView: $isMessageView,
                                                     matchedButtonColor: $matchedButtonColor,
-                                                    messagesButtonColor: $messagesButtonColor,
-                                                    matchedUser: $matchedUser,
-                                                    isMatchedUserMessage: $isMatchedUserMessage))
+                                                    messagesButtonColor: $messagesButtonColor))
                                             {
                                                 CardView(
                                                     user: user
@@ -155,9 +151,7 @@ struct MatchedViewPreviewView: View {
             isMatchView: $isMatchView,
             isMessageView: $isMessageView,
             matchedButtonColor: $matchedButtonColor,
-            messagesButtonColor: $messagesButtonColor,
-            matchedUser: $matchedUser,
-            isMatchedUserMessage: $isMatchedUserMessage
+            messagesButtonColor: $messagesButtonColor
         )
     }
     
