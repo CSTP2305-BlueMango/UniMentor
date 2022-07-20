@@ -8,20 +8,28 @@
 import Foundation
 import FirebaseAuth
 
+/// handle loggin in user
 class LoginViewModel: ObservableObject {
+    /// user email
     @Published var email: String = ""
+    /// user password
     @Published var password: String = ""
+    /// email error message
     @Published var emailError: String? = ""
+    /// password error message
     @Published var passwordError: String? = ""
+    /// login success state
     @Published var isLoginSuccess: Bool = false
     
+    /// login user
     func signIn(completion: @escaping () -> Void) {
         
-        //reset error after each submit
+        // reset error after each submit
         self.resetError()
         
         //do - catch to handle format validation
         do {
+            // validate email & password
             try loginValidation(email, password)
             
             FirebaseManager.shared.auth.signIn(withEmail: self.email,

@@ -8,23 +8,27 @@
 import SwiftUI
 import FirebaseAuth
 
+/// handle login & signout
 class AppViewModel: ObservableObject {
-    //let auth = Auth.auth()
-    
+    /// login state
     @Published var loggedIn = false
     
+    /// ckeck if user is logged in
     var isLoggedIn: Bool {
+        // if user is logged in
         if let user = FirebaseManager.shared.auth.currentUser {
+            // if user email is varified
             if user.isEmailVerified {
+                // user can login
                 return true
             }
         }
         return false
-        // return auth.currentUser != nil
     }
 
+    /// signout user
     func signOut() {
-        try? Auth.auth().signOut()
+        try? FirebaseManager.shared.auth.signOut()
         
         self.loggedIn = false
     }

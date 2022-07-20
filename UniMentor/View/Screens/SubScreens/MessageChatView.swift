@@ -86,6 +86,7 @@ struct MessageChatView: View {
                     .frame(height: UIScreen.main.bounds.height * 0.06)
                     .id("End")
                 }
+                .padding(.top, UIScreen.main.bounds.height * 0.01)
                 .onReceive(chatVM.$count) { _ in
                     withAnimation(.easeOut(duration: 0.5)) {
                         scrollViewProxy.scrollTo("End", anchor: .bottom)

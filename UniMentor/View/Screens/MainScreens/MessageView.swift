@@ -55,7 +55,7 @@ struct MessageView: View {
                             Text(vm.errorMessage)
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                ForEach(messageUserVM.messageUsers) { user in
+                                ForEach(messageUserVM.messageUsers.reversed()) { user in
                                     if !isEditClicked {
                                         NavigationLink(destination: MessageChatView(user: user)) {
                                             MessageCardView(

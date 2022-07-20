@@ -7,25 +7,28 @@
 
 import Foundation
 
+/// fetch current user all message users
 class MessageUserViewModel: ObservableObject {
+    /// error message
     @Published var errorMessage = ""
+    /// all message users
     @Published var messageUsers = [MessageUser]()
     
     init() {
         fetchMessageUsers()
     }
     
+    /// fetch all message users from database
     func fetchMessageUsers() {
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            print("Could not find firebase uid")
+            self.errorMessage = "fetchMessageUsers: Could not find current uid"
             return
         }
-        FirebaseManager.shared.firestore.collection("resent_messages")
+        FirebaseManager.shared.firestore.collection("recent_messages")
             .document(uid).collection("messages").order(by: "time")
             .addSnapshotListener { [self] documentsSnapshot, error in
                 if let error = error {
-                    self.errorMessage = "Failed to fetch users: \(error)"
-                    print("Failed to fetch users: \(error)")
+                    self.errorMessage = "fetchMessageUsers: Fail to fetch message user \(error)"
                     return
                 }
                 
