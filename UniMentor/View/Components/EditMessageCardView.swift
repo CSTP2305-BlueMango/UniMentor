@@ -26,14 +26,14 @@ struct EditMessageCardView: View {
         Button(action: {
             isOn1 = !isOn1
             // TODO: remove from MessageUser list
-//            if isOn1 {
-//                if !LinkUsersViewModel.selectedUsers.contains(where: { $0.id == user.id }) {
-//                    LinkUsersViewModel.selectedUsers.append(user)
-//                }
-//            } else {
-//                LinkUsersViewModel.selectedUsers.removeAll(where: { $0.id == user.id } )
-//            }
-//            print("\(LinkUsersViewModel.selectedUsers)")
+            if isOn1 {
+                if !LinkUsersViewModel.selectedMessageUsers.contains(where: { $0.id == user.id }) {
+                    LinkUsersViewModel.selectedMessageUsers.append(user)
+                }
+            } else {
+                LinkUsersViewModel.selectedMessageUsers.removeAll(where: { $0.id == user.id } )
+            }
+            print("\(LinkUsersViewModel.selectedMessageUsers)")
         }) {
             HStack(spacing: UIScreen.main.bounds.width * 0.04) {
                 // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
