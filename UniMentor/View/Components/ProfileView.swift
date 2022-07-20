@@ -13,15 +13,26 @@ struct ProfileView: View {
     /// user
     @State var user: User
     
+    @State var isImageUIImage = false
+    @State var uiImage: UIImage?
+    
     var body: some View {
         // MAIN
         VStack(spacing: UIScreen.main.bounds.height * 0.02) {
             // Profile Image
             VStack {
-                Image(user.image)
-                    .resizable()
-                    .cornerRadius(50)
-                    .aspectRatio(contentMode: .fill)
+                if isImageUIImage {
+                    Image(uiImage: uiImage ?? UIImage())
+                        .resizable()
+                        .cornerRadius(50)
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    AsyncImage(url: URL(string: "\(user.image)")) {image in image
+                        .resizable()
+                        .cornerRadius(50)
+                        .aspectRatio(contentMode: .fill)
+                    }placeholder: {ProgressView()}
+                }
             }
             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
             .clipShape(Circle())

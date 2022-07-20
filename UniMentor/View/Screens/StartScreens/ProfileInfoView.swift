@@ -8,6 +8,12 @@ import SwiftUI
 
 /// set user profile information
 struct ProfileInfoView: View {
+    
+    init(name: String) {
+        self.name = name
+        self.imageVM = ImageViewModel()
+        // imageUrl = ImageViewModel.imageUrl
+    }
     /// profile name
     @State var name: String
     /// prorile major
@@ -37,6 +43,14 @@ struct ProfileInfoView: View {
     /// if profile information is finished
     @State var isProfileConfirmActive = false
     
+    @ObservedObject private var imageVM: ImageViewModel
+    
+    @State var imageUrl = ""
+    
+    private func handleImage() {
+        imageVM.persistImageToStorage(image: self.image)
+    }
+    
     var body: some View {
         // ZSTACK
         ZStack {
@@ -49,7 +63,7 @@ struct ProfileInfoView: View {
                 destination: ProfileConfirmView(
                     name: name,
                     // TODO: fix later
-                    image: "user_image",
+                    image: image,
                     major: major,
                     school: school,
                     startDate: "\(month) \(year)",
@@ -79,13 +93,23 @@ struct ProfileInfoView: View {
                         } label: {
                             ZStack {
                                 // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
-                                Image(uiImage: self.image)
-                                     .resizable()
-                                     .cornerRadius(50)
-                                     .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                     .aspectRatio(contentMode: .fill)
-                                     .clipShape(Circle())
+                                if let image = self.image {
+                                    Image(uiImage: image)
+                                         .resizable()
+                                         .cornerRadius(50)
+                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                         .aspectRatio(contentMode: .fill)
+                                         .clipShape(Circle())
+                                } else {
+                                    Image("")
+                                         .resizable()
+                                         .cornerRadius(50)
+                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                         .aspectRatio(contentMode: .fill)
+                                         .clipShape(Circle())
+                                }
                                 HStack {
                                     Image(systemName: "plus")
                                         .foregroundColor(
@@ -146,8 +170,19 @@ struct ProfileInfoView: View {
                         ButtonView_2(action: {
                             // TODO: validation
                             
+                            Task {
+                                handleImage()
+
+                            }
                             
+                            print("doing")
+                            // self.imageUrl = ImageViewModel.imageUrl
+                            print(imageUrl)
+//                            if imageVM.isImageFinished {
+//                                isProfileConfirmActive = true
+//                            }
                             isProfileConfirmActive = true
+                            
                         },
                              label: "Next",
                              color: Color("TabBarColor"),
@@ -172,3 +207,5 @@ struct ProfileInfoView_Previews: PreviewProvider {
         )
     }
 }
+
+

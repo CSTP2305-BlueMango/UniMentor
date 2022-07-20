@@ -46,11 +46,12 @@ struct MatchedPopupView: View {
                         .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.27, leading: UIScreen.main.bounds.width * 0.1, bottom: 0, trailing: 0))
                         // matched user image
                         VStack {
-                            Image(matchedUserImage)
+                            AsyncImage(url: URL(string: "\(matchedUserImage)")) {image in image
                                 .resizable()
                                 .cornerRadius(50)
                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
                                 .aspectRatio(contentMode: .fill)
+                            }placeholder: {ProgressView()}
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
                         .clipShape(Circle())
@@ -58,11 +59,12 @@ struct MatchedPopupView: View {
                         .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.23, bottom: 0, trailing: 0))
                         // user image
                         VStack {
-                            Image(userImage)
+                            AsyncImage(url: URL(string: "\(userImage)")) {image in image
                                 .resizable()
                                 .cornerRadius(50)
                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
                                 .aspectRatio(contentMode: .fill)
+                            }placeholder: {ProgressView()}
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.35, height: UIScreen.main.bounds.width * 0.35)
                         .clipShape(Circle())

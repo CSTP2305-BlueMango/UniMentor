@@ -18,10 +18,11 @@ struct MessageCardView: View {
             // LEFT - Image
             Spacer().frame(width: 0)
             VStack {
-                Image(user.userImage)
+                AsyncImage(url: URL(string: "\(user.userImage)")) {image in image
                     .resizable()
                     .cornerRadius(50)
                     .aspectRatio(contentMode: .fill)
+                }placeholder: {ProgressView()}
             }
             .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
             .clipShape(Circle())

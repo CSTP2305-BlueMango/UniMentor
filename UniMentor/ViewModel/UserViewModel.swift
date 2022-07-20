@@ -10,101 +10,110 @@ import Firebase
 import FirebaseFirestore
 import SwiftUI
 
+/// handle logged in user database
 class UserViewModel: ObservableObject {
+    /// error message
     @Published var errorMessage = ""
+    /// logged in user
     @Published var user: User?
+    /// logged in user matched user model list
     @Published var matchedUsersModel: [User] = []
+    /// logged in user sent request user model list
     @Published var sentRequestsModel: [User] = []
+    /// logged in user recieved request user model list
     @Published var recievedRequestsModel: [User] = []
+    /// logged in user matched user id list
     @Published var matchedUsers: [String] = []
+    /// logged in user sent request user id list
     @Published var sentRequests: [String] = []
+    /// logged in user recieved request user id list
     @Published var recievedRequests: [String] = []
     
     init() {
         fetchCurrentUser()
     }
     
+    /// fetch logged in user from database
     private func fetchCurrentUser() {
         
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            self.errorMessage = "Could not find firebase uid"
+            self.errorMessage = "fetchCurrentUser: Could not find firebase uid"
             return
         }
         
+        // get user data from database and save as User model
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).addSnapshotListener { snapshot, error in
                 if let error = error {
-                    self.errorMessage = "Fail to fetch current user: \(error)"
-                    print("Fail to fetch current user: ", error)
+                    self.errorMessage = "fetchCurrentUser: Fail to fetch current user: \(error)"
                     return
                 }
                 
                 guard let newUser = try? snapshot?.data(as: User.self) else {
-                    self.errorMessage = "No data found"
+                    self.errorMessage = "fetchCurrentUser: No user data found"
                     return
                 }
                 
+                // save user
                 self.user = newUser
                 
-                // print("\(self.user?.recievedRequests.count)")
-                
+                // save user linked users lists
                 self.matchedUsers = self.user?.matchedUsers ?? []
                 self.sentRequests = self.user?.sentRequests ?? []
                 self.recievedRequests = self.user?.recievedRequests ?? []
                 
+                // get matched user models
                 for id in self.matchedUsers {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
                         .addSnapshotListener { snapshot, error in
                             if let error = error {
-                                self.errorMessage = "Fail to fetch current user: \(error)"
-                                print("Fail to fetch current user: ", error)
+                                self.errorMessage = "fetchCurrentUser: Fail to fetch matched user: \(error)"
                                 return
                             }
                             
                             guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "No data found"
+                                self.errorMessage = "fetchCurrentUser: No matched user data found"
                                 return
                             }
                             
                             self.matchedUsersModel.append(newUser)
                         }
                 }
-                
+                // get sent request user models
                 for id in self.sentRequests {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
                         .addSnapshotListener { snapshot, error in
                             if let error = error {
-                                self.errorMessage = "Fail to fetch current user: \(error)"
-                                print("Fail to fetch current user: ", error)
+                                self.errorMessage = "fetchCurrentUser: Fail to fetch sent request user: \(error)"
                                 return
                             }
                             
                             guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "No data found"
+                                self.errorMessage = "fetchCurrentUser: No sent request user data found"
                                 return
                             }
                             
                             self.sentRequestsModel.append(newUser)
                         }
                 }
-                
+                // get recieved request user models
                 for id in self.recievedRequests {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
                         .addSnapshotListener { snapshot, error in
                             if let error = error {
-                                self.errorMessage = "Fail to fetch current user: \(error)"
-                                print("Fail to fetch current user: ", error)
+                                self.errorMessage = "fetchCurrentUser: Fail to fetch recieve request user: \(error)"
                                 return
                             }
                             
                             guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "No data found"
+                                self.errorMessage = "fetchCurrentUser: No recieve request data found"
                                 return
                             }
                             self.recievedRequestsModel.append(newUser)
@@ -113,12 +122,16 @@ class UserViewModel: ObservableObject {
             }
     }
     
+    /// save user data to database
+    /// param: new User model
     func saveUser(createdUser: User) {
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            print("fail")
+            self.errorMessage = "saveUser: Fail to fetch current user id"
             return
         }
         
+        // new user data
         let newUser = [
             "id": uid,
             "name": createdUser.name,
@@ -133,22 +146,26 @@ class UserViewModel: ObservableObject {
             "recievedRequests": []
         ] as [String : Any]
         
+        // save new user to database
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).setData(newUser) { err in
-                if let err = err {
-                    print(err)
+            .document(uid).setData(newUser) { error in
+                if let error = error {
+                    self.errorMessage = "saveUser: Fail to fetch recieve request user: \(error)"
                     return
                 }
-                print("Success")
             }
     }
     
+    /// update user data to database
+    /// param: updated User model
     func updateUser(updateUserData: User) {
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            print("fail")
+            self.errorMessage = "updateUser: Fail to fetch current user id"
             return
         }
         
+        // update user data
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).updateData([
                 "image": updateUserData.image,
@@ -159,81 +176,87 @@ class UserViewModel: ObservableObject {
             ])
     }
 
+    /// delete user account
     func deleteUser() {
+        // current user
         guard let user = FirebaseManager.shared.auth.currentUser else {
-            print("fail")
+            self.errorMessage = "deleteUser: Fail to fetch current user"
             return
         }
-        
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            // TODO: error
-            print("fail")
+            self.errorMessage = "deleteUser: Fail to fetch current user id"
             return
         }
         
-        
-        
-        let message = FirebaseManager.shared.firestore.collection("messages")
-        print("test")
+        // delete user sent & recieved messages
         for u in matchedUsers {
+            // delete sent messages
             FirebaseManager.shared.firestore.collection("messages")
                 .document(u).collection(uid).getDocuments { snapshot, error in
-                    print("- \(snapshot)")
+                    if let error = error {
+                        self.errorMessage = "deleteUser: Fail to fetch messages data: \(error)"
+                        return
+                    }
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("messages")
-                            .document(u).collection(uid).document(ss.documentID).delete() { err in
-                            if let err = err {
-                                print("Error removing document: \(err)")
-                            } else {
-                                print("Document successfully removed!")
+                            .document(u).collection(uid).document(ss.documentID).delete() { error in
+                            if let error = error {
+                                self.errorMessage = "deleteUser: Fail to delete sent messages data: \(error)"
                             }
                         }
                     })
                 
             }
+            // delete recieved messages
             FirebaseManager.shared.firestore.collection("messages")
                 .document(uid).collection(u).getDocuments { snapshot, error in
-                    print("- \(snapshot)")
+                    if let error = error {
+                        self.errorMessage = "deleteUser: Fail to fetch messages data: \(error)"
+                        return
+                    }
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("messages")
-                            .document(uid).collection(u).document(ss.documentID).delete() { err in
-                            if let err = err {
-                                print("Error removing document: \(err)")
-                            } else {
-                                print("Document successfully removed!")
+                            .document(uid).collection(u).document(ss.documentID).delete() { error in
+                            if let error = error {
+                                self.errorMessage = "deleteUser: Fail to delete recieved messages data: \(error)"
                             }
                         }
                     })
-                
             }
         }
         
+        // delete user recent message data
         for u in matchedUsers {
-            FirebaseManager.shared.firestore.collection("resent_messages")
+            // delete sent messages
+            FirebaseManager.shared.firestore.collection("recent_messages")
                 .document(u).collection("messages").getDocuments { snapshot, error in
-                    print("- \(snapshot)")
+                    if let error = error {
+                        self.errorMessage = "deleteUser: Fail to fetch recent sent messages data: \(error)"
+                        return
+                    }
                     snapshot?.documents.forEach({ ss in
-                        FirebaseManager.shared.firestore.collection("resent_messages")
-                            .document(u).collection("messages").document(uid).delete() { err in
-                            if let err = err {
-                                print("Error removing document: \(err)")
-                            } else {
-                                print("Document successfully removed!")
+                        FirebaseManager.shared.firestore.collection("recent_messages")
+                            .document(u).collection("messages").document(uid).delete() { error in
+                            if let error = error {
+                                self.errorMessage = "deleteUser: Fail to delete recent sent messages data: \(error)"
                             }
                         }
                     })
                 
             }
-            FirebaseManager.shared.firestore.collection("resent_messages")
+            // delete recieved messages
+            FirebaseManager.shared.firestore.collection("recent_messages")
                 .document(uid).collection("messages").getDocuments { snapshot, error in
-                    print("- \(snapshot)")
+                    if let error = error {
+                        self.errorMessage = "deleteUser: Fail to fetch recent recieved messages data: \(error)"
+                        return
+                    }
                     snapshot?.documents.forEach({ ss in
-                        FirebaseManager.shared.firestore.collection("resent_messages")
-                            .document(uid).collection("messages").document(u).delete() { err in
-                            if let err = err {
-                                print("Error removing document: \(err)")
-                            } else {
-                                print("Document successfully removed!")
+                        FirebaseManager.shared.firestore.collection("recent_messages")
+                            .document(uid).collection("messages").document(u).delete() { error in
+                            if let error = error {
+                                self.errorMessage = "deleteUser: Fail to delete recent recieved messages data: \(error)"
                             }
                         }
                     })
@@ -241,22 +264,23 @@ class UserViewModel: ObservableObject {
             }
         }
         
+        // delete current user model
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).delete() { error in
                 if let error = error {
-                    self.errorMessage = "Fail to fetch current user: \(error)"
-                    print("Fail to fetch current user: ", error)
+                    self.errorMessage = "deleteUser: Fail to fetch current user model: \(error)"
                     return
                 }
         }
 
+        // delete matched information
         for u in matchedUsers {
             let userStore = FirebaseManager.shared.firestore.collection("users").document(u)
             userStore.updateData([
                 "matchedUsers": FieldValue.arrayRemove([uid])
             ])
         }
-
+        // delete request information
         for u in sentRequests {
             let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(u)
             receiveUserStore.updateData([
@@ -264,29 +288,34 @@ class UserViewModel: ObservableObject {
             ])
         }
 
+        // delete user auth
         user.delete() { error in
             if let error = error {
-                self.errorMessage = "Fail to fetch current user: \(error)"
-                print("Fail to fetch current user: ", error)
+                self.errorMessage = "deleteUser: Fail to delete current user: \(error)"
                 return
             }
         }
     }
     
+    /// save new message user
+    /// param: new message user: User
     func saveMessageUser(messageuser: User?) {
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            self.errorMessage = "Could not find firebase uid"
+            self.errorMessage = "saveMessageUser: Could not find current uid"
             return
         }
-        
+        // sending user
         guard let toId = messageuser else {
-            self.errorMessage = "Could not find firebase uid"
+            self.errorMessage = "saveMessageUser: Could not find message user"
             return
         }
         
-        let document = FirebaseManager.shared.firestore.collection("resent_messages")
+        // save sending user to current user
+        let document = FirebaseManager.shared.firestore.collection("recent_messages")
             .document(uid).collection("messages").document(toId.id)
         
+        // new message user data
         let data = [
             "fromId": uid,
             "id": toId.id,
@@ -297,16 +326,18 @@ class UserViewModel: ObservableObject {
             "time": Date()
         ] as [String : Any]
         
-        document.setData(data) { err in
-            if let err = err {
-                print(err)
+        document.setData(data) { error in
+            if let error = error {
+                self.errorMessage = "saveMessageUser: Fail to save message user model: \(error)"
                 return
             }
         }
         
-        let recievedDocument = FirebaseManager.shared.firestore.collection("resent_messages")
+        // save current user to sending user
+        let recievedDocument = FirebaseManager.shared.firestore.collection("recent_messages")
             .document(toId.id).collection("messages").document(uid)
         
+        // new message user data
         let recieveddata = [
             "fromId": toId.id,
             "id": uid,
@@ -317,15 +348,17 @@ class UserViewModel: ObservableObject {
             "time": Date()
         ] as [String : Any]
         
-        recievedDocument.setData(recieveddata) { err in
-            if let err = err {
-                print(err)
+        recievedDocument.setData(recieveddata) { error in
+            if let error = error {
+                self.errorMessage = "saveMessageUser: Fail to save message user model: \(error)"
                 return
             }
         }
     }
     
     // reference: https://mammothinteractive.com/get-current-time-with-swiftui-hacking-swift-5-5-xcode-13-and-ios-15/
+    /// handle timestemp
+    /// return: formatted time: String
     func getTime() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long

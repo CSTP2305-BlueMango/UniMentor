@@ -34,10 +34,11 @@ struct HomeCardView: View {
                 // LEFT - Image
                 Spacer().frame(width: 0)
                 VStack {
-                    Image(image)
+                    AsyncImage(url: URL(string: "\(image)")) {image in image
                         .resizable()
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
+                    }placeholder: {ProgressView()}
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
                 .clipShape(Circle())

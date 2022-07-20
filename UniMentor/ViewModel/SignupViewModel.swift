@@ -8,19 +8,28 @@
 import Foundation
 import FirebaseAuth
 
+/// handle sign up user
 class SignupViewModel: ObservableObject {
+    /// user email
     @Published var email: String = ""
+    /// user password
     @Published var password: String = ""
+    /// confirm password
     @Published var confirmPassword: String = ""
+    /// user name
     @Published var name: String = ""
+    /// email error message
     @Published var emailError: String? = ""
+    /// password error message
     @Published var passwordError: String? = ""
+    /// comfirm password error message
     @Published var confirmError: String? = ""
-    
+    /// sign up state
     @Published var signUpFinished = false
 
+    /// sign up user
     func signUp() {
-        
+        // reset error after each submit
         self.resetError()
         
         do {

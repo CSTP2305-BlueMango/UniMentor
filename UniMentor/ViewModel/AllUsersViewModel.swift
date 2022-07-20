@@ -9,33 +9,33 @@ import Foundation
 import FirebaseFirestore
 import Firebase
 
+/// fetch all users from database
 class AllUsersViewModel: ObservableObject {
-    
-    @Published var users = [User]()
+    /// error message
     @Published var errorMessage = ""
+    /// all users list
+    @Published var users = [User]()
     
     init() {
         fetchAllUsers()
     }
     
+    /// fetch all users
     private func fetchAllUsers() {
         FirebaseManager.shared.firestore.collection("users")
             .addSnapshotListener { [self] documentsSnapshot, error in
                 if let error = error {
-                    self.errorMessage = "Failed to fetch users: \(error)"
-                    print("Failed to fetch users: \(error)")
+                    self.errorMessage = "fetchAllUsers: Failed to fetch users: \(error)"
                     return
                 }
                 
                 documentsSnapshot?.documents.forEach({ snapshot in
-                    
                     guard let user = try? snapshot.data(as: User.self) else {
-                        self.errorMessage = "No data found"
+                        self.errorMessage = "fetchAllUsers: No user data found"
                         return
                     }
                     
                     let newUser = user
-                    
                     if newUser.id != FirebaseManager.shared.auth.currentUser?.uid {
                         self.users.append(newUser)
                     }

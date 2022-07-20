@@ -12,7 +12,7 @@ struct ProfileConfirmView: View {
     /// confirm name
     @State var name: String
     /// confirm image
-    @State var image: String
+    @State var image: UIImage?
     /// confirm major
     @State var major: String
     /// confirm school
@@ -26,8 +26,12 @@ struct ProfileConfirmView: View {
     
     @ObservedObject var userVM = UserViewModel()
     
+    @Environment(\.presentationMode) var presentation
+    
+    @ObservedObject private var imageVM = ImageViewModel()
+    
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
@@ -49,7 +53,7 @@ struct ProfileConfirmView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
                             // TODO: actual info Image
-                            ProfileView(user: User(id: "", name: self.name, image: self.image, major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []))
+                            ProfileView(user: User(id: "", name: self.name, image: "", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []), isImageUIImage: true, uiImage: self.image)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
@@ -61,7 +65,7 @@ struct ProfileConfirmView: View {
                             userVM.saveUser(createdUser: User(
                                 id: "",
                                 name: name,
-                                image: image,
+                                image: ImageViewModel.imageUrl,
                                 major: major,
                                 school: school,
                                 startDate: startDate,
@@ -83,6 +87,18 @@ struct ProfileConfirmView: View {
                 }.frame(minHeight: UIScreen.main.bounds.height * 0.9)
                 //: BODY
             }//: ScrollView
+            
+            HStack {
+                Button(action: {
+                    presentation.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
+                        .font(.system(size: UIScreen.main.bounds.width * 0.06))
+                }
+                Spacer()
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.9)
         }
         .hideNavigationBar()
         //: ZSTACK
@@ -93,7 +109,6 @@ struct ProfileConfirmView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileConfirmView(
             name: "First Lastname",
-            image: "user_image",
             major: "Computer Systems Technology",
             school: "Vancouver Community College",
             startDate: "September 2020",
