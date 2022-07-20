@@ -14,8 +14,6 @@ struct MatchedProfileView: View {
     @Environment(\.presentationMode) var presentation
     /// if pop up showing
     @State private var showPopUp: Bool = false
-    /// state to navigate to message view
-    @State var isSendMessageActive: Bool = false
     
     @State var user: User
     
@@ -35,12 +33,6 @@ struct MatchedProfileView: View {
     
     var body: some View {
         ZStack {
-//            //NAVIGATION LINK
-//            NavigationLink(
-//                destination: MessageView(matchedUser: user, isMatchedUserMessage: $isMatchedUserMessage),
-//                isActive: $isSendMessageActive
-//            ) {EmptyView()}
-//            //:NAVIGATION LINK
             
             ScrollView {
                 // MAIN
@@ -69,14 +61,13 @@ struct MatchedProfileView: View {
                         // Send message Button
                         VStack{
                             ButtonView_2(action: {
-                                // TODO: go to message
-                                // isSendMessageActive = true
+                                // go to message
                                 isMatchView = false
                                 isMessageView = true
                                 matchedButtonColor = Color("DarkColor")
                                 messagesButtonColor = .white
                                 
-                                // TODO: add user to messageUser
+                                // add user to messageUser
                                 userVM.saveMessageUser(messageuser: user)
                             },
                                  label: "Send Message",

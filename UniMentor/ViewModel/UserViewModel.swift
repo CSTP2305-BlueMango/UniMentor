@@ -172,6 +172,75 @@ class UserViewModel: ObservableObject {
         }
         
         
+        
+        let message = FirebaseManager.shared.firestore.collection("messages")
+        print("test")
+        for u in matchedUsers {
+            FirebaseManager.shared.firestore.collection("messages")
+                .document(u).collection(uid).getDocuments { snapshot, error in
+                    print("- \(snapshot)")
+                    snapshot?.documents.forEach({ ss in
+                        FirebaseManager.shared.firestore.collection("messages")
+                            .document(u).collection(uid).document(ss.documentID).delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                    })
+                
+            }
+            FirebaseManager.shared.firestore.collection("messages")
+                .document(uid).collection(u).getDocuments { snapshot, error in
+                    print("- \(snapshot)")
+                    snapshot?.documents.forEach({ ss in
+                        FirebaseManager.shared.firestore.collection("messages")
+                            .document(uid).collection(u).document(ss.documentID).delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                    })
+                
+            }
+        }
+        
+        for u in matchedUsers {
+            FirebaseManager.shared.firestore.collection("resent_messages")
+                .document(u).collection("messages").getDocuments { snapshot, error in
+                    print("- \(snapshot)")
+                    snapshot?.documents.forEach({ ss in
+                        FirebaseManager.shared.firestore.collection("resent_messages")
+                            .document(u).collection("messages").document(uid).delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                    })
+                
+            }
+            FirebaseManager.shared.firestore.collection("resent_messages")
+                .document(uid).collection("messages").getDocuments { snapshot, error in
+                    print("- \(snapshot)")
+                    snapshot?.documents.forEach({ ss in
+                        FirebaseManager.shared.firestore.collection("resent_messages")
+                            .document(uid).collection("messages").document(u).delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                    })
+                
+            }
+        }
+        
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).delete() { error in
                 if let error = error {
@@ -180,9 +249,8 @@ class UserViewModel: ObservableObject {
                     return
                 }
         }
-        
+
         for u in matchedUsers {
-            print("\(u)")
             let userStore = FirebaseManager.shared.firestore.collection("users").document(u)
             userStore.updateData([
                 "matchedUsers": FieldValue.arrayRemove([uid])
@@ -195,37 +263,7 @@ class UserViewModel: ObservableObject {
                 "recievedRequests": FieldValue.arrayRemove([uid])
             ])
         }
-        
-        
-//        let receiverMessage = FirebaseManager.shared.firestore.collection("messages").document(user.id).collection(uid)
-//        receiverMessage.getDocuments { snapshopt, error in
-//            snapshopt?.documents.forEach({ s in
-//                FirebaseManager.shared.firestore.collection("messages")
-//                    .document(user.id).collection(uid).document(s.documentID).delete() { err in
-//                    if let err = err {
-//                        print("Error removing document: \(err)")
-//                    } else {
-//                        print("Document successfully removed!")
-//                    }
-//                }
-//            })
-//        }
-//        
-//        let receiverUserMessageUser = FirebaseManager.shared.firestore.collection("resent_messages").document(user.id).collection("messages")
-//        receiverUserMessageUser.getDocuments { snapshopt, error in
-//            snapshopt?.documents.forEach({ s in
-//                FirebaseManager.shared.firestore.collection("resent_messages")
-//                    .document(user.id).collection("messages").document(uid).delete() { err in
-//                    if let err = err {
-//                        print("Error removing document: \(err)")
-//                    } else {
-//                        print("Document successfully removed!")
-//                    }
-//                }
-//            })
-//        }
 
-        
         user.delete() { error in
             if let error = error {
                 self.errorMessage = "Fail to fetch current user: \(error)"
@@ -233,7 +271,6 @@ class UserViewModel: ObservableObject {
                 return
             }
         }
-        
     }
     
     func saveMessageUser(messageuser: User?) {
@@ -254,7 +291,7 @@ class UserViewModel: ObservableObject {
             "fromId": uid,
             "id": toId.id,
             "text": "",
-            "timestamp": getTime(),
+            "timestamp": "",
             "userImage": messageuser?.image ?? "",
             "userName": messageuser?.name ?? "",
             "time": Date()
