@@ -43,6 +43,7 @@ struct HomeView: View {
                                 Color.gray)
                             .frame(width: UIScreen.main.bounds.width * 0.05)
                         TextField("Search", text: $searchInput)
+                            .autocapitalization(.none)
                     }
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.05)
@@ -54,16 +55,36 @@ struct HomeView: View {
                                 if !userVM.matchedUsers.contains(user.id) &&
                                     !userVM.sentRequests.contains(user.id) &&
                                     !userVM.recievedRequests.contains(user.id){
-                                    NavigationLink(destination: HomeProfileView(user: user)) {
-                                        // TODO: actual info
-                                        HomeCardView(
-                                            userID: user.id,
-                                            image: user.image,
-                                            name: user.name,
-                                            major: user.major,
-                                            school: user.school,
-                                            information: user.intro
-                                        )
+                                    if searchInput != ""  {
+                                        if (user.name.range(of: searchInput, options: .caseInsensitive) != nil) ||
+                                            (user.major.range(of: searchInput, options: .caseInsensitive) != nil) ||
+                                            (user.school.range(of: searchInput, options: .caseInsensitive) != nil) ||
+                                            (user.intro.range(of: searchInput, options: .caseInsensitive) != nil) {
+                                            NavigationLink(destination: HomeProfileView(user: user)) {
+                                                // TODO: actual info
+                                                HomeCardView(
+                                                    userID: user.id,
+                                                    image: user.image,
+                                                    name: user.name,
+                                                    major: user.major,
+                                                    school: user.school,
+                                                    information: user.intro
+                                                )
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        NavigationLink(destination: HomeProfileView(user: user)) {
+                                            // TODO: actual info
+                                            HomeCardView(
+                                                userID: user.id,
+                                                image: user.image,
+                                                name: user.name,
+                                                major: user.major,
+                                                school: user.school,
+                                                information: user.intro
+                                            )
+                                        }
                                     }
                                 }
                             }
