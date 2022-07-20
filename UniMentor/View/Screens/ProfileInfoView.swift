@@ -31,11 +31,13 @@ struct ProfileInfoView: View {
     
     
     /// for selecting an image
-    @State private var image = UIImage()
+    @State private var image: UIImage?
     /// to view the photo library and user to choose a photo
-    @State private var showSheet = false
+    @State var isPickerShowing = false
     /// if profile information is finished
     @State var isProfileConfirmActive = false
+    
+    @ObservedObject var uploadPhotoVM = UploadPhotoViewModel()
     
     var body: some View {
         // ZSTACK
@@ -75,17 +77,31 @@ struct ProfileInfoView: View {
                         // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker for selecting image
                         Button {
                                 //when "+" button is clicked, will go to photo library
-                            showSheet = true
+                            isPickerShowing = true
                         } label: {
                             ZStack {
-                                // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
-                                Image(uiImage: self.image)
-                                     .resizable()
-                                     .cornerRadius(50)
-                                     .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                     .aspectRatio(contentMode: .fill)
-                                     .clipShape(Circle())
+                                
+                                if image != nil {
+                                    // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
+                                    Image(uiImage: image!)
+                                         .resizable()
+                                         .cornerRadius(50)
+                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                         .aspectRatio(contentMode: .fill)
+                                         .clipShape(Circle())
+                                    
+                                } else {
+                                    
+                                    Image(systemName: "")
+                                         .resizable()
+                                         .cornerRadius(50)
+                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                         .aspectRatio(contentMode: .fill)
+                                         .clipShape(Circle())
+                                }
+                                
                                 HStack {
                                     Image(systemName: "plus")
                                         .foregroundColor(
@@ -101,14 +117,10 @@ struct ProfileInfoView: View {
                                 .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.3, leading: UIScreen.main.bounds.width * 0.33, bottom: 0, trailing: 0))
                             }
                         }
-                            //need to modify placement of the "+" to make it fixed
-                        
-                            //this is for when user clicks the button, shows the photo library
-                        .sheet(isPresented: $showSheet) {
-                                    // Pick an image from the photo library:
-                            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-                                    //  If you wish to take a photo from camera instead:
-                                //ImagePicker(sourceType: .camera, selectedImage: self.$image)
+                        //this is for when user clicks the button, shows the photo library
+                        .sheet(isPresented: $isPickerShowing, onDismiss: nil) {
+                            // image picker
+                            ImagePicker(image: $image, isPickerShowing: $isPickerShowing)
                         }
                     } //: SELECT IMAGE
                     // MAIN
@@ -146,7 +158,9 @@ struct ProfileInfoView: View {
                         ButtonView_2(action: {
                             // TODO: validation
                             
-                            
+                            /// uploads the photo into database storage
+                            uploadPhotoVM.uploadPhoto()
+                            /// confirms is finished
                             isProfileConfirmActive = true
                         },
                              label: "Next",

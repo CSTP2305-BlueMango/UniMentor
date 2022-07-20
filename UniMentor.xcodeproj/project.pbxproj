@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		343FD4092882A4AF00F497E2 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343FD4082882A4AF00F497E2 /* ChatUser.swift */; };
-		343FD40B2882A55500F497E2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343FD40A2882A55500F497E2 /* MessageViewModel.swift */; };
-		343FD40D2882A56C00F497E2 /* MessageChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343FD40C2882A56C00F497E2 /* MessageChatViewModel.swift */; };
 		345307662877D02000218DAD /* AllUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345307652877D01F00218DAD /* AllUsersViewModel.swift */; };
 		345307682877D30500218DAD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345307672877D30500218DAD /* User.swift */; };
 		34859B23284B0778001C42DC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B22284B0778001C42DC /* TabBarView.swift */; };
@@ -19,6 +16,7 @@
 		34859B2B284B088C001C42DC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2A284B088C001C42DC /* MessageView.swift */; };
 		34859B2D284B0E52001C42DC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34859B2C284B0E52001C42DC /* UserProfileView.swift */; };
 		3492AECC286FADC3001910B6 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3492AECB286FADC3001910B6 /* FirebaseManager.swift */; };
+		34B503CB2887CFF3008B523C /* UploadPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B503CA2887CFF3008B523C /* UploadPhotoViewModel.swift */; };
 		34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCD16A2853269C00BE60AF /* ImagePicker.swift */; };
 		CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */; };
 		CD26D8EC285D2B2200CA1AA6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */; };
@@ -71,9 +69,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		343FD4082882A4AF00F497E2 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
-		343FD40A2882A55500F497E2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
-		343FD40C2882A56C00F497E2 /* MessageChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatViewModel.swift; sourceTree = "<group>"; };
 		345307652877D01F00218DAD /* AllUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewModel.swift; sourceTree = "<group>"; };
 		345307672877D30500218DAD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34859B22284B0778001C42DC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -83,6 +78,7 @@
 		34859B2A284B088C001C42DC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		34859B2C284B0E52001C42DC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		3492AECB286FADC3001910B6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		34B503CA2887CFF3008B523C /* UploadPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewModel.swift; sourceTree = "<group>"; };
 		34DCD16A2853269C00BE60AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = UniMentor/view/Components/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
 		CD1CDAA628643DF300BEC566 /* ProfileConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfirmView.swift; sourceTree = "<group>"; };
 		CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -176,8 +172,7 @@
 				CD91B08C2880D2350005D1CA /* UserViewModel.swift */,
 				345307652877D01F00218DAD /* AllUsersViewModel.swift */,
 				CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */,
-				343FD40A2882A55500F497E2 /* MessageViewModel.swift */,
-				343FD40C2882A56C00F497E2 /* MessageChatViewModel.swift */,
+				34B503CA2887CFF3008B523C /* UploadPhotoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -204,7 +199,6 @@
 			children = (
 				E46781B3286E922600BDAFCA /* CustomError.swift */,
 				345307672877D30500218DAD /* User.swift */,
-				343FD4082882A4AF00F497E2 /* ChatUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,7 +396,6 @@
 				34859B2B284B088C001C42DC /* MessageView.swift in Sources */,
 				CDFD8FE0284306EE00E48A68 /* ProfileInfoView.swift in Sources */,
 				E4365C3D2867897100DE16A4 /* AppViewModel.swift in Sources */,
-				343FD4092882A4AF00F497E2 /* ChatUser.swift in Sources */,
 				34DCD16B2853269C00BE60AF /* ImagePicker.swift in Sources */,
 				CD26D8F0285D3BE500CA1AA6 /* HomeCardView.swift in Sources */,
 				CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */,
@@ -416,7 +409,6 @@
 				E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */,
 				CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
-				343FD40D2882A56C00F497E2 /* MessageChatViewModel.swift in Sources */,
 				CD91B09F28814D9C0005D1CA /* MultiLineInputView.swift in Sources */,
 				CDD0FF5C284C3EA70045E1E4 /* ButtonCardView.swift in Sources */,
 				E46781B6286EA1CB00BDAFCA /* LoginViewModel.swift in Sources */,
@@ -442,11 +434,11 @@
 				E46781B4286E922600BDAFCA /* CustomError.swift in Sources */,
 				E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */,
 				CD8C0A632874174F00DA5BC8 /* EditButtonView.swift in Sources */,
-				343FD40B2882A55500F497E2 /* MessageViewModel.swift in Sources */,
 				E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */,
 				E402B843286F7C4300EBBABA /* ProfileViewModel.swift in Sources */,
 				CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */,
 				E46781AB286E8CD500BDAFCA /* ViewExtension.swift in Sources */,
+				34B503CB2887CFF3008B523C /* UploadPhotoViewModel.swift in Sources */,
 				CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */,
 				CDE10DE5284BE9AB00A71B37 /* MatchedProfileView.swift in Sources */,
 				34859B27284B0877001C42DC /* RequestsView.swift in Sources */,

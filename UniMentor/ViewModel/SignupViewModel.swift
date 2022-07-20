@@ -22,11 +22,10 @@ class SignupViewModel: ObservableObject {
     func signUp() {
         
         self.resetError()
-        self.storeUserInfo()
         
         do {
             try signupValidation(self.email, self.password, self.confirmPassword)
-            Auth.auth().createUser(withEmail: self.email, password: self.password) {
+            FirebaseManager.shared.auth.createUser(withEmail: self.email, password: self.password) {
                 result, error in
                 guard result !== nil, error == nil else {
                     print(error?.localizedDescription ?? "")
@@ -51,29 +50,8 @@ class SignupViewModel: ObservableObject {
     }
     
     func sendEmailVerification() {
-        Auth.auth().currentUser?.sendEmailVerification { error in
+        FirebaseManager.shared.auth.currentUser?.sendEmailVerification { error in
             print(error?.localizedDescription ?? "")
         }
-    }
-    
-    //STILL NEED TO STORE IMAGE
-    //for storing information into Firestore database
-    func storeUserInfo() {
-        //creates a path to the data, it will use the currentuser's uid
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
-
-        //create the dictionary, this is what will be stored in the database
-        let userInfo = ["uid": uid, "email": self.email, "name": self.name, "password": self.password] as [String : Any]
-
-        //this makes the collection of users into the firestore database
-        FirebaseManager.shared.firestore
-            .collection("chatUsers")
-            .document(uid).setData(userInfo) { error in
-                if let error = error {
-                    print(error)
-                    //self.loginStatusMessage = "\(err)"
-                    return
-                }
-            }
     }
 }

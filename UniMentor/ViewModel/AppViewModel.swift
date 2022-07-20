@@ -7,14 +7,14 @@
 
 import SwiftUI
 import FirebaseAuth
+import Firebase
 
 class AppViewModel: ObservableObject {
-    //let auth = Auth.auth()
     
     @Published var loggedIn = false
     
     var isLoggedIn: Bool {
-        if let user = Auth.auth().currentUser {
+        if let user = FirebaseManager.shared.auth.currentUser {
             if user.isEmailVerified {
                 return true
             }
@@ -24,7 +24,7 @@ class AppViewModel: ObservableObject {
     }
 
     func signOut() {
-        try? Auth.auth().signOut()
+        try? FirebaseManager.shared.auth.signOut()
         
         self.loggedIn = false
     }

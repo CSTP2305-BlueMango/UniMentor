@@ -29,10 +29,11 @@ struct UserProfileEditView: View {
     @State var infoError: String? = ""
     
     /// for selecting an image
-    @State private var image = UIImage()
+    @State private var image: UIImage?
     /// to view the photo library and user to choose a photo
-    @State private var showSheet = false
-    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
+    @State var isPickerShowing = false
+    
+    /// get presentation mode object - presentation mode object is for poping child view from NavigationView stack
     @Environment(\.presentationMode) var presentation
     
     @ObservedObject var userVM = UserViewModel()
@@ -74,17 +75,29 @@ struct UserProfileEditView: View {
                                 // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker for selecting image
                                 Button {
                                         //when "+" button is clicked, will go to photo library
-                                    showSheet = true
+                                    isPickerShowing = true
                                 } label: {
                                     ZStack {
-                                        // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
-                                        Image(uiImage: self.image)
-                                             .resizable()
-                                             .cornerRadius(50)
-                                             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                             .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                             .aspectRatio(contentMode: .fill)
-                                             .clipShape(Circle())
+                                        if image != nil {
+                                            // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
+                                            Image(uiImage: image!)
+                                                 .resizable()
+                                                 .cornerRadius(50)
+                                                 .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                                 .aspectRatio(contentMode: .fill)
+                                                 .clipShape(Circle())
+                                            
+                                        } else {
+                                            
+                                            Image(systemName: "")
+                                                 .resizable()
+                                                 .cornerRadius(50)
+                                                 .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+                                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                                 .aspectRatio(contentMode: .fill)
+                                                 .clipShape(Circle())
+                                        }
                                         HStack {
                                             Image(systemName: "plus")
                                                 .foregroundColor(
@@ -103,9 +116,10 @@ struct UserProfileEditView: View {
                                     //need to modify placement of the "+" to make it fixed
                                 
                                     //this is for when user clicks the button, shows the photo library
-                                .sheet(isPresented: $showSheet) {
-                                            // Pick an image from the photo library:
-                                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                                //this is for when user clicks the button, shows the photo library
+                                .sheet(isPresented: $isPickerShowing, onDismiss: nil) {
+                                    // image picker
+                                    ImagePicker(image: $image, isPickerShowing: $isPickerShowing)
                                 }
                             } // SELECT IMAGE
                             // INPUT FIELDS
