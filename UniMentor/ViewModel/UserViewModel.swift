@@ -34,7 +34,7 @@ class UserViewModel: ObservableObject {
         }
         
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).getDocument { snapshot, error in
+            .document(uid).addSnapshotListener { snapshot, error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
                     print("Fail to fetch current user: ", error)
@@ -59,7 +59,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -79,7 +79,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -99,7 +99,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -118,7 +118,7 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .getDocument { snapshot, error in
+                        .addSnapshotListener { snapshot, error in
                             if let error = error {
                                 self.errorMessage = "Fail to fetch current user: \(error)"
                                 print("Fail to fetch current user: ", error)
@@ -234,5 +234,55 @@ class UserViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func saveMessageUser(messageuser: User?) {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        guard let toId = messageuser else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+        
+        let document = FirebaseManager.shared.firestore.collection("resent_messages")
+            .document(uid).collection("messages").document(toId.id)
+        
+        let data = [
+            "fromId": uid,
+            "id": toId.id,
+            "text": "",
+            "timestamp": Date(),
+            "userImage": messageuser?.image ?? "",
+            "userName": messageuser?.name ?? ""
+        ] as [String : Any]
+        
+        document.setData(data) { err in
+            if let err = err {
+                print(err)
+                return
+            }
+        }
+        
+        let recievedDocument = FirebaseManager.shared.firestore.collection("resent_messages")
+            .document(toId.id).collection("messages").document(uid)
+        
+        let recieveddata = [
+            "fromId": toId.id,
+            "id": uid,
+            "text": "",
+            "timestamp": Date(),
+            "userImage": self.user?.image ?? "",
+            "userName": self.user?.name ?? ""
+        ] as [String : Any]
+        
+        recievedDocument.setData(recieveddata) { err in
+            if let err = err {
+                print(err)
+                return
+            }
+        }
     }
 }

@@ -9,71 +9,124 @@ import SwiftUI
 
 /// display messages between users
 struct MessageChatView: View {
-
-    @State var user: User?
+    @Environment(\.presentationMode) var presentation
+    
+    @State var user: MessageUser?
+    
+    
+    // @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var chatVM = ChatViewModel()
+    
 
     @State var chatText = ""
+    
+    @State var showDate = false
 
     var body: some View {
-            ZStack {
-                messagesView
-                VStack(spacing: 0) {
-                    Spacer()
-                    chatBottomBar
-                        .background(Color.white.ignoresSafeArea())
+        ZStack(alignment: .top) {
+            HStack {
+                Button(action: {
+                    presentation.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
+                        .font(.system(size: UIScreen.main.bounds.width * 0.06))
                 }
+                Spacer()
             }
-            .navigationTitle("Username: \(user?.name ?? "not")")
-            //.navigationTitle(chatUser?.email ?? "")
-                .navigationBarTitleDisplayMode(.inline)
+            .frame(width: UIScreen.main.bounds.width * 0.9)
+            .padding(.top, UIScreen.main.bounds.height * 0.008)
+            VStack {
+                HStack(spacing: UIScreen.main.bounds.width * 0.05) {
+                    // LEFT - Image
+                    VStack {
+                        Image(user?.userImage ?? "user_image2")
+                            .resizable()
+                            .cornerRadius(50)
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.08, height: UIScreen.main.bounds.width * 0.1)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
+                    Text("\(user?.userName ?? "test wefwef")")
+                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
+                }
+                .padding(.trailing, UIScreen.main.bounds.width * 0.1)
+                messagesView
+                .frame(height: UIScreen.main.bounds.height * 0.82)
+            }
+            VStack(spacing: 0) {
+                Spacer()
+                chatBottomBar
+                    .background(Color("LightColor"))
+                    .shadow(radius: 0)
+                    .ignoresSafeArea()
+            }
+            .shadow(radius: UIScreen.main.bounds.width * 0.01)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .task {
+            chatVM.toUser = self.user
+            chatVM.fetchMessages()
+        }
     }
     
     private var messagesView: some View {
         ScrollView {
-            ForEach(0..<20) { num in
-                HStack {
-                    Spacer()
-                    HStack {
-                        Text("testing for the chat log")
-                            .foregroundColor(.white)
+            ScrollViewReader { scrollViewProxy in
+                VStack {
+                    ForEach(chatVM.chatMessages) { message in
+                        if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
+                            MessageBubbleView(message: message.text, time: separateTimeStemp(timestemp: message.timestamp)[1], date: separateTimeStemp(timestemp: message.timestamp)[0], isUserMessage: true)                        }
+                        else {
+                            MessageBubbleView(message: message.text, time: separateTimeStemp(timestemp: message.timestamp)[1], date: separateTimeStemp(timestemp: message.timestamp)[0], isUserMessage: false)
+                        }
                     }
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(8)
+                    HStack{ Spacer() }
+                    .frame(height: UIScreen.main.bounds.height * 0.06)
+                    .id("End")
                 }
-                .padding(.horizontal)
-                .padding(.top, 8)
+                .onReceive(chatVM.$count) { _ in
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        scrollViewProxy.scrollTo("End", anchor: .bottom)
+                    }
+                }
             }
-
-            HStack{ Spacer() }
-            .frame(height: 50)
+            
         }
-        .background(Color(.init(white: 0.95, alpha: 1)))
-
+        .background(Color("ChatColor"))
     }
 
     private var chatBottomBar: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: UIScreen.main.bounds.width * 0.04) {
             ZStack {
                 DescriptionPlaceholder()
-                TextEditor(text: $chatText)
-                    .opacity(chatText.isEmpty ? 0.5 : 1)
+                TextEditor(text: $chatVM.chatText)
+                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                    .opacity(chatVM.chatText.isEmpty ? 0.5 : 1)
             }
-            .frame(height: 40)
+            .padding(.leading)
+            .padding(.top, UIScreen.main.bounds.height * 0.005)
+            .frame(height: UIScreen.main.bounds.height * 0.05)
 
             Button {
-
+                if !chatVM.chatText.isEmpty {
+                    chatVM.sendChat()
+                }
             } label: {
-                Text("Send")
-                    .foregroundColor(.white)
+                Image(systemName: "arrow.up.circle")
+                    .foregroundColor(Color("DarkColor"))
+                    .font(.system(size: UIScreen.main.bounds.width * 0.07))
+                    .opacity(chatVM.chatText.isEmpty ? 0.5 : 1)
             }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
-            .background(Color.blue)
-            .cornerRadius(4)
+            .padding(.trailing, UIScreen.main.bounds.width * 0.02)
         }
+        .background(.white)
+        .cornerRadius(UIScreen.main.bounds.width * 0.07)
         .padding(.horizontal)
-        .padding(.vertical, 8)
+        .padding(.vertical, UIScreen.main.bounds.height * 0.01)
     }
 }
 
@@ -81,20 +134,38 @@ private struct DescriptionPlaceholder: View {
     var body: some View {
         HStack {
             Text("Enter Message")
-                .foregroundColor(Color(.gray))
-                .font(.system(size: 17))
-                .padding(.leading, 5)
-                .padding(.top, -4)
+                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                .padding(.leading, UIScreen.main.bounds.width * 0.01)
+                .padding(.top, -UIScreen.main.bounds.width * 0.01)
             Spacer()
         }
     }
 }
 
+struct MessageChatViewPreviewView: View {
+    @State var isMatchedUserMessage: Bool = false
+    var body: some View {
+        MessageChatView()
+    }
+}
 
 struct MessageChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MessageChatView()
+            MessageChatViewPreviewView()
         }
+    }
+}
+
+func separateTimeStemp(timestemp: String) -> [String] {
+    if timestemp != "" {
+        let result = timestemp.components(separatedBy: " ")
+        print(result)
+        let date = "\(result[0]) \(result[1]) \(result[2])"
+        let time = "\(result[4]) \(result[5])"
+        return [date, time]
+    }
+    else {
+        return ["", ""]
     }
 }

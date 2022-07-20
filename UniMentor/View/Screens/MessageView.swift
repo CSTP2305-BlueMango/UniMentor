@@ -18,22 +18,14 @@ struct MessageView: View {
     
     @ObservedObject var vm = AllUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var messageUserVM = MessageUserViewModel()
     
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
-    @State var matchedUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-    @State var isMatchedUserMessage = false
     
     var body: some View {
         ZStack {
             // BODY
-            //NAVIGATION LINK
-            NavigationLink(
-                destination: MessageChatView(user: matchedUser),
-                isActive: $isMatchedUserMessage
-            ) {EmptyView()}
-            //:NAVIGATION LINK
-            
             VStack(spacing: 0) {
                 VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                     // HEADER
@@ -63,7 +55,7 @@ struct MessageView: View {
                             Text(vm.errorMessage)
                             
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                ForEach(userVM.messageUsersModel) { user in
+                                ForEach(messageUserVM.messageUsers) { user in
                                     if !isEditClicked {
                                         NavigationLink(destination: MessageChatView(user: user)) {
                                             MessageCardView(
@@ -107,7 +99,7 @@ struct MessageView: View {
                 information: "Delete messages with selected people?",
                 warnMessage: "* Delete messages will unmatch",
                 buttonAction: {
-                    // TODO: delete messages and unmatch
+                    // TODO: delete messages
                     for u in LinkUsersViewModel.selectedUsers {
                         LinkUsersVM.unmatchUser(user: u)
                     }
@@ -120,11 +112,23 @@ struct MessageView: View {
             )
             //: POPUP
         }
+//        .task {
+//            chatVM.fetchMessageUsers()
+//        }
     }
+}
+
+struct MessageViewPreviewView: View {
+    @State var isMatchedUserMessage: Bool = false
+    var body: some View {
+        MessageView(
+        )
+    }
+    
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView()
+        MessageViewPreviewView()
     }
 }

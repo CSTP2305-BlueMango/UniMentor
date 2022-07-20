@@ -37,8 +37,6 @@ struct TabBarView: View {
     
     @State var testUser: User?
     
-    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-    @State var isMatchedUserMessage: Bool = false
     
     var body: some View {
         // BODY
@@ -58,14 +56,12 @@ struct TabBarView: View {
                         isMatchView: $isMatchView,
                         isMessageView: $isMessageView,
                         matchedButtonColor: $matchedButtonColor,
-                        messagesButtonColor: $messagesButtonColor,
-                        matchedUser: $matchedUser,
-                        isMatchedUserMessage: $isMatchedUserMessage
+                        messagesButtonColor: $messagesButtonColor
                     )
                 }
                 // display message view
                 if isMessageView {
-                    MessageView(matchedUser: matchedUser, isMatchedUserMessage: isMatchedUserMessage)
+                    MessageView()
                 }
                 // display profile view
                 if isProfileView {

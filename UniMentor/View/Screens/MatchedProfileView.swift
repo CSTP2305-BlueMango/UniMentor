@@ -22,6 +22,8 @@ struct MatchedProfileView: View {
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
+    @ObservedObject var chatVM = ChatViewModel()
+    
     /// if match view button clicked
     @Binding var isMatchView: Bool
     /// if message view button clicked
@@ -30,17 +32,15 @@ struct MatchedProfileView: View {
     @Binding var matchedButtonColor: Color
     /// message view button color
     @Binding var messagesButtonColor: Color
-    @Binding var matchedUser: User
-    @Binding var isMatchedUserMessage: Bool
     
     var body: some View {
         ZStack {
-            //NAVIGATION LINK
-            NavigationLink(
-                destination: MessageView(matchedUser: user, isMatchedUserMessage: true),
-                isActive: $isSendMessageActive
-            ) {EmptyView()}
-            //:NAVIGATION LINK
+//            //NAVIGATION LINK
+//            NavigationLink(
+//                destination: MessageView(matchedUser: user, isMatchedUserMessage: $isMatchedUserMessage),
+//                isActive: $isSendMessageActive
+//            ) {EmptyView()}
+//            //:NAVIGATION LINK
             
             ScrollView {
                 // MAIN
@@ -76,8 +76,9 @@ struct MatchedProfileView: View {
                                 isMessageView = true
                                 matchedButtonColor = Color("DarkColor")
                                 messagesButtonColor = .white
-                                matchedUser = user
-                                isMatchedUserMessage = true
+                                
+                                // TODO: add user to messageUser
+                                userVM.saveMessageUser(messageuser: user)
                             },
                                  label: "Send Message",
                                  color: Color("ButtonColor"),
@@ -139,9 +140,7 @@ struct MatchedProfileViewPreviewView: View {
             isMatchView: $isMatchView,
             isMessageView: $isMessageView,
             matchedButtonColor: $matchedButtonColor,
-            messagesButtonColor: $messagesButtonColor,
-            matchedUser: $matchedUser,
-            isMatchedUserMessage: $isMatchedUserMessage
+            messagesButtonColor: $messagesButtonColor
         )
     }
     

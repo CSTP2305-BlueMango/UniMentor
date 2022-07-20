@@ -20,7 +20,7 @@ class AllUsersViewModel: ObservableObject {
     
     private func fetchAllUsers() {
         FirebaseManager.shared.firestore.collection("users")
-            .getDocuments { [self] documentsSnapshot, error in
+            .addSnapshotListener { [self] documentsSnapshot, error in
                 if let error = error {
                     self.errorMessage = "Failed to fetch users: \(error)"
                     print("Failed to fetch users: \(error)")

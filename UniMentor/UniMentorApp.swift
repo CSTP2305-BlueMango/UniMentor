@@ -26,7 +26,8 @@ struct UniMentorApp: App {
         WindowGroup {
                 // TabBarView()
             LoadingView()
-                .environmentObject(viewModel)        }
+                .environmentObject(viewModel)
+        }
     }
 }
 
