@@ -5,6 +5,7 @@
 //  Created by Yoonseo Jeong on 2022-05-28.
 //
 import SwiftUI
+import SDWebImageSwiftUI
 
 /// set user profile information
 struct ProfileInfoView: View {
@@ -38,6 +39,7 @@ struct ProfileInfoView: View {
     @State var isProfileConfirmActive = false
     
     @ObservedObject var uploadPhotoVM = UploadPhotoViewModel()
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         // ZSTACK
@@ -51,7 +53,8 @@ struct ProfileInfoView: View {
                 destination: ProfileConfirmView(
                     name: name,
                     // TODO: fix later
-                    image: "user_image",
+                    image: "",
+                    //image: WebImage(url: URL(string: uploadPhotoVM.user?.imageUrl ?? "")),
                     major: major,
                     school: school,
                     startDate: "\(month) \(year)",

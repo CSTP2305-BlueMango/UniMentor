@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import UIKit
 
 // reference: https://peterfriese.dev/posts/swiftui-firebase-codable/
 struct User: Identifiable, Codable {

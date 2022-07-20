@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import SwiftUI
+import SDWebImageSwiftUI
 
 class UserViewModel: ObservableObject {
     @Published var errorMessage = ""
@@ -21,6 +22,8 @@ class UserViewModel: ObservableObject {
     @Published var sentRequests: [String] = []
     @Published var recievedRequests: [String] = []
     @Published var messageUsers: [String] = []
+    
+    @Published var uploadPhotoVM = UploadPhotoViewModel()
     
     init() {
         fetchCurrentUser()
@@ -146,6 +149,7 @@ class UserViewModel: ObservableObject {
             "id": uid,
             "name": createdUser.name,
             "image": createdUser.image,
+            //"image: createdUser.WebImage(url: URL(string: uploadPhotoVM.user?.image ?? "")),
             "major": createdUser.major,
             "school": createdUser.school,
             "startDate": createdUser.startDate,

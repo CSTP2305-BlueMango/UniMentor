@@ -11,48 +11,69 @@ import SwiftUI
 class UploadPhotoViewModel: ObservableObject {
     
     /// for selecting an image
-    @Published private var image: UIImage?
+    @Published var image: UIImage?
     /// to view the photo library and user to choose a photo
     @Published var isPickerShowing = false
     
-    func uploadPhoto() {
-        
-        // make sure that the selected image property isn't nil
-        guard image != nil else {
-            return
-        }
-        
-        // get currentuser uid from auth storage
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
-        
-        // create a storage reference
-        //let storageRef = FirebaseManager.shared.storage.reference()
-        let storageRef = FirebaseManager.shared.storage.reference(withPath: uid)
-        
-        // turn image into data
-        let imageData = image!.jpegData(compressionQuality: 0.8)
-            
-        // check that we were able to convert it to data
-        guard imageData != nil else {
-            return
-        }
-        
-        // specify the file path and and name
-        //let path = "images/\(UUID().uuidString).jpg"
-        let fileRef = storageRef.child("\(UUID().uuidString).jpg")
-            
-        // upload data
-        let uploadTask = fileRef.putData(imageData!, metadata: nil) { metadata, error in
-                
-            // check for errors
-            if error == nil && metadata != nil {
-                
-                // save file into firestore database
-//                let db = FirebaseManager.shared.firestore
-//                db.collection("images").document().setData(["url": path])
-            }
-        }
-        
-    }
+    @Published var user: User?
     
+    @Published var errMessage = ""
+    
+    func uploadPhoto() {
+
+            guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+            
+            //filename or path to the file
+            let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+            guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
+            ref.putData(imageData, metadata: nil) { metadata, err in
+                if let err = err {
+                    self.errMessage = "Failed to push image to Storage: \(err)"
+                    return
+                }
+
+                ref.downloadURL { url, err in
+                    if let err = err {
+                        self.errMessage = "Failed to retrieve downloadURL: \(err)"
+                        return
+                    }
+
+                    //this will show that the image was successfully saved into firestore
+                    self.errMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
+                    print(url?.absoluteString)
+                    
+                    guard let url = url else { return }
+                    self.saveUserPhoto(imageUrl: url)
+                }
+            }
+        }// :uploadphoto
+
+        // store information into Firestore database
+        func saveUserPhoto(imageUrl: URL) {
+
+            guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+                return }
+
+            //create the dictionary, this is what will be stored in the database
+            let userInfo = [
+                "uid": uid,
+                "name": self.user?.name,
+                "image": imageUrl.absoluteString,
+                "major": self.user?.major,
+                "school": self.user?.school,
+                "startDate": self.user?.startDate,
+                "intro": self.user?.intro]
+
+            //this makes the collection of users into the firestore database
+            FirebaseManager.shared.firestore.collection("users")
+                .document(uid).setData(userInfo) { error in
+                    if let error = error {
+                        print(error)
+                        self.errMessage = "\(error)"
+                        return
+                    }
+
+                    print("Success")
+            }// :storeuserinfo
+        }
 }

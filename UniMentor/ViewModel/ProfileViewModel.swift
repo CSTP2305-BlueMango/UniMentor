@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 class ProfileViewModel: ObservableObject {
     @Published var major: String = ""
     @Published var school: String = ""
     @Published var startDate: Date = Date.now
     @Published var info: String = ""
-    @Published var image = Data()
+    @Published var image: UIImage?
     
     @Published var about: String = ""
 }
