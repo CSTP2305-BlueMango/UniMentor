@@ -11,13 +11,13 @@ import Foundation
 struct ChatMessage: Identifiable {
     var id: String
     let fromId, toId, text: String
-    let timestamp: Date
+    let timestamp: String
 
     init(id: String, data: [String: Any]) {
         self.id = id
         self.fromId = data["fromId"] as? String ?? ""
         self.toId = data["toId"] as? String ?? ""
         self.text = data["text"] as? String ?? ""
-        self.timestamp = data["timestamp"] as? Date ?? Date()
+        self.timestamp = data["timestamp"] as? String ?? ""
     }
 }

@@ -21,6 +21,8 @@ struct MatchedView: View {
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    
+    
     /// if match view button clicked
     @Binding var isMatchView: Bool
     /// if message view button clicked

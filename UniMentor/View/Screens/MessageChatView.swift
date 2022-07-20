@@ -20,65 +20,57 @@ struct MessageChatView: View {
 
     @State var chatText = ""
     
-    
+    @State var showDate = false
 
     var body: some View {
         ZStack(alignment: .top) {
-//            if !chatVM.isReady {
-//                Text("not ready")
-//            }
-//            else {
-                // Back Button
-                HStack {
-                    Button(action: {
-                        presentation.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(.black)
-                            .font(.system(size: UIScreen.main.bounds.width * 0.06))
+            HStack {
+                Button(action: {
+                    presentation.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
+                        .font(.system(size: UIScreen.main.bounds.width * 0.06))
+                }
+                Spacer()
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.9)
+            .padding(.top, UIScreen.main.bounds.height * 0.008)
+            VStack {
+                HStack(spacing: UIScreen.main.bounds.width * 0.05) {
+                    // LEFT - Image
+                    VStack {
+                        Image(user?.userImage ?? "user_image2")
+                            .resizable()
+                            .cornerRadius(50)
+                            .aspectRatio(contentMode: .fill)
                     }
-                    Spacer()
+                    .frame(width: UIScreen.main.bounds.width * 0.08, height: UIScreen.main.bounds.width * 0.1)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
+                    Text("\(user?.userName ?? "test wefwef")")
+                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.9)
-                .padding(.top, UIScreen.main.bounds.height * 0.008)
-                VStack {
-                    HStack(spacing: UIScreen.main.bounds.width * 0.05) {
-                        // LEFT - Image
-                        VStack {
-                            Image(user?.userImage ?? "user_image2")
-                                .resizable()
-                                .cornerRadius(50)
-                                .aspectRatio(contentMode: .fill)
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.08, height: UIScreen.main.bounds.width * 0.1)
-                        .clipShape(Circle())
-                        .shadow(radius: 3)
-                        Text("\(user?.userName ?? "test wefwef")")
-                            .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
-                    }
-                    .padding(.trailing, UIScreen.main.bounds.width * 0.1)
-                    // Text(chatVM.chatMessages[0].text)
-                    messagesView
-                    .frame(height: UIScreen.main.bounds.height * 0.82)
-                }
-                VStack(spacing: 0) {
-                    Spacer()
-                    chatBottomBar
-                        .background(Color("LightColor"))
-                        .shadow(radius: 0)
-                        .ignoresSafeArea()
-                }
-                .shadow(radius: UIScreen.main.bounds.width * 0.01)
-            // }
+                .padding(.trailing, UIScreen.main.bounds.width * 0.1)
+                messagesView
+                .frame(height: UIScreen.main.bounds.height * 0.82)
+            }
+            VStack(spacing: 0) {
+                Spacer()
+                chatBottomBar
+                    .background(Color("LightColor"))
+                    .shadow(radius: 0)
+                    .ignoresSafeArea()
+            }
+            .shadow(radius: UIScreen.main.bounds.width * 0.01)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-//        .task {
-//            print(self.user)
-//            chatVM.toUser = self.user
-//            chatVM.fetchMessages()
-//        }
+        .task {
+            chatVM.toUser = self.user
+            chatVM.fetchMessages()
+        }
     }
     
     private var messagesView: some View {
@@ -87,45 +79,9 @@ struct MessageChatView: View {
                 VStack {
                     ForEach(chatVM.chatMessages) { message in
                         if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
-                            HStack {
-                                Spacer()
-                                VStack {
-                                    Spacer()
-                                    Text("\(message.timestamp)")
-                                        .foregroundColor(Color("DarkColor"))
-                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                                }
-                                HStack {
-                                    Text(message.text)
-                                        .foregroundColor(.black)
-                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
-                                }
-                                .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.03, leading: UIScreen.main.bounds.width * 0.05, bottom: UIScreen.main.bounds.width * 0.03, trailing: UIScreen.main.bounds.width * 0.05))
-                                .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.05).fill(Color.white).shadow(color: Color(.gray).opacity(0.3), radius: 5, x: 0, y: 0))
-                            }
-                            .padding(.horizontal)
-                            .padding(.top, UIScreen.main.bounds.width * 0.02)
-                        }
+                            MessageBubbleView(message: message.text, time: separateTimeStemp(timestemp: message.timestamp)[1], date: separateTimeStemp(timestemp: message.timestamp)[0], isUserMessage: true)                        }
                         else {
-                            HStack {
-                                
-                                HStack {
-                                    Text(message.text)
-                                        .foregroundColor(.black)
-                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
-                                }
-                                .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.03, leading: UIScreen.main.bounds.width * 0.05, bottom: UIScreen.main.bounds.width * 0.03, trailing: UIScreen.main.bounds.width * 0.05))
-                                .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.05).fill(Color.white).shadow(color: Color(.gray).opacity(0.3), radius: 5, x: 0, y: 0))
-                                VStack {
-                                    Spacer()
-                                    Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
-                                        .foregroundColor(Color("DarkColor"))
-                                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                                }
-                                Spacer()
-                            }
-                            .padding(.horizontal)
-                            .padding(.top, UIScreen.main.bounds.width * 0.02)
+                            MessageBubbleView(message: message.text, time: separateTimeStemp(timestemp: message.timestamp)[1], date: separateTimeStemp(timestemp: message.timestamp)[0], isUserMessage: false)
                         }
                     }
                     HStack{ Spacer() }
@@ -141,7 +97,6 @@ struct MessageChatView: View {
             
         }
         .background(Color("ChatColor"))
-
     }
 
     private var chatBottomBar: some View {
@@ -158,7 +113,6 @@ struct MessageChatView: View {
 
             Button {
                 if !chatVM.chatText.isEmpty {
-                    // TODO: send message
                     chatVM.sendChat()
                 }
             } label: {
@@ -193,14 +147,25 @@ struct MessageChatViewPreviewView: View {
     var body: some View {
         MessageChatView()
     }
-    
 }
-
 
 struct MessageChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MessageChatViewPreviewView()
         }
+    }
+}
+
+func separateTimeStemp(timestemp: String) -> [String] {
+    if timestemp != "" {
+        let result = timestemp.components(separatedBy: " ")
+        print(result)
+        let date = "\(result[0]) \(result[1]) \(result[2])"
+        let time = "\(result[4]) \(result[5])"
+        return [date, time]
+    }
+    else {
+        return ["", ""]
     }
 }

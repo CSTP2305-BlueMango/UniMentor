@@ -99,7 +99,7 @@ struct MessageView: View {
                 information: "Delete messages with selected people?",
                 warnMessage: "* Delete messages will unmatch",
                 buttonAction: {
-                    // TODO: delete messages and unmatch
+                    // TODO: delete messages
                     for u in LinkUsersViewModel.selectedUsers {
                         LinkUsersVM.unmatchUser(user: u)
                     }

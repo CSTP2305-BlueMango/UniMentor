@@ -21,14 +21,13 @@ class MessageUserViewModel: ObservableObject {
             return
         }
         FirebaseManager.shared.firestore.collection("resent_messages")
-            .document(uid).collection("messages")
+            .document(uid).collection("messages").order(by: "timestamp")
             .addSnapshotListener { [self] documentsSnapshot, error in
                 if let error = error {
                     self.errorMessage = "Failed to fetch users: \(error)"
                     print("Failed to fetch users: \(error)")
                     return
                 }
-                print("test")
                 
                 documentsSnapshot?.documentChanges.forEach({ change in
                     if change.type == .added {

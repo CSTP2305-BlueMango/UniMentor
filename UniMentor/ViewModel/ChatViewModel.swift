@@ -39,7 +39,7 @@ class ChatViewModel: ObservableObject {
         }
         print("working")
         FirebaseManager.shared.firestore.collection("messages")
-            .document(fromId).collection(toId)
+            .document(fromId).collection(toId).order(by: "timestamp")
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
                     self.errorMessage = "Fail to fetch current user: \(error)"
@@ -80,7 +80,7 @@ class ChatViewModel: ObservableObject {
             "fromId": fromId,
             "toId": toId,
             "text": self.chatText,
-            "timestamp": Date()
+            "timestamp": getTime()
         ] as [String : Any]
         
         let document = FirebaseManager.shared.firestore.collection("messages")
@@ -124,16 +124,23 @@ class ChatViewModel: ObservableObject {
         let document = FirebaseManager.shared.firestore.collection("resent_messages")
             .document(uid).collection("messages").document(toId)
         
-        let data = [
-            "fromId": uid,
-            "id": toId,
+        document.updateData([
             "text": self.chatText,
-            "timestamp": Date(),
-            "userImage": toUser?.userImage ?? "",
-            "userName": toUser?.userName ?? ""
-        ] as [String : Any]
+            "timestamp": getTime(),
+        ]) { err in
+            if let err = err {
+                print(err)
+                return
+            }
+        }
         
-        document.setData(data) { err in
+        let recieveDocument = FirebaseManager.shared.firestore.collection("resent_messages")
+            .document(toId).collection("messages").document(uid)
+        
+        recieveDocument.updateData([
+            "text": self.chatText,
+            "timestamp": getTime(),
+        ]) { err in
             if let err = err {
                 print(err)
                 return
@@ -141,43 +148,15 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    func saveMessageUser() {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
-            self.errorMessage = "Could not find firebase uid"
-            return
-        }
-        
-        guard let toId = toUser?.id else {
-            self.errorMessage = "Could not find firebase uid"
-            return
-        }
-        
-        let document = FirebaseManager.shared.firestore.collection("resent_messages")
-            .document(uid).collection("messages").document(toId)
-        
-        let data = [
-            "fromId": uid,
-            "id": toId,
-            "text": self.chatText,
-            "timestamp": Date(),
-            "userImage": newMessageUser?.image ?? "",
-            "userName": newMessageUser?.name ?? ""
-        ] as [String : Any]
-        
-        document.setData(data) { err in
-            if let err = err {
-                print(err)
-                return
-            }
-        }
-    }
+
     
     
     // reference: https://mammothinteractive.com/get-current-time-with-swiftui-hacking-swift-5-5-xcode-13-and-ios-15/
     func getTime() -> String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let dateString = formatter.string(from: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        let dateString = dateFormatter.string(from: Date())
         return dateString
     }
 }

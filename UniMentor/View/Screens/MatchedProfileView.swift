@@ -22,6 +22,8 @@ struct MatchedProfileView: View {
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     @ObservedObject var userVM = UserViewModel()
     
+    @ObservedObject var chatVM = ChatViewModel()
+    
     /// if match view button clicked
     @Binding var isMatchView: Bool
     /// if message view button clicked
@@ -76,6 +78,7 @@ struct MatchedProfileView: View {
                                 messagesButtonColor = .white
                                 
                                 // TODO: add user to messageUser
+                                userVM.saveMessageUser(messageuser: user)
                             },
                                  label: "Send Message",
                                  color: Color("ButtonColor"),
