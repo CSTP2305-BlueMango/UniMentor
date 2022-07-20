@@ -13,8 +13,6 @@ struct MessageChatView: View {
     
     @State var user: MessageUser?
     
-    
-    // @ObservedObject var userVM = UserViewModel()
     @ObservedObject var chatVM = ChatViewModel()
     
 
@@ -160,7 +158,6 @@ struct MessageChatView_Previews: PreviewProvider {
 func separateTimeStemp(timestemp: String) -> [String] {
     if timestemp != "" {
         let result = timestemp.components(separatedBy: " ")
-        print(result)
         let date = "\(result[0]) \(result[1]) \(result[2])"
         let time = "\(result[4]) \(result[5])"
         return [date, time]

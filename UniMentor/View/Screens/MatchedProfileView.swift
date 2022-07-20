@@ -69,7 +69,6 @@ struct MatchedProfileView: View {
                         // Send message Button
                         VStack{
                             ButtonView_2(action: {
-                                LinkUsersVM.messageUser(user: user, matchedUserList: userVM.matchedUsers)
                                 // TODO: go to message
                                 // isSendMessageActive = true
                                 isMatchView = false
@@ -132,11 +131,11 @@ struct MatchedProfileViewPreviewView: View {
     @State var matchedButtonColor: Color = Color("DarkColor")
     /// message view button color
     @State var messagesButtonColor: Color = Color("DarkColor")
-    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
     @State var isMatchedUserMessage: Bool = false
     var body: some View {
         MatchedProfileView(
-            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: []),
+            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: []),
             isMatchView: $isMatchView,
             isMessageView: $isMessageView,
             matchedButtonColor: $matchedButtonColor,

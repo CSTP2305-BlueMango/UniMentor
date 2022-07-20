@@ -11,12 +11,6 @@ import SwiftUI
 struct MessageCardView: View {
     
     @State var user: MessageUser
-    // TODO: shoule be setup
-    /// latest message
-    @State var latestMsg: String = "test"
-    /// latest message date
-    @State var latestDate: String = "2020-12-24"
-
     
     var body: some View {
         // CARD
@@ -40,7 +34,7 @@ struct MessageCardView: View {
                         .lineLimit(1)
                         .frame(width: UIScreen.main.bounds.width * 0.45, alignment: .leading)
                     Spacer()
-                    Text(latestDate)
+                    Text(formatTimeStemp(timestemp: user.timestamp))
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                 }.frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
                 Text(user.text)
@@ -64,5 +58,15 @@ struct MessageCardView_Previews: PreviewProvider {
         MessageCardView(
             user: MessageUser(data: ["id": "", "userName": "", "userImage": "", "fromId": "", "text": "", "timestamp": ""])
         )
+    }
+}
+
+func formatTimeStemp(timestemp: String) -> String {
+    if timestemp != "" {
+        let result = timestemp.components(separatedBy: " ")
+        return "\(result[4]) \(result[5])"
+    }
+    else {
+        return ""
     }
 }

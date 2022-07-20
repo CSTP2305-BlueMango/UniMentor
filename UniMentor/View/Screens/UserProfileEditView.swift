@@ -147,8 +147,7 @@ struct UserProfileEditView: View {
                                     intro: info,
                                     matchedUsers: [],
                                     sentRequests: [],
-                                    recievedRequests: [],
-                                    messageUsers: []))
+                                    recievedRequests: []))
                                 presentation.wrappedValue.dismiss()
                             },
                                  label: "Save Changes",

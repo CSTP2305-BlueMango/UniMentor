@@ -50,7 +50,6 @@ class ChatViewModel: ObservableObject {
                 querySnapshot?.documentChanges.forEach({ change in
                     if change.type == .added {
                         let data = change.document.data()
-                        print(data["timestamp"])
                         self.chatMessages.append(.init(id: change.document.documentID, data: data))
                     }
                 })
@@ -127,6 +126,7 @@ class ChatViewModel: ObservableObject {
         document.updateData([
             "text": self.chatText,
             "timestamp": getTime(),
+            "time": Date()
         ]) { err in
             if let err = err {
                 print(err)
@@ -140,6 +140,7 @@ class ChatViewModel: ObservableObject {
         recieveDocument.updateData([
             "text": self.chatText,
             "timestamp": getTime(),
+            "time": Date()
         ]) { err in
             if let err = err {
                 print(err)
@@ -147,8 +148,6 @@ class ChatViewModel: ObservableObject {
             }
         }
     }
-    
-
     
     
     // reference: https://mammothinteractive.com/get-current-time-with-swiftui-hacking-swift-5-5-xcode-13-and-ios-15/

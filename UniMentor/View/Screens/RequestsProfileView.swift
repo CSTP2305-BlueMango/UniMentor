@@ -122,7 +122,7 @@ struct RequestsProfileView: View {
 struct RequestsProfileView_Previews: PreviewProvider {
     static var previews: some View {
         RequestsProfileView(
-            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
+            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
         )
     }
 }
