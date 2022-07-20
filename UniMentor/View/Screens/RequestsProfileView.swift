@@ -57,7 +57,7 @@ struct RequestsProfileView: View {
                             VStack {
                                 ButtonView_2(action: {
                                     // accept request
-                                    LinkUsersVM.matchUser(user: user)
+                                    // LinkUsersVM.matchUser(user: user)
                                     selectedUserImage = user.image
                                     selectedUserName = user.name
                                     currentUserImage = userVM.user?.image ?? "user_image2"
@@ -96,6 +96,7 @@ struct RequestsProfileView: View {
                 matchedUserImage: $selectedUserImage,
                 userImage: $currentUserImage,
                 action: {
+                    LinkUsersVM.matchUser(user: user)
                     showMatchPopup = false
                     presentation.wrappedValue.dismiss()
                 }
