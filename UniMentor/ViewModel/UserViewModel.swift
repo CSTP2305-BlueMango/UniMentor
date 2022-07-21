@@ -168,6 +168,7 @@ class UserViewModel: ObservableObject {
         // update user data
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).updateData([
+                "name": updateUserData.name,
                 "image": updateUserData.image,
                 "major": updateUserData.major,
                 "school": updateUserData.school,

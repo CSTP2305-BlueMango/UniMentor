@@ -8,33 +8,32 @@
 import Foundation
 import UIKit
 
+// reference: https://www.youtube.com/watch?v=5inXE5d2MUM&list=PL0dzCUj1L5JEN2aWYFCpqfTBeVHcGZjGw&index=4
+
 class ImageViewModel: ObservableObject {
     /// error message
     @Published var errorMessage = ""
     static var imageUrl = ""
     @Published var isImageFinished = false
-    func persistImageToStorage(image: UIImage?) {
-        
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+    
+    @MainActor
+    func persistImageToStorage(image: UIImage?) async {
+        guard let uid = try FirebaseManager.shared.auth.currentUser?.uid else { return }
         print("-test")
-        let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+        let ref = try FirebaseManager.shared.storage.reference(withPath: uid)
         guard let imageData = image?.jpegData(compressionQuality: 0.5) else { return }
         print("test")
-        ref.putData(imageData, metadata: nil) { metadata, err in
+        try await ref.putData(imageData, metadata: nil) { metadata, err in
             if let err = err {
-                self.errorMessage = "Failed to push image to Storage: \(err)"
+                self.errorMessage = "ImageViewModel: Failed to push image to Storage: \(err)"
                 return
             }
-
             ref.downloadURL { url, err in
                 if let err = err {
-                    self.errorMessage = "Failed to retrieve downloadURL: \(err)"
+                    self.errorMessage = "ImageViewModel: Failed to retrieve downloadURL: \(err)"
                     return
                 }
-
-                self.errorMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
                 ImageViewModel.imageUrl = url?.absoluteString ?? ""
-                print("---- \(ImageViewModel.imageUrl)")
                 self.isImageFinished = true
             }
         }

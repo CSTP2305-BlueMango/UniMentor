@@ -16,7 +16,7 @@ struct MatchedPopupView: View {
     /// matched user image
     @Binding var matchedUserImage: String
     /// current user image
-    @Binding var userImage: String//  = "user_image2"
+    @Binding var userImage: String
     /// button action
     @State var action: ()->Void
     

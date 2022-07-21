@@ -52,7 +52,6 @@ struct ProfileConfirmView: View {
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         VStack {
-                            // TODO: actual info Image
                             ProfileView(user: User(id: "", name: self.name, image: "", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []), isImageUIImage: true, uiImage: self.image)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }

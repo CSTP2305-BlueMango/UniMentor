@@ -31,12 +31,13 @@ struct UserProfile: View {
                 //NAVIGATION LINK
                 NavigationLink(
                     destination: UserProfileEditView(
-                        major: testUser.major,
-                        school: testUser.school,
-                        // TODO: should be fixed
-                        month: "\(separateDate(startDate: testUser.startDate)[0])",
-                        year: "\(separateDate(startDate: testUser.startDate)[1])",
-                        info: testUser.intro
+                        name: userVM.user?.name ?? "",
+                        major: userVM.user?.major ?? "",
+                        image: userVM.user?.image ?? "",
+                        school: userVM.user?.school ?? "",
+                        month: "\(separateDate(startDate: userVM.user?.startDate ?? "t t")[0])",
+                        year: "\(separateDate(startDate: userVM.user?.startDate ?? "t t")[1])",
+                        info: userVM.user?.intro ?? ""
                     ),
                     isActive: $isEditActive
                 ) {EmptyView()}
@@ -53,7 +54,6 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                // Text("\(userVM.user?.school ?? "no")")
                                 ProfileView(user: testUser)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
@@ -75,9 +75,8 @@ struct UserProfile: View {
                                         Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
                                     }
                                     Button {
-                                        // TODO: delete account feature
+                                        // delete account feature
                                         wantToDeleteAccount = true
-                                        // userVM.deleteUser()
                                     } label: {
                                         Label("Delete account", systemImage: "person.crop.circle.badge.xmark")
                                     }
@@ -170,9 +169,6 @@ struct UserProfile: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-//        .task {
-//            testUser = userVM.user ?? User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [], messageUsers: [])
-//        }
     }
 }
 
@@ -184,6 +180,5 @@ struct UserProfile_Previews: PreviewProvider {
 
 func separateDate(startDate: String) -> [String] {
     let result = startDate.components(separatedBy: " ")
-    // print("\(result)")
     return result
 }
