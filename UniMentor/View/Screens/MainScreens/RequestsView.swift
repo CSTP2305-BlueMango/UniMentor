@@ -49,7 +49,6 @@ struct RequestsView: View {
                                                 selectedUserImage = user.image
                                                 selectedUserName = user.name
                                                 currentUserImage = userVM.user?.image ?? "user_image2"
-                                                print("== \(selectedUserImage)")
                                                 showPopUp = true
                                             },
                                             userID: user.id,
@@ -76,7 +75,6 @@ struct RequestsView: View {
                     matchedUserImage: $selectedUserImage,
                     userImage: $currentUserImage,
                     action: {
-                        print("\(selectedUserImage)")
                         showPopUp = false
                     }
                 )

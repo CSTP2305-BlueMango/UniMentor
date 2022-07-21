@@ -28,9 +28,24 @@ class UserViewModel: ObservableObject {
     @Published var sentRequests: [String] = []
     /// logged in user recieved request user id list
     @Published var recievedRequests: [String] = []
+
+    private var handle: AuthStateDidChangeListenerHandle?
     
     init() {
-        fetchCurrentUser()
+        handle = FirebaseManager.shared.auth.addStateDidChangeListener {
+            auth, user in
+            // TODO: check auth status
+            // TODO: use user provided in closure
+            self.fetchCurrentUser()
+        }
+    }
+
+    deinit {
+        guard let handle = handle else {
+            return
+        }
+
+        FirebaseManager.shared.auth.removeStateDidChangeListener(handle)
     }
     
     /// fetch logged in user from database
@@ -54,7 +69,8 @@ class UserViewModel: ObservableObject {
                     self.errorMessage = "fetchCurrentUser: No user data found"
                     return
                 }
-                
+
+                print("Spagetti new user\(newUser)")
                 // save user
                 self.user = newUser
                 

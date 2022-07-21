@@ -45,8 +45,8 @@ struct ProfileInfoView: View {
     
     @ObservedObject private var imageVM: ImageViewModel
     
-    private func handleImage() async {
-        await imageVM.persistImageToStorage(image: self.image)
+    private func handleImage() {
+        imageVM.persistImageToStorage(image: self.image)
     }
     
     var body: some View {
@@ -169,7 +169,7 @@ struct ProfileInfoView: View {
                             // TODO: validation
                             
                             Task {
-                                await handleImage()
+                                handleImage()
                             }
                             isProfileConfirmActive = true
                         },

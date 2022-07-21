@@ -20,7 +20,8 @@ struct UserProfile: View {
     @State var wantToDeleteAccount: Bool = false
     
     @EnvironmentObject var viewModel: AppViewModel
-    @ObservedObject var userVM = UserViewModel()
+//    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
@@ -54,7 +55,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: testUser)
+                                ProfileView(user: userVM.user ?? testUser)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             
@@ -107,6 +108,9 @@ struct UserProfile: View {
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.01, leading: 0, bottom: UIScreen.main.bounds.height * 0.02, trailing: 0))
+                        Button("DEBUGGING") {
+                            print("Spagetti user userVM.user \(userVM.user)")
+                        }
                         //: FOOTER
                     }//: ScrollView
                 }

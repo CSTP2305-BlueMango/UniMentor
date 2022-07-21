@@ -48,8 +48,8 @@ struct UserProfileEditView: View {
     
     @ObservedObject var imageVM = ImageViewModel()
     
-    private func handleImage() async {
-        await imageVM.persistImageToStorage(image: self.uiImage)
+    private func handleImage() {
+        imageVM.persistImageToStorage(image: self.uiImage)
     }
     
     var body: some View {
@@ -141,7 +141,7 @@ struct UserProfileEditView: View {
                             InputFieldView(
                                 value: $name,
                                 placeholder:"John Doe",
-                                icon: "book.fill",
+                                icon: "person.fill",
                                 title: "Name",
                                 errorMessage: $nameError
                             )
@@ -174,7 +174,7 @@ struct UserProfileEditView: View {
                             ButtonView_2(action: {
                                 // TODO: validation
                                 Task {
-                                    await handleImage()
+                                    handleImage()
                                 }
                                 showPopUp = true
                             },
@@ -195,11 +195,11 @@ struct UserProfileEditView: View {
                 show: $showPopUp,
                 information: "Update editted profile?",
                 buttonAction: {
-                    if imageVM.isImageFinished {
+                    if self.uiImage.size.width == 0 {
                         userVM.updateUser(updateUserData: User(
                             id: "",
                             name: name,
-                            image: ImageViewModel.imageUrl,
+                            image: image,
                             major: major,
                             school: school,
                             startDate: "\(month) \(year)",
@@ -209,6 +209,22 @@ struct UserProfileEditView: View {
                             recievedRequests: []))
                         showPopUp = false
                         presentation.wrappedValue.dismiss()
+                    } else {
+                        if imageVM.isImageFinished {
+                            userVM.updateUser(updateUserData: User(
+                                id: "",
+                                name: name,
+                                image: ImageViewModel.imageUrl,
+                                major: major,
+                                school: school,
+                                startDate: "\(month) \(year)",
+                                intro: info,
+                                matchedUsers: [],
+                                sentRequests: [],
+                                recievedRequests: []))
+                            showPopUp = false
+                            presentation.wrappedValue.dismiss()
+                        }
                     }
                 },
                 buttonText: "Edit"

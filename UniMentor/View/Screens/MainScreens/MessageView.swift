@@ -112,8 +112,8 @@ struct MessageView: View {
             )
             //: POPUP
         }
-//        .task {
-//            chatVM.fetchMessageUsers()
+//        .onAppear() {
+//            messageUserVM.fetchMessageUsers()
 //        }
     }
 }

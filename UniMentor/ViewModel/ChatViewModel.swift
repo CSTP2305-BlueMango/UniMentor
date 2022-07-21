@@ -125,7 +125,7 @@ class ChatViewModel: ObservableObject {
             "time": Date()
         ]) { error in
             if let error = error {
-                self.errorMessage = "recentMessages:Fail to update recent message \(error)"
+                self.errorMessage = "recentMessages: Fail to update recent message \(error)"
                 return
             }
         }
@@ -139,7 +139,7 @@ class ChatViewModel: ObservableObject {
             "time": Date()
         ]) { error in
             if let error = error {
-                self.errorMessage = "recentMessages:Fail to update recent message \(error)"
+                self.errorMessage = "recentMessages: Fail to update recent message \(error)"
                 return
             }
         }
