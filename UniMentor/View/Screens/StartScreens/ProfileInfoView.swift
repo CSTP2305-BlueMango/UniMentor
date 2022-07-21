@@ -45,10 +45,8 @@ struct ProfileInfoView: View {
     
     @ObservedObject private var imageVM: ImageViewModel
     
-    @State var imageUrl = ""
-    
-    private func handleImage() {
-        imageVM.persistImageToStorage(image: self.image)
+    private func handleImage() async {
+        await imageVM.persistImageToStorage(image: self.image)
     }
     
     var body: some View {
@@ -171,18 +169,9 @@ struct ProfileInfoView: View {
                             // TODO: validation
                             
                             Task {
-                                handleImage()
-
+                                await handleImage()
                             }
-                            
-                            print("doing")
-                            // self.imageUrl = ImageViewModel.imageUrl
-                            print(imageUrl)
-//                            if imageVM.isImageFinished {
-//                                isProfileConfirmActive = true
-//                            }
                             isProfileConfirmActive = true
-                            
                         },
                              label: "Next",
                              color: Color("TabBarColor"),

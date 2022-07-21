@@ -9,11 +9,8 @@ import SwiftUI
 
 /// user card with button component
 struct ButtonCardView: View {
-    // TODO: get student object or student info
-    
     /// button action
     @State var action: ()->Void
-    
     /// user id
     @State var userID: String
     /// user image

@@ -121,10 +121,8 @@ struct DatePickerView_Previews: PreviewProvider {
 }
 
 func getYear(selectedYear: Date) -> Int {
-    // let newdate = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy"
     let yearString = dateFormatter.string(from: selectedYear)
-    
     return Int(yearString) ?? 0
 }

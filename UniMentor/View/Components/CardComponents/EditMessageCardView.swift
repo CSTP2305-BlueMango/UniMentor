@@ -16,16 +16,10 @@ struct EditMessageCardView: View {
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
-    // TODO: shoule be setup
-    /// latest message
-    @State var latestMsg: String = "test"
-    /// latest message date
-    @State var latestDate: String = "2020-12-24"
-    
     var body: some View {
         Button(action: {
             isOn1 = !isOn1
-            // TODO: remove from MessageUser list
+            // add and remove from MessageUser list
             if isOn1 {
                 if !LinkUsersViewModel.selectedMessageUsers.contains(where: { $0.id == user.id }) {
                     LinkUsersViewModel.selectedMessageUsers.append(user)
