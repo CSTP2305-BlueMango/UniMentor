@@ -8,7 +8,6 @@
 import Foundation
 
 enum CustomError: Error {
-    case invalidEmail
-    case invalidPassword
-    case passwordNotMatched
+    case form(field: String? = nil, message: String? = nil)
 }
+

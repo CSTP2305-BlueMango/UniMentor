@@ -20,11 +20,6 @@ struct SignUpView: View {
     //state for keeping track of if link to profileinfo view is active
     @State var isProfileInfoActive = false
     
-    func handleSignup() {
-        //reset error state after each submit
-        signupVM.signUp()
-    }
-    
     var body: some View {
         // ZSTACK
         ZStack {
@@ -66,7 +61,7 @@ struct SignUpView: View {
                         placeholder:"John Doe",
                         icon: "person.fill",
                         title: "Name",
-                        errorMessage: Binding.constant(nil)
+                        errorMessage: $signupVM.nameError
                     )
                     // PASSWORD INPUT
                     InputFieldView(
@@ -89,10 +84,10 @@ struct SignUpView: View {
                     Spacer()
                     
                     // BUTTON - SIGNUP
-                    ButtonView_2(action: {
-                        handleSignup()
-                        
-                        isProfileInfoActive = true
+                    ButtonView(action: {
+                        signupVM.signUp {
+                            isProfileInfoActive = true
+                        }
                     },
                          label: "Sign Up",
                          color: Color("TabBarColor"),
@@ -112,7 +107,7 @@ struct SignUpView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // BUTTON - LOGIN
-                    ButtonView_2(action: {
+                    ButtonView(action: {
                         // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },

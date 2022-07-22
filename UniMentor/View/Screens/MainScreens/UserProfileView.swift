@@ -19,9 +19,8 @@ struct UserProfile: View {
     @State var shouldShowLogOutOptions: Bool = false
     @State var wantToDeleteAccount: Bool = false
     
-    @EnvironmentObject var viewModel: AppViewModel
-//    @ObservedObject var userVM = UserViewModel()
     @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var appVM: AppViewModel
     
     @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
@@ -31,15 +30,7 @@ struct UserProfile: View {
             ZStack {
                 //NAVIGATION LINK
                 NavigationLink(
-                    destination: UserProfileEditView(
-                        name: userVM.user?.name ?? "",
-                        major: userVM.user?.major ?? "",
-                        image: userVM.user?.image ?? "",
-                        school: userVM.user?.school ?? "",
-                        month: "\(separateDate(startDate: userVM.user?.startDate ?? "t t")[0])",
-                        year: "\(separateDate(startDate: userVM.user?.startDate ?? "t t")[1])",
-                        info: userVM.user?.intro ?? ""
-                    ),
+                    destination: UserProfileEditView(),
                     isActive: $isEditActive
                 ) {EmptyView()}
                 //:NAVIGATION LINK
@@ -108,9 +99,6 @@ struct UserProfile: View {
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.01, leading: 0, bottom: UIScreen.main.bounds.height * 0.02, trailing: 0))
-                        Button("DEBUGGING") {
-                            print("Spagetti user userVM.user \(userVM.user)")
-                        }
                         //: FOOTER
                     }//: ScrollView
                 }
@@ -145,7 +133,7 @@ struct UserProfile: View {
                         HStack(spacing: UIScreen.main.bounds.width * 0.07) {
                             // button
                             Button(action: {
-                                viewModel.signOut()
+                                appVM.signOut()
                             }) {
                                 Text("Log out")
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
@@ -165,7 +153,7 @@ struct UserProfile: View {
             .actionSheet(isPresented: $shouldShowLogOutOptions) {
                 .init(title: Text("Settings"), message: Text("Do you want to log out?"), buttons: [
                     .destructive(Text("Log Out"), action: {
-                        viewModel.signOut()
+                        appVM.signOut()
                     }),
                         .cancel()
                 ])

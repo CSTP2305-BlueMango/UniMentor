@@ -24,7 +24,7 @@ struct ProfileConfirmView: View {
     
     @State var isFinished = false
     
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     @Environment(\.presentationMode) var presentation
     
@@ -59,7 +59,7 @@ struct ProfileConfirmView: View {
                     // FOOTER
                     VStack() {
                         // finish button
-                        ButtonView_2(action: {
+                        ButtonView(action: {
                             // save user infomation to database
                             userVM.saveUser(createdUser: User(
                                 id: "",

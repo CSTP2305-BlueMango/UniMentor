@@ -9,7 +9,7 @@ import SwiftUI
 
 /// button component
 /// param: action, button label, color, opacity, isBorder needed
-struct ButtonView_2: View {
+struct ButtonView: View {
     /// button action
     let action: ()->Void
     /// button label
@@ -54,7 +54,7 @@ struct ButtonView_2: View {
 
 struct ButtonView_2_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView_2(
+        ButtonView(
             action: {},
             label: "test",
             color: Color(

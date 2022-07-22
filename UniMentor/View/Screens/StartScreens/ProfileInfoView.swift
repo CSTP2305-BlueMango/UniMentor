@@ -8,45 +8,34 @@ import SwiftUI
 
 /// set user profile information
 struct ProfileInfoView: View {
-    
-    init(name: String) {
-        self.name = name
-        self.imageVM = ImageViewModel()
-        // imageUrl = ImageViewModel.imageUrl
-    }
-    /// profile name
-    @State var name: String
-    /// prorile major
-    @State var major: String = ""
-    /// profile school
-    @State var school: String = ""
-    /// profile start date
-    @State var month: String = ""
-    @State var year: String = ""
-    /// profile information
-    @State var info: String = ""
-    
-    /// profile major error message
-    @State var majorError: String? = ""
-    /// profile school error message
-    @State var schoolError: String? = ""
-    /// profile start date error message
-    @State var startDateError: String? = ""
-    /// profile information error message
-    @State var infoError: String? = ""
-    
-    
+
     /// for selecting an image
     @State private var image = UIImage()
+    
     /// to view the photo library and user to choose a photo
     @State private var showSheet = false
+    
     /// if profile information is finished
     @State var isProfileConfirmActive = false
     
-    @ObservedObject private var imageVM: ImageViewModel
+    @State var name: String
+    
+    @ObservedObject private var imageVM: ImageViewModel;
+    @StateObject var profileVM: ProfileViewModel = ProfileViewModel();
     
     private func handleImage() {
         imageVM.persistImageToStorage(image: self.image)
+    }
+    
+    init(name: String) {
+        self.imageVM = ImageViewModel();
+        self.name = name;
+        // imageUrl = ImageViewModel.imageUrl
+    }
+    
+    //load name to view model on view load
+    func onViewLoad() {
+        profileVM.profile.name = name
     }
     
     var body: some View {
@@ -59,13 +48,13 @@ struct ProfileInfoView: View {
             //NAVIGATIONLINK
             NavigationLink(
                 destination: ProfileConfirmView(
-                    name: name,
+                    name: profileVM.profile.name,
                     // TODO: fix later
                     image: image,
-                    major: major,
-                    school: school,
-                    startDate: "\(month) \(year)",
-                    info: info),
+                    major: profileVM.profile.major,
+                    school: profileVM.profile.school,
+                    startDate: "\(profileVM.profile.startDate.month) \(profileVM.profile.startDate.year)",
+                    info: profileVM.profile.intro),
                 isActive: $isProfileConfirmActive
             ) {EmptyView()}
             //:NAVIGATIONLINK
@@ -138,24 +127,29 @@ struct ProfileInfoView: View {
                         // INPUT FIELDS
                         // MAJOR INPUT
                         InputFieldView(
-                            value: $major,
+                            value: $profileVM.profile.major,
                             placeholder:"Computer Systems Technology",
                             icon: "book.fill",
                             title: "Major",
-                            errorMessage: $majorError
+                            errorMessage: $profileVM.majorError
                         )
                         // SCHOOL INPUT
                         InputFieldView(
-                            value: $school,
+                            value: $profileVM.profile.school,
                             placeholder:"Vancouver Community College",
                             icon: "house.fill",
                             title: "School Name",
-                            errorMessage: $schoolError
+                            errorMessage: $profileVM.schoolError
                         )
                         // START DATE INPUT
-                        DatePickerView(placholder: "Start Date", month: $month, year: $year)
+                        DatePickerView(
+                            placholder: "Start Date",
+                            month: $profileVM.profile.startDate.month,
+                            year: $profileVM.profile.startDate.year)
                         // INFORMATION INPUT
-                        MultiLineInputView(value: $info, errorMessage: $infoError)
+                        MultiLineInputView(
+                            value: $profileVM.profile.intro,
+                            errorMessage: $profileVM.introError)
                         //: INFORMATION INPUT
                     }
                     .frame(height: UIScreen.main.bounds.height * 0.6)
@@ -165,13 +159,14 @@ struct ProfileInfoView: View {
                     // FOOTER
                     VStack() {
                         // Next button
-                        ButtonView_2(action: {
-                            // TODO: validation
-                            
-                            Task {
-                                handleImage()
+                        ButtonView(action: {
+                            profileVM.handleSubmit { _ in
+                                // TODO: validation
+                                Task {
+                                    handleImage()
+                                }
+                                isProfileConfirmActive = true
                             }
-                            isProfileConfirmActive = true
                         },
                              label: "Next",
                              color: Color("TabBarColor"),
@@ -185,6 +180,9 @@ struct ProfileInfoView: View {
             } //: ScrollView
         }
         .hideNavigationBar()
+        .onAppear {
+            onViewLoad()
+        }
         //: ZSTACK
     }
 }

@@ -15,13 +15,6 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject private var loginVM = LoginViewModel()
     
-    /// login function
-    func handleLogin() {
-        loginVM.signIn {
-            viewModel.loggedIn = loginVM.isLoginSuccess
-        }
-    }
-    
     var body: some View {
         // ZSTACK
         ZStack {
@@ -62,9 +55,11 @@ struct LoginView: View {
                         errorMessage: $loginVM.passwordError
                     ).autocapitalization(.none)
                     Spacer()
-                    ButtonView_2 (
+                    ButtonView (
                         action: {
-                            handleLogin()
+                            loginVM.signIn {
+                                viewModel.loggedIn = loginVM.isLoginSuccess
+                            }
                         },
                         label: "Login",
                         color: Color("TabBarColor"),
@@ -84,7 +79,7 @@ struct LoginView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // SIGNUP BUTTON
-                    ButtonView_2(
+                    ButtonView(
                         action: {
                             self.isSignUpActive = true
                         },
