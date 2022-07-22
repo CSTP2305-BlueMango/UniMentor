@@ -9,30 +9,9 @@ import SwiftUI
 
 /// edit user profile information
 struct UserProfileEditView: View {
-    /// user name
-    @State var name: String = ""
-    /// user major
-    @State var major: String = ""
-    /// user image
-    @State var image: String = ""
-    /// user school
-    @State var school: String = ""
-    /// user start date
-    @State var month: String = ""
-    @State var year: String = ""
-    /// user information
-    @State var info: String = ""
     
-    /// profile name error message
-    @State var nameError: String? = ""
-    /// profile major error message
-    @State var majorError: String? = ""
-    /// profile school error message
-    @State var schoolError: String? = ""
-    /// profile start date error message
-    @State var startDateError: String? = ""
-    /// profile information error message
-    @State var infoError: String? = ""
+    /// view model
+    @StateObject var profileVM = ProfileViewModel();
     
     /// for selecting an image
     @State private var uiImage = UIImage()
@@ -44,9 +23,21 @@ struct UserProfileEditView: View {
     /// if pop up showing
     @State private var showPopUp: Bool = false
     
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     @ObservedObject var imageVM = ImageViewModel()
+    
+    func onViewLoad() {
+        if let user = userVM.user {
+            self.profileVM.profile = ProfileInfo(
+                user.name,
+                user.major,
+                user.school,
+                user.intro,
+                user.image,
+                StartDate.makeStartDateFromString(date: user.startDate))
+        }
+    }
     
     private func handleImage() {
         imageVM.persistImageToStorage(image: self.uiImage)
@@ -103,7 +94,7 @@ struct UserProfileEditView: View {
                                                  .aspectRatio(contentMode: .fill)
                                                  .clipShape(Circle())
                                         } else {
-                                            AsyncImage(url: URL(string: "\(image)")) { img in
+                                            AsyncImage(url: URL(string: "\(profileVM.profile.imageUrl)")) { img in
                                                 img
                                                     .resizable()
                                                     .cornerRadius(50)
@@ -139,44 +130,51 @@ struct UserProfileEditView: View {
                             // INPUT FIELDS
                             // name input
                             InputFieldView(
-                                value: $name,
+                                value: $profileVM.profile.name,
                                 placeholder:"John Doe",
                                 icon: "person.fill",
                                 title: "Name",
-                                errorMessage: $nameError
+                                errorMessage: $profileVM.nameError
                             )
                             // major input
                             InputFieldView(
-                                value: $major,
+                                value: $profileVM.profile.major,
                                 placeholder:"Computer Systems Technology",
                                 icon: "book.fill",
                                 title: "Major",
-                                errorMessage: $majorError
+                                errorMessage: $profileVM.majorError
                             )
                             // school input
                             InputFieldView(
-                                value: $school,
+                                value: $profileVM.profile.school,
                                 placeholder:"Vancouver Community College",
                                 icon: "house.fill",
                                 title: "School Name",
-                                errorMessage: $schoolError
+                                errorMessage: $profileVM.schoolError
                             )
                             // date input
-                            DatePickerView(placholder: "Start Date", month: $month, year: $year)
+                            DatePickerView(
+                                placholder: "Start Date",
+                                month: $profileVM.profile.startDate.month,
+                                year: $profileVM.profile.startDate.year)
                             // information input
-                            MultiLineInputView(value: $info, errorMessage: $infoError)
+                            MultiLineInputView(
+                                value: $profileVM.profile.intro,
+                                errorMessage: $profileVM.introError)
                             
                         } //: MAIN
                         .frame(height: UIScreen.main.bounds.height * 0.78)
                         // FOOTER
                         VStack() {
                             // Save button
-                            ButtonView_2(action: {
-                                // TODO: validation
-                                Task {
-                                    handleImage()
+                            ButtonView(action: {
+                                profileVM.handleSubmit { _ in
+                                    // TODO: validation
+                                    Task {
+                                        handleImage()
+                                    }
+                                    showPopUp = true
                                 }
-                                showPopUp = true
                             },
                                  label: "Save Changes",
                                  color: Color("ButtonColor"),
@@ -198,12 +196,12 @@ struct UserProfileEditView: View {
                     if self.uiImage.size.width == 0 {
                         userVM.updateUser(updateUserData: User(
                             id: "",
-                            name: name,
-                            image: image,
-                            major: major,
-                            school: school,
-                            startDate: "\(month) \(year)",
-                            intro: info,
+                            name: profileVM.profile.name,
+                            image: profileVM.profile.imageUrl,
+                            major: profileVM.profile.major,
+                            school: profileVM.profile.school,
+                            startDate: "\(profileVM.profile.startDate.month) \(profileVM.profile.startDate.year)",
+                            intro: profileVM.profile.intro,
                             matchedUsers: [],
                             sentRequests: [],
                             recievedRequests: []))
@@ -213,12 +211,12 @@ struct UserProfileEditView: View {
                         if imageVM.isImageFinished {
                             userVM.updateUser(updateUserData: User(
                                 id: "",
-                                name: name,
+                                name: profileVM.profile.name,
                                 image: ImageViewModel.imageUrl,
-                                major: major,
-                                school: school,
-                                startDate: "\(month) \(year)",
-                                intro: info,
+                                major: profileVM.profile.major,
+                                school: profileVM.profile.school,
+                                startDate: "\(profileVM.profile.startDate.month) \(profileVM.profile.startDate.year)",
+                                intro: profileVM.profile.intro,
                                 matchedUsers: [],
                                 sentRequests: [],
                                 recievedRequests: []))

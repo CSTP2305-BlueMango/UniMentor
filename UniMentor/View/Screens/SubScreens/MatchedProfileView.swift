@@ -60,7 +60,7 @@ struct MatchedProfileView: View {
                         ProfileView(user: user)
                         // Send message Button
                         VStack{
-                            ButtonView_2(action: {
+                            ButtonView(action: {
                                 // go to message
                                 isMatchView = false
                                 isMessageView = true

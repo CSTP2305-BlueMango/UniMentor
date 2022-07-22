@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseAuth
 
-/// handle loggin in user
 class LoginViewModel: ObservableObject {
     /// user email
     @Published var email: String = ""
@@ -22,7 +21,7 @@ class LoginViewModel: ObservableObject {
     @Published var isLoginSuccess: Bool = false
     
     /// login user
-    func signIn(completion: @escaping () -> Void) {
+    func signIn(onSuccess: @escaping () -> Void) {
         
         // reset error after each submit
         self.resetError()
@@ -30,7 +29,7 @@ class LoginViewModel: ObservableObject {
         //do - catch to handle format validation
         do {
             // validate email & password
-            try loginValidation(email, password)
+            try validateLoginCredential(email, password)
             
             FirebaseManager.shared.auth.signIn(withEmail: self.email,
                                password: self.password) {
@@ -57,14 +56,19 @@ class LoginViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self?.isLoginSuccess = true
-                    completion()
+                    onSuccess()
                 }
             }
             
-        } catch CustomError.invalidEmail {
-            emailError = "invalid email"
-        } catch CustomError.invalidPassword {
-            passwordError = "invalid password"
+        } catch CustomError.form(let field, let message) {
+            switch field {
+            case "email":
+                emailError = message;
+            case "password":
+                passwordError = message;
+            default:
+                return;
+            }
         } catch {
             print(error.localizedDescription)
         }

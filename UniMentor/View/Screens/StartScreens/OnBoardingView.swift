@@ -79,7 +79,7 @@ struct OnBoardingView: View {
                     }.frame(height: UIScreen.main.bounds.height * 0.08)
                     //: Step circle icon
                     // Button
-                    ButtonView_2(action: {
+                    ButtonView(action: {
                         if currentStep == 0 {
                             // next page
                             currentStep = 1

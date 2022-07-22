@@ -46,7 +46,7 @@ struct HomeProfileView: View {
                             ProfileView(user: user)
                             // request button
                             VStack{
-                                ButtonView_2(action: {
+                                ButtonView(action: {
                                     // send match request
                                     LinkUsersVM.requestUser(user: user)
                                     //pop child view to go back to root view

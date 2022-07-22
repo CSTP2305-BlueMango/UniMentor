@@ -55,7 +55,7 @@ struct RequestsProfileView: View {
                             ProfileView(user: user)
                             // Accept Button
                             VStack {
-                                ButtonView_2(action: {
+                                ButtonView(action: {
                                     // accept request
                                     // LinkUsersVM.matchUser(user: user)
                                     selectedUserImage = user.image
