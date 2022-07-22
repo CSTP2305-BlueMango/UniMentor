@@ -73,8 +73,7 @@ struct ProfileConfirmView: View {
                                 sentRequests: [],
                                 recievedRequests: [])
                             )
-                            
-                            // TODO: finish sign up and go to main page
+                            // finish sign up and go to login page
                             isFinished = true
                         },
                              label: "Get Started",

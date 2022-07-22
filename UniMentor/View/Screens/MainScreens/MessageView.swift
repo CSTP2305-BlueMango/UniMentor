@@ -17,7 +17,7 @@ struct MessageView: View {
     @State var editButtonTitle: String = "Edit"
     
     @ObservedObject var vm = AllUsersViewModel()
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var messageUserVM = MessageUserViewModel()
     
     

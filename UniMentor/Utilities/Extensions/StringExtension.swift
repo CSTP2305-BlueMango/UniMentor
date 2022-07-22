@@ -7,6 +7,7 @@
 
 import Foundation
 
+// reference: Yoonseo Jeong CSTP2305 Quiz7
 extension String {
     
     /// check number of whitespaces

@@ -16,7 +16,7 @@ struct MatchedView: View {
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()

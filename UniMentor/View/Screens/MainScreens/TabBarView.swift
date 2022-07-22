@@ -33,10 +33,6 @@ struct TabBarView: View {
     /// profile view button color
     @State var profileButtonColor: Color = Color("DarkColor")
     
-    @ObservedObject var userVM = UserViewModel()
-    
-    @State var testUser: User?
-    
     var body: some View {
         // BODY
         VStack(spacing: 0) {

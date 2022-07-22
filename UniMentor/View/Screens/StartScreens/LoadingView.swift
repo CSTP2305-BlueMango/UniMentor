@@ -11,11 +11,12 @@ import SwiftUI
 struct LoadingView: View {
     
     // reference: https://mobiraft.com/ios/swiftui/how-to-add-splash-screen-in-swiftui/
-    /// is loading view finished
+    /// loading view finished state
     @State var isActive:Bool = false
     @EnvironmentObject var viewModel: AppViewModel
     
     // reference: https://www.udemy.com/course/swiftui-masterclass-course-ios-development-with-swift/learn/lecture/29012982#overview
+    /// onBoardingView active state
     @AppStorage("onboarding") var isOnBoradingViewActive: Bool = true
     
     var body: some View {

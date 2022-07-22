@@ -84,7 +84,6 @@ struct newPreviewView: View {
             errorMessage: $error
         )
     }
-    
 }
 
 struct InputFieldView_Previews: PreviewProvider {
