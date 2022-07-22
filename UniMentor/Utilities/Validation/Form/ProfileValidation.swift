@@ -14,7 +14,6 @@ func validateProfileInfo(info: ProfileInfo) throws -> Void {
     /// image validation
 //    case info.imageUrl.isEmpty:
 //        throw CustomError.form(field: "image", message: "image required");
-    
     case info.name.isEmpty:
         throw CustomError.form(field: "name", message: "name is required");
         

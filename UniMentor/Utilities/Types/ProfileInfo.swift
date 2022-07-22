@@ -14,17 +14,6 @@ struct ProfileInfo {
     var intro: String = ""
     var imageUrl: String = ""
     var startDate: StartDate = StartDate()
-    
-    init() {}
-    
-    init(_ name: String, _ major: String, _ school: String, _ intro: String, _ imageUrl: String, _ startDate: StartDate) {
-        self.name = name;
-        self.major = major;
-        self.school = school;
-        self.intro = intro;
-        self.imageUrl = imageUrl;
-        self.startDate = startDate;
-    }
 }
 
 struct StartDate {

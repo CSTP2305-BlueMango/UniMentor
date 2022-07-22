@@ -18,17 +18,24 @@ struct ProfileInfoView: View {
     /// if profile information is finished
     @State var isProfileConfirmActive = false
     
+    @State var name: String
+    
     @ObservedObject private var imageVM: ImageViewModel;
-    @ObservedObject var profileVM: ProfileViewModel;
+    @StateObject var profileVM: ProfileViewModel = ProfileViewModel();
     
     private func handleImage() {
         imageVM.persistImageToStorage(image: self.image)
     }
     
     init(name: String) {
-        self.imageVM = ImageViewModel()
-        self.profileVM = ProfileViewModel(name: name)
+        self.imageVM = ImageViewModel();
+        self.name = name;
         // imageUrl = ImageViewModel.imageUrl
+    }
+    
+    //load name to view model on view load
+    func onViewLoad() {
+        profileVM.profile.name = name
     }
     
     var body: some View {
@@ -153,8 +160,8 @@ struct ProfileInfoView: View {
                     VStack() {
                         // Next button
                         ButtonView(action: {
-                            // TODO: validation
                             profileVM.handleSubmit { _ in
+                                // TODO: validation
                                 Task {
                                     handleImage()
                                 }
@@ -173,6 +180,9 @@ struct ProfileInfoView: View {
             } //: ScrollView
         }
         .hideNavigationBar()
+        .onAppear {
+            onViewLoad()
+        }
         //: ZSTACK
     }
 }

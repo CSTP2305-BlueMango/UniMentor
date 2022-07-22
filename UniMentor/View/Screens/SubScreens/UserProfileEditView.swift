@@ -30,12 +30,12 @@ struct UserProfileEditView: View {
     func onViewLoad() {
         if let user = userVM.user {
             self.profileVM.profile = ProfileInfo(
-                user.name,
-                user.major,
-                user.school,
-                user.intro,
-                user.image,
-                StartDate.makeStartDateFromString(date: user.startDate))
+                name: user.name,
+                major: user.major,
+                school: user.school,
+                intro: user.intro,
+                imageUrl: user.image,
+                startDate: StartDate.makeStartDateFromString(date: user.startDate))
         }
     }
     
@@ -231,6 +231,9 @@ struct UserProfileEditView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            onViewLoad()
+        }
         //: ZSTACK
     }
 }

@@ -25,16 +25,6 @@ class ProfileViewModel: ObservableObject {
     
     /// profile name error message
     @Published var nameError: String? = "";
-    
-    init(name: String) {
-        self.profile.name = name;
-    }
-    
-    init(info: ProfileInfo) {
-        self.profile = info;
-    }
-    
-    init() {}
         
     func handleSubmit(onSuccess: @escaping (ProfileInfo)->Void) {
         do {
@@ -42,7 +32,6 @@ class ProfileViewModel: ObservableObject {
             try validateProfileInfo(info: profile);
             onSuccess(profile);
         } catch CustomError.form(let field, let message) {
-            print(profile.name)
             switch field {
             case "name":
                 nameError = message;

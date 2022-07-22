@@ -86,7 +86,6 @@ struct SignUpView: View {
                     // BUTTON - SIGNUP
                     ButtonView(action: {
                         signupVM.signUp {
-                            print(signupVM.name)
                             isProfileInfoActive = true
                         }
                     },
