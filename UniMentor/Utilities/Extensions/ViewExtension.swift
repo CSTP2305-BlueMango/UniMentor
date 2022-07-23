@@ -20,4 +20,11 @@ extension View {
             .navigationBarHidden(!backButton)
             .navigationBarBackButtonHidden(false)
     }
+    
+    // format startDate
+    func separateDate(startDate: String) -> [String] {
+        // seperate month and year
+        let result = startDate.components(separatedBy: " ")
+        return result
+    }
 }

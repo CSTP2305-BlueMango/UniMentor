@@ -7,33 +7,34 @@
 import SwiftUI
 
 /// set user profile information
+/// param: user name
 struct ProfileInfoView: View {
-
+    init(name: String) {
+        // initialize image view model object
+        self.imageVM = ImageViewModel()
+        // set user name passed from signup view
+        self.name = name
+    }
+    
+    /// user name
+    @State var name: String
     /// for selecting an image
     @State private var image = UIImage()
-    
     /// to view the photo library and user to choose a photo
     @State private var showSheet = false
-    
     /// if profile information is finished
     @State var isProfileConfirmActive = false
+    /// image view model object
+    @ObservedObject private var imageVM: ImageViewModel
+    /// profile view model object
+    @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
     
-    @State var name: String
-    
-    @ObservedObject private var imageVM: ImageViewModel;
-    @StateObject var profileVM: ProfileViewModel = ProfileViewModel();
-    
+    /// upload image to firebase storage
     private func handleImage() {
         imageVM.persistImageToStorage(image: self.image)
     }
     
-    init(name: String) {
-        self.imageVM = ImageViewModel();
-        self.name = name;
-        // imageUrl = ImageViewModel.imageUrl
-    }
-    
-    //load name to view model on view load
+    // load name to view model on view load
     func onViewLoad() {
         profileVM.profile.name = name
     }
@@ -45,11 +46,10 @@ struct ProfileInfoView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATIONLINK
+            // NAVIGATIONLINK - navigate to profile confirm view with user inputs
             NavigationLink(
                 destination: ProfileConfirmView(
                     name: profileVM.profile.name,
-                    // TODO: fix later
                     image: image,
                     major: profileVM.profile.major,
                     school: profileVM.profile.school,
@@ -57,7 +57,6 @@ struct ProfileInfoView: View {
                     info: profileVM.profile.intro),
                 isActive: $isProfileConfirmActive
             ) {EmptyView()}
-            //:NAVIGATIONLINK
             
             // SCROLLVIEW
             ScrollView {
@@ -65,22 +64,25 @@ struct ProfileInfoView: View {
                 VStack(alignment: .center) {
                     // HEADER
                     VStack(alignment: .center) {
+                        // Title
                         Text("Set Profile")
                             .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
-                    }
-                    .padding(.top, UIScreen.main.bounds.width * 0.06)
+                    }.padding(.top, UIScreen.main.bounds.width * 0.06)
                     //: HEADER
                     Spacer()
                     // SELECT IMAGE
                     VStack {
-                        // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker for selecting image
+                        // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
+                        // Select image
                         Button {
-                                //when "+" button is clicked, will go to photo library
+                            // show image picker
                             showSheet = true
                         } label: {
                             ZStack {
-                                // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
+                                // reference: https://www.youtube.com/watch?v=MJuMIpdpORk
+                                // User image
                                 if let image = self.image {
+                                    // if image is selected
                                     Image(uiImage: image)
                                          .resizable()
                                          .cornerRadius(50)
@@ -89,6 +91,7 @@ struct ProfileInfoView: View {
                                          .aspectRatio(contentMode: .fill)
                                          .clipShape(Circle())
                                 } else {
+                                    // if image is not selected
                                     Image("")
                                          .resizable()
                                          .cornerRadius(50)
@@ -97,35 +100,30 @@ struct ProfileInfoView: View {
                                          .aspectRatio(contentMode: .fill)
                                          .clipShape(Circle())
                                 }
+                                // Image input icon
                                 HStack {
                                     Image(systemName: "plus")
-                                        .foregroundColor(
-                                            Color.white)
+                                        .foregroundColor(Color.white)
                                         .font(.system(size: UIScreen.main.bounds.width * 0.07))
-                                    
                                 }
                                 //customize button style here
                                 .frame(width: UIScreen.main.bounds.width * 0.12, height: UIScreen.main.bounds.width * 0.12)
                                 //CHANGE COLOR to the theme
-                                .background(Color(red:0.6235, green: 0.5450, blue: 0.4235))
+                                .background(Color("TabBarColor"))
                                 .cornerRadius(30)
                                 .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.3, leading: UIScreen.main.bounds.width * 0.33, bottom: 0, trailing: 0))
                             }
                         }
-                            //need to modify placement of the "+" to make it fixed
-                        
-                            //this is for when user clicks the button, shows the photo library
+                        // shows the photo library
                         .sheet(isPresented: $showSheet) {
-                                    // Pick an image from the photo library:
+                            // Pick an image from the photo library
                             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-                                    //  If you wish to take a photo from camera instead:
-                                //ImagePicker(sourceType: .camera, selectedImage: self.$image)
                         }
                     } //: SELECT IMAGE
-                    // MAIN
+                    // INPUT FIELDS
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {
-                        // INPUT FIELDS
-                        // MAJOR INPUT
+                        //
+                        // Major input
                         InputFieldView(
                             value: $profileVM.profile.major,
                             placeholder:"Computer Systems Technology",
@@ -133,7 +131,7 @@ struct ProfileInfoView: View {
                             title: "Major",
                             errorMessage: $profileVM.majorError
                         )
-                        // SCHOOL INPUT
+                        // School input
                         InputFieldView(
                             value: $profileVM.profile.school,
                             placeholder:"Vancouver Community College",
@@ -141,41 +139,37 @@ struct ProfileInfoView: View {
                             title: "School Name",
                             errorMessage: $profileVM.schoolError
                         )
-                        // START DATE INPUT
+                        // Startdate input
                         DatePickerView(
                             placholder: "Start Date",
                             month: $profileVM.profile.startDate.month,
                             year: $profileVM.profile.startDate.year)
-                        // INFORMATION INPUT
+                        // Information input
                         MultiLineInputView(
                             value: $profileVM.profile.intro,
                             errorMessage: $profileVM.introError)
-                        //: INFORMATION INPUT
-                    }
-                    .frame(height: UIScreen.main.bounds.height * 0.6)
-                    //: MAIN
+                    }.frame(height: UIScreen.main.bounds.height * 0.6)
+                    //: INPUT FIELDS
                     Spacer()
                     Spacer()
                     // FOOTER
                     VStack() {
-                        // Next button
+                        // Next button - go to profile confirm view
                         ButtonView(action: {
+                            // validate user input and go to profile confirm view
                             profileVM.handleSubmit { _ in
-                                // TODO: validation
                                 Task {
+                                    // save image to database
                                     handleImage()
                                 }
                                 isProfileConfirmActive = true
                             }
                         },
                              label: "Next",
-                             color: Color("TabBarColor"),
-                             opacity: 1.0,
-                             isBorder: false
+                             color: Color("TabBarColor")
                         )
                     } //: FOOTER
-                }
-                .frame(height: UIScreen.main.bounds.height * 1.1)
+                }.frame(height: UIScreen.main.bounds.height * 1.1)
                 //: BODY
             } //: ScrollView
         }

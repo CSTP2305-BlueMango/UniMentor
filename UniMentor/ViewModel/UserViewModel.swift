@@ -42,7 +42,6 @@ class UserViewModel: ObservableObject {
         guard let handle = handle else {
             return
         }
-
         FirebaseManager.shared.auth.removeStateDidChangeListener(handle)
     }
     
@@ -56,19 +55,18 @@ class UserViewModel: ObservableObject {
         }
         
         // get user data from database and save as User model
-        FirebaseManager.shared.firestore.collection("users")
-            .document(uid).addSnapshotListener { snapshot, error in
+        FirebaseManager.shared.firestore
+            .collection("users").document(uid).addSnapshotListener { [self] documentSnapshot, error in
                 if let error = error {
                     self.errorMessage = "fetchCurrentUser: Fail to fetch current user: \(error)"
                     return
                 }
                 
-                guard let newUser = try? snapshot?.data(as: User.self) else {
+                guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                     self.errorMessage = "fetchCurrentUser: No user data found"
                     return
                 }
-
-                // print("Spagetti new user\(newUser)")
+                
                 // save user
                 self.user = newUser
                 
@@ -77,62 +75,53 @@ class UserViewModel: ObservableObject {
                 self.sentRequests = self.user?.sentRequests ?? []
                 self.recievedRequests = self.user?.recievedRequests ?? []
                 
-                // get matched user models
-                for id in self.matchedUsers {
-                    FirebaseManager.shared.firestore
-                        .collection("users")
-                        .document(id)
-                        .addSnapshotListener { snapshot, error in
-                            if let error = error {
-                                self.errorMessage = "fetchCurrentUser: Fail to fetch matched user: \(error)"
-                                return
-                            }
-                            
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "fetchCurrentUser: No matched user data found"
-                                return
-                            }
-                            
-                            self.matchedUsersModel.append(newUser)
+                FirebaseManager.shared.firestore.collection("users")
+                    .addSnapshotListener { [self] documentsSnapshot, error in
+                        if let error = error {
+                            self.errorMessage = "fetchAllUsers: Failed to fetch users: \(error)"
+                            return
                         }
-                }
-                // get sent request user models
-                for id in self.sentRequests {
-                    FirebaseManager.shared.firestore
-                        .collection("users")
-                        .document(id)
-                        .addSnapshotListener { snapshot, error in
-                            if let error = error {
-                                self.errorMessage = "fetchCurrentUser: Fail to fetch sent request user: \(error)"
-                                return
+                        documentsSnapshot?.documentChanges.forEach({ change in
+                            if change.type == .added {
+                                guard let getuser = try? change.document.data(as: User.self) else {
+                                    self.errorMessage = "fetchAllUsers: No user data found"
+                                    return
+                                }
+                                
+                                if self.matchedUsers.contains(getuser.id) {
+                                    if !self.matchedUsersModel.contains(where: {$0.id == getuser.id}) {
+                                        self.matchedUsersModel.append(getuser)
+                                    }
+                                }
+                                if self.sentRequests.contains(getuser.id) {
+                                    if !self.sentRequestsModel.contains(where: {$0.id == getuser.id}) {
+                                        self.sentRequestsModel.append(getuser)
+                                    }
+                                }
+                                if self.recievedRequests.contains(getuser.id) {
+                                    if !self.recievedRequestsModel.contains(where: {$0.id == getuser.id}) {
+                                        self.recievedRequestsModel.append(getuser)
+                                    }
+                                }
                             }
-                            
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "fetchCurrentUser: No sent request user data found"
-                                return
+                            if change.type == .modified {
+                                guard let getuser = try? change.document.data(as: User.self) else {
+                                    self.errorMessage = "fetchAllUsers: No user data found"
+                                    return
+                                }
+                                if self.matchedUsers.contains(getuser.id) {
+                                    self.matchedUsersModel.removeAll(where: {$0.id == getuser.id})
+                                }
+                                if self.sentRequests.contains(getuser.id) {
+                                    self.sentRequestsModel.removeAll(where: {$0.id == getuser.id})
+                                }
+                                if self.recievedRequests.contains(getuser.id) {
+                                    self.recievedRequestsModel.removeAll(where: {$0.id == getuser.id})
+                                }
                             }
-                            
-                            self.sentRequestsModel.append(newUser)
-                        }
-                }
-                // get recieved request user models
-                for id in self.recievedRequests {
-                    FirebaseManager.shared.firestore
-                        .collection("users")
-                        .document(id)
-                        .addSnapshotListener { snapshot, error in
-                            if let error = error {
-                                self.errorMessage = "fetchCurrentUser: Fail to fetch recieve request user: \(error)"
-                                return
-                            }
-                            
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
-                                self.errorMessage = "fetchCurrentUser: No recieve request data found"
-                                return
-                            }
-                            self.recievedRequestsModel.append(newUser)
-                        }
-                }
+
+                        })
+                    }
             }
     }
     
@@ -221,7 +210,6 @@ class UserViewModel: ObservableObject {
                             }
                         }
                     })
-                
             }
             // delete recieved messages
             FirebaseManager.shared.firestore.collection("messages")

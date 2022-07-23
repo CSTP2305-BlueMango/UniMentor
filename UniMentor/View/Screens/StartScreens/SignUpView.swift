@@ -9,16 +9,16 @@ import SwiftUI
 
 /// user signup
 struct SignUpView: View {
-    
-    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
-    @Environment(\.presentationMode) var presentation
-    
+    /// profileInfoView active state
+    @State var isProfileInfoActive = false
+    /// app view model object
     @EnvironmentObject var viewModel: AppViewModel
-    
+    /// signup view model object
     @ObservedObject private var signupVM = SignupViewModel()
     
-    //state for keeping track of if link to profileinfo view is active
-    @State var isProfileInfoActive = false
+    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
+    /// view presentation mode
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         // ZSTACK
@@ -27,19 +27,17 @@ struct SignUpView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            // NAVIGATIONLINK
+            // NAVIGATIONLINK - navigate to profile information view
             NavigationLink(
                 destination: ProfileInfoView(name: signupVM.name),
                 isActive: $isProfileInfoActive
-            ) {
-                EmptyView()
-            }
-            //:NAVIGATIONLINK
+            ) {EmptyView()}
             
             // BODY
             VStack(alignment: .center) {
                 // HEADER
                 VStack(alignment: .center) {
+                    // Title
                     Text("Sign Up")
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 } //: HEADER
@@ -83,19 +81,17 @@ struct SignUpView: View {
                     ).autocapitalization(.none)
                     Spacer()
                     
-                    // BUTTON - SIGNUP
+                    // Signup Button - Sign up user and go to profile information view
                     ButtonView(action: {
                         signupVM.signUp {
                             isProfileInfoActive = true
                         }
                     },
                          label: "Sign Up",
-                         color: Color("TabBarColor"),
-                         opacity: 1.0,
-                         isBorder: false
+                         color: Color("TabBarColor")
                     )
-                } //: MAIN
-                .frame(height: UIScreen.main.bounds.height * 0.55)
+                }.frame(height: UIScreen.main.bounds.height * 0.55)
+                //: MAIN
                 Spacer()
                 Spacer()
                 // FOOTER
@@ -106,21 +102,18 @@ struct SignUpView: View {
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     }
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
-                    // BUTTON - LOGIN
+                    // Login button - go to login view
                     ButtonView(action: {
                         // pop child view to go back to root view
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",
-                         color: Color(red: 1, green: 1, blue: 1),
-                         opacity: 0.0,
                          isBorder: true
                     )
                 } //: FOOTER
-            }
-            .frame(height: UIScreen.main.bounds.height * 0.85)
-        }//: ZSTACK
-        .hideNavigationBar()
+            }.frame(height: UIScreen.main.bounds.height * 0.85)
+        }.hideNavigationBar()
+        //: ZSTACK
     }
 }
 

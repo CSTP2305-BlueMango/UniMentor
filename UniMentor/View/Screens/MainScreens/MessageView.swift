@@ -9,18 +9,16 @@ import SwiftUI
 
 /// display list of users who current user got message from
 struct MessageView: View {
-    /// if popup showing
-    @State private var showPopUp: Bool = false
+    /// delete message popup show state
+    @State private var showDeletePopUp: Bool = false
     /// if edit button clicked
     @State var isEditClicked: Bool = false
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
-    @ObservedObject var vm = AllUsersViewModel()
-    @EnvironmentObject var userVM: UserViewModel
+    /// message user view model object
     @ObservedObject var messageUserVM = MessageUserViewModel()
-    
-    
+    /// link user view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
     var body: some View {
@@ -38,34 +36,38 @@ struct MessageView: View {
                             Spacer()
                             // Edit button
                             EditButtonView(title: editButtonTitle, action: {
+                                // change edit button title
                                 if editButtonTitle == "Edit" {
                                     editButtonTitle = "Finish"
                                 } else {
+                                    // reset selected message users list
+                                    LinkUsersViewModel.selectedMessageUsers = []
                                     editButtonTitle = "Edit"
                                 }
+                                // change edit clicked state
                                 isEditClicked = !isEditClicked
                             }).foregroundColor(.black)
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
-                    } //: HEADER
-                    .frame(height: UIScreen.main.bounds.height * 0.02)
+                        //: HSTACK
+                    }.frame(height: UIScreen.main.bounds.height * 0.02)
+                    //: HEADER
                     // MAIN
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                         ScrollView {
-                            
-                            Text(vm.errorMessage)
-                            
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                                // loop through message users list
                                 ForEach(messageUserVM.messageUsers.reversed()) { user in
+                                    // edit state is false
                                     if !isEditClicked {
+                                        // User card - navigate to MessageChatView
                                         NavigationLink(destination: MessageChatView(user: user)) {
-                                            MessageCardView(
-                                                user: user
-                                            )
+                                            MessageCardView(user: user)
                                         }
-                                    } else {
-                                        EditMessageCardView(
-                                            user: user
-                                        )
+                                    }
+                                    // edit state is true
+                                    else {
+                                        // Edit user card
+                                        EditMessageCardView(user: user)
                                     }
                                 }
                             }
@@ -74,11 +76,13 @@ struct MessageView: View {
                         } //: Scrollview
                     } //: MAIN
                 }
+                // Delete button when edit state is true
                 if isEditClicked {
                     VStack {
-                        // Unmatch button
+                        // Delete button
                         Button(action: {
-                            showPopUp = true
+                            // show delete popup
+                            showDeletePopUp = true
                         }) {
                             Text("Delete")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
@@ -90,45 +94,36 @@ struct MessageView: View {
                     }.padding(0)
                 }
             }
-            
             .padding(.top, UIScreen.main.bounds.width * 0.02)
             .navigationBar(backButton: true, barHidden: true)
             //: BODY
-            // POPUP
+            // POPUP - delete message users popup
             PopUpView(
-                show: $showPopUp,
+                show: $showDeletePopUp,
                 information: "Delete messages with selected people?",
                 buttonAction: {
-                    // delete messages
+                    // loop through selected message users
                     for u in LinkUsersViewModel.selectedMessageUsers {
+                        // delete messages of selected message user
                         LinkUsersVM.deleteMessages(user: u)
                     }
-                    LinkUsersViewModel.selectedUsers = []
-                    showPopUp = false
+                    // reset selected message users list
+                    LinkUsersViewModel.selectedMessageUsers = []
+                    // discard popup
+                    showDeletePopUp = false
+                    // change edit button title
                     editButtonTitle = "Edit"
+                    // change edit state to false
                     isEditClicked = false
                 },
                 buttonText: "Delete"
-            )
-            //: POPUP
-        }
-//        .onAppear() {
-//            messageUserVM.fetchMessageUsers()
-//        }
+            )//: POPUP
+        }//: ZSTACK
     }
-}
-
-struct MessageViewPreviewView: View {
-    @State var isMatchedUserMessage: Bool = false
-    var body: some View {
-        MessageView(
-        )
-    }
-    
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageViewPreviewView()
+        MessageView()
     }
 }

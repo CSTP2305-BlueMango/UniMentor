@@ -23,7 +23,7 @@ struct UserProfileEditView: View {
     /// if pop up showing
     @State private var showPopUp: Bool = false
     
-    @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var userVM = UserViewModel()
     
     @ObservedObject var imageVM = ImageViewModel()
     

@@ -66,9 +66,7 @@ struct LoginView: View {
                             }
                         },
                         label: "Login",
-                        color: Color("TabBarColor"),
-                        opacity: 1.0,
-                        isBorder: false
+                        color: Color("TabBarColor")
                     ).padding()
                 }.frame(height: UIScreen.main.bounds.height * 0.36)
                 //:LOGINFORM
@@ -86,8 +84,6 @@ struct LoginView: View {
                             self.isSignUpActive = true
                         },
                         label: "Sign up",
-                        color: Color.white,
-                        opacity: 0.0,
                         isBorder: true
                     )
                 }

@@ -11,15 +11,15 @@ import SwiftUI
 /// param: action, button label, color, opacity, isBorder needed
 struct ButtonView: View {
     /// button action
-    let action: ()->Void
+    var action: ()->Void
     /// button label
-    let label: String
+    var label: String
     /// button color
-    let color: Color
+    var color: Color = Color(red: 0.86,green: 0.85,blue: 0.80)
     /// button opacity
-    let opacity: Double
+    var opacity: Double = 1.0
     /// button border status
-    let isBorder: Bool
+    var isBorder: Bool = false
     
     var body: some View {
         // button without border
@@ -56,14 +56,7 @@ struct ButtonView_2_Previews: PreviewProvider {
     static var previews: some View {
         ButtonView(
             action: {},
-            label: "test",
-            color: Color(
-                red: 0.86,
-                green: 0.85,
-                blue: 0.80
-            ),
-            opacity: 1.0,
-            isBorder: false
+            label: "test"
         )
     }
 }

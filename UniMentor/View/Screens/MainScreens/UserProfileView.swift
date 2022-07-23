@@ -9,33 +9,32 @@ import SwiftUI
 
 /// display user profile
 struct UserProfile: View {
-    /// if popup showing
-    @State private var showPopUp: Bool = false
-    @State private var show: Bool = false
-    
-    /// state for keeping track of if link to edit profile is active
+    /// edit profile active state
     @State var isEditActive = false
-    
+    /// information popup show state
+    @State private var showInfoPopUp: Bool = false
+    /// logout button show state
     @State var shouldShowLogOutOptions: Bool = false
+    /// delete account popup show state
     @State var wantToDeleteAccount: Bool = false
+    /// logout popup after delete account show state
+    @State private var showDeleteLogoutPopup: Bool = false
+    /// empty user when user model doesn't exist
+    @State var user: User = User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
-    @EnvironmentObject var userVM: UserViewModel
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
+    /// app view model object
     @EnvironmentObject var appVM: AppViewModel
-    
-    @State var errorMessage = ""
-    
-    @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
-    
     
     var body: some View {
         NavigationView {
             ZStack {
-                //NAVIGATION LINK
+                //NAVIGATION LINK - navigate to user profile edit view
                 NavigationLink(
                     destination: UserProfileEditView(),
                     isActive: $isEditActive
                 ) {EmptyView()}
-                //:NAVIGATION LINK
                 
                 // BODY
                 VStack {
@@ -48,47 +47,52 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: userVM.user ?? testUser)
+                                ProfileView(user: userVM.user ?? user)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
-                            
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed
-                            // Setting Button
+                            // Settings
                             ZStack {
                                 Menu {
                                     // Edit button
                                     Button {
+                                        // go to user profile edit view
                                         isEditActive = true
                                     } label: {
                                         Label("Edit profile", systemImage: "square.and.pencil")
                                     }
                                     // Information button
                                     Button {
-                                        showPopUp = true
+                                        // show information popup
+                                        showInfoPopUp = true
                                     } label: {
                                         Label("Information", systemImage: "exclamationmark.square")
                                     }
                                     // log out button
                                     Button {
+                                        // show logout button
                                         shouldShowLogOutOptions.toggle()
                                     } label: {
                                         Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
                                     }
                                     Button(role: .destructive) {
-                                        // delete account feature
+                                        // delete account popup
                                         wantToDeleteAccount = true
                                     } label: {
                                         Label("Delete account", systemImage: "person.crop.circle.badge.xmark").foregroundColor(.red)
                                     }.foregroundColor(.red)
                                 } label: {
+                                    // Settings Icon
                                     Image(systemName: "gearshape")
                                         .font(.system(size: UIScreen.main.bounds.width * 0.07))
                                         .foregroundColor(Color.black)
                                 }
-                            }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: UIScreen.main.bounds.width * 0.88, bottom: 0, trailing: 0))
+                            }
+                            .padding(.top, UIScreen.main.bounds.height * 0.12)
+                            .padding(.leading, UIScreen.main.bounds.width * 0.88)
                         }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                         // FOOTER
-                        // number of matched users
+                        // Number of matched users
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             Text("Matched students")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
@@ -97,30 +101,37 @@ struct UserProfile: View {
                         }
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                        .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.01, leading: 0, bottom: UIScreen.main.bounds.height * 0.02, trailing: 0))
+                        .padding(.top, UIScreen.main.bounds.height * 0.01)
+                        .padding(.bottom, UIScreen.main.bounds.height * 0.02)
                         //: FOOTER
                     }//: ScrollView
                 }
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden(true)
                 //: BODY
-                // POPUP
-                InfoPopupView(show: $showPopUp)
+                // POPUPS
+                // Information popup
+                InfoPopupView(show: $showInfoPopUp)
+                // Delete account popup
                 PopUpView(
                     show: $wantToDeleteAccount,
                     information: "Do you want to delete account?",
                     warnMessage: "* all the information of the account will be remove completely",
                     buttonAction: {
+                        // delete user account
                         userVM.deleteUser()
+                        // discard delete popup
                         wantToDeleteAccount = false
-                        show = true
+                        // show logout popup
+                        showDeleteLogoutPopup = true
                     },
                     buttonText: "Delete"
                 )
-                // Log out after delete account
-                if show {
+                // Logout popup after delete account
+                if showDeleteLogoutPopup {
                     // background
-                    Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
+                    Color.black.opacity(showDeleteLogoutPopup ? 0.3 : 0).edgesIgnoringSafeArea(.all)
+                    // TODO: change to component
                     // Popup
                     VStack(spacing: UIScreen.main.bounds.height * 0.03) {
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
@@ -132,6 +143,7 @@ struct UserProfile: View {
                         HStack(spacing: UIScreen.main.bounds.width * 0.07) {
                             // button
                             Button(action: {
+                                // sign out user
                                 appVM.signOut()
                             }) {
                                 Text("Log out")
@@ -146,13 +158,14 @@ struct UserProfile: View {
                     .frame(width: UIScreen.main.bounds.width * 0.7)
                     .padding(UIScreen.main.bounds.width * 0.07)
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
-                    //: Popup
-                }//: IF SHOW
-                // ErrorPopupView(show: )
+                } //: Logout popup after delete account
+                //: POPUPS
             }
+            // Logout button
             .actionSheet(isPresented: $shouldShowLogOutOptions) {
                 .init(title: Text("Settings"), message: Text("Do you want to log out?"), buttons: [
                     .destructive(Text("Log Out"), action: {
+                        // sign out user
                         appVM.signOut()
                     }),
                         .cancel()
@@ -161,6 +174,7 @@ struct UserProfile: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        //: NAVIGATIONVIEW
     }
 }
 
@@ -170,7 +184,4 @@ struct UserProfile_Previews: PreviewProvider {
     }
 }
 
-func separateDate(startDate: String) -> [String] {
-    let result = startDate.components(separatedBy: " ")
-    return result
-}
+

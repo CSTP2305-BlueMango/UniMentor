@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// confirm profile information of user edited from profileInfo view
+/// param: user name, image, major, school, startDate, information
 struct ProfileConfirmView: View {
     /// confirm name
     @State var name: String
@@ -21,27 +22,28 @@ struct ProfileConfirmView: View {
     @State var startDate: String
     /// confirm information
     @State var info: String
-    
+    /// profile confirm finished state
     @State var isFinished = false
-    
+    /// user view model object
     @EnvironmentObject var userVM: UserViewModel
-    
-    @Environment(\.presentationMode) var presentation
-    
+    /// image view model object
     @ObservedObject private var imageVM = ImageViewModel()
+    /// view presentation mode
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         ZStack(alignment: .top) {
+            // BACKGROUND
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATION LINK
+            // NAVIGATION LINK - navigate to login view
             NavigationLink(
                 destination: LoginView(),
                 isActive: $isFinished
             ) {EmptyView()}
-            //:NAVIGATION LINK
             
+            // SCROLLVIEW
             ScrollView {
                 // BODY
                 VStack(spacing: UIScreen.main.bounds.height * 0.05) {
@@ -51,6 +53,7 @@ struct ProfileConfirmView: View {
                         .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
                         .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
+                        // Profile view
                         VStack {
                             ProfileView(user: User(id: "", name: self.name, image: "", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []), isImageUIImage: true, uiImage: self.image)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
@@ -58,7 +61,7 @@ struct ProfileConfirmView: View {
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                     // FOOTER
                     VStack() {
-                        // finish button
+                        // Finish button - save user profile information to database and go to login view
                         ButtonView(action: {
                             // save user infomation to database
                             userVM.saveUser(createdUser: User(
@@ -77,17 +80,16 @@ struct ProfileConfirmView: View {
                             isFinished = true
                         },
                              label: "Get Started",
-                             color: Color("TabBarColor"),
-                             opacity: 1.0,
-                             isBorder: false
+                             color: Color("TabBarColor")
                         )
                     } //: FOOTER
                 }.frame(minHeight: UIScreen.main.bounds.height * 0.9)
                 //: BODY
             }//: ScrollView
-            
+            // Back button - go back to profile information view
             HStack {
                 Button(action: {
+                    // pop child view to go back to root view
                     presentation.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.backward")
@@ -95,10 +97,8 @@ struct ProfileConfirmView: View {
                         .font(.system(size: UIScreen.main.bounds.width * 0.06))
                 }
                 Spacer()
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-        }
-        .hideNavigationBar()
+            }.frame(width: UIScreen.main.bounds.width * 0.9)
+        }.hideNavigationBar()
         //: ZSTACK
     }
 }
@@ -106,15 +106,11 @@ struct ProfileConfirmView: View {
 struct ProfileConfirmView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileConfirmView(
-            name: "First Lastname",
-            major: "Computer Systems Technology",
-            school: "Vancouver Community College",
-            startDate: "September 2020",
-            info: """
-                I guess we could discuss the implications of the phrase meant to be.
-
-                That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
-                """
+            name: "",
+            major: "",
+            school: "",
+            startDate: "",
+            info: ""
         )
     }
 }

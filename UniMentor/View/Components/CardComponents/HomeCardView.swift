@@ -13,19 +13,8 @@ struct HomeCardView: View {
     @State var cardHeight: Double = 0.1
     /// dropdown button click state
     @State var isButtonClicked: Bool = false
-    
-    /// user id
-    @State var userID: String
-    /// user image
-    @State var image: String
-    /// user name
-    @State var name: String
-    /// user major
-    @State var major: String
-    /// user school
-    @State var school: String
-    /// user information
-    @State var information: String
+    /// user model
+    @State var user: User
     
     var body: some View {
         // MAIN
@@ -34,7 +23,7 @@ struct HomeCardView: View {
                 // LEFT - Image
                 Spacer().frame(width: 0)
                 VStack {
-                    AsyncImage(url: URL(string: "\(image)")) {image in image
+                    AsyncImage(url: URL(string: "\(user.image)")) {image in image
                         .resizable()
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
@@ -46,16 +35,16 @@ struct HomeCardView: View {
                 // CENTER - Information
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
                     // user name
-                    Text(name)
+                    Text(user.name)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         .lineLimit(1)
                         .frame(width: UIScreen.main.bounds.width * 0.5, alignment: .leading)
                     // user major
-                    Text(major)
+                    Text(user.major)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                         .lineLimit(1)
                     // user school
-                    Text(school)
+                    Text(user.school)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                         .lineLimit(1)
                 }.frame(width: UIScreen.main.bounds.width * 0.55)
@@ -95,7 +84,7 @@ struct HomeCardView: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         Text("""
-\(information)
+\(user.intro)
 """)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                             .multilineTextAlignment(.leading)
@@ -116,16 +105,7 @@ struct HomeCardView: View {
 struct HomeCardView_Previews: PreviewProvider {
     static var previews: some View {
         HomeCardView(
-            userID: "1",
-            image: "user_image",
-            name: "First Lastname",
-            major: "Computer Systems Technology",
-            school: "Vancouver Community College",
-            information: """
-testtest weifj wefjowi efoiwjeofijo wefoijoiejfowijefo wjoeifjoiwjefo woeij
-
-oiwjeofijwoeifj wiejfow jeof woeifjo wiejfo weofij owiej fo
-"""
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
         )
     }
 }
