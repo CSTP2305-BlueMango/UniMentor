@@ -29,25 +29,33 @@ class UserViewModel: ObservableObject {
     /// logged in user recieved request user id list
     @Published var recievedRequests: [String] = []
 
-    private var handle: AuthStateDidChangeListenerHandle?
+    // private var handle: AuthStateDidChangeListenerHandle?
     
+//    init() {
+//        handle = FirebaseManager.shared.auth.addStateDidChangeListener {
+//            auth, user in
+//            self.fetchCurrentUser()
+//        }
+//    }
+//
+//    deinit {
+//        guard let handle = handle else {
+//            return
+//        }
+//        FirebaseManager.shared.auth.removeStateDidChangeListener(handle)
+//    }
     init() {
-        handle = FirebaseManager.shared.auth.addStateDidChangeListener {
-            auth, user in
-            self.fetchCurrentUser()
-        }
-    }
-
-    deinit {
-        guard let handle = handle else {
-            return
-        }
-
-        FirebaseManager.shared.auth.removeStateDidChangeListener(handle)
+        fetchCurrentUser()
     }
     
     /// fetch logged in user from database
     private func fetchCurrentUser() {
+        self.matchedUsers =  []
+        self.sentRequests =  []
+        self.recievedRequests =  []
+        self.matchedUsersModel = []
+        self.sentRequestsModel = []
+        self.recievedRequestsModel = []
         
         // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
@@ -57,20 +65,19 @@ class UserViewModel: ObservableObject {
         
         // get user data from database and save as User model
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).addSnapshotListener { snapshot, error in
+            .document(uid).getDocument { documentSnapshot, error in
                 if let error = error {
                     self.errorMessage = "fetchCurrentUser: Fail to fetch current user: \(error)"
                     return
                 }
                 
-                guard let newUser = try? snapshot?.data(as: User.self) else {
+                guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                     self.errorMessage = "fetchCurrentUser: No user data found"
                     return
                 }
-
-                // print("Spagetti new user\(newUser)")
                 // save user
                 self.user = newUser
+                
                 
                 // save user linked users lists
                 self.matchedUsers = self.user?.matchedUsers ?? []
@@ -82,13 +89,13 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .addSnapshotListener { snapshot, error in
+                        .getDocument { documentSnapshot, error in
                             if let error = error {
                                 self.errorMessage = "fetchCurrentUser: Fail to fetch matched user: \(error)"
                                 return
                             }
                             
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
+                            guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                                 self.errorMessage = "fetchCurrentUser: No matched user data found"
                                 return
                             }
@@ -101,13 +108,13 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .addSnapshotListener { snapshot, error in
+                        .getDocument { documentSnapshot, error in
                             if let error = error {
                                 self.errorMessage = "fetchCurrentUser: Fail to fetch sent request user: \(error)"
                                 return
                             }
                             
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
+                            guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                                 self.errorMessage = "fetchCurrentUser: No sent request user data found"
                                 return
                             }
@@ -120,13 +127,13 @@ class UserViewModel: ObservableObject {
                     FirebaseManager.shared.firestore
                         .collection("users")
                         .document(id)
-                        .addSnapshotListener { snapshot, error in
+                        .getDocument { documentSnapshot, error in
                             if let error = error {
                                 self.errorMessage = "fetchCurrentUser: Fail to fetch recieve request user: \(error)"
                                 return
                             }
                             
-                            guard let newUser = try? snapshot?.data(as: User.self) else {
+                            guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                                 self.errorMessage = "fetchCurrentUser: No recieve request data found"
                                 return
                             }

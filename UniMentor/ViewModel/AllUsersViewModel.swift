@@ -29,18 +29,42 @@ class AllUsersViewModel: ObservableObject {
                     return
                 }
                 
-                documentsSnapshot?.documents.forEach({ snapshot in
-                    guard let user = try? snapshot.data(as: User.self) else {
-                        self.errorMessage = "fetchAllUsers: No user data found"
-                        return
+                documentsSnapshot?.documentChanges.forEach({ change in
+                    if change.type == .added {
+                        guard let user = try? change.document.data(as: User.self) else {
+                            self.errorMessage = "fetchAllUsers: No user data found"
+                            return
+                        }
+                        if user.id != FirebaseManager.shared.auth.currentUser?.uid {
+                            self.users.append(user)
+                        }
+                        
                     }
-                    
-                    let newUser = user
-                    if newUser.id != FirebaseManager.shared.auth.currentUser?.uid {
-                        self.users.append(newUser)
+                    if change.type == .removed {
+                        guard let user = try? change.document.data(as: User.self) else {
+                            self.errorMessage = "fetchAllUsers: No user data found"
+                            return
+                        }
+                        self.users.removeAll(where: {$0.id == user.id as! String})
                     }
                     users.shuffle()
+
                 })
+                
+//                documentsSnapshot?.documents.forEach({ snapshot in
+//                    guard let user = try? snapshot.data(as: User.self) else {
+//                        self.errorMessage = "fetchAllUsers: No user data found"
+//                        return
+//                    }
+//
+//                    let newUser = user
+//                    if newUser.id != FirebaseManager.shared.auth.currentUser?.uid {
+//                        self.users.append(newUser)
+//                    }
+//
+//
+//
+//                })
             }
     }
 }

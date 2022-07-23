@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-/// tab bar
+/// buttom tab bar
 struct TabBarView: View {
     
     /// if home view button clicked
@@ -68,12 +68,13 @@ struct TabBarView: View {
                 // Home view button
                 VStack {
                     Button(action: {
+                        // home view active
                         isHomeView = true
                         isRequestView = false
                         isMatchView = false
                         isMessageView = false
                         isProfileView = false
-                        
+                        // home view tab icon to be white
                         homeButtonColor = .white
                         requestsButtonColor = Color("DarkColor")
                         matchedButtonColor = Color("DarkColor")
@@ -81,9 +82,11 @@ struct TabBarView: View {
                         profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
+                            // Home icon
                             Image(systemName: "house")
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
                                 .foregroundColor(homeButtonColor)
+                            // Home text
                             Text("Home")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(homeButtonColor)
                         }.padding(0)
@@ -92,12 +95,13 @@ struct TabBarView: View {
                 // Request view button
                 VStack {
                     Button(action: {
+                        // request view active
                         isHomeView = false
                         isRequestView = true
                         isMatchView = false
                         isMessageView = false
                         isProfileView = false
-                        
+                        // request view tab icon to be white
                         homeButtonColor = Color("DarkColor")
                         requestsButtonColor = .white
                         matchedButtonColor = Color("DarkColor")
@@ -105,9 +109,11 @@ struct TabBarView: View {
                         profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
+                            // Requests icon
                             Image(systemName: "heart")
                                 .foregroundColor(requestsButtonColor)
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                            // Reqests text
                             Text("Requests")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(requestsButtonColor)
                         }
@@ -116,12 +122,13 @@ struct TabBarView: View {
                 // Matched view button
                 VStack {
                     Button(action: {
+                        // matched view active
                         isHomeView = false
                         isRequestView = false
                         isMatchView = true
                         isMessageView = false
                         isProfileView = false
-                        
+                        // matched view tab icon to be white
                         homeButtonColor = Color("DarkColor")
                         requestsButtonColor = Color("DarkColor")
                         matchedButtonColor = .white
@@ -129,9 +136,11 @@ struct TabBarView: View {
                         profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
+                            // Matched icon
                             Image(systemName: "person.2")
                                 .foregroundColor(matchedButtonColor)
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                            // Matched text
                             Text("Matched")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(matchedButtonColor)
                         }
@@ -140,12 +149,13 @@ struct TabBarView: View {
                 // Message view button
                 VStack {
                     Button(action: {
+                        // message view active
                         isHomeView = false
                         isRequestView = false
                         isMatchView = false
                         isMessageView = true
                         isProfileView = false
-                        
+                        // message view tab icon to be white
                         homeButtonColor = Color("DarkColor")
                         requestsButtonColor = Color("DarkColor")
                         matchedButtonColor = Color("DarkColor")
@@ -153,9 +163,11 @@ struct TabBarView: View {
                         profileButtonColor = Color("DarkColor")
                     }) {
                         VStack {
+                            // Message icon
                             Image(systemName: "bubble.left")
                                 .foregroundColor(messagesButtonColor)
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                            // Message text
                             Text("Messages")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(messagesButtonColor)
                         }
@@ -164,12 +176,13 @@ struct TabBarView: View {
                 // Profile view button
                 VStack {
                     Button(action: {
+                        // profile view active
                         isHomeView = false
                         isRequestView = false
                         isMatchView = false
                         isMessageView = false
                         isProfileView = true
-                        
+                        // profile view tab icon to be white
                         homeButtonColor = Color("DarkColor")
                         requestsButtonColor = Color("DarkColor")
                         matchedButtonColor = Color("DarkColor")
@@ -177,17 +190,20 @@ struct TabBarView: View {
                         profileButtonColor = .white
                     }) {
                         VStack {
+                            // Profile icon
                             Image(systemName: "person")
                                 .foregroundColor(profileButtonColor)
                                 .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                            // Profile text
                             Text("Profile")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035)).foregroundColor(profileButtonColor)
                         }
                     }
                 }.padding(.top, UIScreen.main.bounds.height * 0.015)
-            } //: TABBAR
+            }
             .frame(width: UIScreen.main.bounds.width * 1)
             .background(Color("TabBarColor"))
+            //: TABBAR
         } //: BODY
     }
 }

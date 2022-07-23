@@ -8,30 +8,27 @@
 import SwiftUI
 
 /// display list of users who are matched with current user
+/// param: isMatchView, isMessageView, matchedButtonColor, messagesButtonColor
 struct MatchedView: View {
-    /// if pop up showing
-    @State private var showPopUp: Bool = false
-    /// if edit button clicked
+    /// unmatch pop up show state
+    @State private var showUnmatchPopUp: Bool = false
+    /// edit button clicked state
     @State var isEditClicked: Bool = false
     /// edit button text
     @State var editButtonTitle: String = "Edit"
-    
-    @EnvironmentObject var userVM: UserViewModel
-    
-    
-    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
-    
-    
-    
-    /// if match view button clicked
+    /// match view button clicked state
     @Binding var isMatchView: Bool
-    /// if message view button clicked
+    /// message view button clicked state
     @Binding var isMessageView: Bool
     /// match view button color
     @Binding var matchedButtonColor: Color
     /// message view button color
     @Binding var messagesButtonColor: Color
     
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
+    /// link users view model object
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
     var body: some View {
         NavigationView {
@@ -46,31 +43,34 @@ struct MatchedView: View {
                                 // TITLE
                                 Text("Matched")
                                     .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
-                                
                                 Spacer()
                                 // Edit button
                                 EditButtonView(title: editButtonTitle, action: {
+                                    // change edit button title
                                     if editButtonTitle == "Edit" {
                                         editButtonTitle = "Finish"
                                     } else {
+                                        // reset selected users list
                                         LinkUsersViewModel.selectedUsers = []
                                         editButtonTitle = "Edit"
                                     }
+                                    // change edit clicked state
                                     isEditClicked = !isEditClicked
                                 }).foregroundColor(.black)
-                                
                             }.frame(width: UIScreen.main.bounds.width * 0.9)
-                        } //: HEADER
-                        .frame(height: UIScreen.main.bounds.height * 0.02)
-                        
+                            //: HSTACK
+                        }.frame(height: UIScreen.main.bounds.height * 0.02)
+                        //: HEADER
                         // MAIN
                         VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                             // Card list
                             ScrollView {
                                 VStack(spacing: UIScreen.main.bounds.height * 0.015) {
-                                    // var isClicked: Bool = false
+                                    // loop through matched user models
                                     ForEach(userVM.matchedUsersModel) { user in
+                                        // edit state is false
                                         if !isEditClicked {
+                                            // User card - navigate to MatchedProfileView
                                             NavigationLink(destination:
                                                 MatchedProfileView(user: user,
                                                     isMatchView: $isMatchView,
@@ -78,26 +78,26 @@ struct MatchedView: View {
                                                     matchedButtonColor: $matchedButtonColor,
                                                     messagesButtonColor: $messagesButtonColor))
                                             {
-                                                CardView(
-                                                    user: user
-                                                )
+                                                CardView( user: user )
                                             }
-                                        } else {
-                                            EditCardView(
-                                                user: user
-                                            )
+                                        }
+                                        // edit state is true
+                                        else {
+                                            // Edit user card
+                                            EditCardView( user: user )
                                         }
                                     }
-                                }
-                                .padding(UIScreen.main.bounds.width * 0.02)
+                                }.padding(UIScreen.main.bounds.width * 0.02)
                             } //: ScrollView
                         } //: MAIN
                     }
+                    // Unmatch button when edit state is true
                     if isEditClicked {
                         VStack {
                             // Unmatch button
                             Button(action: {
-                                showPopUp = true
+                                // show unmatch popup
+                                showUnmatchPopUp = true
                             }) {
                                 Text("Unmatch")
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
@@ -108,46 +108,46 @@ struct MatchedView: View {
                             }
                         }.padding(0)
                     }
-                }
-                .padding(.top, UIScreen.main.bounds.width * 0.02)
+                }.padding(.top, UIScreen.main.bounds.width * 0.02)
                 //: BODY
-                // POPUP
+                // POPUP - unmatch users popup
                 PopUpView(
-                    show: $showPopUp,
+                    show: $showUnmatchPopUp,
                     information: "Unmatch with selected people?",
                     warnMessage: "* Unmatching will delete messages",
                     buttonAction: {
-                        for u in LinkUsersViewModel.selectedUsers {
-                            LinkUsersVM.unmatchUser(user: u)
+                        // loop through selected matched users
+                        for selectedUser in LinkUsersViewModel.selectedUsers {
+                            // unmatch with selected user
+                            LinkUsersVM.unmatchUser(user: selectedUser)
                         }
+                        // reset selected users list
                         LinkUsersViewModel.selectedUsers = []
-                        showPopUp = false
+                        // discard popup
+                        showUnmatchPopUp = false
+                        // change edit button title
                         editButtonTitle = "Edit"
+                        // change edit state to false
                         isEditClicked = false
                     },
                     buttonText: "Unmatch"
-                )
-                //: POPUP
+                )//: POPUP
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            //: ZSTACK
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        //: NAVIGATIONVIEW
     }
 }
 
 struct MatchedViewPreviewView: View {
-    /// if match view button clicked
     @State var isMatchView: Bool = false
-    /// if message view button clicked
     @State var isMessageView: Bool = false
-    /// match view button color
     @State var matchedButtonColor: Color = Color("DarkColor")
-    /// message view button color
     @State var messagesButtonColor: Color = Color("DarkColor")
-    @State var matchedUser: User = User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
-    @State var isMatchedUserMessage: Bool = false
     var body: some View {
         MatchedView(
             isMatchView: $isMatchView,
@@ -156,7 +156,6 @@ struct MatchedViewPreviewView: View {
             messagesButtonColor: $messagesButtonColor
         )
     }
-    
 }
 
 struct MatchedView_Previews: PreviewProvider {

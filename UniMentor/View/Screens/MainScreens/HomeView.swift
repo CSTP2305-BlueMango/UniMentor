@@ -11,10 +11,13 @@ import SwiftUI
 struct HomeView: View {
     /// search input
     @State var searchInput: String = ""
-    @EnvironmentObject var viewModel: AppViewModel
     
+    /// app view model object
+    @EnvironmentObject var viewModel: AppViewModel
+    /// all users view model object
     @ObservedObject var allUsersVM = AllUsersViewModel()
-    @EnvironmentObject var userVM: UserViewModel
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
     
     var body: some View {
         NavigationView {
@@ -32,8 +35,8 @@ struct HomeView: View {
                             .padding(.leading, -UIScreen.main.bounds.width * 0.07)
                         Spacer()
                     }.frame(width: UIScreen.main.bounds.width * 0.9)
-                } //: HEADER
-                .frame(height: UIScreen.main.bounds.height * 0.02)
+                }.frame(height: UIScreen.main.bounds.height * 0.02)
+                //: HEADER
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.height * 0.02) {
                     // Search Bar
@@ -51,45 +54,34 @@ struct HomeView: View {
                     // Card list
                     ScrollView {
                         VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            // loop through all users list
                             ForEach(allUsersVM.users) { user in
+                                // exclude users who are matched, sent request, recieved request with current user
                                 if !userVM.matchedUsers.contains(user.id) &&
                                     !userVM.sentRequests.contains(user.id) &&
                                     !userVM.recievedRequests.contains(user.id){
+                                    // get users who matches search input
                                     if searchInput != ""  {
                                         if (user.name.range(of: searchInput, options: .caseInsensitive) != nil) ||
                                             (user.major.range(of: searchInput, options: .caseInsensitive) != nil) ||
                                             (user.school.range(of: searchInput, options: .caseInsensitive) != nil) ||
                                             (user.intro.range(of: searchInput, options: .caseInsensitive) != nil) {
+                                            // User card - navigate to HomeProfileView
                                             NavigationLink(destination: HomeProfileView(user: user)) {
-                                                // TODO: actual info
-                                                HomeCardView(
-                                                    userID: user.id,
-                                                    image: user.image,
-                                                    name: user.name,
-                                                    major: user.major,
-                                                    school: user.school,
-                                                    information: user.intro
-                                                )
+                                                HomeCardView( user: user )
                                             }
                                         }
                                     }
+                                    // no search input
                                     else {
+                                        // User card - navigate to HomeProfileView
                                         NavigationLink(destination: HomeProfileView(user: user)) {
-                                            // TODO: actual info
-                                            HomeCardView(
-                                                userID: user.id,
-                                                image: user.image,
-                                                name: user.name,
-                                                major: user.major,
-                                                school: user.school,
-                                                information: user.intro
-                                            )
+                                            HomeCardView( user: user )
                                         }
                                     }
                                 }
                             }
-                        }
-                        .padding(UIScreen.main.bounds.width * 0.02)
+                        } .padding(UIScreen.main.bounds.width * 0.02)
                     } //: ScrollView
                 } //: MAIN
             }
@@ -100,6 +92,7 @@ struct HomeView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        //: NAVIGATIONVIEW
     }
 }
 

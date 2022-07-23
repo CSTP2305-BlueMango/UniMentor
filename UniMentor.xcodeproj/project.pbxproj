@@ -228,10 +228,10 @@
 		CD6448C828881B74009B428C /* CardComponents */ = {
 			isa = PBXGroup;
 			children = (
+				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
+				CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */,
 				CDD0FF5D284C84FE0045E1E4 /* CardView.swift */,
 				CDF5CFB628829A6B00C65232 /* EditCardView.swift */,
-				CDD0FF5B284C3EA70045E1E4 /* ButtonCardView.swift */,
-				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
 				CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */,
 			);

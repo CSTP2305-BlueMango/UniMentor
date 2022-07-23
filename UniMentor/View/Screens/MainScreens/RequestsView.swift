@@ -9,15 +9,19 @@ import SwiftUI
 
 /// display list of users sent requests to current user
 struct RequestsView: View {
-    /// if pop up showing
+    /// matched pop up show state
     @State private var showPopUp: Bool = false
-    
-    @EnvironmentObject var userVM: UserViewModel
-    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
-    
+    /// selected user image to match
     @State var selectedUserImage = ""
+    /// selected user name to match
     @State var selectedUserName = ""
+    /// current user image
     @State var currentUserImage = ""
+    
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
+    /// link users view model object
+    @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
     var body: some View {
         NavigationView {
@@ -33,22 +37,27 @@ struct RequestsView: View {
                                 .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                             Spacer()
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
-                    } //: HEADER
-                    .frame(height: UIScreen.main.bounds.height * 0.02)
+                    }.frame(height: UIScreen.main.bounds.height * 0.02)
+                    //: HEADER
                     // MAIN
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                         // Card list
                         ScrollView {
                             VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                                // loop through requested user
                                 ForEach(userVM.recievedRequestsModel) { user in
+                                    // User card with match button - naviagate to RequestsProfileView
                                     NavigationLink(destination: RequestsProfileView(user: user)) {
                                         ButtonCardView(
                                             action: {
                                                 // accept request
                                                 LinkUsersVM.matchUser(user: user)
+                                                // set selected user image & name
                                                 selectedUserImage = user.image
                                                 selectedUserName = user.name
+                                                // set current user image
                                                 currentUserImage = userVM.user?.image ?? "user_image2"
+                                                // show matched popup
                                                 showPopUp = true
                                             },
                                             userID: user.id,
@@ -68,17 +77,17 @@ struct RequestsView: View {
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden(true)
                 //: BODY
-                // POPUP
+                // POPUP - matched notify popup
                 MatchedPopupView(
                     show: $showPopUp,
                     matchedUserName: $selectedUserName,
                     matchedUserImage: $selectedUserImage,
                     userImage: $currentUserImage,
                     action: {
+                        // discard popup
                         showPopUp = false
                     }
-                )
-                //: POPUP
+                )//: POPUP
             }//: ZSTACK
         }
         .navigationBarHidden(true)

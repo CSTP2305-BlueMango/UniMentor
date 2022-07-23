@@ -25,6 +25,7 @@ class ChatViewModel: ObservableObject {
     
     /// fetch all messages of user with recieving user
     func fetchMessages() {
+        chatMessages = []
         // current user id
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else {
             self.errorMessage = "fetchMessages: Could not find current uid"
