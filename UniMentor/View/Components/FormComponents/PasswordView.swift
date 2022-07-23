@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// password input field view component
+/// param: place holder, input valie
 struct PasswordView: View {
     var placeholder: String
     @Binding var text: String
@@ -49,7 +51,7 @@ struct PasswordView: View {
 struct PasswordView_Preview: View {
     @State var value: String = ""
     var body: some View {
-        PasswordView(placeholder: "Hello",text: $value)
+        PasswordView(placeholder: "Password",text: $value)
     }
 }
 

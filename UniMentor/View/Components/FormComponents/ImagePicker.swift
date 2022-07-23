@@ -5,12 +5,10 @@
 //  Created by Mary Nicolette Tan on 2022-06-10.
 //
 
-///reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
-
 import SwiftUI
 
-
-//user can choose from pictures in the photo library
+///reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
+/// user can choose from pictures in the photo library
 struct ImagePicker: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) private var presentationMode

@@ -18,8 +18,6 @@ class UserViewModel: ObservableObject {
     @Published var user: User?
     /// logged in user matched user model list
     @Published var matchedUsersModel: [User] = []
-    /// logged in user sent request user model list
-    @Published var sentRequestsModel: [User] = []
     /// logged in user recieved request user model list
     @Published var recievedRequestsModel: [User] = []
     /// logged in user matched user id list
@@ -75,6 +73,7 @@ class UserViewModel: ObservableObject {
                 self.sentRequests = self.user?.sentRequests ?? []
                 self.recievedRequests = self.user?.recievedRequests ?? []
                 
+                // get matched & requested user models of current user
                 FirebaseManager.shared.firestore.collection("users")
                     .addSnapshotListener { [self] documentsSnapshot, error in
                         if let error = error {
@@ -93,11 +92,6 @@ class UserViewModel: ObservableObject {
                                         self.matchedUsersModel.append(getuser)
                                     }
                                 }
-                                if self.sentRequests.contains(getuser.id) {
-                                    if !self.sentRequestsModel.contains(where: {$0.id == getuser.id}) {
-                                        self.sentRequestsModel.append(getuser)
-                                    }
-                                }
                                 if self.recievedRequests.contains(getuser.id) {
                                     if !self.recievedRequestsModel.contains(where: {$0.id == getuser.id}) {
                                         self.recievedRequestsModel.append(getuser)
@@ -111,9 +105,6 @@ class UserViewModel: ObservableObject {
                                 }
                                 if self.matchedUsers.contains(getuser.id) {
                                     self.matchedUsersModel.removeAll(where: {$0.id == getuser.id})
-                                }
-                                if self.sentRequests.contains(getuser.id) {
-                                    self.sentRequestsModel.removeAll(where: {$0.id == getuser.id})
                                 }
                                 if self.recievedRequests.contains(getuser.id) {
                                     self.recievedRequestsModel.removeAll(where: {$0.id == getuser.id})

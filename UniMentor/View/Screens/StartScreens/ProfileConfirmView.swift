@@ -87,17 +87,10 @@ struct ProfileConfirmView: View {
                 //: BODY
             }//: ScrollView
             // Back button - go back to profile information view
-            HStack {
-                Button(action: {
-                    // pop child view to go back to root view
-                    presentation.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(.black)
-                        .font(.system(size: UIScreen.main.bounds.width * 0.06))
-                }
-                Spacer()
-            }.frame(width: UIScreen.main.bounds.width * 0.9)
+            BackButtonView(action: {
+                // pop child view to go back to profile information view
+                presentation.wrappedValue.dismiss()
+            })
         }.hideNavigationBar()
         //: ZSTACK
     }

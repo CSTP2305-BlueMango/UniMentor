@@ -8,32 +8,25 @@
 import SwiftUI
 
 /// display messages between users
+/// param: messageUser
 struct MessageChatView: View {
-    @Environment(\.presentationMode) var presentation
-    
+    /// messageUser model
     @State var user: MessageUser?
-    
-    @ObservedObject var chatVM = ChatViewModel()
-    
-
+    /// chat text
     @State var chatText = ""
     
-    @State var showDate = false
+    /// chat view model object
+    @ObservedObject var chatVM = ChatViewModel()
+    
+    /// view presentation mode
+    @Environment(\.presentationMode) var presentation
 
     var body: some View {
         ZStack(alignment: .top) {
-            HStack {
-                Button(action: {
-                    presentation.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(.black)
-                        .font(.system(size: UIScreen.main.bounds.width * 0.06))
-                }
-                Spacer()
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-            .padding(.top, UIScreen.main.bounds.height * 0.008)
+            BackButtonView(action: {
+                // pop child view to go back to message view
+                presentation.wrappedValue.dismiss()
+            }).padding(.top, UIScreen.main.bounds.height * 0.008)
             VStack {
                 HStack(spacing: UIScreen.main.bounds.width * 0.05) {
                     // LEFT - Image

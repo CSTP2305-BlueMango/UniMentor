@@ -8,72 +8,61 @@
 import SwiftUI
 
 /// profile of the user clicked from home view
+/// param: user
 struct HomeProfileView: View {
-    //ref:https://www.cuvenx.com/post/swiftui-pop-to-root-view
-    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
-    @Environment(\.presentationMode) var presentation
-    
+    /// user model
     @State var user: User
     
+    /// link user view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
+    
+    /// view presentation mode
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         ZStack(alignment: .top) {
-            // BODY
-            VStack {
-                ScrollView {
-                    ZStack(alignment: .top) {
-                        // Background
-                        ZStack {}
-                        .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
-                        .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                        .padding(.top, UIScreen.main.bounds.height * 0.11)
-                        // BackButton
-                        HStack {
-                            Button(action: {
+            ScrollView {
+                ZStack(alignment: .top) {
+                    // Background
+                    ZStack {}
+                    .frame(minWidth: UIScreen.main.bounds.width * 1, maxHeight: .infinity)
+                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                    .padding(.top, UIScreen.main.bounds.height * 0.11)
+                    // BackButton - back to home view
+                    BackButtonView(action: {
+                        // pop child view to go back to home view
+                        presentation.wrappedValue.dismiss()
+                    }).padding(.top, UIScreen.main.bounds.height * 0.01)
+                    // MAIN
+                    VStack {
+                        // profile
+                        ProfileView(user: user)
+                        // request button
+                        VStack{
+                            ButtonView(action: {
+                                // send match request
+                                LinkUsersVM.requestUser(user: user)
+                                // pop child view to go back to root view
                                 presentation.wrappedValue.dismiss()
-                            }) {
-                                Image(systemName: "chevron.backward")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: UIScreen.main.bounds.width * 0.06))
-                            }
-                            Spacer()
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.9)
-                        .padding(.top, UIScreen.main.bounds.height * 0.01)
-                        VStack {
-                            // profile
-                            ProfileView(user: user)
-                            // request button
-                            VStack{
-                                ButtonView(action: {
-                                    // send match request
-                                    LinkUsersVM.requestUser(user: user)
-                                    //pop child view to go back to root view
-                                    presentation.wrappedValue.dismiss()
-                                },
-                                     label: "Request for match",
-                                     color: Color("ButtonColor"),
-                                     opacity: 1.0,
-                                     isBorder: false
-                                )
-                            }
-                            .padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.05, leading: 0, bottom: UIScreen.main.bounds.height * 0.05, trailing: 0))
-                        }
-                    }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
-                } //: ScrollView
-            }
-            //: BODY
+                            },
+                                 label: "Request for match",
+                                 color: Color("ButtonColor")
+                            )
+                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.05, leading: 0, bottom: UIScreen.main.bounds.height * 0.05, trailing: 0))
+                    } //: MAIN
+                }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
+            } //: ScrollView
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        //: ZSTACK
     }
 }
 
 struct HomeProfileView_Previews: PreviewProvider {
     static var previews: some View {
         HomeProfileView(
-            user: User(id: "", name: "First name", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
         )
     }
 }

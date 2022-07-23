@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// multiline input field componenet
+/// param: input value, error message
 struct MultiLineInputView: View {
     /// input value
     @Binding var value: String
@@ -36,10 +38,10 @@ struct MultiLineInputView: View {
             // INPUT FIELD
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                TextEditor(text: $value)
-                    .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.03, leading: UIScreen.main.bounds.width * 0.05, bottom: UIScreen.main.bounds.width * 0.03, trailing: UIScreen.main.bounds.width * 0.05))
-                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                // reference:  https://stackoverflow.com/questions/60374653/swiftui-textfield-height-didnt-change
+                    TextEditor(text: $value)
+                        .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.03, leading: UIScreen.main.bounds.width * 0.05, bottom: UIScreen.main.bounds.width * 0.03, trailing: UIScreen.main.bounds.width * 0.05))
+                        .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                    // reference:  https://stackoverflow.com/questions/60374653/swiftui-textfield-height-didnt-change
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.21)
                 .background(Color.white)
@@ -49,7 +51,7 @@ struct MultiLineInputView: View {
         }
         .frame(width: UIScreen.main.bounds.width * 0.9)
         .padding(.top, UIScreen.main.bounds.height * 0.005)
-
+        //: VSTACK
     }
 }
 
@@ -62,7 +64,6 @@ struct MultiLineInputViewPreviewView: View {
             errorMessage: $error
         )
     }
-    
 }
 
 struct MultiLineInputView_Previews: PreviewProvider {
