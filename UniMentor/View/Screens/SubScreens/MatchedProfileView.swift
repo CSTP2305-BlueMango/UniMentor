@@ -18,7 +18,7 @@ struct MatchedProfileView: View {
     @State var user: User
     
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     @ObservedObject var chatVM = ChatViewModel()
     

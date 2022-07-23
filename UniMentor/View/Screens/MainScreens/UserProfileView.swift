@@ -22,6 +22,8 @@ struct UserProfile: View {
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var appVM: AppViewModel
     
+    @State var errorMessage = ""
+    
     @State var testUser: User = User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
     
@@ -60,40 +62,37 @@ struct UserProfile: View {
                                     } label: {
                                         Label("Edit profile", systemImage: "square.and.pencil")
                                     }
+                                    // Information button
+                                    Button {
+                                        showPopUp = true
+                                    } label: {
+                                        Label("Information", systemImage: "exclamationmark.square")
+                                    }
                                     // log out button
                                     Button {
                                         shouldShowLogOutOptions.toggle()
                                     } label: {
                                         Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
                                     }
-                                    Button {
+                                    Button(role: .destructive) {
                                         // delete account feature
                                         wantToDeleteAccount = true
                                     } label: {
-                                        Label("Delete account", systemImage: "person.crop.circle.badge.xmark")
-                                    }
+                                        Label("Delete account", systemImage: "person.crop.circle.badge.xmark").foregroundColor(.red)
+                                    }.foregroundColor(.red)
                                 } label: {
                                     Image(systemName: "gearshape")
                                         .font(.system(size: UIScreen.main.bounds.width * 0.07))
                                         .foregroundColor(Color.black)
                                 }
                             }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: UIScreen.main.bounds.width * 0.88, bottom: 0, trailing: 0))
-                            // Information button
-                            ZStack {
-                                Button(action: {
-                                    showPopUp = true
-                                }) {
-                                    Image(systemName: "exclamationmark.square")
-                                        .font(.system(size: UIScreen.main.bounds.width * 0.07))
-                                        .foregroundColor(Color.black)
-                                }
-                            }.padding(EdgeInsets(top: UIScreen.main.bounds.height * 0.12, leading: -UIScreen.main.bounds.width * 0.48, bottom: 0, trailing: 0))
                         }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
                         // FOOTER
+                        // number of matched users
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
                             Text("Matched students")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                            Text("\(testUser.matchedUsers.count)")
+                            Text("\(userVM.user?.matchedUsers.count ?? 0)")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                         }
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.1)
@@ -149,6 +148,7 @@ struct UserProfile: View {
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
                     //: Popup
                 }//: IF SHOW
+                // ErrorPopupView(show: )
             }
             .actionSheet(isPresented: $shouldShowLogOutOptions) {
                 .init(title: Text("Settings"), message: Text("Do you want to log out?"), buttons: [

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// reference: Yoonseo Jeong CSTP2305 Quiz7
 /// password validation
 /// parameter: string of password
 func validatePassword(password: String) throws -> Void {

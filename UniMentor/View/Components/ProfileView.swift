@@ -32,6 +32,8 @@ struct ProfileView: View {
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
                     }placeholder: {ProgressView()}
+//                    LazyImage(source: user.image)
+//                        .placeholder {ProgressView()}
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)

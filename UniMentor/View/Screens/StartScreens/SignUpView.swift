@@ -47,7 +47,7 @@ struct SignUpView: View {
                 // MAIN
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                     // INPUT FIELDS
-                    // EMAIL INPUT
+                    // Email input
                     InputFieldView(
                         value: $signupVM.email,
                         placeholder:"sample@gmail.com",
@@ -55,7 +55,7 @@ struct SignUpView: View {
                         title: "Email",
                         errorMessage: $signupVM.emailError
                     ).autocapitalization(.none)
-                    // NAME INPUT
+                    // Name input
                     InputFieldView(
                         value: $signupVM.name,
                         placeholder:"John Doe",
@@ -63,7 +63,7 @@ struct SignUpView: View {
                         title: "Name",
                         errorMessage: $signupVM.nameError
                     )
-                    // PASSWORD INPUT
+                    // Password input
                     InputFieldView(
                         value: $signupVM.password,
                         placeholder:"PrancingPonies123",
@@ -72,7 +72,7 @@ struct SignUpView: View {
                         inputType: "password",
                         errorMessage: $signupVM.passwordError
                     ).autocapitalization(.none)
-                    // CONFIRM PASSWORD INPUT
+                    // Confirm passworkd view
                     InputFieldView(
                         value: $signupVM.confirmPassword,
                         placeholder:"PrancingPonies123",

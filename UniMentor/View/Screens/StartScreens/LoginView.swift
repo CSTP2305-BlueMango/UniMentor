@@ -11,8 +11,9 @@ struct LoginView: View {
     
     /// state for keeping track of if link to signup is active
     @State var isSignUpActive = false
-    
+    /// app view model object
     @EnvironmentObject var viewModel: AppViewModel
+    /// login view model object
     @ObservedObject private var loginVM = LoginViewModel()
     
     var body: some View {
@@ -22,23 +23,24 @@ struct LoginView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            //NAVIGATION LINK
+            // NAVIGATION LINK - navigate to sign up
             NavigationLink(
                 destination: SignUpView(),
                 isActive: $isSignUpActive
             ) {EmptyView()}
-            //:NAVIGATION LINK
             
             //BODY
             VStack() {
                 // HEADER
                 VStack(alignment: .center) {
+                    // Title
                     Text("Login")
                         .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.15))
                 } //: HEADER
                 Spacer()
                 //LOGINFORM
                 VStack(spacing: UIScreen.main.bounds.width * 0.015) {
+                    // Email input
                     InputFieldView(
                         value: $loginVM.email,
                         placeholder:"sample@gmail.com",
@@ -46,6 +48,7 @@ struct LoginView: View {
                         title: "Email",
                         errorMessage: $loginVM.emailError
                     ).autocapitalization(.none)
+                    // Login input
                     InputFieldView(
                         value: $loginVM.password,
                         placeholder:"PrancingPonies123",
@@ -55,6 +58,7 @@ struct LoginView: View {
                         errorMessage: $loginVM.passwordError
                     ).autocapitalization(.none)
                     Spacer()
+                    // Button - login user and go to Home view
                     ButtonView (
                         action: {
                             loginVM.signIn {
@@ -66,8 +70,7 @@ struct LoginView: View {
                         opacity: 1.0,
                         isBorder: false
                     ).padding()
-                }
-                .frame(height: UIScreen.main.bounds.height * 0.36)
+                }.frame(height: UIScreen.main.bounds.height * 0.36)
                 //:LOGINFORM
                 Spacer()
                 Spacer()
@@ -76,29 +79,22 @@ struct LoginView: View {
                     VStack(alignment: .trailing) {
                         Text("Don't have an account yet?")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                    }
-                    .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
-                    // SIGNUP BUTTON
+                    }.padding(.leading, UIScreen.main.bounds.width * 0.02)
+                    // Signup button - go to sign up view
                     ButtonView(
                         action: {
                             self.isSignUpActive = true
                         },
                         label: "Sign up",
-                        color: Color(
-                           red: 1,
-                            green: 1,
-                            blue: 1
-                        ),
+                        color: Color.white,
                         opacity: 0.0,
                         isBorder: true
                     )
                 }
                 //:FOOTER
-            }
-            .frame(height: UIScreen.main.bounds.height * 0.85)
+            }.frame(height: UIScreen.main.bounds.height * 0.85)
             //:BODY
-        }
-        .hideNavigationBar()
+        }.hideNavigationBar()
         //:ZSTACK
     }
 }

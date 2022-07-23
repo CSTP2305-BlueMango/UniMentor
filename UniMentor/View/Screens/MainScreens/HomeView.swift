@@ -14,7 +14,7 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
     @ObservedObject var allUsersVM = AllUsersViewModel()
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
         NavigationView {

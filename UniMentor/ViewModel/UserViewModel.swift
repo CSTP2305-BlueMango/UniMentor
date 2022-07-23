@@ -34,8 +34,6 @@ class UserViewModel: ObservableObject {
     init() {
         handle = FirebaseManager.shared.auth.addStateDidChangeListener {
             auth, user in
-            // TODO: check auth status
-            // TODO: use user provided in closure
             self.fetchCurrentUser()
         }
     }
@@ -70,7 +68,7 @@ class UserViewModel: ObservableObject {
                     return
                 }
 
-                print("Spagetti new user\(newUser)")
+                // print("Spagetti new user\(newUser)")
                 // save user
                 self.user = newUser
                 

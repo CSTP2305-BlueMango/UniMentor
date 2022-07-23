@@ -12,7 +12,7 @@ struct RequestsView: View {
     /// if pop up showing
     @State private var showPopUp: Bool = false
     
-    @ObservedObject var userVM = UserViewModel()
+    @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
     @State var selectedUserImage = ""
