@@ -50,12 +50,12 @@ class UserViewModel: ObservableObject {
     
     /// fetch logged in user from database
     private func fetchCurrentUser() {
-        self.matchedUsers =  []
-        self.sentRequests =  []
-        self.recievedRequests =  []
-        self.matchedUsersModel = []
-        self.sentRequestsModel = []
-        self.recievedRequestsModel = []
+//        self.matchedUsers =  []
+//        self.sentRequests =  []
+//        self.recievedRequests =  []
+//        self.matchedUsersModel = []
+//        self.sentRequestsModel = []
+//        self.recievedRequestsModel = []
         
         // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
@@ -65,7 +65,7 @@ class UserViewModel: ObservableObject {
         
         // get user data from database and save as User model
         FirebaseManager.shared.firestore.collection("users")
-            .document(uid).getDocument { documentSnapshot, error in
+            .document(uid).getDocument { [self] documentSnapshot, error in
                 if let error = error {
                     self.errorMessage = "fetchCurrentUser: Fail to fetch current user: \(error)"
                     return

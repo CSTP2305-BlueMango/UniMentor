@@ -28,7 +28,6 @@ class AllUsersViewModel: ObservableObject {
                     self.errorMessage = "fetchAllUsers: Failed to fetch users: \(error)"
                     return
                 }
-                
                 documentsSnapshot?.documentChanges.forEach({ change in
                     if change.type == .added {
                         guard let user = try? change.document.data(as: User.self) else {
@@ -40,7 +39,7 @@ class AllUsersViewModel: ObservableObject {
                         }
                         
                     }
-                    if change.type == .removed {
+                    if change.type == .modified {
                         guard let user = try? change.document.data(as: User.self) else {
                             self.errorMessage = "fetchAllUsers: No user data found"
                             return
