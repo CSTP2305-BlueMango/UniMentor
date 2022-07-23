@@ -33,6 +33,9 @@ struct TabBarView: View {
     /// profile view button color
     @State var profileButtonColor: Color = Color("DarkColor")
     
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
+    
     var body: some View {
         // BODY
         VStack(spacing: 0) {
@@ -60,7 +63,7 @@ struct TabBarView: View {
                 }
                 // display profile view
                 if isProfileView {
-                    UserProfile()
+                    UserProfile(user: userVM.user ?? User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: []))
                 }
             }
             // TABBAR

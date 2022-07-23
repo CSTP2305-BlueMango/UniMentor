@@ -38,7 +38,7 @@ class ChatViewModel: ObservableObject {
         }
         // fetching messages from messages collection ordered by timestemp
         FirebaseManager.shared.firestore.collection("messages")
-            .document(fromId).collection(toId).order(by: "timestamp")
+            .document(fromId).collection(toId).order(by: "time")
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
                     self.errorMessage = "fetchMessages: Fail to fetch messages of user: \(error)"
@@ -76,7 +76,8 @@ class ChatViewModel: ObservableObject {
             "fromId": fromId,
             "toId": toId,
             "text": self.chatText,
-            "timestamp": getTime()
+            "timestamp": getTime(),
+            "time": Date()
         ] as [String : Any]
         
         // save message to current user

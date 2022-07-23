@@ -88,6 +88,9 @@ struct HomeView: View {
             .padding(.top, UIScreen.main.bounds.width * 0.07)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+//            .onAppear() {
+//                allUsersVM.fetchAllUsers()
+//            }
             //: BODY
         }
         .navigationBarHidden(true)

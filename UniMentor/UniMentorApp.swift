@@ -12,13 +12,11 @@ import FirebaseCore
 @main
 struct UniMentorApp: App {
     @StateObject var viewModel = AppViewModel()
-    // @StateObject var userVM = UserViewModel()
     
     var body: some Scene {
         WindowGroup {
             LoadingView()
                 .environmentObject(viewModel)
-                // .environmentObject(userVM)
         }
     }
 }

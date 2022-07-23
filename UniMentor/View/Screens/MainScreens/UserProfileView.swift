@@ -20,7 +20,7 @@ struct UserProfile: View {
     /// logout popup after delete account show state
     @State private var showDeleteLogoutPopup: Bool = false
     /// empty user when user model doesn't exist
-    @State var emptyUser: User = User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
+    @State var user: User = User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
     
     /// user view model object
     @ObservedObject var userVM = UserViewModel()
@@ -47,7 +47,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: userVM.user ?? emptyUser)
+                                ProfileView(user: userVM.user ?? user)
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed

@@ -21,7 +21,8 @@ class AllUsersViewModel: ObservableObject {
     }
     
     /// fetch all users
-    private func fetchAllUsers() {
+    func fetchAllUsers() {
+        users = []
         FirebaseManager.shared.firestore.collection("users")
             .addSnapshotListener { [self] documentsSnapshot, error in
                 if let error = error {
@@ -44,26 +45,18 @@ class AllUsersViewModel: ObservableObject {
                             self.errorMessage = "fetchAllUsers: No user data found"
                             return
                         }
-                        self.users.removeAll(where: {$0.id == user.id as! String})
+                        self.users.removeAll(where: {$0.id == user.id})
+                    }
+                    if change.type == .removed {
+                        guard let user = try? change.document.data(as: User.self) else {
+                            self.errorMessage = "fetchAllUsers: No user data found"
+                            return
+                        }
+                        self.users.removeAll(where: {$0.id == user.id})
                     }
                     users.shuffle()
 
                 })
-                
-//                documentsSnapshot?.documents.forEach({ snapshot in
-//                    guard let user = try? snapshot.data(as: User.self) else {
-//                        self.errorMessage = "fetchAllUsers: No user data found"
-//                        return
-//                    }
-//
-//                    let newUser = user
-//                    if newUser.id != FirebaseManager.shared.auth.currentUser?.uid {
-//                        self.users.append(newUser)
-//                    }
-//
-//
-//
-//                })
             }
     }
 }

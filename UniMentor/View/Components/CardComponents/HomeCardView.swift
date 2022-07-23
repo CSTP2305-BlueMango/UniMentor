@@ -15,18 +15,6 @@ struct HomeCardView: View {
     @State var isButtonClicked: Bool = false
     /// user model
     @State var user: User
-//    /// user id
-//    @State var userID: String
-//    /// user image
-//    @State var image: String
-//    /// user name
-//    @State var name: String
-//    /// user major
-//    @State var major: String
-//    /// user school
-//    @State var school: String
-//    /// user information
-//    @State var information: String
     
     var body: some View {
         // MAIN
