@@ -48,7 +48,7 @@ struct MatchedProfileView: View {
                     // MAIN
                     VStack {
                         // Profile
-                        ProfileView(user: user)
+                        ProfileView(user: $user)
                         // Send message Button
                         VStack{
                             ButtonView(action: {

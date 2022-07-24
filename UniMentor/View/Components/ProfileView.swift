@@ -12,7 +12,7 @@ import CachedAsyncImage
 /// param: User
 struct ProfileView: View {
     /// user model
-    @State var user: User
+    @Binding var user: User
     /// UIImage state
     @State var isImageUIImage = false
     /// user image
@@ -115,7 +115,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(
-            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
+            user: Binding.constant(User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: []))
         )
     }
 }

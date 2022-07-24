@@ -48,7 +48,7 @@ struct RequestsProfileView: View {
                     // MAIN
                     VStack {
                         // Profile
-                        ProfileView(user: user)
+                        ProfileView(user: $user)
                         // Accept Button
                         VStack {
                             ButtonView(action: {
