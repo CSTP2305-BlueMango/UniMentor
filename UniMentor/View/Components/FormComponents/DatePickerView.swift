@@ -9,7 +9,7 @@ import SwiftUI
 
 // reference: https://stackoverflow.com/questions/63795080/how-do-i-create-a-datepicker-in-swiftui-that-only-select-years-and-i-want-this-t
 /// date picker input field
-/// param: placeholder, month, year
+/// param: placeholder, month, year, error message
 struct DatePickerView: View {
     /// picker placeholder
     var placholder: String
@@ -17,6 +17,8 @@ struct DatePickerView: View {
     @Binding var month: String
     /// date picker year
     @Binding var year: String
+    /// error message
+    @Binding var errorMessage: String?
 
     /// array of years selection
     private let years = Array((getYear(selectedYear: Date()) - 15)...getYear(selectedYear: Date()))
@@ -46,13 +48,24 @@ struct DatePickerView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            // Title
-             VStack(alignment: .leading) {
-                 Text("Start date")
-                     .font(Font.custom( "TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
-                     .padding(.leading, UIScreen.main.bounds.width * 0.03)
-                     .foregroundColor(Color("DarkColor"))
-             }.frame(width: UIScreen.main.bounds.width * 0.34, height: UIScreen.main.bounds.height * 0.02, alignment: .leading)
+            // title & error message
+            HStack(alignment: .center) {
+                // input title
+                VStack(alignment: .leading) {
+                    Text("Start Date")
+                        .font(Font.custom( "TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                        .padding(.leading, UIScreen.main.bounds.width * 0.03)
+                        .foregroundColor(Color("DarkColor"))
+                }.frame(width: UIScreen.main.bounds.width * 0.34, height: UIScreen.main.bounds.height * 0.02, alignment: .leading)
+                Spacer()
+                // error message
+                VStack(alignment: .trailing) {
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage).font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
+                    }
+                }.frame(height: UIScreen.main.bounds.height * 0.015)
+                    .padding(.trailing, UIScreen.main.bounds.width * 0.02)
+            }//: title & error message
             // Input Field
              HStack(spacing: UIScreen.main.bounds.width * 0.05) {
                 // Input Icon
@@ -106,15 +119,18 @@ struct DatePickerView: View {
             .padding()
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
             .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-        }//: VSTACK
+        }
+        .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.1)
+        //: VSTACK
     }
 }
 
 struct DatePicker_Preview: View {
     @State var month = ""
     @State var year = ""
+    @State var error: String? = ""
     var body: some View {
-        DatePickerView(placholder: "", month: $month, year: $year)
+        DatePickerView(placholder: "", month: $month, year: $year, errorMessage: $error)
     }
 }
 

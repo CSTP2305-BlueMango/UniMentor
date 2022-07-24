@@ -14,6 +14,8 @@ struct MatchedView: View {
     @State private var showUnmatchPopUp: Bool = false
     /// edit button clicked state
     @State var isEditClicked: Bool = false
+    /// show unmatch button  state
+    @State var isShowUnmatchButton: Bool = false
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     /// match view button clicked state
@@ -55,7 +57,11 @@ struct MatchedView: View {
                                         editButtonTitle = "Edit"
                                     }
                                     // change edit clicked state
-                                    isEditClicked = !isEditClicked
+                                    isEditClicked.toggle()
+                                    // show unmatch button
+                                    withAnimation(.easeInOut) {
+                                        isShowUnmatchButton.toggle()
+                                    }
                                 }).foregroundColor(.black)
                             }.frame(width: UIScreen.main.bounds.width * 0.9)
                             //: HSTACK
@@ -92,7 +98,7 @@ struct MatchedView: View {
                         } //: MAIN
                     }
                     // Unmatch button when edit state is true
-                    if isEditClicked {
+                    if isShowUnmatchButton {
                         VStack {
                             // Unmatch button
                             Button(action: {
@@ -106,7 +112,9 @@ struct MatchedView: View {
                                     .foregroundColor(.black)
                                     .background(Color("ButtonColor"))
                             }
-                        }.padding(0)
+                        }
+                        .padding(0)
+                        .transition(.move(edge: .bottom))
                     }
                 }.padding(.top, UIScreen.main.bounds.width * 0.02)
                 //: BODY
@@ -125,6 +133,8 @@ struct MatchedView: View {
                         LinkUsersViewModel.selectedUsers = []
                         // discard popup
                         showUnmatchPopUp = false
+                        // discard button
+                        isShowUnmatchButton = false
                         // change edit button title
                         editButtonTitle = "Edit"
                         // change edit state to false

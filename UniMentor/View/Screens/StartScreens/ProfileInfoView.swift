@@ -142,7 +142,8 @@ struct ProfileInfoView: View {
                         DatePickerView(
                             placholder: "Start Date",
                             month: $profileVM.profile.startDate.month,
-                            year: $profileVM.profile.startDate.year)
+                            year: $profileVM.profile.startDate.year,
+                            errorMessage: $profileVM.startDateError)
                         // Information input
                         MultiLineInputView(
                             value: $profileVM.profile.intro,

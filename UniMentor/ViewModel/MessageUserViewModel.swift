@@ -41,6 +41,13 @@ class MessageUserViewModel: ObservableObject {
                         self.messageUsers.append(.init(data: data))
                     }
                     // if added
+                    if change.type == .modified {
+//                        // get data
+//                        let data = change.document.data()
+//                        // if messageUser in messageUsers list, remove messageUser
+//                        self.messageUsers.removeAll(where: {$0.id == data["id"] as! String})
+                    }
+                    // if added
                     if change.type == .removed {
                         // get data
                         let data = change.document.data()

@@ -14,6 +14,8 @@ struct EditMessageCardView: View {
     @State var user: MessageUser
     /// card selected state
     @State var isOn1: Bool = false
+    /// animation offset for card
+    @State private var offset: CGFloat = (0 - UIScreen.main.bounds.width * 0.04)
     
     /// link user view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
@@ -37,7 +39,7 @@ struct EditMessageCardView: View {
                 LinkUsersViewModel.selectedMessageUsers.removeAll(where: { $0.id == user.id } )
             }
         }) {
-            HStack(spacing: UIScreen.main.bounds.width * 0.04) {
+            HStack(spacing: UIScreen.main.bounds.width * 0) {
                 // Selected check icon
                 HStack {
                     // reference: https://swiftuirecipes.com/blog/custom-toggle-checkbox-in-swiftui
@@ -47,6 +49,12 @@ struct EditMessageCardView: View {
                 }
                 // Card view
                 MessageCardView(user: user)
+                    .offset(x: offset)
+                    .onAppear() {
+                        withAnimation(.easeInOut) {
+                            offset += UIScreen.main.bounds.width * 0.08
+                        }
+                    }
             }//: HSTACK
         }.frame(width: UIScreen.main.bounds.width * 1).padding(.leading, UIScreen.main.bounds.width * 0.12)
         //: Button

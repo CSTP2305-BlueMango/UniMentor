@@ -25,7 +25,7 @@ struct ProfileConfirmView: View {
     /// profile confirm finished state
     @State var isFinished = false
     /// user view model object
-    @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var userVM = UserViewModel()
     /// image view model object
     @ObservedObject private var imageVM = ImageViewModel()
     /// view presentation mode

@@ -161,7 +161,8 @@ struct UserProfileEditView: View {
                             DatePickerView(
                                 placholder: "Start Date",
                                 month: $profileVM.profile.startDate.month,
-                                year: $profileVM.profile.startDate.year)
+                                year: $profileVM.profile.startDate.year,
+                                errorMessage: $profileVM.startDateError)
                             // information input
                             MultiLineInputView(
                                 value: $profileVM.profile.intro,
@@ -193,7 +194,7 @@ struct UserProfileEditView: View {
             // edit popup
             PopUpView(
                 show: $showEditPopUp,
-                information: "Update editted profile?",
+                information: "Update edited profile?",
                 buttonAction: {
                     // if image not changed
                     if self.uiImage.size.width == 0 {

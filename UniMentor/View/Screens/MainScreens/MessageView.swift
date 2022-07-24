@@ -13,6 +13,8 @@ struct MessageView: View {
     @State private var showDeletePopUp: Bool = false
     /// if edit button clicked
     @State var isEditClicked: Bool = false
+    /// show unmatch button  state
+    @State var isShowDeleteButton: Bool = false
     /// edit button text
     @State var editButtonTitle: String = "Edit"
     
@@ -45,7 +47,11 @@ struct MessageView: View {
                                     editButtonTitle = "Edit"
                                 }
                                 // change edit clicked state
-                                isEditClicked = !isEditClicked
+                                isEditClicked.toggle()
+                                // show unmatch button
+                                withAnimation(.easeInOut) {
+                                    isShowDeleteButton.toggle()
+                                }
                             }).foregroundColor(.black)
                         }.frame(width: UIScreen.main.bounds.width * 0.9)
                         //: HSTACK
@@ -77,7 +83,7 @@ struct MessageView: View {
                     } //: MAIN
                 }
                 // Delete button when edit state is true
-                if isEditClicked {
+                if isShowDeleteButton {
                     VStack {
                         // Delete button
                         Button(action: {
@@ -91,7 +97,9 @@ struct MessageView: View {
                         .padding(UIScreen.main.bounds.width * 0.04)
                         .foregroundColor(.black)
                         .background(Color("ButtonColor"))
-                    }.padding(0)
+                    }
+                    .padding(0)
+                    .transition(.move(edge: .bottom))
                 }
             }
             .padding(.top, UIScreen.main.bounds.width * 0.02)
@@ -111,6 +119,8 @@ struct MessageView: View {
                     LinkUsersViewModel.selectedMessageUsers = []
                     // discard popup
                     showDeletePopUp = false
+                    // discard button
+                    isShowDeleteButton = false
                     // change edit button title
                     editButtonTitle = "Edit"
                     // change edit state to false

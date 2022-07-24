@@ -44,7 +44,6 @@ class AllUsersViewModel: ObservableObject {
                             // append user to users list
                             self.users.append(user)
                         }
-                        
                     }
                     // if modified
                     if change.type == .modified {
