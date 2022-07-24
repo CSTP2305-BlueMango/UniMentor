@@ -47,7 +47,7 @@ struct UserProfile: View {
                             .padding(.top, UIScreen.main.bounds.height * 0.11)
                             VStack {
                                 // profile
-                                ProfileView(user: userVM.user ?? user)
+                                ProfileView(user: Binding.constant(userVM.user ?? user))
                                     .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                             }
                             // reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-a-menu-when-a-button-is-pressed

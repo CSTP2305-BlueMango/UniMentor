@@ -55,7 +55,7 @@ struct ProfileConfirmView: View {
                         .padding(.top, UIScreen.main.bounds.height * 0.11)
                         // Profile view
                         VStack {
-                            ProfileView(user: User(id: "", name: self.name, image: "", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: []), isImageUIImage: true, uiImage: self.image)
+                            ProfileView(user: Binding.constant(User(id: "", name: self.name, image: "", major: self.major, school: self.school, startDate: self.startDate, intro: self.info, matchedUsers: [], sentRequests: [], recievedRequests: [])), isImageUIImage: true, uiImage: self.image)
                                 .padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         }
                     }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
