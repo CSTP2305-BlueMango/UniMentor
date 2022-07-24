@@ -109,7 +109,7 @@ struct ProfileInfoView: View {
                                 //customize button style here
                                 .frame(width: UIScreen.main.bounds.width * 0.12, height: UIScreen.main.bounds.width * 0.12)
                                 //CHANGE COLOR to the theme
-                                .background(Color("TabBarColor"))
+                                .background(Color("ButtonColor"))
                                 .cornerRadius(30)
                                 .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.3, leading: UIScreen.main.bounds.width * 0.33, bottom: 0, trailing: 0))
                             }
@@ -122,7 +122,6 @@ struct ProfileInfoView: View {
                     } //: SELECT IMAGE
                     // INPUT FIELDS
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {
-                        //
                         // Major input
                         InputFieldView(
                             value: $profileVM.profile.major,

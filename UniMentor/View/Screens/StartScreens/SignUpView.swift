@@ -104,7 +104,7 @@ struct SignUpView: View {
                     .padding(EdgeInsets(top: 0, leading: UIScreen.main.bounds.width * 0.02, bottom: 0, trailing: 0))
                     // Login button - go to login view
                     ButtonView(action: {
-                        // pop child view to go back to root view
+                        // pop child view to go back to login view
                         presentation.wrappedValue.dismiss()
                     },
                          label: "Log In",

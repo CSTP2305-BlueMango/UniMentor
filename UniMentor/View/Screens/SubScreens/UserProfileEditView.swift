@@ -9,26 +9,28 @@ import SwiftUI
 
 /// edit user profile information
 struct UserProfileEditView: View {
-    
-    /// view model
-    @StateObject var profileVM = ProfileViewModel();
-    
     /// for selecting an image
     @State private var uiImage = UIImage()
     /// to view the photo library and user to choose a photo
     @State private var showSheet = false
-    //get presentation mode object - presentation mode object is for poping child view from NavigationView stack
+    /// edit pop up showing
+    @State private var showEditPopUp: Bool = false
+    
+    /// user view model object
+    @ObservedObject var userVM = UserViewModel()
+    /// image view model object
+    @ObservedObject var imageVM = ImageViewModel()
+    /// profile view model
+    @StateObject var profileVM = ProfileViewModel();
+    
+    /// view presentation mode
     @Environment(\.presentationMode) var presentation
     
-    /// if pop up showing
-    @State private var showPopUp: Bool = false
-    
-    @ObservedObject var userVM = UserViewModel()
-    
-    @ObservedObject var imageVM = ImageViewModel()
-    
-    func onViewLoad() {
+    /// get current user profile and save to profile view model profile
+    private func onViewLoad() {
+        // if current user exists
         if let user = userVM.user {
+            // save user profile to profile view model profile
             self.profileVM.profile = ProfileInfo(
                 name: user.name,
                 major: user.major,
@@ -39,6 +41,7 @@ struct UserProfileEditView: View {
         }
     }
     
+    /// save image to database
     private func handleImage() {
         imageVM.persistImageToStorage(image: self.uiImage)
     }
@@ -61,31 +64,34 @@ struct UserProfileEditView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.9)
                     .padding(.top, UIScreen.main.bounds.height * 0.01)
-                    // BODY
+                    // EDIT FORM
                     VStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
                         // HEADER
                         VStack {
+                            // Title
                             HStack {
                                 Text("Edit Profile")
                                     .font(Font.custom("Charm-Regular", size: UIScreen.main.bounds.width * 0.12))
                                 Spacer()
                             }.frame(width: UIScreen.main.bounds.width * 0.9)
-                        } //: HEADER
-                        .frame(height: UIScreen.main.bounds.height * 0.02)
-                        
+                        }.frame(height: UIScreen.main.bounds.height * 0.02)
+                        //: HEADER
                         // MAIN
                         VStack(spacing: UIScreen.main.bounds.width * 0.015) {
                             // SELECT IMAGE
                             VStack {
-                                // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker for selecting image
+                                // reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
+                                // select image
                                 Button {
-                                        //when "+" button is clicked, will go to photo library
+                                    // show image picker
                                     showSheet = true
                                 } label: {
                                     ZStack {
-                                        // reference: https://www.youtube.com/watch?v=MJuMIpdpORk for clipShape(Circle())
+                                        // reference: https://www.youtube.com/watch?v=MJuMIpdpORk
                                         // reference: https://stackoverflow.com/questions/25394536/uiimage-on-swift-cant-check-for-nil
+                                        // User image
                                         if self.uiImage.size.width != 0, let uiimage = self.uiImage {
+                                            // if image is changed
                                             Image(uiImage: uiimage)
                                                  .resizable()
                                                  .cornerRadius(50)
@@ -94,6 +100,7 @@ struct UserProfileEditView: View {
                                                  .aspectRatio(contentMode: .fill)
                                                  .clipShape(Circle())
                                         } else {
+                                            // if image did not change
                                             AsyncImage(url: URL(string: "\(profileVM.profile.imageUrl)")) { img in
                                                 img
                                                     .resizable()
@@ -102,12 +109,12 @@ struct UserProfileEditView: View {
                                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
                                                     .aspectRatio(contentMode: .fill)
                                                     .clipShape(Circle())
-                                            }placeholder: {ProgressView()}
+                                            } placeholder: {ProgressView()}
                                         }
+                                        // Image input icon
                                         HStack {
                                             Image(systemName: "plus")
-                                                .foregroundColor(
-                                                    Color.white)
+                                                .foregroundColor(Color.white)
                                                 .font(.system(size: UIScreen.main.bounds.width * 0.07))
                                             
                                         }
@@ -117,16 +124,14 @@ struct UserProfileEditView: View {
                                         .background(Color("ButtonColor"))
                                         .cornerRadius(30)
                                         .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.3, leading: UIScreen.main.bounds.width * 0.33, bottom: 0, trailing: 0))
-                                    }
-                                }
-                                    //need to modify placement of the "+" to make it fixed
-                                
-                                    //this is for when user clicks the button, shows the photo library
+                                    } //: Button label
+                                } //: Button
+                                // shows the photo library
                                 .sheet(isPresented: $showSheet) {
-                                            // Pick an image from the photo library:
+                                    // Pick an image from the photo library
                                     ImagePicker(sourceType: .photoLibrary, selectedImage: self.$uiImage)
                                 }
-                            } // SELECT IMAGE
+                            } //: SELECT IMAGE
                             // INPUT FIELDS
                             // name input
                             InputFieldView(
@@ -161,39 +166,38 @@ struct UserProfileEditView: View {
                             MultiLineInputView(
                                 value: $profileVM.profile.intro,
                                 errorMessage: $profileVM.introError)
-                            
-                        } //: MAIN
-                        .frame(height: UIScreen.main.bounds.height * 0.78)
+                        }.frame(height: UIScreen.main.bounds.height * 0.78)
+                        //: MAIN
                         // FOOTER
                         VStack() {
                             // Save button
                             ButtonView(action: {
+                                // validate inputs
                                 profileVM.handleSubmit { _ in
-                                    // TODO: validation
-                                    Task {
-                                        handleImage()
-                                    }
-                                    showPopUp = true
+                                    // save image to database
+                                    Task { handleImage() }
+                                    // show edit popup
+                                    showEditPopUp = true
                                 }
                             },
                                  label: "Save Changes",
-                                 color: Color("ButtonColor"),
-                                 opacity: 1.0,
-                                 isBorder: false
+                                 color: Color("ButtonColor")
                             )
-                        }
-                        .padding(.bottom, UIScreen.main.bounds.height * 0.05)
+                        }.padding(.bottom, UIScreen.main.bounds.height * 0.05)
                         //: FOOTER
-                    } //: BODY
-                    .padding(.top, UIScreen.main.bounds.height * 0.03)
-                }
+                    }.padding(.top, UIScreen.main.bounds.height * 0.03)
+                    //: EDIT FORM
+                } //: ZSTACK
             } //: ScrollView
             // POPUP
+            // edit popup
             PopUpView(
-                show: $showPopUp,
+                show: $showEditPopUp,
                 information: "Update editted profile?",
                 buttonAction: {
+                    // if image not changed
                     if self.uiImage.size.width == 0 {
+                        // update user profile to database
                         userVM.updateUser(updateUserData: User(
                             id: "",
                             name: profileVM.profile.name,
@@ -205,10 +209,16 @@ struct UserProfileEditView: View {
                             matchedUsers: [],
                             sentRequests: [],
                             recievedRequests: []))
-                        showPopUp = false
+                        // discard edit popup
+                        showEditPopUp = false
+                        // pop child view to go back to profile view
                         presentation.wrappedValue.dismiss()
-                    } else {
+                    }
+                    // if image changed
+                    else {
+                        // if image link is ready
                         if imageVM.isImageFinished {
+                            // update user profile to database
                             userVM.updateUser(updateUserData: User(
                                 id: "",
                                 name: profileVM.profile.name,
@@ -220,20 +230,19 @@ struct UserProfileEditView: View {
                                 matchedUsers: [],
                                 sentRequests: [],
                                 recievedRequests: []))
-                            showPopUp = false
+                            // discard edit popup
+                            showEditPopUp = false
+                            // pop child view to go back to profile view
                             presentation.wrappedValue.dismiss()
                         }
                     }
                 },
                 buttonText: "Edit"
-            )
-            //: POPUP
+            )//: POPUP
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .onAppear {
-            onViewLoad()
-        }
+        .onAppear { onViewLoad() }
         //: ZSTACK
     }
 }

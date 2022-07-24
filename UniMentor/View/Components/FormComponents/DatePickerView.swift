@@ -8,6 +8,7 @@
 import SwiftUI
 
 // reference: https://stackoverflow.com/questions/63795080/how-do-i-create-a-datepicker-in-swiftui-that-only-select-years-and-i-want-this-t
+/// date picker input field
 struct DatePickerView: View {
     var placholder: String
     @Binding var month: String
@@ -54,8 +55,6 @@ struct DatePickerView: View {
                 Image(systemName: "calendar")
                     .foregroundColor(Color(red: 0.835,green: 0.835,blue: 0.844))
                     .frame(width: UIScreen.main.bounds.width * 0.05)
-//             DatePicker("", selection: $date, displayedComponents: .date)
-//                 .labelsHidden()
                 HStack {
                     Text(month).frame(width: UIScreen.main.bounds.width * 0.1)
                     Text(year).frame(width: UIScreen.main.bounds.width * 0.1)
@@ -119,6 +118,8 @@ struct DatePickerView_Previews: PreviewProvider {
     }
 }
 
+/// get year from provided date
+/// param: Date
 func getYear(selectedYear: Date) -> Int {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy"

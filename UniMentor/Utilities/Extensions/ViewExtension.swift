@@ -21,7 +21,8 @@ extension View {
             .navigationBarBackButtonHidden(false)
     }
     
-    // format startDate
+    /// format startDate
+    /// param: month and year string
     func separateDate(startDate: String) -> [String] {
         // seperate month and year
         let result = startDate.components(separatedBy: " ")

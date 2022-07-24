@@ -78,13 +78,13 @@ struct MatchedView: View {
                                                     matchedButtonColor: $matchedButtonColor,
                                                     messagesButtonColor: $messagesButtonColor))
                                             {
-                                                CardView( user: user )
+                                                CardView(user: user)
                                             }
                                         }
                                         // edit state is true
                                         else {
                                             // Edit user card
-                                            EditCardView( user: user )
+                                            EditCardView(user: user)
                                         }
                                     }
                                 }.padding(UIScreen.main.bounds.width * 0.02)

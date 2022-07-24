@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// matched inform popup view component
+/// param: show state, matched user name, matched user image, current user image, button action
 struct MatchedPopupView: View {
     /// popup show state
     @Binding var show: Bool
@@ -20,21 +21,21 @@ struct MatchedPopupView: View {
     /// button action
     @State var action: ()->Void
     
-    
     var body: some View {
         ZStack {
+            // IF SHOW
             if show {
-                // background
+                // Background
                 Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
                 // Popup
                 VStack {
-                    // message
+                    // Message
                     Text("Matched with \(matchedUserName)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                         .multilineTextAlignment(.center)
-                    // image
+                    // Image
                     ZStack {
-                        // background image
+                        // Background image
                         VStack {
                             Image("arrows")
                                 .resizable()
@@ -44,7 +45,7 @@ struct MatchedPopupView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
                         .clipShape(Circle())
                         .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.27, leading: UIScreen.main.bounds.width * 0.1, bottom: 0, trailing: 0))
-                        // matched user image
+                        // Matched user image
                         VStack {
                             AsyncImage(url: URL(string: "\(matchedUserImage)")) {image in image
                                 .resizable()
@@ -57,7 +58,7 @@ struct MatchedPopupView: View {
                         .clipShape(Circle())
                         .shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
                         .padding(EdgeInsets(top: 0, leading: -UIScreen.main.bounds.width * 0.23, bottom: 0, trailing: 0))
-                        // user image
+                        // User image
                         VStack {
                             AsyncImage(url: URL(string: "\(userImage)")) {image in image
                                 .resizable()
@@ -71,16 +72,16 @@ struct MatchedPopupView: View {
                         .shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
                         .padding(EdgeInsets(top: UIScreen.main.bounds.width * 0.5, leading: UIScreen.main.bounds.width * 0.38, bottom: 0, trailing: 0))
                     }.padding(EdgeInsets(top: -UIScreen.main.bounds.width * 0.1, leading: 0, bottom: UIScreen.main.bounds.width * 0.07, trailing: 0))
-                    //: image
-                    // button
+                    //: Image
+                    // Button
                     Button(action: action) {
+                        // Button label
                         Text("OK")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                             .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.width * 0.12)
                             .background(Color("ButtonColor").cornerRadius(UIScreen.main.bounds.width * 0.04).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                             .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                    }
-                    .buttonStyle(.plain)
+                    }.buttonStyle(.plain)
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.7)
                 .padding(UIScreen.main.bounds.width * 0.07)

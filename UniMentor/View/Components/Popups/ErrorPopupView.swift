@@ -7,36 +7,37 @@
 
 import SwiftUI
 
+/// error popup component
+/// param: show state, error message
 struct ErrorPopupView: View {
     @Binding var show: Bool
-    @State var errorMessage = "this is error message"
+    @State var errorMessage = ""
     
     var body: some View {
         ZStack {
-            // Log out after delete account
+            // IF SHOW
             if show {
-                // background
+                // Background
                 Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
                 // Popup
                 VStack(spacing: UIScreen.main.bounds.height * 0.03) {
                     VStack(spacing: UIScreen.main.bounds.height * 0.01) {
-                        // popup message
+                        // Error message
                         Text(errorMessage)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
                             .multilineTextAlignment(.center)
                     }
                     HStack(spacing: UIScreen.main.bounds.width * 0.07) {
-                        // button
+                        // Button
                         Button(action: {
-                            // appVM.signOut()
+                            show = false
                         }) {
                             Text("Okay")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                 .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
                                 .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                        }
-                        .buttonStyle(.plain)
+                        }.buttonStyle(.plain)
                     }
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.7)
@@ -44,7 +45,6 @@ struct ErrorPopupView: View {
                 .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
                 //: Popup
             }//: IF SHOW
-
         }
     }
 }

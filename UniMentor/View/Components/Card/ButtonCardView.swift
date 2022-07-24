@@ -8,11 +8,10 @@
 import SwiftUI
 
 /// user card with button component
+/// param: button action, user image, name, major, school
 struct ButtonCardView: View {
     /// button action
     @State var action: ()->Void
-    /// user id
-    @State var userID: String
     /// user image
     @State var image: String
     /// user name
@@ -37,7 +36,6 @@ struct ButtonCardView: View {
             .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
             .clipShape(Circle())
             .shadow(radius: 3)
-            
             // CENTER - Information
             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
                 // user name
@@ -58,11 +56,13 @@ struct ButtonCardView: View {
             ZStack {
                 Button(action: action) {
                     VStack(spacing: UIScreen.main.bounds.width * 0.01) {
+                        // Button icon
                         Image("checkIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.06)
                             .padding(.top, -UIScreen.main.bounds.width * 0.01)
+                        // Button text
                         Text("Accept")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                             .frame(width: UIScreen.main.bounds.width * 0.18)
@@ -73,6 +73,7 @@ struct ButtonCardView: View {
                 .background(Color(red: 0.8627, green: 0.8313, blue: 0.7960))
                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                 .frame(width: UIScreen.main.bounds.width * 0.18)
+                //: Button
             }
         }
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
@@ -88,11 +89,10 @@ struct ButtonCardView_Previews: PreviewProvider {
     static var previews: some View {
         ButtonCardView(
             action: {},
-            userID: "1",
-            image: "user_image",
-            name: "First Lastname",
-            major: "Computer Systems Technology",
-            school: "Vancouver Community College"
+            image: "",
+            name: "",
+            major: "",
+            school: ""
         )
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 // reference: https://johncodeos.com/how-to-create-a-popup-window-with-swiftui/
 /// information pup up component
+/// param: show state
 struct InfoPopupView: View {
     /// show popup state
     @Binding var show: Bool
@@ -22,17 +23,20 @@ struct InfoPopupView: View {
     
     var body: some View {
         ZStack {
+            // IF SHOW
             if show {
-                // background
+                // Background
                 Color.black.opacity(show ? 0.3 : 0).edgesIgnoringSafeArea(.all)
                 // Popup
                 ZStack(alignment: .top) {
+                    // Information
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
-                        // title
+                        // Title
                         Text("Information")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.07))
-                        // list of information
+                        // List of information
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
+                            // loop through infoList
                             ForEach(infoList, id: \.self) { info in
                                 HStack(alignment: .top) {
                                     HStack {
@@ -50,6 +54,8 @@ struct InfoPopupView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.7)
                     .padding(UIScreen.main.bounds.width * 0.07)
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
+                    //: Information
+                    // Discard button
                     ZStack {
                         Button(action: {
                         show = false

@@ -16,7 +16,9 @@ struct EditButtonView: View {
     
     var body: some View {
         VStack {
+            // Edit Button
             Button(action: action) {
+                // Button label
                 Text(title)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                     .foregroundColor(Color.black)
@@ -28,7 +30,7 @@ struct EditButtonView: View {
 struct EditButtonView_Previews: PreviewProvider {
     static var previews: some View {
         EditButtonView(
-            title: "Test",
+            title: "Edit",
             action: {}
         )
     }

@@ -30,6 +30,8 @@
 		CD3C6C172887938A005B80E0 /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */; };
 		CD44908E2886AF9400FA453C /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44908D2886AF9400FA453C /* ChatViewModel.swift */; };
 		CD4490902886BC0400FA453C /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44908F2886BC0400FA453C /* ChatMessage.swift */; };
+		CD7FF6FE288C014100A40ADE /* CurrentUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7FF6FD288C014100A40ADE /* CurrentUserViewModel.swift */; };
+		CD7FF701288CA52000A40ADE /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7FF700288CA52000A40ADE /* BackButtonView.swift */; };
 		CD8038502888901000D80FD1 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80384F2888901000D80FD1 /* ImageViewModel.swift */; };
 		CD86B7E3284B6ED70011F078 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */; };
 		CD8C0A5F2873A6EC00DA5BC8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */; };
@@ -68,7 +70,6 @@
 		E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A474BD285D9177006959D9 /* PasswordView.swift */; };
 		E4DDE3FC283DC7CE0059CCEC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */; };
 		E4F30C282837535C006F424E /* UniMentorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C272837535C006F424E /* UniMentorApp.swift */; };
-		E4F30C2A2837535C006F424E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F30C292837535C006F424E /* ContentView.swift */; };
 		E4F30C2C2837535D006F424E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F30C2B2837535D006F424E /* Assets.xcassets */; };
 		E4F30C2F2837535D006F424E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F30C2E2837535D006F424E /* Preview Assets.xcassets */; };
 		E4F7FBFC288A2E3400EAD876 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F7FBFB288A2E3400EAD876 /* StringExtension.swift */; };
@@ -103,6 +104,8 @@
 		CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
 		CD44908D2886AF9400FA453C /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CD44908F2886BC0400FA453C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		CD7FF6FD288C014100A40ADE /* CurrentUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserViewModel.swift; sourceTree = "<group>"; };
+		CD7FF700288CA52000A40ADE /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		CD80384F2888901000D80FD1 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		CD86B7E2284B6ED70011F078 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		CD8C0A5E2873A6EC00DA5BC8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F30C272837535C006F424E /* UniMentorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniMentorApp.swift; sourceTree = "<group>"; };
-		E4F30C292837535C006F424E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E4F30C2B2837535D006F424E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4F30C2E2837535D006F424E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E4F7FBFB288A2E3400EAD876 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -225,7 +227,7 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
-		CD6448C828881B74009B428C /* CardComponents */ = {
+		CD6448C828881B74009B428C /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
@@ -235,21 +237,29 @@
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
 				CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */,
 			);
-			path = CardComponents;
+			path = Card;
 			sourceTree = "<group>";
 		};
 		CD6448C928881BB9009B428C /* FormComponents */ = {
 			isa = PBXGroup;
 			children = (
 				CDFD8FCD2842FF3000E48A68 /* InputFieldView.swift */,
-				CDFD8FDB2843046600E48A68 /* ButtonView.swift */,
 				34DCD16A2853269C00BE60AF /* ImagePicker.swift */,
 				E4A474BB285D914E006959D9 /* DatePickerView.swift */,
-				CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */,
 				CD91B09E28814D9C0005D1CA /* MultiLineInputView.swift */,
 				E4A474BD285D9177006959D9 /* PasswordView.swift */,
 			);
 			path = FormComponents;
+			sourceTree = "<group>";
+		};
+		CD7FF6FF288CA4F700A40ADE /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CDFD8FDB2843046600E48A68 /* ButtonView.swift */,
+				CD8C0A622874174F00DA5BC8 /* EditButtonView.swift */,
+				CD7FF700288CA52000A40ADE /* BackButtonView.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		CDFD8FD52843023E00E48A68 /* Fonts */ = {
@@ -266,6 +276,7 @@
 				E4365C3C2867897100DE16A4 /* AppViewModel.swift */,
 				E46781B5286EA1CA00BDAFCA /* LoginViewModel.swift */,
 				E46781B7286EA1DA00BDAFCA /* SignupViewModel.swift */,
+				CD7FF6FD288C014100A40ADE /* CurrentUserViewModel.swift */,
 				CD91B08C2880D2350005D1CA /* UserViewModel.swift */,
 				345307652877D01F00218DAD /* AllUsersViewModel.swift */,
 				CD91B0972880D6190005D1CA /* LinkUsersViewModel.swift */,
@@ -324,8 +335,9 @@
 		E4DDE3F7283DB7130059CCEC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CD7FF6FF288CA4F700A40ADE /* Buttons */,
 				CD6448C928881BB9009B428C /* FormComponents */,
-				CD6448C828881B74009B428C /* CardComponents */,
+				CD6448C828881B74009B428C /* Card */,
 				CD6448C728881B44009B428C /* Popups */,
 				CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */,
 				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
@@ -370,7 +382,6 @@
 				E4365C3B2867894B00DE16A4 /* ViewModel */,
 				E4DDE3F6283DB6D90059CCEC /* View */,
 				E4F30C272837535C006F424E /* UniMentorApp.swift */,
-				E4F30C292837535C006F424E /* ContentView.swift */,
 				E4F30C2B2837535D006F424E /* Assets.xcassets */,
 				E4F30C2D2837535D006F424E /* Preview Content */,
 			);
@@ -518,7 +529,6 @@
 				E4A474BC285D914E006959D9 /* DatePickerView.swift in Sources */,
 				CDD0FF60284C89500045E1E4 /* MessageChatView.swift in Sources */,
 				34859B29284B0881001C42DC /* MatchedView.swift in Sources */,
-				E4F30C2A2837535C006F424E /* ContentView.swift in Sources */,
 				E4A474BE285D9177006959D9 /* PasswordView.swift in Sources */,
 				CD26D8F2285D4F1700CA1AA6 /* MessageCardView.swift in Sources */,
 				CDFD8FCE2842FF3000E48A68 /* InputFieldView.swift in Sources */,
@@ -559,7 +569,9 @@
 				E46781B8286EA1DA00BDAFCA /* SignupViewModel.swift in Sources */,
 				CD3C6C1528877C87005B80E0 /* MessageUserViewModel.swift in Sources */,
 				CD1CDAA728643DF300BEC566 /* ProfileConfirmView.swift in Sources */,
+				CD7FF701288CA52000A40ADE /* BackButtonView.swift in Sources */,
 				CDF5CFB92882ADC300C65232 /* EditMessageCardView.swift in Sources */,
+				CD7FF6FE288C014100A40ADE /* CurrentUserViewModel.swift in Sources */,
 				E4F7FC07288A312B00EAD876 /* ProfileValidation.swift in Sources */,
 				E46781AB286E8CD500BDAFCA /* ViewExtension.swift in Sources */,
 				CD37407A2863B6B2005BC18D /* UserProfileEditView.swift in Sources */,

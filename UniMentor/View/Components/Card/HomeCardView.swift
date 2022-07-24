@@ -8,13 +8,14 @@
 import SwiftUI
 
 /// user card view with dropdown component
+/// paran: User
 struct HomeCardView: View {
+    /// user model
+    @State var user: User
     /// card height for dropdown
     @State var cardHeight: Double = 0.1
     /// dropdown button click state
     @State var isButtonClicked: Bool = false
-    /// user model
-    @State var user: User
     
     var body: some View {
         // MAIN
@@ -53,13 +54,17 @@ struct HomeCardView: View {
                     // dropdown button
                     Button(action: {
                         if !isButtonClicked {
+                            // open dropdown
                             cardHeight = 0.2
                         } else {
+                            // close dropdown
                             cardHeight = 0.1
                         }
+                        // change button state
                         isButtonClicked = !isButtonClicked
                     }) {
                         HStack {
+                            // dropdown icon
                             if !isButtonClicked {
                                 Image(systemName: "chevron.down")
                                     .font(.system(size: UIScreen.main.bounds.width * 0.05))
@@ -73,10 +78,12 @@ struct HomeCardView: View {
                     }
                     .buttonStyle(.plain)
                     .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.13)
+                    //: Button
                 }.frame(width: UIScreen.main.bounds.width * 0.13)
+                //: RIGHT - Button
             }.padding(0)
             //: HSTACK
-            // user information when dropdown
+            // User information when dropdown
             if isButtonClicked {
                 Divider().padding(0)
                     .frame(width: UIScreen.main.bounds.width * 0.9)
@@ -88,10 +95,9 @@ struct HomeCardView: View {
 """)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                             .multilineTextAlignment(.leading)
-                    }
-                    .frame(maxWidth: UIScreen.main.bounds.width * 0.87, alignment: .leading)
+                    }.frame(maxWidth: UIScreen.main.bounds.width * 0.87, alignment: .leading)
                 }.frame(width: UIScreen.main.bounds.width * 0.87, height: UIScreen.main.bounds.height * 0.08, alignment: .top)
-            }
+            }//: User information when dropdown
         }
         .frame(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * cardHeight)
         .background(Color.white.cornerRadius(UIScreen.main.bounds.width * 0.04))

@@ -60,7 +60,6 @@ struct RequestsView: View {
                                                 // show matched popup
                                                 showPopUp = true
                                             },
-                                            userID: user.id,
                                             image: user.image,
                                             name: user.name,
                                             major: user.major,
