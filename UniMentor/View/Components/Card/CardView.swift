@@ -8,8 +8,9 @@
 import SwiftUI
 
 /// user card view component
+/// param: User
 struct CardView: View {
-    
+    /// user model
     @State var user: User
     
     var body: some View {
@@ -29,13 +30,16 @@ struct CardView: View {
             .shadow(radius: 3)
             // CENTER - Information
             VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.01) {
+                // user name
                 Text(user.name)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                     .lineLimit(1)
                     .frame(width: UIScreen.main.bounds.width * 0.65, alignment: .leading)
+                // user major
                 Text(user.major)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                     .lineLimit(1)
+                // user school
                 Text(user.school)
                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.03))
                     .lineLimit(1)
@@ -55,7 +59,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(
-            user: User(id: "", name: "sssss", image: "user_image", major: "test", school: "test", startDate: "Sep 2020", intro: "this is for testing", matchedUsers: [], sentRequests: [], recievedRequests: [])
+            user: User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: [])
         )
     }
 }

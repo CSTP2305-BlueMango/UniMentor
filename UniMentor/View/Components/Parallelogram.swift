@@ -10,9 +10,12 @@ import SwiftUI
 // reference: https://levelup.gitconnected.com/parallelogram-shape-and-mask-tutorial-7473a4135483
 /// background shape
 struct Parallelogram: Shape {
+    /// depth of parallelogram
     var depth: CGFloat
+    /// parallelogram flipped state
     var flipped: Bool = false
     
+    /// parallogram shape
     func path(in rect: CGRect) -> Path {
         Path { p in
             if flipped {

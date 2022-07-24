@@ -8,12 +8,13 @@
 import SwiftUI
 
 /// user profile component
+/// param: User
 struct ProfileView: View {
-    
-    /// user
+    /// user model
     @State var user: User
-    
+    /// UIImage state
     @State var isImageUIImage = false
+    /// user image
     @State var uiImage: UIImage?
     
     var body: some View {
@@ -21,12 +22,15 @@ struct ProfileView: View {
         VStack(spacing: UIScreen.main.bounds.height * 0.02) {
             // Profile Image
             VStack {
+                // if image is UIImage
                 if isImageUIImage {
                     Image(uiImage: uiImage ?? UIImage())
                         .resizable()
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
-                } else {
+                }
+                // if image is link string
+                else {
                     AsyncImage(url: URL(string: "\(user.image)")) {image in image
                         .resizable()
                         .cornerRadius(50)
@@ -93,13 +97,12 @@ struct ProfileView: View {
 \(user.intro)
 """)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                } //: Introduction
-                .frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
-            } //: Profile Info
-            .frame(minHeight: UIScreen.main.bounds.height * 0.3)
-            
-        } //: MAIN
-        .frame(minHeight: UIScreen.main.bounds.height * 0.5)
+                }.frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
+                //: Introduction
+            }.frame(minHeight: UIScreen.main.bounds.height * 0.3)
+            //: Profile Info
+        }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
+        //: MAIN
     }
 }
 
