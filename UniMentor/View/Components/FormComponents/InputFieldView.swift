@@ -40,7 +40,8 @@ struct InputFieldView: View {
                     if let errorMessage = errorMessage {
                         Text(errorMessage).font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52, alignment: .trailing)
                     }
-                }.frame(height: UIScreen.main.bounds.height * 0.015).padding(.trailing, UIScreen.main.bounds.width * 0.02)
+                }.frame(height: UIScreen.main.bounds.height * 0.015)
+                    .padding(.trailing, UIScreen.main.bounds.width * 0.02)
             }//: title & error message
             // input field
             HStack {

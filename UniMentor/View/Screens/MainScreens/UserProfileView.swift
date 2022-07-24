@@ -66,7 +66,7 @@ struct UserProfile: View {
                                         // show information popup
                                         showInfoPopUp = true
                                     } label: {
-                                        Label("Information", systemImage: "exclamationmark.square")
+                                        Label("About", systemImage: "exclamationmark.square")
                                     }
                                     // log out button
                                     Button {

@@ -15,10 +15,9 @@ struct InfoPopupView: View {
     @Binding var show: Bool
     /// information list
     @State var infoList: [String] = [
-        "This is test one",
-        "Test line two with longer paragraph for giving information to the users",
-        "Hello world",
-        "Hello world"
+        "Guide each other through college",
+        "Connect and stay connected",
+        "Chat with matched students"
     ]
     
     var body: some View {
@@ -32,23 +31,32 @@ struct InfoPopupView: View {
                     // Information
                     VStack(spacing: UIScreen.main.bounds.height * 0.04) {
                         // Title
-                        Text("Information")
+                        Text("About")
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.07))
                         // List of information
-                        VStack(spacing: UIScreen.main.bounds.height * 0.01) {
+                        VStack(spacing: UIScreen.main.bounds.height * 0.015) {
+                            Divider()
                             // loop through infoList
                             ForEach(infoList, id: \.self) { info in
                                 HStack(alignment: .top) {
-                                    HStack {
-                                        Image(systemName: "circle.fill")
-                                            .font(.system(size: UIScreen.main.bounds.width * 0.015))
-                                    }.padding(.top, UIScreen.main.bounds.width * 0.017)
                                     VStack {
                                         Text(info).font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
                                     }
                                     Spacer()
                                 }
+                                Divider()
                             }
+                            Divider().padding(.top, UIScreen.main.bounds.height * 0.02)
+                            HStack(alignment: .top) {
+                                VStack {
+                                    Text("BlueMango © ").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                                }
+                                Spacer()
+                                VStack {
+                                    Text("Version 0.1").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
+                                }
+                            }
+                            Divider()
                         }.padding(.bottom, UIScreen.main.bounds.height * 0.01)
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.7)

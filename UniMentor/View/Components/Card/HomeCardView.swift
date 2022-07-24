@@ -69,19 +69,14 @@ struct HomeCardView: View {
                             cardHeight = 0.1
                         }
                         // change button state
-                        isButtonClicked = !isButtonClicked
+                        isButtonClicked.toggle()
                     }) {
                         HStack {
                             // dropdown icon
-                            if !isButtonClicked {
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
-                                    .background(Color.white)
-                            } else {
-                                Image(systemName: "chevron.up")
-                                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
-                                    .background(Color.white)
-                            }
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                                .background(Color.white)
+                                .rotationEffect(.degrees(isButtonClicked ? 180 : 0))
                         }
                     }
                     .buttonStyle(.plain)

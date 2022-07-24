@@ -48,7 +48,9 @@ struct MessageBubbleView: View {
                 .padding(.horizontal)
                 // on Message box clicked change state of date show
                 .onTapGesture {
-                    showDate.toggle()
+                    withAnimation(.easeInOut) {
+                        showDate.toggle()
+                    }
                 }
                 // if Message box clicked
                 if showDate {
@@ -58,7 +60,9 @@ struct MessageBubbleView: View {
                         Text(date)
                             .foregroundColor(Color("DarkColor"))
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
-                    }.padding(.horizontal, UIScreen.main.bounds.width * 0.05)
+                    }
+                    .padding(.horizontal, UIScreen.main.bounds.width * 0.05)
+                    .transition(.move(edge: .top))
                 }
             } //: VSTACK
         }
@@ -88,7 +92,9 @@ struct MessageBubbleView: View {
                 .padding(.horizontal)
                 // on Message box clicked change state of date show
                 .onTapGesture {
-                    showDate.toggle()
+                    withAnimation(.easeInOut) {
+                        showDate.toggle()
+                    }
                 }
                 // if Message box clicked
                 if showDate {
@@ -98,7 +104,9 @@ struct MessageBubbleView: View {
                             .foregroundColor(Color("DarkColor"))
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                         Spacer()
-                    }.padding(.horizontal, UIScreen.main.bounds.width * 0.05)
+                    }
+                    .padding(.horizontal, UIScreen.main.bounds.width * 0.05)
+                    .transition(.move(edge: .top))
                 }
             } //: VSTACK
         }

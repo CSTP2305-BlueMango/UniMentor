@@ -24,7 +24,7 @@ struct CardView: View {
                     .resizable()
                     .cornerRadius(50)
                     .aspectRatio(contentMode: .fill)
-                }placeholder: {
+                } placeholder: {
                     Image("")
                          .resizable()
                          .cornerRadius(50)
