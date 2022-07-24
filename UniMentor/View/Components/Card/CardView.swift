@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 /// user card view component
 /// param: User
@@ -19,11 +20,18 @@ struct CardView: View {
             // LEFT - Image
             Spacer().frame(width: 0)
             VStack {
-                AsyncImage(url: URL(string: "\(user.image)")) {image in image
+                CachedAsyncImage(url: URL(string: "\(user.image)")) {image in image
                     .resizable()
                     .cornerRadius(50)
                     .aspectRatio(contentMode: .fill)
-                }placeholder: {ProgressView()}
+                }placeholder: {
+                    Image("")
+                         .resizable()
+                         .cornerRadius(50)
+                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                         .aspectRatio(contentMode: .fill)
+                         .clipShape(Circle())
+                }
             }
             .frame(width: UIScreen.main.bounds.width * 0.18, height: UIScreen.main.bounds.width * 0.18)
             .clipShape(Circle())

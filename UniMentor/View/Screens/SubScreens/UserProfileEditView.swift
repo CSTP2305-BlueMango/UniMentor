@@ -209,6 +209,7 @@ struct UserProfileEditView: View {
                             matchedUsers: [],
                             sentRequests: [],
                             recievedRequests: []))
+                        userVM.fetchCurrentUser()
                         // discard edit popup
                         showEditPopUp = false
                         // pop child view to go back to profile view
@@ -230,6 +231,7 @@ struct UserProfileEditView: View {
                                 matchedUsers: [],
                                 sentRequests: [],
                                 recievedRequests: []))
+                            userVM.fetchCurrentUser()
                             // discard edit popup
                             showEditPopUp = false
                             // pop child view to go back to profile view

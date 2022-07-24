@@ -52,7 +52,14 @@ struct MatchedPopupView: View {
                                 .cornerRadius(50)
                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
                                 .aspectRatio(contentMode: .fill)
-                            }placeholder: {ProgressView()}
+                            }placeholder: {
+                                Image("")
+                                     .resizable()
+                                     .cornerRadius(50)
+                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                     .aspectRatio(contentMode: .fill)
+                                     .clipShape(Circle())
+                            }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
                         .clipShape(Circle())
@@ -65,7 +72,14 @@ struct MatchedPopupView: View {
                                 .cornerRadius(50)
                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
                                 .aspectRatio(contentMode: .fill)
-                            }placeholder: {ProgressView()}
+                            }placeholder: {
+                                Image("")
+                                     .resizable()
+                                     .cornerRadius(50)
+                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                     .aspectRatio(contentMode: .fill)
+                                     .clipShape(Circle())
+                            }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.35, height: UIScreen.main.bounds.width * 0.35)
                         .clipShape(Circle())

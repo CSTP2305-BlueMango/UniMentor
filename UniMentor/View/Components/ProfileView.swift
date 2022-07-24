@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 /// user profile component
 /// param: User
@@ -31,13 +32,18 @@ struct ProfileView: View {
                 }
                 // if image is link string
                 else {
-                    AsyncImage(url: URL(string: "\(user.image)")) {image in image
+                    CachedAsyncImage(url: URL(string: "\(user.image)")) {image in image
                         .resizable()
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
-                    }placeholder: {ProgressView()}
-//                    LazyImage(source: user.image)
-//                        .placeholder {ProgressView()}
+                    }placeholder: {
+                        Image("")
+                             .resizable()
+                             .cornerRadius(50)
+                             .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                             .aspectRatio(contentMode: .fill)
+                             .clipShape(Circle())
+                    }
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
