@@ -44,7 +44,7 @@ class UserViewModel: ObservableObject {
     }
     
     /// fetch logged in user from database
-    private func fetchCurrentUser() {
+    func fetchCurrentUser() {
         
         // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {

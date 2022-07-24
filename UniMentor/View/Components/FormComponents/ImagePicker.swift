@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-///reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
+// reference: https://designcode.io/swiftui-advanced-handbook-imagepicker
 /// user can choose from pictures in the photo library
 struct ImagePicker: UIViewControllerRepresentable {
     
