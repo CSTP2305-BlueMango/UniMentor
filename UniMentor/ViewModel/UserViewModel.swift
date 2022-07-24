@@ -60,6 +60,7 @@ class UserViewModel: ObservableObject {
                     return
                 }
                 
+                // get current user from database as User model
                 guard let newUser = try? documentSnapshot?.data(as: User.self) else {
                     self.errorMessage = "fetchCurrentUser: No user data found"
                     return
@@ -80,37 +81,50 @@ class UserViewModel: ObservableObject {
                             self.errorMessage = "fetchAllUsers: Failed to fetch users: \(error)"
                             return
                         }
+                        // loop through all users in database
                         documentsSnapshot?.documentChanges.forEach({ change in
+                            // if document change type is added
                             if change.type == .added {
+                                // get user as User model
                                 guard let getuser = try? change.document.data(as: User.self) else {
                                     self.errorMessage = "fetchAllUsers: No user data found"
                                     return
                                 }
-                                
+                                // if user is matched with current user
                                 if self.matchedUsers.contains(getuser.id) {
+                                    // if user is not in matched users model list
                                     if !self.matchedUsersModel.contains(where: {$0.id == getuser.id}) {
+                                        // add user to matched users model list of current user
                                         self.matchedUsersModel.append(getuser)
                                     }
                                 }
+                                // if user sent request to current user
                                 if self.recievedRequests.contains(getuser.id) {
+                                    // if user is not in recieved users model list
                                     if !self.recievedRequestsModel.contains(where: {$0.id == getuser.id}) {
+                                        // add user to recieved users model list of current user
                                         self.recievedRequestsModel.append(getuser)
                                     }
                                 }
                             }
+                            // if document change type is moditied
                             if change.type == .modified {
+                                // get user as User model
                                 guard let getuser = try? change.document.data(as: User.self) else {
                                     self.errorMessage = "fetchAllUsers: No user data found"
                                     return
                                 }
+                                // if user is matched with current user
                                 if self.matchedUsers.contains(getuser.id) {
+                                    // remove user from matched users model list of current user
                                     self.matchedUsersModel.removeAll(where: {$0.id == getuser.id})
                                 }
+                                // if user sent request to current user
                                 if self.recievedRequests.contains(getuser.id) {
+                                    // remove user from recieved users model list of current user
                                     self.recievedRequestsModel.removeAll(where: {$0.id == getuser.id})
                                 }
                             }
-
                         })
                     }
             }
@@ -193,6 +207,7 @@ class UserViewModel: ObservableObject {
                         self.errorMessage = "deleteUser: Fail to fetch messages data: \(error)"
                         return
                     }
+                    // delete all message in user recieved messages
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("messages")
                             .document(u).collection(uid).document(ss.documentID).delete() { error in
@@ -209,6 +224,7 @@ class UserViewModel: ObservableObject {
                         self.errorMessage = "deleteUser: Fail to fetch messages data: \(error)"
                         return
                     }
+                    // delete all message in recieve user recieved messages
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("messages")
                             .document(uid).collection(u).document(ss.documentID).delete() { error in
@@ -229,6 +245,7 @@ class UserViewModel: ObservableObject {
                         self.errorMessage = "deleteUser: Fail to fetch recent sent messages data: \(error)"
                         return
                     }
+                    // delete recent message in user recieved messages
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("recent_messages")
                             .document(u).collection("messages").document(uid).delete() { error in
@@ -246,6 +263,7 @@ class UserViewModel: ObservableObject {
                         self.errorMessage = "deleteUser: Fail to fetch recent recieved messages data: \(error)"
                         return
                     }
+                    // delete recent message in recieve user recieved messages
                     snapshot?.documents.forEach({ ss in
                         FirebaseManager.shared.firestore.collection("recent_messages")
                             .document(uid).collection("messages").document(u).delete() { error in
@@ -320,6 +338,7 @@ class UserViewModel: ObservableObject {
             "time": Date()
         ] as [String : Any]
         
+        // save data to database
         document.setData(data) { error in
             if let error = error {
                 self.errorMessage = "saveMessageUser: Fail to save message user model: \(error)"
@@ -342,6 +361,7 @@ class UserViewModel: ObservableObject {
             "time": Date()
         ] as [String : Any]
         
+        // save data to database
         recievedDocument.setData(recieveddata) { error in
             if let error = error {
                 self.errorMessage = "saveMessageUser: Fail to save message user model: \(error)"

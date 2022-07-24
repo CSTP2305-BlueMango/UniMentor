@@ -71,7 +71,7 @@ class LinkUsersViewModel: ObservableObject {
 
         // remove id from sent data and add id to matched data
         let receiveUserStore = FirebaseManager.shared.firestore.collection("users").document(user.id)
-         receiveUserStore.updateData([
+        receiveUserStore.updateData([
             "sentRequests": FieldValue.arrayRemove([uid])
         ])
         receiveUserStore.updateData([
@@ -119,7 +119,6 @@ class LinkUsersViewModel: ObservableObject {
                 }
             })
         }
-        
         // remove messages from unmatching user
         let receiverMessage = FirebaseManager.shared.firestore.collection("messages").document(user.id).collection(uid)
         receiverMessage.getDocuments { snapshopt, error in

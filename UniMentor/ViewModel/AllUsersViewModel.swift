@@ -22,6 +22,7 @@ class AllUsersViewModel: ObservableObject {
     
     /// fetch all users
     func fetchAllUsers() {
+        // reset users list
         users = []
         FirebaseManager.shared.firestore.collection("users")
             .addSnapshotListener { [self] documentsSnapshot, error in
@@ -29,33 +30,43 @@ class AllUsersViewModel: ObservableObject {
                     self.errorMessage = "fetchAllUsers: Failed to fetch users: \(error)"
                     return
                 }
+                // listen for changes in database
                 documentsSnapshot?.documentChanges.forEach({ change in
+                    // if added
                     if change.type == .added {
+                        // get user as User model
                         guard let user = try? change.document.data(as: User.self) else {
                             self.errorMessage = "fetchAllUsers: No user data found"
                             return
                         }
+                        // if user is not current user
                         if user.id != FirebaseManager.shared.auth.currentUser?.uid {
+                            // append user to users list
                             self.users.append(user)
                         }
                         
                     }
+                    // if modified
                     if change.type == .modified {
+                        // get user as User model
                         guard let user = try? change.document.data(as: User.self) else {
                             self.errorMessage = "fetchAllUsers: No user data found"
                             return
                         }
+                        // remove user from users list
                         self.users.removeAll(where: {$0.id == user.id})
                     }
                     if change.type == .removed {
+                        // get user as User model
                         guard let user = try? change.document.data(as: User.self) else {
                             self.errorMessage = "fetchAllUsers: No user data found"
                             return
                         }
+                        // remove user from users list
                         self.users.removeAll(where: {$0.id == user.id})
                     }
+                    // shuffle users list
                     users.shuffle()
-
                 })
             }
     }

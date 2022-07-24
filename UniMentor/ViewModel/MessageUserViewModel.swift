@@ -31,14 +31,20 @@ class MessageUserViewModel: ObservableObject {
                     self.errorMessage = "fetchMessageUsers: Fail to fetch message user \(error)"
                     return
                 }
-                
+                // listen for changes in database
                 documentsSnapshot?.documentChanges.forEach({ change in
+                    // if added
                     if change.type == .added {
+                        // get data
                         let data = change.document.data()
+                        // add data to messageUsers list as MessageUser
                         self.messageUsers.append(.init(data: data))
                     }
+                    // if added
                     if change.type == .removed {
+                        // get data
                         let data = change.document.data()
+                        // if messageUser in messageUsers list, remove messageUser 
                         self.messageUsers.removeAll(where: {$0.id == data["id"] as! String})
                     }
                 })
