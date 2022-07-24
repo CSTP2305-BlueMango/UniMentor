@@ -31,7 +31,7 @@ class ChatViewModel: ObservableObject {
             self.errorMessage = "fetchMessages: Could not find current uid"
             return
         }
-        
+        // sending user id
         guard let toId = toUser?.id else {
             self.errorMessage = "fetchMessages: Could not find recieving user uid"
             return
@@ -61,11 +61,12 @@ class ChatViewModel: ObservableObject {
     
     /// send message
     func sendChat() {
+        // current user id
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else {
             self.errorMessage = "sendChat: Could not find current uid"
             return
         }
-        
+        // sending user id
         guard let toId = toUser?.id else {
             self.errorMessage = "sendChat: Could not find recieving user uid"
             return
@@ -108,11 +109,12 @@ class ChatViewModel: ObservableObject {
     
     /// update recent message
     private func recentMessages() {
+        // current user id
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             self.errorMessage = "recentMessages: Could not find current uid"
             return
         }
-        
+        // sending user id
         guard let toId = toUser?.id else {
             self.errorMessage = "recentMessages: Could not find recieving user uid"
             return
