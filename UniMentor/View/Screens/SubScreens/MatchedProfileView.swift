@@ -28,6 +28,9 @@ struct MatchedProfileView: View {
     /// link user view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     /// view presentation mode
     @Environment(\.presentationMode) var presentation
     
@@ -95,10 +98,26 @@ struct MatchedProfileView: View {
                     presentation.wrappedValue.dismiss()
                 },
                 buttonText: "Unmatch"
-            ) //: POPUP
+            )//: POPUP
+            ErrorPopupView(
+                show: $isErrorOccured,
+                errorMessage: Binding(
+                        get: {
+                            "\(userVM.errorMessage)\n\(LinkUsersVM.errorMessage)"
+                        },
+                        set: { _ in})) {
+                            userVM.errorMessage = ""
+                            LinkUsersVM.errorMessage = ""
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onReceive(userVM.$errorMessage) { _ in
+            isErrorOccured = !userVM.errorMessage.isEmpty;
+        }
+        .onReceive(LinkUsersVM.$errorMessage) { _ in
+            isErrorOccured = !LinkUsersVM.errorMessage.isEmpty;
+        }
         //: ZSTACK
     }
 }

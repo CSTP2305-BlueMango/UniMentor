@@ -26,6 +26,9 @@ struct UserProfile: View {
     @ObservedObject var userVM = UserViewModel()
     /// app view model object
     @EnvironmentObject var appVM: AppViewModel
+
+    /// network error
+    @State var isErrorOccured: Bool = false;
     
     var body: some View {
         NavigationView {
@@ -135,6 +138,12 @@ struct UserProfile: View {
                     information: "Finished Deleting account. Please Log out",
                     buttonAction: {appVM.signOut()}, buttonText: "Log out", hideCancelButton: true)
                 //: POPUPS
+                ErrorPopupView(
+                    show: $isErrorOccured,
+                    errorMessage: $userVM.errorMessage
+                ) {
+                    userVM.errorMessage = "";
+                }
             }
             // Logout button
             .actionSheet(isPresented: $shouldShowLogOutOptions) {
@@ -149,6 +158,9 @@ struct UserProfile: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onReceive(userVM.$errorMessage ) { _ in
+            isErrorOccured = !userVM.errorMessage.isEmpty;
+        }
         //: NAVIGATIONVIEW
     }
 }

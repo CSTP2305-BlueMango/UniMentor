@@ -32,18 +32,11 @@ struct ProfileView: View {
                 }
                 // if image is link string
                 else {
-                    CachedAsyncImage(url: URL(string: "\(user.image)")) {image in image
+                    AsyncImage(url: URL(string: "\(user.image)")) {image in image
                         .resizable()
                         .cornerRadius(50)
                         .aspectRatio(contentMode: .fill)
-                    }placeholder: {
-                        Image("")
-                             .resizable()
-                             .cornerRadius(50)
-                             .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                             .aspectRatio(contentMode: .fill)
-                             .clipShape(Circle())
-                    }
+                    }placeholder: { ProgressView() }
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
