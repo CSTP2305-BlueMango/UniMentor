@@ -23,6 +23,9 @@ struct UserProfileEditView: View {
     /// profile view model
     @StateObject var profileVM = ProfileViewModel();
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     /// view presentation mode
     @Environment(\.presentationMode) var presentation
     
@@ -242,10 +245,19 @@ struct UserProfileEditView: View {
                 },
                 buttonText: "Edit"
             )//: POPUP
+            ErrorPopupView(
+                show: $isErrorOccured,
+                errorMessage: $userVM.errorMessage
+            ) {
+                userVM.errorMessage = "";
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear { onViewLoad() }
+        .onReceive(userVM.$errorMessage) { _ in
+            isErrorOccured = !userVM.errorMessage.isEmpty
+        }
         //: ZSTACK
     }
 }

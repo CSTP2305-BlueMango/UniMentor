@@ -28,6 +28,9 @@ struct RequestsProfileView: View {
     /// user view model object
     @ObservedObject var userVM = UserViewModel()
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     /// view presentation mode
     @Environment(\.presentationMode) var presentation
     
@@ -111,9 +114,15 @@ struct RequestsProfileView: View {
                 },
                 buttonText: "Decline"
             )//: POPUP
+            ErrorPopupView(show: $isErrorOccured, errorMessage: $LinkUsersVM.errorMessage) {
+                LinkUsersVM.errorMessage = ""
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onReceive(LinkUsersVM.$errorMessage) { _ in
+            isErrorOccured = !LinkUsersVM.errorMessage.isEmpty
+        }
         //: ZSTACK
     }
 }

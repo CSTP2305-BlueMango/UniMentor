@@ -19,6 +19,9 @@ struct HomeProfileView: View {
     /// view presentation mode
     @Environment(\.presentationMode) var presentation
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
@@ -52,9 +55,18 @@ struct HomeProfileView: View {
                     } //: MAIN
                 }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
             } //: ScrollView
+            ErrorPopupView(
+                show: $isErrorOccured,
+                errorMessage: $LinkUsersVM.errorMessage
+            ) {
+                LinkUsersVM.errorMessage = ""
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onReceive(LinkUsersVM.$errorMessage) { _ in
+            isErrorOccured = !LinkUsersVM.errorMessage.isEmpty;
+        }
         //: ZSTACK
     }
 }

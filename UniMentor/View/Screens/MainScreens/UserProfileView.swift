@@ -26,6 +26,9 @@ struct UserProfile: View {
     @ObservedObject var userVM = UserViewModel()
     /// app view model object
     @EnvironmentObject var appVM: AppViewModel
+
+    /// network error
+    @State var isErrorOccured: Bool = false;
     
     var body: some View {
         NavigationView {
@@ -160,6 +163,12 @@ struct UserProfile: View {
                     .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
                 } //: Logout popup after delete account
                 //: POPUPS
+                ErrorPopupView(
+                    show: $isErrorOccured,
+                    errorMessage: $userVM.errorMessage
+                ) {
+                    userVM.errorMessage = "";
+                }
             }
             // Logout button
             .actionSheet(isPresented: $shouldShowLogOutOptions) {
@@ -174,6 +183,9 @@ struct UserProfile: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onReceive(userVM.$errorMessage ) { _ in
+            isErrorOccured = !userVM.errorMessage.isEmpty;
+        }
         //: NAVIGATIONVIEW
     }
 }

@@ -11,7 +11,8 @@ import SwiftUI
 /// param: show state, error message
 struct ErrorPopupView: View {
     @Binding var show: Bool
-    @State var errorMessage = ""
+    @Binding var errorMessage: String
+    var onClose: ()->Void = {};
     
     var body: some View {
         ZStack {
@@ -25,12 +26,14 @@ struct ErrorPopupView: View {
                         // Error message
                         Text(errorMessage)
                             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
+                            .foregroundColor(Color("ErrorColor"))
                             .multilineTextAlignment(.center)
                     }
                     HStack(spacing: UIScreen.main.bounds.width * 0.07) {
                         // Button
                         Button(action: {
                             show = false
+                            onClose();
                         }) {
                             Text("Okay")
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
@@ -53,7 +56,8 @@ struct ErrorPopupViewPreviewView: View {
     @State var show: Bool = true
     var body: some View {
         ErrorPopupView(
-            show: $show
+            show: $show,
+            errorMessage: Binding.constant("")
         )
     }
 }
