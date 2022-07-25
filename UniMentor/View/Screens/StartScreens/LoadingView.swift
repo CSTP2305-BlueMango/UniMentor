@@ -22,17 +22,25 @@ struct LoadingView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                // if loading view finished
                 if self.isActive {
+                    // show onBoarding view
                     if isOnBoradingViewActive {
                         OnBoardingView()
-                    } else {
+                    }
+                    // if onBoarding view finished
+                    else {
+                        // if user not logged in
                         if !viewModel.loggedIn {
                             LoginView()
-                        } else {
+                        }
+                        // if user logged in
+                        else {
                             TabBarView()
                         }
                     }
                 } else {
+                    // Loading View
                     ZStack {
                         Color("BackgroundColor")
                             .ignoresSafeArea()
@@ -44,6 +52,7 @@ struct LoadingView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.65)
+                    //: Loading View
                 }
             }
             .hideNavigationBar()

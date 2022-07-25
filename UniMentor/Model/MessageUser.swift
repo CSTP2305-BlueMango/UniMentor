@@ -7,22 +7,21 @@
 
 import Foundation
 
+/// message user model
+/// param: message user data
 struct MessageUser: Hashable, Identifiable {
+    /// message user id
     let id: String
+    /// message user name
     let userName: String
+    /// message user image
     let userImage: String
+    /// message user sent user model id
     let fromId: String
+    /// message user latest text
     let text: String
+    /// message user latest text timestemp
     let timestamp: String
-    
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case userName
-//        case userImage
-//        case fromId
-//        case text
-//        case timestamp
-//    }
     
     init(data: [String: Any]) {
         self.id = data["id"] as? String ?? ""
