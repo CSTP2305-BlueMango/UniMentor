@@ -138,6 +138,7 @@
 		E46781B7286EA1DA00BDAFCA /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		E4A474BB285D914E006959D9 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		E4A474BD285D9177006959D9 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F30C272837535C006F424E /* UniMentorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniMentorApp.swift; sourceTree = "<group>"; };
