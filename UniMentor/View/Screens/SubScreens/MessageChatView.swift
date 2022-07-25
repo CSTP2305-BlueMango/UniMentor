@@ -18,6 +18,9 @@ struct MessageChatView: View {
     /// chat view model object
     @ObservedObject var chatVM = ChatViewModel()
     
+    /// network error
+    @State var isErrorOccured = false;
+    
     /// view presentation mode
     @Environment(\.presentationMode) var presentation
 
@@ -67,6 +70,12 @@ struct MessageChatView: View {
                     .ignoresSafeArea()
             }.shadow(radius: UIScreen.main.bounds.width * 0.01)
             //: Input
+            ErrorPopupView(
+                show: $isErrorOccured,
+                errorMessage: $chatVM.errorMessage
+            ) {
+                chatVM.errorMessage = ""
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
@@ -75,6 +84,9 @@ struct MessageChatView: View {
             // set user and get all messages
             chatVM.toUser = self.user
             chatVM.fetchMessages()
+        }
+        .onReceive(chatVM.$errorMessage) { _ in
+            isErrorOccured = !chatVM.errorMessage.isEmpty
         }
     }
     

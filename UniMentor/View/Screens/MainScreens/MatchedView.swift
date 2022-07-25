@@ -32,6 +32,9 @@ struct MatchedView: View {
     /// link users view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -142,9 +145,25 @@ struct MatchedView: View {
                     },
                     buttonText: "Unmatch"
                 )//: POPUP
+                
+                ErrorPopupView(
+                    show: $isErrorOccured,
+                    errorMessage: Binding(get: {
+                        "\(userVM.errorMessage)\n\(LinkUsersVM.errorMessage)"
+                    }, set: {_ in})
+                ) {
+                    userVM.errorMessage = "";
+                    LinkUsersVM.errorMessage = "";
+                }
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .onReceive(userVM.$errorMessage) { _ in
+                isErrorOccured = !userVM.errorMessage.isEmpty;
+            }
+            .onReceive(LinkUsersVM.$errorMessage) {
+                _ in isErrorOccured = !LinkUsersVM.errorMessage.isEmpty
+            }
             //: ZSTACK
         }
         .navigationBarHidden(true)

@@ -23,6 +23,9 @@ struct MessageView: View {
     /// link user view model object
     @ObservedObject var LinkUsersVM = LinkUsersViewModel()
     
+    /// network error
+    @State var isErrorOccured: Bool = false;
+    
     var body: some View {
         ZStack {
             // BODY
@@ -176,6 +179,20 @@ struct MessageView: View {
                 },
                 buttonText: "Delete"
             )//: POPUP
+            ErrorPopupView(
+                show: $isErrorOccured,
+                errorMessage: Binding(get: {
+                    "\(messageUserVM.errorMessage)\n\(LinkUsersVM.errorMessage)"
+                }, set: {_ in})
+            ) {
+                messageUserVM.errorMessage = "";
+                LinkUsersVM.errorMessage = "";
+            }
+        }.onReceive(messageUserVM.$errorMessage) { _ in
+            isErrorOccured = !messageUserVM.errorMessage.isEmpty;
+        }
+        .onReceive(LinkUsersVM.$errorMessage) { _ in
+            isErrorOccured = !LinkUsersVM.errorMessage.isEmpty
         }//: ZSTACK
     }
 }
