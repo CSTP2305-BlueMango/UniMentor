@@ -13,6 +13,7 @@ class MessageUserViewModel: ObservableObject {
     @Published var errorMessage = ""
     /// all message users
     @Published var messageUsers = [MessageUser]()
+    @Published var messageUserIDs = [String]()
     
     init() {
         fetchMessageUsers()
@@ -39,9 +40,11 @@ class MessageUserViewModel: ObservableObject {
                         let data = change.document.data()
                         // add data to messageUsers list as MessageUser
                         self.messageUsers.append(.init(data: data))
+                        self.messageUserIDs.append(data["id"] as! String)
                     }
                     // if added
                     if change.type == .modified {
+                        // TODO: fix
                         // get data
                         let data = change.document.data()
                         // save updated data
@@ -57,6 +60,7 @@ class MessageUserViewModel: ObservableObject {
                         let data = change.document.data()
                         // if messageUser in messageUsers list, remove messageUser 
                         self.messageUsers.removeAll(where: {$0.id == data["id"] as! String})
+                        self.messageUserIDs.removeAll(where: {$0 == data["id"] as! String})
                     }
                 })
             }

@@ -174,6 +174,8 @@ struct ProfileInfoView: View {
                                         // save image to database
                                         handleImage()
                                     }
+                                }
+                                if imageVM.isImageFinished {
                                     isProfileConfirmActive = true
                                 }
                             }
