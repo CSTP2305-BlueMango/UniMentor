@@ -28,4 +28,4 @@ solve together.
 2. Run ***UniMentor.xcodeproj***
 
 ## License
-Distributed under the <b>MIT License</b>. See ***LICENSE.txt*** for more information.
+Distributed under the <b>MIT License</b>. See ***LICENSE.txt*** for more information. 
