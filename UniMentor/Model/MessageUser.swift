@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MessageUser: Identifiable {
+struct MessageUser: Hashable, Identifiable {
     let id: String
     let userName: String
     let userImage: String
