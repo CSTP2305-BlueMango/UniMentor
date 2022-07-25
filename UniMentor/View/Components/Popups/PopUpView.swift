@@ -21,6 +21,7 @@ struct PopUpView: View {
     var buttonAction: ()->Void
     /// button lable
     var buttonText: String
+    var hideCancelButton = false
     
     var body: some View {
         ZStack {
@@ -45,15 +46,17 @@ struct PopUpView: View {
                     }
                     // Buttons
                     HStack(spacing: UIScreen.main.bounds.width * 0.07) {
-                        // Cancel popup button
-                        Button(action: {show = false})
-                        {
-                            Text("Cancel")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
-                                .background(Color("ButtonColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                                .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                        }.buttonStyle(.plain)
+                        if !hideCancelButton {
+                            // Cancel popup button
+                            Button(action: {show = false})
+                            {
+                                Text("Cancel")
+                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
+                                    .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
+                                    .background(Color("ButtonColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                            }.buttonStyle(.plain)
+                        }
                         // Button
                         Button(action: buttonAction) {
                             Text(buttonText)

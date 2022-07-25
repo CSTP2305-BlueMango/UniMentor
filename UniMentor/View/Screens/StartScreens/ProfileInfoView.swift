@@ -22,6 +22,8 @@ struct ProfileInfoView: View {
     @State private var image = UIImage()
     /// to view the photo library and user to choose a photo
     @State private var showSheet = false
+    /// image error message
+    @State private var imageError = ""
     /// if profile information is finished
     @State var isProfileConfirmActive = false
     /// image view model object
@@ -119,6 +121,11 @@ struct ProfileInfoView: View {
                             // Pick an image from the photo library
                             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
                         }
+                        HStack {
+                            if let errorMessage = imageError {
+                                Text(errorMessage).font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04)).foregroundColor(Color("ErrorColor")).frame(width: UIScreen.main.bounds.width * 0.52)
+                            }
+                        }
                     } //: SELECT IMAGE
                     // INPUT FIELDS
                     VStack(spacing: UIScreen.main.bounds.width * 0.015) {
@@ -156,13 +163,19 @@ struct ProfileInfoView: View {
                     VStack() {
                         // Next button - go to profile confirm view
                         ButtonView(action: {
-                            // validate user input and go to profile confirm view
-                            profileVM.handleSubmit { _ in
-                                Task {
-                                    // save image to database
-                                    handleImage()
+                            imageError = ""
+                            if self.image.size.width == 0 {
+                                imageError = "select image"
+                            }
+                            else {
+                                // validate user input and go to profile confirm view
+                                profileVM.handleSubmit { _ in
+                                    Task {
+                                        // save image to database
+                                        handleImage()
+                                    }
+                                    isProfileConfirmActive = true
                                 }
-                                isProfileConfirmActive = true
                             }
                         },
                              label: "Next",

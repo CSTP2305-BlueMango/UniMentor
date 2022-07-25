@@ -67,7 +67,7 @@ struct DatePickerView: View {
                     .padding(.trailing, UIScreen.main.bounds.width * 0.02)
             }//: title & error message
             // Input Field
-             HStack(spacing: UIScreen.main.bounds.width * 0.05) {
+             HStack(spacing: UIScreen.main.bounds.width * 0.02) {
                 // Input Icon
                 Image(systemName: "calendar")
                     .foregroundColor(Color(red: 0.835,green: 0.835,blue: 0.844))
@@ -79,46 +79,51 @@ struct DatePickerView: View {
                 }.frame(width: UIScreen.main.bounds.width * 0.2)
                 Spacer()
                 // Select month & year
-                // Month selection
-                Menu {
-                    ForEach(months.indices) { monthIndex in
-                        Button(action: {
-                            month = "\(self.monthString(at: monthIndex))"
-                        }) {
-                            Text("\(self.monthString(at: monthIndex))")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                HStack(spacing: UIScreen.main.bounds.width * 0.005) {
+                    // Month selection
+                    Menu {
+                        ForEach(months.indices) { monthIndex in
+                            Button(action: {
+                                month = "\(self.monthString(at: monthIndex))"
+                            }) {
+                                Text("\(self.monthString(at: monthIndex))")
+                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                            }
                         }
-                    }
-                } label: {
-                    Text("Month")
-                        .foregroundColor(.black)
-                        .padding(UIScreen.main.bounds.width * 0.02)
-                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                        .cornerRadius(UIScreen.main.bounds.width * 0.02)
+                    } label: {
+                        Text("Month")
+                            .foregroundColor(.black)
+                            .padding(UIScreen.main.bounds.width * 0.02)
+                            .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                            .cornerRadius(UIScreen.main.bounds.width * 0.02)
+                    }.frame(width: UIScreen.main.bounds.width * 0.2)
+                        .padding(0)
+                    // Year selection
+                    Menu {
+                        ForEach(years.indices) { yearIndex in
+                            Button(action: {
+                                year = "\(self.yearString(at: yearIndex))"
+                            }) {
+                                Text("\(self.yearString(at: yearIndex))")
+                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
+                            }
+                        }
+                    } label: {
+                        Text("Year")
+                            .foregroundColor(.black)
+                            .padding(UIScreen.main.bounds.width * 0.02)
+                            .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                            .cornerRadius(UIScreen.main.bounds.width * 0.02)
+                    }.padding(.trailing, UIScreen.main.bounds.width * 0.01)
+                         .frame(width: UIScreen.main.bounds.width * 0.2)
                 }
-                // Year selection
-                Menu {
-                    ForEach(years.indices) { yearIndex in
-                        Button(action: {
-                            year = "\(self.yearString(at: yearIndex))"
-                        }) {
-                            Text("\(self.yearString(at: yearIndex))")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                        }
-                    }
-                } label: {
-                    Text("Year")
-                        .foregroundColor(.black)
-                        .padding(UIScreen.main.bounds.width * 0.02)
-                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                        .cornerRadius(UIScreen.main.bounds.width * 0.02)
-                }.padding(.trailing, UIScreen.main.bounds.width * 0.01)
             }
             .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .leading)
             .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
             .padding()
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
             .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+            //: Input Field
         }
         .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.1)
         //: VSTACK
@@ -126,8 +131,8 @@ struct DatePickerView: View {
 }
 
 struct DatePicker_Preview: View {
-    @State var month = ""
-    @State var year = ""
+    @State var month = "Jan"
+    @State var year = "2020"
     @State var error: String? = ""
     var body: some View {
         DatePickerView(placholder: "", month: $month, year: $year, errorMessage: $error)

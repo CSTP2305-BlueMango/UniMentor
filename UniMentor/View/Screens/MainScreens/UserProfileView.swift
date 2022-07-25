@@ -90,7 +90,9 @@ struct UserProfile: View {
                             }
                             .padding(.top, UIScreen.main.bounds.height * 0.12)
                             .padding(.leading, UIScreen.main.bounds.width * 0.88)
+                            //: Settings
                         }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
+                        //: ZSTACK
                         // FOOTER
                         // Number of matched users
                         VStack(spacing: UIScreen.main.bounds.height * 0.01) {
@@ -128,37 +130,10 @@ struct UserProfile: View {
                     buttonText: "Delete"
                 )
                 // Logout popup after delete account
-                if showDeleteLogoutPopup {
-                    // background
-                    Color.black.opacity(showDeleteLogoutPopup ? 0.3 : 0).edgesIgnoringSafeArea(.all)
-                    // TODO: change to component
-                    // Popup
-                    VStack(spacing: UIScreen.main.bounds.height * 0.03) {
-                        VStack(spacing: UIScreen.main.bounds.height * 0.01) {
-                            // popup message
-                            Text("Finished Deleting account. Please Log out")
-                                .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
-                                .multilineTextAlignment(.center)
-                        }
-                        HStack(spacing: UIScreen.main.bounds.width * 0.07) {
-                            // button
-                            Button(action: {
-                                // sign out user
-                                appVM.signOut()
-                            }) {
-                                Text("Log out")
-                                    .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
-                                    .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
-                                    .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
-                                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width * 0.7)
-                    .padding(UIScreen.main.bounds.width * 0.07)
-                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width * 0.04).fill(Color.white))
-                } //: Logout popup after delete account
+                PopUpView(
+                    show: $showDeleteLogoutPopup,
+                    information: "Finished Deleting account. Please Log out",
+                    buttonAction: {appVM.signOut()}, buttonText: "Log out", hideCancelButton: true)
                 //: POPUPS
             }
             // Logout button

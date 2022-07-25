@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // reference: https://www.youtube.com/watch?v=5inXE5d2MUM&list=PL0dzCUj1L5JEN2aWYFCpqfTBeVHcGZjGw&index=4
-
+/// save image to firebase storage and get url
 class ImageViewModel: ObservableObject {
     /// error message
     @Published var errorMessage = ""

@@ -338,8 +338,8 @@
 				CD6448C928881BB9009B428C /* FormComponents */,
 				CD6448C828881B74009B428C /* Card */,
 				CD6448C728881B44009B428C /* Popups */,
-				CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */,
 				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
+				CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */,
 				CD26D8EB285D2B2200CA1AA6 /* ProfileView.swift */,
 			);
 			path = Components;

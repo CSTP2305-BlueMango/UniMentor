@@ -47,6 +47,7 @@ struct InfoPopupView: View {
                                 Divider()
                             }
                             Divider().padding(.top, UIScreen.main.bounds.height * 0.02)
+                            // Copy right & version info
                             HStack(alignment: .top) {
                                 VStack {
                                     Text("BlueMango © ").font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.04))
