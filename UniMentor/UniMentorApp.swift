@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
 
 @main
 struct UniMentorApp: App {
+    @StateObject var viewModel = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            // TabBarView()
             LoadingView()
+                .environmentObject(viewModel)
         }
     }
 }
+

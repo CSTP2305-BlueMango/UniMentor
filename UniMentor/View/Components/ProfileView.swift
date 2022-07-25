@@ -6,26 +6,55 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
+/// user profile component
+/// param: User
 struct ProfileView: View {
+    /// user model
+    @Binding var user: User
+    /// UIImage state
+    @State var isImageUIImage = false
+    /// user image
+    @State var uiImage: UIImage?
+    
     var body: some View {
         // MAIN
         VStack(spacing: UIScreen.main.bounds.height * 0.02) {
             // Profile Image
             VStack {
-                Image("user")
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
-                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                    .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-            } //: Profile Image
+                // if image is UIImage
+                if isImageUIImage {
+                    Image(uiImage: uiImage ?? UIImage())
+                        .resizable()
+                        .cornerRadius(50)
+                        .aspectRatio(contentMode: .fill)
+                }
+                // if image is link string
+                else {
+                    AsyncImage(url: URL(string: "\(user.image)")) {image in image
+                        .resizable()
+                        .cornerRadius(50)
+                        .aspectRatio(contentMode: .fill)
+                    }placeholder: {
+                        Image("")
+                            .resizable()
+                            .cornerRadius(50)
+                            .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
+            .clipShape(Circle())
+            .shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0)
+            //: Profile Image
             // Profile Info
             VStack(spacing: UIScreen.main.bounds.width * 0.06) {
                 // User Name
                 VStack(alignment: .center) {
-                    Text("First LastName")
+                    Text(user.name)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.09))
                 }
                 // Divider
@@ -44,11 +73,11 @@ struct ProfileView: View {
                 } //: Divider
                 // Education Info
                 VStack(alignment: .leading, spacing: UIScreen.main.bounds.width * 0.04) {
-                    Text("Computer Systems Technology")
+                    Text(user.major)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.06))
-                    Text("Vancouver Community College")
+                    Text(user.school)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                    Text("Start Date: September 2020")
+                    Text("Start Date: \(user.startDate)")
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.035))
                 } //: Education Info
                 .frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
@@ -71,23 +100,22 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text(
 """
-I guess we could discuss the implications of the phrase meant to be.
-
-That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo.
+\(user.intro)
 """)
                         .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.045))
-                } //: Introduction
-                .frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
-            } //: Profile Info
-            .frame(minHeight: UIScreen.main.bounds.height * 0.3)
-            
-        } //: MAIN
-        .frame(minHeight: UIScreen.main.bounds.height * 0.5)
+                }.frame(width: UIScreen.main.bounds.width * 0.85, alignment: .leading)
+                //: Introduction
+            }.frame(minHeight: UIScreen.main.bounds.height * 0.3)
+            //: Profile Info
+        }.frame(minHeight: UIScreen.main.bounds.height * 0.5)
+        //: MAIN
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(
+            user: Binding.constant(User(id: "", name: "", image: "", major: "", school: "", startDate: "", intro: "", matchedUsers: [], sentRequests: [], recievedRequests: []))
+        )
     }
 }
