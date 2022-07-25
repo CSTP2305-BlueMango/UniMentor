@@ -10,9 +10,9 @@
 
 ## About UniMentor
 UniMentor focuses on guiding each other as students to a fruitful and successful college path. UniMentor can be a way to find connections across
-institutions to find the guidance that suits the students pace. With our app students will find the right and appropriate guidance they need whether it is
+institutions to find the guidance that suits the students pace. With our app, students will find the right and appropriate guidance they need whether it is
 regarding college, program or similar interests. With UniMentor, students can find fellow students who had the same or have current situations they can 
-solve together.
+solve together to adjust with life in college.
 
 ## Roadmap
 - [x] Ability to match student with another student
