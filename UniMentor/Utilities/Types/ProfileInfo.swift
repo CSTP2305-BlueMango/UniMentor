@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Basic profile Information struct for the user when they sign up
 struct ProfileInfo {
     var name: String = ""
     var major: String = ""
@@ -16,6 +17,7 @@ struct ProfileInfo {
     var startDate: StartDate = StartDate()
 }
 
+// Basic start date struct information that calculates the start date
 struct StartDate {
     var month: String = ""
     var year: String = ""

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Function that validates the sign up fields, takes 4 parameters, name, email, password, & confirm password
 func validateSignupCredential(_ name: String, _ email: String, _ password: String, _ confirmPassword: String) throws {
     
     //validate email and password

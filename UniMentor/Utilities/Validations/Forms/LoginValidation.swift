@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Validates the login credentials and checks whether the user exists.
+
 func validateLoginCredential(_ email: String, _ password: String) throws {
     
     /// validate email and password
