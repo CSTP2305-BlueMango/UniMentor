@@ -23,6 +23,7 @@ struct MessageUser: Hashable, Identifiable {
     /// message user latest text timestemp
     let timestamp: String
     
+    /// initializing message user data
     init(data: [String: Any]) {
         self.id = data["id"] as? String ?? ""
         self.userName = data["userName"] as? String ?? ""
