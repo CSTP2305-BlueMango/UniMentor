@@ -138,7 +138,6 @@
 		E46781B7286EA1DA00BDAFCA /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		E4A474BB285D914E006959D9 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		E4A474BD285D9177006959D9 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
-
 		E4DDE3FB283DC7CE0059CCEC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E4F30C242837535C006F424E /* UniMentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniMentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F30C272837535C006F424E /* UniMentorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniMentorApp.swift; sourceTree = "<group>"; };
@@ -172,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E4F7FBFF288A2EA300EAD876 /* Types */,
-				E46781AD286E8FDD00BDAFCA /* Validation */,
+				E46781AD286E8FDD00BDAFCA /* Validations */,
 				E46781A9286E8C9E00BDAFCA /* Extensions */,
 				3492AECB286FADC3001910B6 /* FirebaseManager.swift */,
 			);
@@ -228,7 +227,7 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
-		CD6448C828881B74009B428C /* Card */ = {
+		CD6448C828881B74009B428C /* Cards */ = {
 			isa = PBXGroup;
 			children = (
 				CD26D8EF285D3BE500CA1AA6 /* HomeCardView.swift */,
@@ -238,7 +237,7 @@
 				CD26D8F1285D4F1700CA1AA6 /* MessageCardView.swift */,
 				CDF5CFB82882ADC300C65232 /* EditMessageCardView.swift */,
 			);
-			path = Card;
+			path = Cards;
 			sourceTree = "<group>";
 		};
 		CD6448C928881BB9009B428C /* FormComponents */ = {
@@ -297,13 +296,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E46781AD286E8FDD00BDAFCA /* Validation */ = {
+		E46781AD286E8FDD00BDAFCA /* Validations */ = {
 			isa = PBXGroup;
 			children = (
-				E4F7FBFE288A2E9000EAD876 /* Form */,
-				E4F7FBFD288A2E8800EAD876 /* Credential */,
+				E4F7FBFE288A2E9000EAD876 /* Forms */,
+				E4F7FBFD288A2E8800EAD876 /* Credentials */,
 			);
-			path = Validation;
+			path = Validations;
 			sourceTree = "<group>";
 		};
 		E46781B2286E920E00BDAFCA /* Model */ = {
@@ -337,7 +336,7 @@
 			children = (
 				CD7FF6FF288CA4F700A40ADE /* Buttons */,
 				CD6448C928881BB9009B428C /* FormComponents */,
-				CD6448C828881B74009B428C /* Card */,
+				CD6448C828881B74009B428C /* Cards */,
 				CD6448C728881B44009B428C /* Popups */,
 				CDFD8FD3284300F600E48A68 /* Parallelogram.swift */,
 				CD3C6C1628879389005B80E0 /* MessageBubbleView.swift */,
@@ -406,23 +405,23 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		E4F7FBFD288A2E8800EAD876 /* Credential */ = {
+		E4F7FBFD288A2E8800EAD876 /* Credentials */ = {
 			isa = PBXGroup;
 			children = (
 				E4F7FC02288A309500EAD876 /* EmailValidation.swift */,
 				E4F7FC04288A30CC00EAD876 /* PasswordValidation.swift */,
 			);
-			path = Credential;
+			path = Credentials;
 			sourceTree = "<group>";
 		};
-		E4F7FBFE288A2E9000EAD876 /* Form */ = {
+		E4F7FBFE288A2E9000EAD876 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
 				E46781B0286E901C00BDAFCA /* SignupValidation.swift */,
 				E46781AE286E901000BDAFCA /* LoginValidation.swift */,
 				E4F7FC06288A312A00EAD876 /* ProfileValidation.swift */,
 			);
-			path = Form;
+			path = Forms;
 			sourceTree = "<group>";
 		};
 		E4F7FBFF288A2EA300EAD876 /* Types */ = {
