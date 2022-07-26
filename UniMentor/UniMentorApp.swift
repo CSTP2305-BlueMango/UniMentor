@@ -10,6 +10,7 @@ import FirebaseCore
 
 
 @main
+/// Main app start
 struct UniMentorApp: App {
     @StateObject var viewModel = AppViewModel()
     

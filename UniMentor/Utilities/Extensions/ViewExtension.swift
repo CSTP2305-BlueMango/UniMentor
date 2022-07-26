@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View extension that hides the navigation bar and shows it
 extension View {
     func hideNavigationBar() -> some View {
         self

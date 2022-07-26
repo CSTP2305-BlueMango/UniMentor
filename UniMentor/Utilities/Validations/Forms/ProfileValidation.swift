@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Validate profile function that will check if all the fields have been entered in correctly for when signing up.
+
 func validateProfileInfo(info: ProfileInfo) throws -> Void {
     
     switch true {

@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Function that validates and sends a verification email to users email address to confirm email
+
 func validateEmail(email: String) throws {
     //validate email
     //email regex ref: https://www.hackingwithswift.com/forums/swiftui/what-is-a-good-practice-to-handle-textfield-validations/5868
