@@ -1,6 +1,6 @@
 ###### CSTP 2305 iOS Mobile Programming Application
 
-<!-- Logo -->
+<!-- LOGO -->
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
     <img src="appLogo.jpg" alt="Logo" width="200" height="200">
@@ -9,15 +9,36 @@
 
 # UniMentor Project
 
-<!-- Team Members -->
+<!-- TEAM MEMBERS -->
 ## Authors
 [Yoonseo Jeong](https://github.com/YoonseoJ) •
 [Son Minh Nguyen](https://github.com/SonMinhNguyen2000) •
 [Nicole Tan](https://github.com/CSTNicole) •
 [Harman Tiwana](https://github.com/HarmanTiwana901)
- </div>
 
-<!-- Table of Contents -->
+ 
+<!-- BADGES -->
+<p>
+  <!-- contributors -->
+  <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Louis3797/awesome-readme-template" alt="contributors" />
+  </a> 
+  <!-- commit -->
+  <a href="">
+    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
+  </a>
+    <!-- issues -->
+    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">
+    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
+  </a>
+  <!-- license -->
+   <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/Louis3797/awesome-readme-template.svg" alt="license" />
+  </a>
+</p>
+</div> 
+
+<!-- TABLE OF CONTENTS -->
 ## :notebook_with_decorative_cover: Table of Contents
 - [About the Project](#star2-about-the-project)
   * [Screenshots](#camera-screenshots)
@@ -33,7 +54,7 @@
 - [License](#copyright-license)
 - [References](#pushpin-references)
 
-<!-- About The Project -->
+<!-- ABOUT THE PROJECT -->
 ## :star2: About the Project
 UniMentor match students to be each other's mentor. UniMentor focuses on guiding each other as students to a fruitful and successful college path. UniMentor can be a way to find connections across institutions to find the guidance that suits the students pace. With our app, students will find the right and appropriate guidance they need whether it is regarding college, programs or similar interests. With UniMentor, students can find fellow students who had the same or have current situations they can solve together to adjust with life in college.
 
