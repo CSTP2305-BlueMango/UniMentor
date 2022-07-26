@@ -83,25 +83,25 @@ struct ProfileInfoView: View {
                             ZStack {
                                 // reference: https://www.youtube.com/watch?v=MJuMIpdpORk
                                 // User image
-                                if let image = self.image {
-                                    // if image is selected
-                                    Image(uiImage: image)
-                                         .resizable()
-                                         .cornerRadius(50)
-                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                         .aspectRatio(contentMode: .fill)
-                                         .clipShape(Circle())
-                                } else {
-                                    // if image is not selected
-                                    Image("")
-                                         .resizable()
-                                         .cornerRadius(50)
-                                         .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                         .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                         .aspectRatio(contentMode: .fill)
-                                         .clipShape(Circle())
-                                }
+                                VStack {
+                                    if let image = self.image {
+                                        // if image is selected
+                                        Image(uiImage: image)
+                                             .resizable()
+                                             .cornerRadius(50)
+                                             .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                             .aspectRatio(contentMode: .fill)
+                                             .clipShape(Circle())
+                                    } else {
+                                        // if image is not selected
+                                        Image("")
+                                             .resizable()
+                                             .cornerRadius(50)
+                                             .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                             .aspectRatio(contentMode: .fill)
+                                             .clipShape(Circle())
+                                    }
+                                }.frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
                                 // Image input icon
                                 HStack {
                                     Image(systemName: "plus")
