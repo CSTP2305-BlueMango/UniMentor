@@ -243,7 +243,9 @@ struct UserProfileEditView: View {
                         }
                     }
                 },
-                buttonText: "Edit"
+                buttonText: "Edit",
+                leftButtonColor: Color("UnmatchColor"),
+                rightButtonColor: Color("ButtonColor")
             )//: POPUP
             ErrorPopupView(
                 show: $isErrorOccured,
