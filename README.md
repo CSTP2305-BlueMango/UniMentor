@@ -29,7 +29,6 @@
   * [Requirements](#computer-requirements)
   * [Run Locally](#running-run-locally)
 - [Contributing](#busts_in_silhouette-contributing)
-- [Code of Conduct](#scroll-code-of-conduct)
 - [License](#copyright-license)
 - [References](#pushpin-references)
 
@@ -140,10 +139,6 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
 <!-- CONTRIBUTING -->
 ## :busts_in_silhouette: Contributing
 Conributions are welcome! Please ensure to always make a new branch for your additions.
-
-<!-- CODE OF CONDUCT -->
-## :scroll: Code of Conduct
-Please read our [Code of Conduct]()
 
 <!-- LICENSE -->
 ## :copyright: License
