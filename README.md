@@ -38,7 +38,31 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
 
 <!-- SCREENSHOTS -->
 ### :camera: Screenshots
-
+<table>
+  <tr>
+    <td>Loading View</td>
+     <td>Home View</td>
+     <td>Matched Requests View</td>
+  </tr>
+  <tr>
+    <td><img width="314" alt="loadingview" src="https://user-images.githubusercontent.com/56127179/181138703-ee7ca532-9499-4c7c-b04f-6d9e70dc167c.png"/>
+    <td><img width="314" alt="homeview" src="https://user-images.githubusercontent.com/56127179/181139015-3bcee615-8d6b-40df-bf66-8cd08784f43b.png"/>
+    <td><img width="315" alt="matchrequestview" src="https://user-images.githubusercontent.com/56127179/181139046-95ca5ec6-cfd7-4ea9-a6e2-e648c3e33635.png"/>
+  </tr>
+ </table>
+ 
+ <table>
+  <tr>
+    <td>Matched Pop Up</td>
+     <td>Message Chat View</td>
+     <td>User Profile View</td>
+  </tr>
+  <tr>
+    <td><img width="315" alt="matchedpopup" src="https://user-images.githubusercontent.com/56127179/181139175-2b581c62-7fa6-4f67-82e0-f4f7c2b3c280.png"/>
+    <td><img width="314" alt="messagechatview" src="https://user-images.githubusercontent.com/56127179/181139183-35c35e17-c20c-4d5d-8290-3bf822765523.png"/>
+    <td><img width="314" alt="profile" src="https://user-images.githubusercontent.com/56127179/181139191-05c0dc9c-eb2c-4a37-b689-85fb0bf41059.png"/>
+  </tr>
+ </table>
 
 <!-- TECH STACK -->
 ### :space_invader: Tech Stack
