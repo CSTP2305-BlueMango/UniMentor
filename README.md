@@ -138,7 +138,7 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
 
 <!-- CONTRIBUTING -->
 ## :busts_in_silhouette: Contributing
-Conributions are welcome! Please ensure to always make a new branch for your additions.
+Contributions are welcome! Please ensure to always make a new branch for your additions.
 
 <!-- LICENSE -->
 ## :copyright: License
