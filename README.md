@@ -102,10 +102,10 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
  
 2. **View**
   - Components - to maintain consistency for the whole project design we made reusable components
-    - Buttons
-    - Cards
+    - Buttons - all button views used
+    - Cards - user cards for each tab views
     - FormComponents - including the input fields
-    - Popups
+    - Popups - all popup views used
   - Screens - user interface for each screen in the project
     - StartScreens - onboarding, loading, login, signup and setup profile views
     - MainScreens - tab bar, home, requests, matched, message and user profile views
@@ -117,7 +117,7 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
 
 5. **Utilities**
   - Extensions - to ensure that everything is confirmed before proceeding to next screen
-  - Types - used for profile struct
+  - Types - a place to hold structs in the project which are not model 
   - Validations - to authenticate user input
     - Credentials - email and password
     - Forms - signup, login and profile
