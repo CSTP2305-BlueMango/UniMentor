@@ -15,27 +15,6 @@
 [Son Minh Nguyen](https://github.com/SonMinhNguyen2000) •
 [Nicole Tan](https://github.com/CSTNicole) •
 [Harman Tiwana](https://github.com/HarmanTiwana901)
-
- 
-<!-- BADGES -->
-<p>
-  <!-- contributors -->
-  <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Louis3797/awesome-readme-template" alt="contributors" />
-  </a> 
-  <!-- commit -->
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
-  </a>
-    <!-- issues -->
-    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">
-    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
-  </a>
-  <!-- license -->
-   <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/Louis3797/awesome-readme-template.svg" alt="license" />
-  </a>
-</p>
 </div> 
 
 <!-- TABLE OF CONTENTS -->
