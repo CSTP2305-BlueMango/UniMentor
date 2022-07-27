@@ -3,7 +3,7 @@
 <!-- LOGO -->
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="sources/appLogo.jpg" alt="Logo" width="200" height="200">
+    <img src="Sources/appLogo.jpg" alt="Logo" width="200" height="200">
   </a>
 
 
