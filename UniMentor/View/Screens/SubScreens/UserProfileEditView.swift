@@ -93,27 +93,27 @@ struct UserProfileEditView: View {
                                         // reference: https://www.youtube.com/watch?v=MJuMIpdpORk
                                         // reference: https://stackoverflow.com/questions/25394536/uiimage-on-swift-cant-check-for-nil
                                         // User image
-                                        if self.uiImage.size.width != 0, let uiimage = self.uiImage {
-                                            // if image is changed
-                                            Image(uiImage: uiimage)
-                                                 .resizable()
-                                                 .cornerRadius(50)
-                                                 .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                                 .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                                 .aspectRatio(contentMode: .fill)
-                                                 .clipShape(Circle())
-                                        } else {
-                                            // if image did not change
-                                            AsyncImage(url: URL(string: "\(profileVM.profile.imageUrl)")) { img in
-                                                img
-                                                    .resizable()
-                                                    .cornerRadius(50)
-                                                    .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
-                                                    .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
-                                                    .aspectRatio(contentMode: .fill)
-                                                    .clipShape(Circle())
-                                            } placeholder: {ProgressView()}
-                                        }
+                                        VStack {
+                                            if self.uiImage.size.width != 0, let uiimage = self.uiImage {
+                                                // if image is changed
+                                                Image(uiImage: uiimage)
+                                                     .resizable()
+                                                     .cornerRadius(50)
+                                                     .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                                     .aspectRatio(contentMode: .fill)
+                                                     .clipShape(Circle())
+                                            } else {
+                                                // if image did not change
+                                                AsyncImage(url: URL(string: "\(profileVM.profile.imageUrl)")) { img in
+                                                    img
+                                                        .resizable()
+                                                        .cornerRadius(50)
+                                                        .background(Color(red: 0.9490, green: 0.9490, blue: 0.9490))
+                                                        .aspectRatio(contentMode: .fill)
+                                                        .clipShape(Circle())
+                                                } placeholder: {ProgressView()}
+                                            }
+                                        }.frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45)
                                         // Image input icon
                                         HStack {
                                             Image(systemName: "plus")
@@ -243,7 +243,9 @@ struct UserProfileEditView: View {
                         }
                     }
                 },
-                buttonText: "Edit"
+                buttonText: "Edit",
+                leftButtonColor: Color("UnmatchColor"),
+                rightButtonColor: Color("ButtonColor")
             )//: POPUP
             ErrorPopupView(
                 show: $isErrorOccured,

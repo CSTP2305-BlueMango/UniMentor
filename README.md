@@ -148,6 +148,5 @@ Distributed under the **MIT License**. See ***LICENSE.md*** for more information
 ## :pushpin: References
 - [Let's Build That App](https://www.letsbuildthatapp.com/course_video?id=7606)
 - [Awesome README](https://github.com/Louis3797/awesome-readme-template/blob/main/README.md#art-color-reference)
-- [Code of Conduct template](https://gist.github.com/PurpleBooth/b24679402957c63ec426)
 - [Emoji for Github README](https://gist.github.com/rxaviers/7360908)
 - [Color Code Hex](https://www.colorcodehex.com/)

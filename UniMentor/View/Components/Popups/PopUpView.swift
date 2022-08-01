@@ -21,7 +21,12 @@ struct PopUpView: View {
     var buttonAction: ()->Void
     /// button lable
     var buttonText: String
+    /// hide left button
     var hideCancelButton = false
+    /// left button color
+    var leftButtonColor = Color("ButtonColor")
+    /// right button color
+    var rightButtonColor = Color("UnmatchColor")
     
     var body: some View {
         ZStack {
@@ -53,7 +58,7 @@ struct PopUpView: View {
                                 Text("Cancel")
                                     .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                     .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
-                                    .background(Color("ButtonColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                                    .background(leftButtonColor.cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                                     .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                             }.buttonStyle(.plain)
                         }
@@ -62,7 +67,7 @@ struct PopUpView: View {
                             Text(buttonText)
                                 .font(Font.custom("TimesNewRomanPSMT", size: UIScreen.main.bounds.width * 0.05))
                                 .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.12)
-                                .background(Color("UnmatchColor").cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
+                                .background(rightButtonColor.cornerRadius(UIScreen.main.bounds.width * 0.1).shadow(color: Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 0))
                                 .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                         }.buttonStyle(.plain)
                     }//: Buttons
