@@ -136,10 +136,6 @@ UniMentor match students to be each other's mentor. UniMentor focuses on guiding
 1. Clone or download the project repository
 2. Run ***UniMentor.xcodeproj***
 
-<!-- CONTRIBUTING -->
-## :busts_in_silhouette: Contributing
-Contributions are welcome! Please ensure to always make a new branch for your additions.
-
 <!-- LICENSE -->
 ## :copyright: License
 Distributed under the **MIT License**. See ***LICENSE.md*** for more information.
